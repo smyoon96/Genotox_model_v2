@@ -1,0 +1,2 @@
+n_valid,n_contains_metal,n_contains_heavy_metal,contains_metal_rate,contains_heavy_metal_rate,multicomponent_rate,charged_rate,top_metal_elements
+1932,106,71,0.054865424430641824,0.03674948240165631,0.0,0.09575569358178054,Sn:27; Al:10; Cu:8; Mn:5; Co:5; V:5; Cr:4; Fe:4; Mo:4; In:3; Ni:3; Zn:3; Bi:2; Pt:2; La:2; Zr:2; Cd:2; Sr:2; Ti:2; W:1
