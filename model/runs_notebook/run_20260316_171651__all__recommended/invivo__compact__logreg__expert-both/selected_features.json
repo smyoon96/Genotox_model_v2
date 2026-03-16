@@ -1,0 +1,42 @@
+{
+  "endpoint": "invivo",
+  "tier": "compact",
+  "model_name": "logreg",
+  "features": [
+    "scaffold_group_type",
+    "mw",
+    "hbd",
+    "logp",
+    "heteroatom_count",
+    "rot_bonds",
+    "rule_epoxide_ge1",
+    "rule_organometal_like_ge1",
+    "rule_alcohol_ge1",
+    "rule_fused_ring_like_ge1",
+    "expert_alert_score"
+  ],
+  "include_qm": false,
+  "qm_cols": [],
+  "threshold_metric": "balanced_accuracy",
+  "tuned_threshold": 0.31,
+  "use_expert_prior": true,
+  "expert_mode": "both",
+  "expert_feature_name": "expert_alert_score",
+  "expert_alert_config": {
+    "alerts": {
+      "rule_epoxide_ge1": 0.9,
+      "rule_organometal_like_ge1": 0.5
+    },
+    "sample_weight_lambda": 0.1,
+    "sample_weight_cap": 1.4,
+    "apply_to_all_samples": true
+  },
+  "tuning_enabled": true,
+  "tuning_n_iter": 12,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.13346398674268978,
+  "best_params": {
+    "C": 0.9245178002041654,
+    "l1_ratio": 0.16987128854262093
+  }
+}

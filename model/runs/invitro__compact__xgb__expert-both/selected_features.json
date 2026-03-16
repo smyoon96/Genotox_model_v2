@@ -1,0 +1,51 @@
+{
+  "endpoint": "invitro",
+  "tier": "compact",
+  "model_name": "xgb",
+  "features": [
+    "scaffold_group_type",
+    "bb_n_genotox_alerts",
+    "rot_bonds",
+    "logp",
+    "fraction_csp3",
+    "mw",
+    "rule_bb_sa2_primary_aromatic_amine_ge1",
+    "rule_aniline_ge1",
+    "rule_bb_sa20_ab_unsat_carbonyl_ge1",
+    "rule_bb_sa47_n_alkylcarboxylic_acid_ge1",
+    "rule_ester_eq1",
+    "expert_alert_score"
+  ],
+  "include_qm": false,
+  "qm_cols": [],
+  "threshold_metric": "mcc",
+  "tuned_threshold": 0.54,
+  "use_expert_prior": true,
+  "expert_mode": "both",
+  "expert_feature_name": "expert_alert_score",
+  "expert_alert_config": {
+    "alerts": {
+      "rule_bb_sa2_primary_aromatic_amine_ge1": 1.0,
+      "rule_aniline_ge1": 0.7,
+      "rule_bb_sa20_ab_unsat_carbonyl_ge1": 0.6
+    },
+    "sample_weight_lambda": 0.18,
+    "sample_weight_cap": 1.7,
+    "apply_to_all_samples": true
+  },
+  "tuning_enabled": true,
+  "tuning_n_iter": 2,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.24945834605275943,
+  "best_params": {
+    "n_estimators": 350,
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "subsample": 0.9,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 4,
+    "reg_lambda": 3.0,
+    "reg_alpha": 0.5,
+    "gamma": 0.1
+  }
+}

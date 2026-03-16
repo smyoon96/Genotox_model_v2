@@ -1,0 +1,16 @@
+feature,mean_abs_shap
+rot_bonds,0.7195931982654862
+bb_n_genotox_alerts,0.6014347779396989
+aromatic_ring_count,0.24659121083471647
+expert_alert_score,0.11666182567273493
+fraction_csp3,0.05907138189943834
+rule_bb_sa10_n_nitroso_ge1,0.05803120509587816
+rule_bb_sa5_nitro_aromatic_ge2,0.055034680806666514
+rule_epoxide_ge1,0.05252140261720404
+rule_sulfone_ge2,0.041660424263160564
+scaffold_group_type_murcko,0.025615532056284973
+rule_hydrazine_like_ge1,0.022089059700053117
+rule_ester_ge2,0.015666110686471165
+tpsa,0.00557007778433028
+scaffold_group_type_acyclic_anonymous_graph,0.0052859168456105615
+rule_bb_sa47_n_alkylcarboxylic_acid_ge1,0.005257356185119361

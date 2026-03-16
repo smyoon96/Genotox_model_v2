@@ -1,0 +1,14 @@
+feature,importance,abs_importance,pretty_feature
+cat__scaffold_group_type_acyclic_anonymous_graph,0.11405975,0.11405975,scaffold_group_type_acyclic_anonymous_graph
+num__rule_ester_eq1,0.1053567,0.1053567,rule_ester_eq1
+num__bb_n_genotox_alerts,0.10131798,0.10131798,bb_n_genotox_alerts
+num__fraction_csp3,0.087403886,0.087403886,fraction_csp3
+num__expert_alert_score,0.08629093,0.08629093,expert_alert_score
+num__logp,0.08351397,0.08351397,logp
+num__rot_bonds,0.08332796,0.08332796,rot_bonds
+num__rule_bb_sa47_n_alkylcarboxylic_acid_ge1,0.066831276,0.066831276,rule_bb_sa47_n_alkylcarboxylic_acid_ge1
+cat__scaffold_group_type_murcko,0.06385488,0.06385488,scaffold_group_type_murcko
+num__mw,0.058958687,0.058958687,mw
+num__rule_bb_sa2_primary_aromatic_amine_ge1,0.056607686,0.056607686,rule_bb_sa2_primary_aromatic_amine_ge1
+num__rule_bb_sa20_ab_unsat_carbonyl_ge1,0.04767914,0.04767914,rule_bb_sa20_ab_unsat_carbonyl_ge1
+num__rule_aniline_ge1,0.04479707,0.04479707,rule_aniline_ge1

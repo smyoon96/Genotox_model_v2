@@ -1,0 +1,13 @@
+{
+  "endpoint": "invitro",
+  "tier": "compact",
+  "model_name": "logreg",
+  "tuning_enabled": true,
+  "tuning_n_iter": 12,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.22461340963734241,
+  "best_params": {
+    "C": 0.13292827901428983,
+    "l1_ratio": 0.3673295021425665
+  }
+}

@@ -1,0 +1,13 @@
+feature,mean_abs_shap
+logp,0.7679734286918677
+heteroatom_count,0.6067431563929963
+rule_alcohol_ge1,0.5781513049719055
+rule_fused_ring_like_ge1,0.4447652899061132
+mw,0.232601448664031
+scaffold_group_type_acyclic_anonymous_graph,0.1855540640540421
+rule_organometal_like_ge1,0.09468898039099799
+expert_alert_score,0.09195985058956138
+scaffold_group_type_murcko,0.021340198426748305
+rot_bonds,0.019517148496810313
+hbd,0.014368458720860594
+rule_epoxide_ge1,0.0

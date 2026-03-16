@@ -1,0 +1,14 @@
+feature,mean_abs_shap
+logp,0.4369693360527186
+rot_bonds,0.36702087548056483
+rule_ester_eq1,0.2908840624054954
+fraction_csp3,0.1782476130921152
+rule_bb_sa20_ab_unsat_carbonyl_ge1,0.15116737709931022
+bb_n_genotox_alerts,0.119572227602215
+expert_alert_score,0.11669455667936926
+scaffold_group_type_acyclic_anonymous_graph,0.11096554088939847
+scaffold_group_type_murcko,0.10960732018075435
+rule_bb_sa47_n_alkylcarboxylic_acid_ge1,0.07584633623016686
+mw,0.07074642816918368
+rule_bb_sa2_primary_aromatic_amine_ge1,0.005162554662607733
+rule_aniline_ge1,0.0

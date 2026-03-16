@@ -1,0 +1,18 @@
+{
+  "endpoint": "invivo",
+  "tier": "compact",
+  "model_name": "logreg",
+  "artifact_dir": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\model\\runs\\run_20260316_141251__all__recommended\\invivo__compact__logreg__expert-both",
+  "tuning_enabled": true,
+  "tuning_n_iter": 12,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.13346398674268978,
+  "best_params": {
+    "C": 0.9245178002041654,
+    "l1_ratio": 0.16987128854262093
+  },
+  "threshold_metric": "balanced_accuracy",
+  "tuned_threshold": 0.31,
+  "save_models": true,
+  "save_visuals": true
+}

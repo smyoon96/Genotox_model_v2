@@ -1,0 +1,120 @@
+{
+  "exp_dir": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\model\\runs_notebook\\run_20260316_171651__all__recommended\\ames__compact__logreg__expert-both",
+  "files": [
+    {
+      "name": "best_hyperparameters.json",
+      "is_dir": false,
+      "size_bytes": 597
+    },
+    {
+      "name": "confusion_matrix.png",
+      "is_dir": false,
+      "size_bytes": 38821
+    },
+    {
+      "name": "confusion_matrix_counts.csv",
+      "is_dir": false,
+      "size_bytes": 49
+    },
+    {
+      "name": "confusion_matrix_normalized.png",
+      "is_dir": false,
+      "size_bytes": 50625
+    },
+    {
+      "name": "confusion_matrix_row_normalized.csv",
+      "is_dir": false,
+      "size_bytes": 84
+    },
+    {
+      "name": "feature_importance.csv",
+      "is_dir": false,
+      "size_bytes": 1403
+    },
+    {
+      "name": "feature_importance_top.png",
+      "is_dir": false,
+      "size_bytes": 94033
+    },
+    {
+      "name": "fitted_pipeline.joblib",
+      "is_dir": false,
+      "size_bytes": 6106
+    },
+    {
+      "name": "hyperparameter_search_results.csv",
+      "is_dir": false,
+      "size_bytes": 959
+    },
+    {
+      "name": "metrics.json",
+      "is_dir": false,
+      "size_bytes": 965
+    },
+    {
+      "name": "pr_curve.csv",
+      "is_dir": false,
+      "size_bytes": 97568
+    },
+    {
+      "name": "pr_curve.png",
+      "is_dir": false,
+      "size_bytes": 48838
+    },
+    {
+      "name": "roc_curve.csv",
+      "is_dir": false,
+      "size_bytes": 55794
+    },
+    {
+      "name": "roc_curve.png",
+      "is_dir": false,
+      "size_bytes": 56010
+    },
+    {
+      "name": "selected_features.json",
+      "is_dir": false,
+      "size_bytes": 1245
+    },
+    {
+      "name": "shap_beeswarm.png",
+      "is_dir": false,
+      "size_bytes": 129501
+    },
+    {
+      "name": "shap_mean_abs.csv",
+      "is_dir": false,
+      "size_bytes": 674
+    },
+    {
+      "name": "shap_summary_bar.png",
+      "is_dir": false,
+      "size_bytes": 85506
+    },
+    {
+      "name": "test_misclassifications.csv",
+      "is_dir": false,
+      "size_bytes": 62314
+    },
+    {
+      "name": "test_predictions.csv",
+      "is_dir": false,
+      "size_bytes": 260376
+    },
+    {
+      "name": "threshold_sweep.csv",
+      "is_dir": false,
+      "size_bytes": 9024
+    },
+    {
+      "name": "threshold_sweep.png",
+      "is_dir": false,
+      "size_bytes": 102472
+    },
+    {
+      "name": "train_sample_weights.csv",
+      "is_dir": false,
+      "size_bytes": 205430
+    }
+  ]
+}

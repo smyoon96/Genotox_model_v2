@@ -1,0 +1,13 @@
+{
+  "endpoint": "invivo",
+  "tier": "compact",
+  "model_name": "logreg",
+  "tuning_enabled": true,
+  "tuning_n_iter": 12,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.13346398674268978,
+  "best_params": {
+    "C": 0.9245178002041654,
+    "l1_ratio": 0.16987128854262093
+  }
+}

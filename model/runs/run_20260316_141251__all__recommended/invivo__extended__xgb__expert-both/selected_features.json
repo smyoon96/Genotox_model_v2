@@ -1,0 +1,58 @@
+{
+  "endpoint": "invivo",
+  "tier": "extended",
+  "model_name": "xgb",
+  "features": [
+    "scaffold_group_type",
+    "mw",
+    "hbd",
+    "logp",
+    "heteroatom_count",
+    "rot_bonds",
+    "rule_epoxide_ge1",
+    "rule_organometal_like_ge1",
+    "rule_alcohol_ge1",
+    "rule_fused_ring_like_ge1",
+    "fg_epoxide_present",
+    "fg_organometal_like_present",
+    "fg_fused_ring_like_present",
+    "fg_alcohol_present",
+    "rule_epoxide_ge2",
+    "rule_organometal_like_ge2",
+    "contains_heavy_metal",
+    "contains_metal",
+    "fg_BB_SA16b_aziridine_present",
+    "expert_alert_score"
+  ],
+  "include_qm": false,
+  "qm_cols": [],
+  "threshold_metric": "balanced_accuracy",
+  "tuned_threshold": 0.14,
+  "use_expert_prior": true,
+  "expert_mode": "both",
+  "expert_feature_name": "expert_alert_score",
+  "expert_alert_config": {
+    "alerts": {
+      "rule_epoxide_ge1": 0.9,
+      "rule_organometal_like_ge1": 0.5
+    },
+    "sample_weight_lambda": 0.1,
+    "sample_weight_cap": 1.4,
+    "apply_to_all_samples": true
+  },
+  "tuning_enabled": true,
+  "tuning_n_iter": 12,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.13503550428531316,
+  "best_params": {
+    "n_estimators": 300,
+    "max_depth": 3,
+    "learning_rate": 0.04951668517310507,
+    "subsample": 0.7656249507619748,
+    "colsample_bytree": 0.555588188277075,
+    "min_child_weight": 5,
+    "reg_lambda": 7.766184280392884,
+    "reg_alpha": 0.3795552402641346,
+    "gamma": 0.06101911742238941
+  }
+}

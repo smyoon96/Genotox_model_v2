@@ -1,0 +1,39 @@
+{
+  "mode_defaults": {
+    "ames": "both",
+    "invitro": "both",
+    "invivo": "both"
+  },
+  "endpoints": {
+    "ames": {
+      "alerts": {
+        "rule_bb_sa10_n_nitroso_ge1": 1.5,
+        "rule_bb_sa5_nitro_aromatic_ge2": 1.3,
+        "rule_epoxide_ge1": 1.1,
+        "rule_hydrazine_like_ge1": 0.9
+      },
+      "sample_weight_lambda": 0.25,
+      "sample_weight_cap": 2.0,
+      "apply_to_all_samples": true
+    },
+    "invitro": {
+      "alerts": {
+        "rule_bb_sa2_primary_aromatic_amine_ge1": 1.0,
+        "rule_aniline_ge1": 0.7,
+        "rule_bb_sa20_ab_unsat_carbonyl_ge1": 0.6
+      },
+      "sample_weight_lambda": 0.18,
+      "sample_weight_cap": 1.7,
+      "apply_to_all_samples": true
+    },
+    "invivo": {
+      "alerts": {
+        "rule_epoxide_ge1": 0.9,
+        "rule_organometal_like_ge1": 0.5
+      },
+      "sample_weight_lambda": 0.1,
+      "sample_weight_cap": 1.4,
+      "apply_to_all_samples": true
+    }
+  }
+}

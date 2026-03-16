@@ -1,0 +1,13 @@
+{
+  "endpoint": "ames",
+  "tier": "compact",
+  "model_name": "logreg",
+  "tuning_enabled": true,
+  "tuning_n_iter": 12,
+  "tune_metric": "average_precision",
+  "best_cv_score": 0.6563973644603857,
+  "best_params": {
+    "C": 0.05517837404093855,
+    "l1_ratio": 0.5819459112971965
+  }
+}
