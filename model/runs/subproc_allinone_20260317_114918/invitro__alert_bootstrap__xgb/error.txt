@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 687, in main
+    metrics = run_experiment(ep, strategy, model_name, config, run_root)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 572, in run_experiment
+    params, tuning_df, best_cv = tune_params(train_df, feature_cols, endpoint, model_name, strategy, int(config.get("cv_splits", 3)), tuning_metric, int(config.get("random_state", 42)))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 425, in tune_params
+    score = candidate_cv_score(train_df, feature_cols, endpoint, model_name, params, strategy, cv_splits, metric, random_state + i*7)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 407, in candidate_cv_score
+    _, _, prob = train_once(X.iloc[tr], y.iloc[tr], X.iloc[va], y.iloc[va], feature_cols, endpoint, model_name, params, strategy, random_state + fold)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 369, in train_once
+    Xtr = pre.fit_transform(X_work)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\compose\_column_transformer.py", line 999, in fit_transform
+    result = self._call_func_on_transformers(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\compose\_column_transformer.py", line 901, in _call_func_on_transformers
+    return Parallel(n_jobs=self.n_jobs)(jobs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\utils\parallel.py", line 91, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\joblib\parallel.py", line 1986, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\joblib\parallel.py", line 1914, in _get_sequential_output
+    res = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\utils\parallel.py", line 184, in __call__
+    return self.function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\pipeline.py", line 1484, in _fit_transform_one
+    res = transformer.fit_transform(X, y, **params.get("fit_transform", {}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\pipeline.py", line 677, in fit_transform
+    Xt = self._fit(X, y, routed_params)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\pipeline.py", line 547, in _fit
+    X, fitted_transformer = fit_transform_one_cached(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\joblib\memory.py", line 326, in __call__
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\pipeline.py", line 1484, in _fit_transform_one
+    res = transformer.fit_transform(X, y, **params.get("fit_transform", {}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\base.py", line 907, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\impute\_base.py", line 447, in fit
+    X = self._validate_input(X, in_fit=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\sklearn\impute\_base.py", line 372, in _validate_input
+    raise new_ve from None
+ValueError: Cannot use median strategy with non-numeric data:
+could not convert string to float: 'acyclic_anonymous_graph'

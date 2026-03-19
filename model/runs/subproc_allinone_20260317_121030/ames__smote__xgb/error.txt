@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 728, in main
+    metrics = run_experiment(ep, strategy, model_name, config, run_root)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py", line 652, in run_experiment
+    preds = test_df[META_COLS].copy()
+            ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\pandas\core\frame.py", line 4384, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\pandas\core\indexes\base.py", line 6302, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "C:\Users\Administrator\.conda\envs\genotox\Lib\site-packages\pandas\core\indexes\base.py", line 6355, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['canonical_smiles', 'standardized_smiles', 'analysis_smiles', 'representation', 'metal_elements', 'scaffold_origin', 'scaffold_source', 'scaffold_family'] not in index"

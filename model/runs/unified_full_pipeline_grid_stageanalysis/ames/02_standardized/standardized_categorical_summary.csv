@@ -1,0 +1,12 @@
+column,n_unique,top_value,top_freq
+No,13714,10002,1
+No_norm,13714,10002,1
+No_view,13714,10002,1
+SMILES,12769,BrC(Br)Br,2
+raw_smiles_input,12769,BrC(Br)Br,2
+SMILES_view,12769,BrC(Br)Br,2
+raw_smiles,12769,BrC(Br)Br,2
+canonical_smiles,12760,BrC(Br)Br,2
+standardized_smiles,12684,O,14
+domain,2,drug,7278
+domain_view,2,drug,7278

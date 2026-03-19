@@ -1,0 +1,149 @@
+{
+  "data_dir": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\model\\data",
+  "endpoints": {
+    "ames": {
+      "endpoint": "ames",
+      "status": "ok",
+      "train_file": "ames_recommended_union_train.csv",
+      "test_file": "ames_recommended_union_test.csv",
+      "train_rows": 10964,
+      "train_cols": 40,
+      "train_n_positive": 3347,
+      "train_n_negative": 7617,
+      "train_positive_rate": 0.3053,
+      "train_No_missing": 0,
+      "train_No_missing_pct": 0.0,
+      "train_label_missing": 0,
+      "train_label_missing_pct": 0.0,
+      "train_scaffold_group_missing": 0,
+      "train_scaffold_group_missing_pct": 0.0,
+      "test_rows": 2741,
+      "test_cols": 40,
+      "test_n_positive": 837,
+      "test_n_negative": 1904,
+      "test_positive_rate": 0.3054,
+      "test_No_missing": 0,
+      "test_No_missing_pct": 0.0,
+      "test_label_missing": 0,
+      "test_label_missing_pct": 0.0,
+      "test_scaffold_group_missing": 0,
+      "test_scaffold_group_missing_pct": 0.0,
+      "smiles_columns": [
+        "SMILES"
+      ],
+      "n_meta_cols": 6,
+      "n_feature_candidates": 34,
+      "n_excluded_cols": 0,
+      "meta_cols": [
+        "No",
+        "SMILES",
+        "label",
+        "murcko_scaffold",
+        "scaffold_group",
+        "scaffold_group_type"
+      ],
+      "excluded_cols": [],
+      "scaffold_groups_unique": 3563,
+      "scaffold_group_type_values": [
+        "acyclic_anonymous_graph",
+        "murcko"
+      ]
+    },
+    "invitro": {
+      "endpoint": "invitro",
+      "status": "ok",
+      "train_file": "invitro_recommended_union_train.csv",
+      "test_file": "invitro_recommended_union_test.csv",
+      "train_rows": 1170,
+      "train_cols": 29,
+      "train_n_positive": 130,
+      "train_n_negative": 1040,
+      "train_positive_rate": 0.1111,
+      "train_No_missing": 0,
+      "train_No_missing_pct": 0.0,
+      "train_label_missing": 0,
+      "train_label_missing_pct": 0.0,
+      "train_scaffold_group_missing": 0,
+      "train_scaffold_group_missing_pct": 0.0,
+      "test_rows": 295,
+      "test_cols": 29,
+      "test_n_positive": 33,
+      "test_n_negative": 262,
+      "test_positive_rate": 0.1119,
+      "test_No_missing": 0,
+      "test_No_missing_pct": 0.0,
+      "test_label_missing": 0,
+      "test_label_missing_pct": 0.0,
+      "test_scaffold_group_missing": 0,
+      "test_scaffold_group_missing_pct": 0.0,
+      "smiles_columns": [
+        "SMILES"
+      ],
+      "n_meta_cols": 6,
+      "n_feature_candidates": 23,
+      "n_excluded_cols": 0,
+      "meta_cols": [
+        "No",
+        "SMILES",
+        "label",
+        "murcko_scaffold",
+        "scaffold_group",
+        "scaffold_group_type"
+      ],
+      "excluded_cols": [],
+      "scaffold_groups_unique": 608,
+      "scaffold_group_type_values": [
+        "acyclic_anonymous_graph",
+        "murcko"
+      ]
+    },
+    "invivo": {
+      "endpoint": "invivo",
+      "status": "ok",
+      "train_file": "invivo_recommended_union_train.csv",
+      "test_file": "invivo_recommended_union_test.csv",
+      "train_rows": 1546,
+      "train_cols": 25,
+      "train_n_positive": 57,
+      "train_n_negative": 1489,
+      "train_positive_rate": 0.0369,
+      "train_No_missing": 0,
+      "train_No_missing_pct": 0.0,
+      "train_label_missing": 0,
+      "train_label_missing_pct": 0.0,
+      "train_scaffold_group_missing": 0,
+      "train_scaffold_group_missing_pct": 0.0,
+      "test_rows": 386,
+      "test_cols": 25,
+      "test_n_positive": 14,
+      "test_n_negative": 372,
+      "test_positive_rate": 0.0363,
+      "test_No_missing": 0,
+      "test_No_missing_pct": 0.0,
+      "test_label_missing": 0,
+      "test_label_missing_pct": 0.0,
+      "test_scaffold_group_missing": 0,
+      "test_scaffold_group_missing_pct": 0.0,
+      "smiles_columns": [
+        "SMILES"
+      ],
+      "n_meta_cols": 6,
+      "n_feature_candidates": 19,
+      "n_excluded_cols": 0,
+      "meta_cols": [
+        "No",
+        "SMILES",
+        "label",
+        "murcko_scaffold",
+        "scaffold_group",
+        "scaffold_group_type"
+      ],
+      "excluded_cols": [],
+      "scaffold_groups_unique": 698,
+      "scaffold_group_type_values": [
+        "murcko",
+        "acyclic_anonymous_graph"
+      ]
+    }
+  }
+}

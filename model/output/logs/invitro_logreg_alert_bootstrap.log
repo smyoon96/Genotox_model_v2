@@ -1,0 +1,15 @@
+2026-03-18 13:43:38,423 [INFO] 
+############################################################
+2026-03-18 13:43:38,424 [INFO] Experiment: invitro_logreg_alert_bootstrap (seed=1244265337)
+2026-03-18 13:43:38,424 [INFO] ############################################################
+2026-03-18 13:43:38,484 [INFO]   Data: train=(1170, 575), test=(295, 575)
+2026-03-18 13:43:38,484 [ERROR]   FAILED: module 'config' has no attribute 'QM_COLS'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step3_train.py", line 111, in run_single_experiment
+    feature_cols = get_clean_feature_cols(df_train, include_fp=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\utils\feature_utils.py", line 225, in get_clean_feature_cols
+    if not include_qm and col.lower() in [q.lower() for q in cfg.QM_COLS]:
+                                                             ^^^^^^^^^^^
+AttributeError: module 'config' has no attribute 'QM_COLS'
+

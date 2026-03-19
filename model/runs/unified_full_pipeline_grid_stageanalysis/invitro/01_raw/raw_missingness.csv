@@ -1,0 +1,6 @@
+column,missing_n,missing_frac,dtype
+No,0,0.0,string
+SMILES,0,0.0,string
+label,0,0.0,int64
+No_norm,0,0.0,str
+raw_smiles_input,0,0.0,str

@@ -1,0 +1,6 @@
+CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py --config-json C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\cfg__ames__none__logreg.json --mode run
+
+[PIPELINE_VERSION] 2026-03-17-v4
+[RUN] endpoint=ames strategy=none model=logreg
+[OK] {"endpoint": "ames", "strategy": "none", "model_name": "logreg", "mcc": 0.5468185269684154, "balanced_accuracy": 0.7925567628485086, "pr_auc": 0.7306671022292992}
+[DONE] run_root=C:\Users\Administrator\Documents\GitHub\Genotox_model\model\runs\subproc_allinone_20260317_175506

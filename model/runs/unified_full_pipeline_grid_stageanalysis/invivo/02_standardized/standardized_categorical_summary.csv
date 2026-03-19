@@ -1,0 +1,11 @@
+column,n_unique,top_value,top_freq
+No,1935,10004,1
+SMILES,1935,B,1
+No_norm,1935,10004,1
+raw_smiles_input,1935,B,1
+SMILES_view,1935,B,1
+raw_smiles,1935,B,1
+canonical_smiles,1932,B,1
+standardized_smiles,1896,O,10
+status,1,OK,1935
+status_view,1,OK,1935

@@ -1,0 +1,9 @@
+endpoint,strategy,model,status,error,elapsed_sec
+ames,none,xgb,failed,module 'config' has no attribute 'QM_COLS',0.4
+ames,alert_bootstrap,xgb,failed,module 'config' has no attribute 'QM_COLS',0.4
+invitro,none,xgb,failed,module 'config' has no attribute 'QM_COLS',0.1
+invitro,alert_bootstrap,xgb,failed,module 'config' has no attribute 'QM_COLS',0.0
+invitro,smotenc,xgb,failed,module 'config' has no attribute 'QM_COLS',0.1
+invitro,hybrid,xgb,failed,module 'config' has no attribute 'QM_COLS',0.0
+invivo,none,xgb,failed,module 'config' has no attribute 'QM_COLS',0.1
+invivo,alert_bootstrap,xgb,failed,module 'config' has no attribute 'QM_COLS',0.1

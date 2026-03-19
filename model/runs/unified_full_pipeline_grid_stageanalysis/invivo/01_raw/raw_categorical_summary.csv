@@ -1,0 +1,6 @@
+column,n_unique,top_value,top_freq
+No,1935,10004,1
+SMILES,1935,B,1
+No_norm,1935,10004,1
+raw_smiles_input,1935,B,1
+status,1,OK,1935

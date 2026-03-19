@@ -1,0 +1,4 @@
+column,non_null_frac
+SMILES,1.0
+canonical_smiles,0.9984496124031008
+standardized_smiles,0.9984496124031008

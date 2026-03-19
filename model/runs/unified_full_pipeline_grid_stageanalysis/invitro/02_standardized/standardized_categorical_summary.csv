@@ -1,0 +1,9 @@
+column,n_unique,top_value,top_freq
+No,1466,10004,1
+SMILES,1466,B12B3B4B1C234,1
+No_norm,1466,10004,1
+raw_smiles_input,1466,B12B3B4B1C234,1
+SMILES_view,1466,B12B3B4B1C234,1
+raw_smiles,1466,B12B3B4B1C234,1
+canonical_smiles,1465,B12B3B4B1C234,1
+standardized_smiles,1455,O,5

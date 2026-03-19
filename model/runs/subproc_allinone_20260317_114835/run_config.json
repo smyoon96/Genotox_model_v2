@@ -1,0 +1,35 @@
+{
+  "base_dir": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\model",
+  "data_dir": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\model\\data",
+  "runs_dir": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\model\\runs",
+  "endpoints": [
+    "ames",
+    "invitro",
+    "invivo"
+  ],
+  "feature_blocks": [
+    "physchem",
+    "rules",
+    "fg_present",
+    "fg_count",
+    "fingerprint",
+    "qm"
+  ],
+  "fp_bits": 256,
+  "fp_top_k": 128,
+  "models": [
+    "logreg",
+    "xgb"
+  ],
+  "strategies": [
+    "none",
+    "smote",
+    "alert_bootstrap",
+    "hybrid"
+  ],
+  "cv_splits": 3,
+  "tuning_metric": "mcc",
+  "random_state": 42,
+  "qm_file": null,
+  "qm_merge_key": "No"
+}

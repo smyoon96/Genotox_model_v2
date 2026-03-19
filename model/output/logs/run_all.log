@@ -1,0 +1,74 @@
+2026-03-18 13:43:31,976 [INFO] Pipeline started: 2026-03-18T13:43:31.976687
+2026-03-18 13:43:31,976 [INFO] Project root: C:\Users\Administrator\Documents\GitHub\Genotox_model\model
+2026-03-18 13:43:31,976 [INFO] Data dir: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\data
+2026-03-18 13:43:31,977 [INFO] 
+============================================================
+2026-03-18 13:43:31,977 [INFO] STEP: [1/7] Raw Data Audit & Schema Unification
+2026-03-18 13:43:31,977 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step1_data_audit.py
+2026-03-18 13:43:31,977 [INFO] ============================================================
+2026-03-18 13:43:32,469 [INFO]   DONE (0.5s)
+2026-03-18 13:43:32,469 [INFO] 
+============================================================
+2026-03-18 13:43:32,469 [INFO] STEP: [2/7] Broad Feature Table Build
+2026-03-18 13:43:32,469 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step2_feature_build.py
+2026-03-18 13:43:32,470 [INFO] ============================================================
+2026-03-18 13:43:33,770 [INFO]   DONE (1.3s)
+2026-03-18 13:43:33,770 [INFO] 
+============================================================
+2026-03-18 13:43:33,770 [INFO] STEP: [3/7] Leakage-free Training & Evaluation
+2026-03-18 13:43:33,770 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step3_train.py --all
+2026-03-18 13:43:33,770 [INFO] ============================================================
+2026-03-18 13:43:39,600 [INFO]   DONE (5.8s)
+2026-03-18 13:43:39,601 [INFO] 
+============================================================
+2026-03-18 13:43:39,601 [INFO] STEP: [4/7] Leakage Control Report (Reviewer Defense)
+2026-03-18 13:43:39,601 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step4_leakage_report.py
+2026-03-18 13:43:39,601 [INFO] ============================================================
+2026-03-18 13:43:40,000 [INFO]   DONE (0.4s)
+2026-03-18 13:43:40,001 [INFO] 
+============================================================
+2026-03-18 13:43:40,001 [INFO] STEP: [5/7] Ablation / Robustness Study
+2026-03-18 13:43:40,001 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step5_ablation.py
+2026-03-18 13:43:40,002 [INFO] ============================================================
+2026-03-18 13:43:45,672 [INFO]   DONE (5.7s)
+2026-03-18 13:43:45,672 [INFO] 
+============================================================
+2026-03-18 13:43:45,673 [INFO] STEP: [6/7] Imbalance Strategy Comparison
+2026-03-18 13:43:45,673 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step6_imbalance_study.py
+2026-03-18 13:43:45,673 [INFO] ============================================================
+2026-03-18 13:43:48,245 [INFO]   DONE (2.6s)
+2026-03-18 13:43:48,246 [INFO] 
+============================================================
+2026-03-18 13:43:48,246 [INFO] STEP: [7/8] Summary Dashboard Generation
+2026-03-18 13:43:48,246 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step7_dashboard.py
+2026-03-18 13:43:48,246 [INFO] ============================================================
+2026-03-18 13:43:48,910 [INFO]   DONE (0.7s)
+2026-03-18 13:43:48,911 [INFO] 
+============================================================
+2026-03-18 13:43:48,911 [INFO] STEP: [8/8] Comprehensive Analysis (CM, Chemical Space, QM, Feature)
+2026-03-18 13:43:48,911 [INFO] CMD:  C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\step8_comprehensive_analysis.py
+2026-03-18 13:43:48,911 [INFO] ============================================================
+2026-03-18 13:43:51,290 [INFO]   DONE (2.4s)
+2026-03-18 13:43:51,290 [INFO] 
+############################################################
+2026-03-18 13:43:51,290 [INFO] PIPELINE COMPLETE
+2026-03-18 13:43:51,292 [INFO] Total time: 19s (0.3min)
+2026-03-18 13:43:51,298 [INFO] ############################################################
+2026-03-18 13:43:51,298 [INFO] 
+============================================================
+2026-03-18 13:43:51,298 [INFO] OUTPUT DIRECTORY: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output
+2026-03-18 13:43:51,298 [INFO] ============================================================
+2026-03-18 13:43:51,298 [INFO]   Core Results:
+2026-03-18 13:43:51,298 [INFO]     summary_metrics.csv:    C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\summary_metrics.csv
+2026-03-18 13:43:51,298 [INFO]     best_by_endpoint.csv:   C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\best_by_endpoint.csv
+2026-03-18 13:43:51,298 [INFO]   Reviewer Defense:
+2026-03-18 13:43:51,298 [INFO]     leakage_control_report: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\leakage_report
+2026-03-18 13:43:51,298 [INFO]   Paper Figures:
+2026-03-18 13:43:51,299 [INFO]     ablation:               C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\ablation
+2026-03-18 13:43:51,299 [INFO]     imbalance:              C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\imbalance
+2026-03-18 13:43:51,299 [INFO]   Dashboard:
+2026-03-18 13:43:51,299 [INFO]     dashboard:              C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\dashboard
+2026-03-18 13:43:51,299 [INFO]   Comprehensive Analysis:
+2026-03-18 13:43:51,299 [INFO]     analysis:               C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\analysis
+2026-03-18 13:43:51,299 [INFO]   Artifacts:                C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\artifacts
+2026-03-18 13:43:51,299 [INFO]   Logs:                     C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\logs

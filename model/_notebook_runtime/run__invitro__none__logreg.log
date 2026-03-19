@@ -1,0 +1,6 @@
+CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py --config-json C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\cfg__invitro__none__logreg.json --mode run
+
+[PIPELINE_VERSION] 2026-03-17-v4
+[RUN] endpoint=invitro strategy=none model=logreg
+[OK] {"endpoint": "invitro", "strategy": "none", "model_name": "logreg", "mcc": 0.25302110449150583, "balanced_accuracy": 0.6715822345593339, "pr_auc": 0.27998444552060153}
+[DONE] run_root=C:\Users\Administrator\Documents\GitHub\Genotox_model\model\runs\subproc_allinone_20260317_192723

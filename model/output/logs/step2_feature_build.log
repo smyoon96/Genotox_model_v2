@@ -1,0 +1,23 @@
+2026-03-18 13:43:33,575 [INFO] step2: ============================================================
+2026-03-18 13:43:33,575 [INFO] step2: Step 2: Broad Feature Table Build
+2026-03-18 13:43:33,577 [INFO] step2: ============================================================
+2026-03-18 13:43:33,577 [INFO] step2: 
+==================================================
+2026-03-18 13:43:33,577 [INFO] step2: Building broad features: ames
+2026-03-18 13:43:33,577 [INFO] step2: ==================================================
+2026-03-18 13:43:33,591 [INFO] step2: 
+==================================================
+2026-03-18 13:43:33,591 [INFO] step2: Building broad features: invitro
+2026-03-18 13:43:33,591 [INFO] step2: ==================================================
+2026-03-18 13:43:33,604 [INFO] step2: 
+==================================================
+2026-03-18 13:43:33,604 [INFO] step2: Building broad features: invivo
+2026-03-18 13:43:33,604 [INFO] step2: ==================================================
+2026-03-18 13:43:33,648 [INFO] step2: 
+Feature audit saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\feature_audit_summary.csv
+2026-03-18 13:43:33,649 [INFO] step2: Manifest saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\broad_feature_manifest.json
+2026-03-18 13:43:33,649 [INFO] step2: 
+============================================================
+2026-03-18 13:43:33,649 [INFO] step2:   ames: ok
+2026-03-18 13:43:33,649 [INFO] step2:   invitro: ok
+2026-03-18 13:43:33,649 [INFO] step2:   invivo: ok

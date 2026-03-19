@@ -1,0 +1,37 @@
+2026-03-18 13:43:47,025 [INFO] step6: ============================================================
+2026-03-18 13:43:47,025 [INFO] step6: Step 6: Imbalance Strategy Comparison
+2026-03-18 13:43:47,025 [INFO] step6: ============================================================
+2026-03-18 13:43:47,025 [INFO] step6: 
+--- ames (strategies: ['none', 'alert_bootstrap']) ---
+2026-03-18 13:43:47,025 [INFO] step6:   none / xgb ...
+2026-03-18 13:43:47,390 [ERROR] step6:   FAILED: ames/none/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:47,396 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:47,396 [INFO] step6:   alert_bootstrap / xgb ...
+2026-03-18 13:43:47,759 [ERROR] step6:   FAILED: ames/alert_bootstrap/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:47,765 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:47,765 [INFO] step6: 
+--- invitro (strategies: ['none', 'alert_bootstrap', 'smotenc', 'hybrid']) ---
+2026-03-18 13:43:47,765 [INFO] step6:   none / xgb ...
+2026-03-18 13:43:47,815 [ERROR] step6:   FAILED: invitro/none/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:47,816 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:47,816 [INFO] step6:   alert_bootstrap / xgb ...
+2026-03-18 13:43:47,865 [ERROR] step6:   FAILED: invitro/alert_bootstrap/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:47,865 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:47,865 [INFO] step6:   smotenc / xgb ...
+2026-03-18 13:43:47,915 [ERROR] step6:   FAILED: invitro/smotenc/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:47,916 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:47,916 [INFO] step6:   hybrid / xgb ...
+2026-03-18 13:43:47,965 [ERROR] step6:   FAILED: invitro/hybrid/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:47,965 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:47,965 [INFO] step6: 
+--- invivo (strategies: ['none', 'alert_bootstrap']) ---
+2026-03-18 13:43:47,965 [INFO] step6:   none / xgb ...
+2026-03-18 13:43:48,024 [ERROR] step6:   FAILED: invivo/none/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:48,024 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:48,024 [INFO] step6:   alert_bootstrap / xgb ...
+2026-03-18 13:43:48,083 [ERROR] step6:   FAILED: invivo/alert_bootstrap/xgb: module 'config' has no attribute 'QM_COLS'
+2026-03-18 13:43:48,083 [INFO] step6:     ¡æ failed, MCC=? (0s)
+2026-03-18 13:43:48,086 [INFO] step6: 
+Strategy comparison saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\imbalance\strategy_comparison_summary.csv
+2026-03-18 13:43:48,087 [INFO] step6: 
+Imbalance study complete. Output: C:\Users\Administrator\Documents\GitHub\Genotox_model\model\output\summary\imbalance

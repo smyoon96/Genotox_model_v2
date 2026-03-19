@@ -1,0 +1,2 @@
+endpoint,stage,n_rows,n_cols,n_missing_cells,fraction_missing_cells,positive_rate,n_unique_No,n_unique_SMILES,n_unique_canonical_smiles,n_unique_standardized_smiles
+invitro,standardized,1466,10,2,0.00013642564802182812,0.11186903137789904,1466,1466,1465,1455

@@ -1,0 +1,11 @@
+column,missing_n,missing_frac,dtype
+canonical_smiles,1,0.0006821282401091405,str
+standardized_smiles,1,0.0006821282401091405,str
+No,0,0.0,string
+SMILES,0,0.0,string
+label,0,0.0,int64
+No_norm,0,0.0,str
+raw_smiles_input,0,0.0,str
+No_view,0,0.0,int64
+SMILES_view,0,0.0,str
+raw_smiles,0,0.0,str
