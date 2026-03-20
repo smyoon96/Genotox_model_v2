@@ -264,65 +264,8 @@ class MolGCN:
 
 
 # ─── Hyperparameter Search Spaces ──────────────────────
-
-HP_GRIDS = {
-    "xgb": {
-        "n_estimators": [100, 200, 300, 500],
-        "max_depth": [3, 5, 7, 9],
-        "learning_rate": [0.01, 0.05, 0.1, 0.2],
-        "subsample": [0.7, 0.8, 1.0],
-        "colsample_bytree": [0.6, 0.8, 1.0],
-        "min_child_weight": [1, 3, 5],
-        "gamma": [0, 0.1, 0.3],
-    },
-    "lgbm": {
-        "n_estimators": [100, 200, 300, 500],
-        "max_depth": [3, 5, 7, 9, -1],
-        "learning_rate": [0.01, 0.05, 0.1, 0.2],
-        "num_leaves": [15, 31, 63, 127],
-        "subsample": [0.7, 0.8, 1.0],
-        "colsample_bytree": [0.6, 0.8, 1.0],
-        "min_child_samples": [5, 10, 20],
-    },
-    "rf": {
-        "n_estimators": [100, 200, 300, 500],
-        "max_depth": [5, 10, 15, 20, None],
-        "min_samples_split": [2, 5, 10],
-        "min_samples_leaf": [1, 2, 4],
-        "max_features": ["sqrt", "log2", 0.5, 0.8],
-    },
-    "svm": {
-        "clf__C": [0.01, 0.1, 1.0, 10.0, 100.0],
-        "clf__kernel": ["rbf", "linear"],
-        "clf__gamma": ["scale", "auto", 0.01, 0.1],
-    },
-    "logistic": {
-        "clf__C": [0.01, 0.1, 1.0, 10.0, 100.0],
-        "clf__penalty": ["l1", "l2"],
-        "clf__solver": ["saga"],
-    },
-    "ann": {
-        "clf__hidden_layer_sizes": [(64,), (128,), (128, 64), (256, 128)],
-        "clf__alpha": [0.0001, 0.001, 0.01],
-        "clf__learning_rate_init": [0.001, 0.005, 0.01],
-    },
-    "dnn": {
-        "clf__hidden_layer_sizes": [(256, 128, 64), (256, 128, 64, 32),
-                                     (512, 256, 128, 64), (128, 64, 32, 16)],
-        "clf__alpha": [0.0001, 0.001, 0.01],
-        "clf__learning_rate_init": [0.001, 0.005, 0.01],
-        "clf__batch_size": [32, 64, 128],
-    },
-    "gnn": {
-        "hidden_dim": [32, 64, 128],
-        "n_layers": [2, 3, 4],
-        "dropout": [0.1, 0.2, 0.3],
-        "lr": [0.0005, 0.001, 0.005],
-    },
-}
-
-HP_N_ITER = 30       # RandomizedSearchCV iterations
-HP_CV_FOLDS = 3      # GroupKFold folds for HP search
+# config.py에서 import (single source of truth)
+from config import HP_GRIDS, HP_N_ITER, HP_CV_FOLDS
 
 
 def tune_model(X_train, y_train, groups, model_name, spw,
