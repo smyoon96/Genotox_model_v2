@@ -1,0 +1,21 @@
+{
+  "fixed_split": true,
+  "conflicts": true,
+  "domain_diagnosed": true,
+  "domain_ldo": true,
+  "cross_ep": true,
+  "cv_selection": true,
+  "cv_unique_folds": true,
+  "full_grid": true,
+  "no_empty_mcc": true,
+  "broad_fp_included": true,
+  "logistic_included": true,
+  "cv_selected_1_per_ep": true,
+  "bootstrap_ci": true,
+  "ad_computed": true,
+  "calibration": true,
+  "threshold_oof": true,
+  "paper_primary_1_per_ep": true,
+  "warnings_present": true,
+  "all_columns_complete": true
+}

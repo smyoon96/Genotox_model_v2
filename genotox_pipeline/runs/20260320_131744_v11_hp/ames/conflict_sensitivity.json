@@ -1,0 +1,26 @@
+[
+  {
+    "strategy": "conservative",
+    "n_original": 13714,
+    "n_conflicts": 187,
+    "n_after": 12573,
+    "pos_rate_before": 0.3051,
+    "pos_rate_after": 0.3115
+  },
+  {
+    "strategy": "positive_priority",
+    "n_original": 13714,
+    "n_conflicts": 187,
+    "n_after": 12760,
+    "pos_rate_before": 0.3051,
+    "pos_rate_after": 0.3216
+  },
+  {
+    "strategy": "majority_vote",
+    "n_original": 13714,
+    "n_conflicts": 187,
+    "n_after": 12573,
+    "pos_rate_before": 0.3051,
+    "pos_rate_after": 0.3115
+  }
+]

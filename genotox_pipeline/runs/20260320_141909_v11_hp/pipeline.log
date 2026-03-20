@@ -1,0 +1,65 @@
+14:19:09 Pipeline v11 — Clean Single Run
+  C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\runs\20260320_141909_v11_hp
+14:19:09 STEP 1: Load + Clean
+14:19:09   Looking for: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\data\ames_combine.xlsx
+14:19:10   [ames] n=13714 pos=0.3051
+14:19:10   Looking for: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\data\invitro_pre.csv
+14:19:10   [invitro] n=1466 pos=0.1119
+14:19:10   Looking for: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\data\invivo_pre.csv
+14:19:10   [invivo] n=1935 pos=0.0367
+14:19:12   ⚠ Domain predictor acc: 0.7438
+14:19:18   [ames] 13714 → 12573 (conflicts=187)
+14:19:19   [invitro] 1466 → 1465 (conflicts=0)
+14:19:19   [invivo] 1935 → 1932 (conflicts=0)
+14:19:19 STEP 2: Preprocessing Flags
+14:19:21     Classified 2000/12573 compounds...
+14:19:22     Classified 4000/12573 compounds...
+14:19:24     Classified 6000/12573 compounds...
+14:19:25     Classified 8000/12573 compounds...
+14:19:27     Classified 10000/12573 compounds...
+14:19:28     Classified 12000/12573 compounds...
+14:19:31 STEP 3: Fixed Split
+14:19:37   [ames] train=10058 test=2515 pos_diff=0.0027
+14:19:37   [invitro] train=1172 test=293 pos_diff=0.006
+14:19:38   [invivo] train=1545 test=387 pos_diff=0.0169
+14:19:38 STEP 4: Scenario Selection (Train CV)
+14:19:41   [ames] FG features: 183 columns
+14:19:45   [ames] Physchem features: 13 columns
+14:19:48   [ames/raw_all] CV_MCC=0.5702±0.0608 unique_folds=5
+14:19:51   [ames] FG features: 183 columns
+14:19:55   [ames] Physchem features: 13 columns
+14:19:58   [ames/no_metal] CV_MCC=0.5740±0.0638 unique_folds=5
+14:20:01   [ames] FG features: 183 columns
+14:20:05   [ames] Physchem features: 13 columns
+14:20:08   [ames/salt_stripped] CV_MCC=0.5776±0.0644 unique_folds=5
+14:20:08   [ames] ★ Best: salt_stripped (CV=0.5776)
+14:20:08   [invitro] FG features: 183 columns
+14:20:08   [invitro] Physchem features: 13 columns
+14:20:10   [invitro/raw_all] CV_MCC=0.1715±0.0780 unique_folds=5
+14:20:11   [invitro] FG features: 183 columns
+14:20:11   [invitro] Physchem features: 13 columns
+14:20:13   [invitro/no_metal] CV_MCC=0.1663±0.1170 unique_folds=5
+14:20:14   [invitro] FG features: 183 columns
+14:20:14   [invitro] Physchem features: 13 columns
+14:20:16   [invitro/salt_stripped] CV_MCC=0.1762±0.1054 unique_folds=5
+14:20:16   [invitro] ★ Best: salt_stripped (CV=0.1762)
+14:20:16   [invivo] FG features: 183 columns
+14:20:17   [invivo] Physchem features: 13 columns
+14:20:19   [invivo/raw_all] CV_MCC=0.0952±0.1189 unique_folds=5
+14:20:19   [invivo] FG features: 183 columns
+14:20:20   [invivo] Physchem features: 13 columns
+14:20:22   [invivo/no_metal] CV_MCC=0.0847±0.1167 unique_folds=5
+14:20:22   [invivo] FG features: 183 columns
+14:20:23   [invivo] Physchem features: 13 columns
+14:20:25   [invivo/salt_stripped] CV_MCC=0.1501±0.1411 unique_folds=5
+14:20:25   [invivo] ★ Best: salt_stripped (CV=0.1501)
+14:20:25 STEP 5: Locked Test (42 tabular + 0 GNN per ep)
+14:20:25   ⚠ LightGBM not installed — skipping lgbm. pip install lightgbm
+14:20:25   ⚠ PyTorch not installed — skipping gnn/ann/dnn. pip install torch
+14:20:25   [ames] Pre-computing features...
+14:20:29   [ames] FG features: 183 columns
+14:20:34   [ames] Physchem features: 13 columns
+14:20:36   [ames] Fingerprint: 256 bits
+14:20:49   ames_raw_all_compact_xgb: MCC=0.3559 [0.3229,0.3909] t=0.66 AD=0.60 HP=0.3611
+14:20:49     ⚠ WARNING: test-CV gap=0.214 — possible split luck or CV instability
+14:20:59   ames_raw_all_compact_rf: MCC=0.3817 [0.3405,0.4223] t=0.56 AD=0.60 HP=0.4522

@@ -1,0 +1,7 @@
+13:16:23 Pipeline v11 — Clean Single Run
+  C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\runs\20260320_131623_v11_hp
+13:16:23 STEP 1: Load + Clean
+13:16:23 STEP 2: Preprocessing Flags
+13:16:23 STEP 3: Fixed Split
+13:16:23 STEP 4: Scenario Selection (Train CV)
+13:16:23 STEP 5: Locked Test (12 combos/ep)
