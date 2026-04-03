@@ -1,0 +1,54 @@
+\section{Results}
+
+\subsection{Best Observed Performance Across the Full Grid}
+
+Table~\ref{tab:best_models} presents the best observed performance for each primary endpoint across all 375 configurations evaluated on the scaffold-split test set. These values represent an upper bound of achievable performance under extensive model/feature/preprocessing search and should be interpreted as a descriptive benchmark, not as unbiased generalization estimates. The confirmatory analysis uses the locked configuration (Table~\ref{tab:cascade}).
+
+For Ames, XGBoost with broad FP-2048 achieved MCC = 0.555 (95\% CI: 0.522--0.588), ROC-AUC = 0.850, and PR-AUC = 0.765. For in~vitro CA, LightGBM with salt-stripped broad FP-1024 achieved MCC = 0.297 (95\% CI: 0.131--0.450) and PR-AUC = 0.278. For in~vivo MN, XGBoost with salt-stripped broad FP-512 achieved MCC = 0.311 (95\% CI: $-$0.014 to 0.571), ROC-AUC = 0.860, and PR-AUC = 0.237 (baseline PR = 0.028).
+
+Under a fixed feature and preprocessing configuration (compact features, raw SMILES), all seven algorithms were compared for Ames on the scaffold-split test set (Table~\ref{tab:all_algorithms}). MCC ranged from 0.430 (Logistic Regression) to 0.492 (Random Forest), a span of 0.063 across all algorithms. The five tabular models excluding Logistic Regression spanned only 0.023 (0.470--0.492). GCN achieved 0.445. Pairwise McNemar tests\cite{McNemar_1947} between the top two models yielded no significant differences (Ames $p = 0.39$; in~vivo $p = 0.72$). However, this in-domain equivalence did not extend to cross-domain settings (Section~\ref{sec:domain}).
+
+\subsection{Evaluation Rigor Cascade (Locked Configuration)}
+\label{sec:cascade}
+
+Table~\ref{tab:cascade} and Figure~\ref{fig:cascade} present results exclusively from the locked configuration (XGBoost, compact features, raw SMILES), ensuring that observed differences reflect only the evaluation method.
+
+For Ames, random-split CV yielded MCC = $0.670 \pm 0.010$, consistent with published benchmarks using similar strategies.\cite{Hansen_2009,Li_2021} Scaffold-split CV yielded MCC = $0.624 \pm 0.049$, a reduction of 0.046. The scaffold-split held-out test yielded MCC = 0.470 (95\% CI: 0.434--0.502).
+
+Cross-source-domain LDO revealed a substantially larger performance collapse. Drug $\to$ industrial yielded MCC = 0.234; industrial $\to$ drug yielded MCC = 0.122.
+
+Comparing magnitudes using absolute MCC differences: the source-domain gap (scaffold CV $0.624 \to$ LDO drug$\to$industrial 0.234, $\Delta = 0.390$) substantially exceeded the split-method gap (random CV $0.670 \to$ scaffold CV 0.624, $\Delta = 0.046$). We note that the LDO comparison involves additional confounds beyond domain membership (directional asymmetry, different test set sizes and class distributions), so $\Delta = 0.390$ should be interpreted as reflecting the combined effect of domain shift plus these structural differences, rather than a pure measurement of domain confounding alone. Nevertheless, the magnitude difference between the two effects is unambiguous in this benchmark.
+
+For in~vitro CA, random and scaffold splits produced nearly identical results (MCC 0.180 versus 0.189, $\Delta = -0.009$). For in~vivo MN, random split produced MCC = 0.181 versus scaffold split MCC = 0.104 ($\Delta = 0.077$), though both values represent near-random prediction given their standard deviations (0.094 and 0.111).
+
+\subsection{Source-Domain Confounding and Algorithm-Specific Robustness}
+\label{sec:domain}
+
+The Ames dataset exhibited severe source-domain confounding (Figure~\ref{fig:domain}). Drug-sourced compounds ($n = 6{,}416$, positive rate 58.3\%) and industrial-sourced compounds ($n = 7{,}144$, positive rate 3.0\%) differed by a factor of 19.5 in mutagenicity prevalence. A naive classifier predicting positive for drug-sourced and negative for industrial-sourced compounds achieved MCC = 0.608 and balanced accuracy = 0.834, comparable to the random-split CV MCC of 0.670, without any structural information.
+
+LDO with three algorithms revealed two findings (Table~\ref{tab:ldo}). First, drug $\to$ industrial generalization was consistent across algorithms (MCC 0.232--0.235), suggesting sufficient positive examples in the drug training set for all models.
+
+Second, industrial $\to$ drug generalization exposed substantial algorithm-specific differences. XGBoost achieved MCC = 0.122 (sensitivity 0.062), LightGBM 0.134 (sensitivity 0.081), while Random Forest maintained MCC = 0.325 (sensitivity 0.466). This contrast is notable because these algorithms performed comparably in the in-domain evaluation (Section~3.1). We hypothesize that Random Forest's superior cross-domain robustness arises from feature bagging,\cite{Breiman_2001} which reduces reliance on domain-correlated feature subsets. This finding nuances the in-domain algorithm equivalence: algorithm selection may matter more in deployment scenarios where the target chemical space differs from the training domain.
+
+\subsection{Preprocessing Impact}
+
+Salt stripping effects were endpoint-specific (Figure~\ref{fig:salt}). For in~vivo MN, the best salt-stripped model achieved MCC = 0.311, substantially outperforming the best raw model (MCC = 0.086), an improvement of +0.225. Salt fragments were present in 83\% of in~vivo SMILES. Among salt-containing in~vivo compounds, the positive rate was 2.8\%, while non-salt compounds showed 7.1\%, suggesting that salt fragments were disproportionately present in negative-labeled compounds and may have interfered with learning toxicophore patterns.
+
+For Ames, salt stripping produced mixed effects ($\Delta = -0.03$ to $+0.02$). For in~vitro CA, salt stripping was generally detrimental (mean MCC decreased from 0.081 to 0.056). This endpoint specificity challenges the common practice of applying uniform preprocessing\cite{Fourches_2010} and argues for per-endpoint optimization.
+
+\subsection{In Vivo Micronucleus: Ranking Signal Versus Classification Utility}
+\label{sec:invivo}
+
+The in~vivo MN results require careful interpretation. The best model (salt-stripped XGBoost, broad FP-512) achieved ROC-AUC = 0.860 and PR-AUC = 0.237 (versus a baseline PR of 0.028, representing an 8.5-fold enrichment over random). This suggests some ranking ability. However, MCC = 0.311 with 95\% CI crossing zero ($-$0.014 to 0.571) indicates unreliable classification at any fixed threshold, reflecting the extreme class imbalance (training positive rate 3.7\%; test set: 12 positives out of 431, 2.8\%).
+
+The learning curve for the locked configuration (compact features, raw SMILES) showed flat MCC ($\approx$0.055) from 10\% to 100\% of training data (Figure~\ref{fig:learning_curves}). We note that this curve was not computed for the best-performing configuration (salt-stripped, broad FP-512), so the flat profile may partly reflect the baseline feature and preprocessing choices. The salt stripping effect (+0.225 for the best model) demonstrates that preprocessing artifacts can mask whatever structural signal exists in the data.
+
+We frame the in~vivo finding as follows: current models show ranking signal for in~vivo micronucleus genotoxicity after appropriate preprocessing, but threshold-dependent classification utility is unreliable given extreme class imbalance and small positive test counts. In~vivo QSAR may have value as a component of tiered screening\cite{Dobo_2012} but should not serve as a standalone binary classifier with current 2D descriptors.
+
+\subsection{Feature Importance}
+
+SHAP analysis\cite{Lundberg_SHAP_2017} revealed consistent patterns across endpoints (Figure~\ref{fig:shap}). Physicochemical descriptors dominated the top-5 features for all three primary endpoints: the aggregate genotoxicity alert count (mean $|\text{SHAP}| = 0.82$) and MW (0.57) for Ames; LogP (0.58) and fraction $\mathrm{C_{sp3}}$ (0.40) for in~vitro; MW (1.00) and valence electrons (0.62) for in~vivo. Individual fingerprint bits were absent from the top-5 for all endpoints despite comprising 50--75\% of features in the broad modes. Comparing mean MCC across all models and preprocessing scenarios for the Ames endpoint, compact features yielded mean MCC = 0.448, while broad FP-2048 yielded 0.523 ($\Delta = +0.075$), indicating that fingerprints provided distributed but individually weak supplementary information.
+
+\subsection{Learning Curves}
+
+Learning curves for the locked configuration (Figure~\ref{fig:learning_curves}) revealed three patterns: Ames MCC saturated early (0.543 at 10\% of data, 0.640 at 100\%); in~vitro showed a noisy upward trend ($0.070 \to 0.170$); in~vivo was flat ($\approx$0.055 throughout). As noted in Section~\ref{sec:invivo}, the in~vivo curve reflects the locked configuration only.

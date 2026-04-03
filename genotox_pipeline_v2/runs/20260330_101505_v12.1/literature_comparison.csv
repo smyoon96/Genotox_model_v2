@@ -1,0 +1,11 @@
+endpoint,source,reference,dataset_size,split_method,model,metric,value,mcc_reported,notes
+ames,published,Hansen et al. 2009 (JCIM),6512.0,random 80/20,SVM (ECFP6),accuracy,0.83,,"Random split, no scaffold awareness"
+ames,published,Xu et al. 2012 (JCIM),7617.0,random 5-fold CV,kNN + SVM consensus,accuracy,0.86,,"Random split CV, consensus model"
+ames,published,Honma et al. 2019 (Genes Environ),12140.0,random 80/20,Random Forest,balanced_accuracy,0.8,,Largest public Ames dataset study
+ames,published,Yang et al. 2019 (JCIM) - ChemProp,7255.0,scaffold split,D-MPNN (ChemProp),roc_auc,0.853,,Scaffold split — more comparable to our work
+ames,published,Li et al. 2021 (Chem Res Toxicol),8576.0,random 80/20,XGBoost + ECFP4,mcc,0.71,0.71,"Random split, same metric as ours"
+ames,this_work,This work (v12),13560.0,scaffold split,xgb (broad_fp2048),mcc,0.5551,0.5551,"Scaffold split, AD_cov=0.5734"
+invitro,published,ICH M7 assessment (FDA 2017),,regulatory,Expert rule + QSAR,sensitivity,0.7,,Regulatory target: ≥70% sensitivity for genotoxicity
+invitro,this_work,This work (v12),1619.0,scaffold split,lgbm (broad_fp1024),mcc,0.2966,0.2966,"Scaffold split, AD_cov=0.4877"
+invivo,published,Benigni et al. 2010 (Mutat Res),850.0,leave-one-out,Structural alerts only,sensitivity,0.65,,"LOO, limited to known structural alerts"
+invivo,this_work,This work (v12),2153.0,scaffold split,xgb (broad_fp512),mcc,0.3114,0.3114,"Scaffold split, AD_cov=0.5893"

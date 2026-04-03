@@ -1,0 +1,10 @@
+endpoint,scenario,train_n,cv_mcc_mean,cv_mcc_std,cv_roc_mean,n_unique_folds,cv_n_evals
+ames,raw_all,10058,0.6325,0.0537,0.8981,5,25
+ames,no_metal,9892,0.6325,0.0487,0.8972,5,25
+ames,salt_stripped,10058,0.6329,0.0497,0.8979,5,25
+invitro,raw_all,1172,0.173,0.09,0.7122,5,25
+invitro,no_metal,1138,0.1881,0.1098,0.7088,5,25
+invitro,salt_stripped,1172,0.1509,0.0825,0.71,5,25
+invivo,raw_all,1545,0.1054,0.1385,0.6403,5,25
+invivo,no_metal,1449,0.0755,0.1267,0.5857,5,25
+invivo,salt_stripped,1545,0.142,0.1382,0.6177,5,25

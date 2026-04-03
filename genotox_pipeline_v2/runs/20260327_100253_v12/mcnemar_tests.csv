@@ -1,0 +1,5 @@
+chi2,p_value,n_discordant,a_better,b_better,endpoint,model_a,model_b
+0.229,0.632287,214,111,103,ames,ames_raw_all_broad_fp512_xgb,ames_raw_all_broad_fp2048_xgb
+0.25,0.617075,4,1,3,invivo,invivo_salt_stripped_broad_fp512_xgb,invivo_raw_all_broad_fp512_xgb
+0.0,1.0,5,3,2,invitro_sampling,invitro_sampling_no_metal_broad_fp2048_xgb,invitro_sampling_no_metal_broad_fp1024_rf
+0.5,0.4795,2,1,1,invivo_sampling,invivo_sampling_raw_all_broad_fp1024_xgb,invivo_sampling_raw_all_broad_fp512_xgb

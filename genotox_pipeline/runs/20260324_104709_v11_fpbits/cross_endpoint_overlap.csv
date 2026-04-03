@@ -1,0 +1,4 @@
+ep1,ep2,overlap,overlap_pct,concordant,discordant,kappa
+ames,invitro,1433,97.8,1274,159,0.189
+ames,invivo,1791,92.7,1592,199,0.1483
+invitro,invivo,502,26.0,389,113,0.0409

@@ -1,0 +1,6 @@
+endpoint,n_total,pos_rate,random_split_mcc_mean,random_split_mcc_std,scaffold_split_mcc_mean,scaffold_split_mcc_std,overestimation,overestimation_pct,n_random_folds,n_scaffold_folds
+ames,13560,0.2914,0.6702,0.0104,0.6241,0.0485,0.046,7.4,25,25
+invitro,1619,0.1038,0.1804,0.053,0.1894,0.0841,-0.0091,-4.8,25,25
+invivo,2153,0.0348,0.1811,0.0944,0.1043,0.1113,0.0768,73.6,25,25
+invitro_sampling,345,0.4957,0.3928,0.0847,0.3667,0.085,0.0261,7.1,25,25
+invivo_sampling,231,0.3333,0.5252,0.152,0.4293,0.1566,0.0959,22.3,25,25

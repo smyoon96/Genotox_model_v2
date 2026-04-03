@@ -1,0 +1,48 @@
+\section{Discussion}
+
+\subsection{The Overestimation Hierarchy in This Benchmark}
+
+Using a locked model configuration, we observed the following hierarchy of effects on apparent Ames QSAR performance:
+
+\begin{center}
+Source-domain composition $\gg$ Data splitting method $\approx$ In-domain algorithm choice
+\end{center}
+
+The source-domain gap (scaffold CV $\to$ LDO, $\Delta = 0.390$) substantially exceeded the split-method gap (random $\to$ scaffold CV, $\Delta = 0.046$), which was comparable to the in-domain algorithm spread (MCC range = 0.063 across all seven algorithms under fixed features and preprocessing).
+
+Three caveats apply. First, this hierarchy was established on a single Ames benchmark where source-domain labels were available; other datasets may exhibit different confounding structures. Second, the LDO $\Delta = 0.390$ reflects the combined effect of domain shift plus structural confounds (asymmetric test sizes, different class distributions per domain) and should be interpreted as an upper bound. Third, algorithm robustness was not equivalent under domain shift (Section~\ref{sec:domain}), so algorithm choice may matter substantially more in cross-domain deployment than the in-domain comparison suggests.
+
+\subsection{Source-Domain Confounding: Provenance Versus Chemistry}
+
+A key question is whether the observed confounding reflects genuine chemical domain differences or data-source provenance artifacts. Our source-domain labels are based on originating data sources, not computed chemical descriptors. However, the 19.5-fold prevalence difference and the naive classifier's MCC of 0.608 are consistent with distinct source-domain composition being highly correlated with mutagenicity outcomes. Prior work has noted that pharmaceutical and industrial chemical libraries occupy different regions of chemical property space,\cite{Lipinski_2004,Veber_2002} which our prevalence data corroborates indirectly. A more rigorous analysis would include chemical space visualization (e.g., UMAP on molecular descriptors\cite{McInnes_UMAP_2018}), matched-subset comparisons controlling for chemical similarity across sources, and source-adjusted performance estimates. These analyses would strengthen the causal interpretation and represent a priority for future work.
+
+\subsection{In Vivo Prediction: Implications for Tiered Testing}
+
+The dissociation between ranking ability (ROC-AUC = 0.860, PR-AUC = 0.237) and classification reliability (MCC CI crossing zero) has practical implications. For ICH M7-style binary hazard classification,\cite{ICH_M7_2017} in~vivo MN QSAR does not achieve sufficient reliability with current 2D descriptors. However, the PR-AUC of 0.237 represents an 8.5-fold enrichment over baseline prevalence (2.8\%), suggesting potential value in tiered screening strategies.\cite{Dobo_2012}
+
+The strong preprocessing sensitivity (+0.22 MCC from salt stripping) indicates that reported in~vivo QSAR performance depends critically on preprocessing choices that are often undocumented.\cite{Fourches_2016} The biological plausibility of in~vivo prediction limitations is high: micronucleus induction depends on ADME properties, metabolic activation, tissue distribution, and DNA repair capacity,\cite{Tweats_2007,Kirkland_2011} none of which are captured by 2D descriptors.
+
+\subsection{Cross-Endpoint Overlap}
+
+The high compound overlap between endpoints ($>$90\% shared with Ames) indicates that performance differences across endpoints (Ames MCC = 0.555 versus in~vivo MCC = 0.311) are unlikely to be primarily explained by different chemical spaces alone, but rather reflect inherent differences in endpoint predictability from 2D structure.\cite{Tropsha_2010} Multi-task learning approaches jointly predicting all endpoints may be a promising direction for future work.\cite{Ramsundar_2015}
+
+\subsection{Preprocessing Deserves Systematic Treatment}
+
+Salt stripping effects were endpoint-specific: beneficial for in~vivo (+0.22 best-model improvement), mixed for Ames ($\pm$0.03), and generally detrimental for in~vitro ($-$0.03 to $-$0.13). We hypothesize that salt stripping harms in~vitro CA performance because some counterions are themselves relevant to the clastogenicity assay. A stratified analysis by salt-containing versus non-salt and metal versus non-metal compounds would directly test this hypothesis and represents a tractable extension. The QSAR data curation literature\cite{Fourches_2010,Fourches_2016} has emphasized the importance of standardization, but our results suggest that the optimal standardization strategy is endpoint-dependent.
+
+\subsection{Practical Recommendations}
+
+Based on our findings, we propose the following reporting standards for genotoxicity QSAR:
+
+\begin{enumerate}
+    \item Use scaffold-based splitting for primary performance reporting.
+    \item When source-domain labels are available, report leave-domain-out performance and disclose source composition with per-source positive rates.
+    \item Optimize preprocessing per endpoint rather than applying uniform pipelines.
+    \item Report bootstrap CIs and applicability domain coverage.
+    \item For endpoints with extreme class imbalance, separately report threshold-free metrics (ROC-AUC, PR-AUC) and threshold-dependent metrics (MCC, balanced accuracy).
+    \item When claiming algorithm superiority, test under domain shift as well as in-domain conditions.
+\end{enumerate}
+
+\subsection{Limitations}
+
+(a) Source-domain confounding analysis was limited to Ames; other endpoints lacked source annotations. (b) Source-domain labels reflect provenance rather than computed chemical classification. (c) The in~vivo learning curve used only the locked configuration, not the best-performing configuration. (d) A single scaffold split was used rather than repeated holdout. (e) The GCN did not include edge features or pre-training.\cite{Hu_2020_pretrain} (f) No 3D descriptors, QM descriptors, or metabolite predictions were included. (g) Within-AD versus outside-AD performance stratification for LDO was not conducted. (h) McNemar tests were limited to pairwise top-two comparisons; comprehensive multiple-comparison correction\cite{Demsar_2006} was not applied. (i) Table~\ref{tab:best_models} reports best observed performance across 375 configurations evaluated on the test set, which introduces model-selection bias; the locked-configuration results (Table~\ref{tab:cascade}) provide unbiased estimates.

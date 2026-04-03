@@ -1,0 +1,61 @@
+\section{Materials and Methods}
+
+\subsection{Datasets}
+
+Five genotoxicity datasets were evaluated (Table~\ref{tab:datasets}). The three primary datasets comprise Ames bacterial reverse mutation ($n = 13{,}560$ after conflict resolution), in~vitro chromosome aberration ($n = 1{,}619$), and in~vivo micronucleus ($n = 2{,}153$). Two additional negative-sampled variants (in~vitro sampling, $n = 345$; in~vivo sampling, $n = 231$) were evaluated as exploratory supplementary analyses with reduced negative compounds.
+
+The Ames dataset was compiled from pharmaceutical (drug-like) and industrial chemical sources. Compounds were annotated with source-domain labels based on their originating data source. We use the term ``source domain'' throughout to emphasize that this annotation reflects data provenance rather than a computed chemical classification, though the two sources differ substantially in mutagenicity prevalence---a pattern consistent with distinct source-domain composition. Drug-sourced compounds ($n = 6{,}416$) had a positive rate of 58.3\%, while industrial-sourced compounds ($n = 7{,}144$) had a positive rate of 3.0\%, a 19.5-fold difference. In~vitro and in~vivo datasets lacked source-domain annotations.
+
+Label conflicts (compounds with contradictory labels across sources) were resolved conservatively by exclusion: 169 for Ames, 3 for in~vitro, and 2 for in~vivo.
+
+Cross-endpoint overlap analysis revealed substantial compound sharing: 97.5\% of in~vitro compounds and 92.1\% of in~vivo compounds appeared in the Ames dataset, with moderate label concordance (Cohen's $\kappa = 0.14$--$0.20$). This overlap indicates that the three endpoints largely probe the same compound universe with different biological readouts, a point we return to in the Discussion.
+
+All datasets were split into training (80\%) and test (20\%) partitions using scaffold-based splitting\cite{Sheridan_2013} with zero scaffold group overlap. Murcko scaffolds\cite{Bemis_Murcko_1996} were generated using RDKit,\cite{RDKit} with acyclic compounds clustered by agglomerative clustering on Morgan fingerprint\cite{Rogers_Hahn_2010} similarity.
+
+\subsection{Preprocessing Scenarios}
+
+Three preprocessing scenarios were applied independently to each dataset:
+
+\textbf{Raw (raw\_all):} Original SMILES used without modification.
+
+\textbf{Salt-stripped (salt\_stripped):} The largest molecular fragment was retained using RDKit's \texttt{LargestFragmentChooser},\cite{RDKit} followed by charge normalization. This modified 45\% of Ames, 81\% of in~vitro, and 83\% of in~vivo SMILES.
+
+\textbf{Metal-removed (no\_metal):} Compounds containing metal atoms were excluded.
+
+\subsection{Feature Representations}
+
+Five feature representations were evaluated:
+
+\textbf{Compact (138 features):} 13 physicochemical descriptors (MW, LogP, TPSA, HBD, HBA, rotatable bonds, fraction $\mathrm{C_{sp3}}$, aromatic ring count, ring count, heteroatom count, heavy atom count, formal charge, valence electrons) and 125 structural alert features based on Benigni--Bossa SA1--SA31,\cite{Benigni_Bossa_2008,Benigni_2013} Kazius toxicophores,\cite{Kazius_2005} and ISS Ames alerts.
+
+\textbf{Broad FP-512/1024/2048} (266/394/522 features): Compact features plus 128/256/384 Morgan fingerprint bits\cite{Rogers_Hahn_2010} selected by mutual information\cite{Kraskov_2004} on the training set only. Bits with prevalence below 1\% or above 99\% were excluded before MI ranking.
+
+\textbf{Graph:} Molecular graphs with 9-dimensional atom features and normalized adjacency matrices, used exclusively with the GCN model.
+
+\subsection{Algorithms}
+
+Seven classification algorithms were evaluated: XGBoost\cite{Chen_XGBoost_2016} and LightGBM\cite{Ke_LightGBM_2017} (gradient boosting), Random Forest\cite{Breiman_2001} (bagging ensemble), SVM with RBF kernel\cite{Cortes_Vapnik_1995} and Logistic Regression\cite{Cox_1958} (both with standard scaling), MLP\cite{Rumelhart_1986} (128--64 hidden units, early stopping), and a three-layer Graph Convolutional Network\cite{Kipf_Welling_2017} with learnable weights, LayerNorm, and global mean pooling. Class imbalance was addressed using \texttt{scale\_pos\_weight} or \texttt{class\_weight='balanced'}. Hyperparameter tuning was performed using \texttt{RandomizedSearchCV} with \texttt{GroupKFold} (scaffold groups).\cite{Pedregosa_sklearn_2011}
+
+\subsection{Three-Level Evaluation Framework}
+
+To ensure fair comparison across evaluation levels, we defined a locked reference configuration: XGBoost with compact features and raw SMILES. All three levels were evaluated using this single configuration:
+
+\textbf{Level 1---In-domain scaffold split:} Trained on the scaffold-disjoint training partition, evaluated on the held-out test partition. MCC\cite{Matthews_1975} with 500-iteration bootstrap 95\% CIs, plus ROC-AUC, PR-AUC, balanced accuracy, sensitivity, specificity, and Brier score.\cite{Brier_1950}
+
+\textbf{Level 2---Random versus scaffold split comparison:} Both 5-fold stratified random CV (5 repeats) and 5-fold scaffold-grouped CV (5 repeats) on the full dataset.
+
+\textbf{Level 3---Cross-source-domain leave-domain-out (LDO):} For Ames, trained on one source domain and tested on the other, using the locked configuration plus two additional algorithms (LightGBM, Random Forest) to assess algorithm-specific robustness under domain shift.
+
+\subsection{Additional Analyses}
+
+\textbf{Full grid evaluation:} Beyond the locked configuration, all 375 combinations were evaluated on the scaffold-split test set. The 375 total comprises 5 datasets $\times$ 3 preprocessing scenarios $\times$ (6 tabular algorithms $\times$ 4 feature modes + 1 GNN) $= 5 \times 3 \times 25 = 375$.
+
+\textbf{Applicability domain (AD):} Tanimoto similarity on binary 1024-bit Morgan fingerprints.\cite{Rogers_Hahn_2010} Threshold $\geq 0.3$ defined AD membership.
+
+\textbf{Feature importance:} SHAP values\cite{Lundberg_SHAP_2017} (\texttt{TreeExplainer}) for tree-based models on the three primary endpoints.
+
+\textbf{Learning curves:} Training set fractions 10\%--100\% with 5-fold scaffold CV, using the locked configuration. Learning curves for alternative configurations (e.g., salt-stripped broad FP) were not computed and represent a limitation.
+
+\textbf{Statistical comparison:} McNemar's test\cite{McNemar_1947} with continuity correction for pairwise comparison of the top two models per endpoint.
+
+\textbf{Threshold tuning:} Out-of-fold probability-based threshold optimization using 5-fold \texttt{GroupKFold}.

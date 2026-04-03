@@ -1,0 +1,7 @@
+{
+  "ames": "raw_all",
+  "invitro": "no_metal",
+  "invivo": "salt_stripped",
+  "invitro_sampling": "no_metal",
+  "invivo_sampling": "raw_all"
+}

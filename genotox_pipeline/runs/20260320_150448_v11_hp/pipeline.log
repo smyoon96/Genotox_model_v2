@@ -1,0 +1,217 @@
+15:04:48 Pipeline v11 — Clean Single Run
+  C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\runs\20260320_150448_v11_hp
+15:04:48 STEP 1: Load + Clean
+15:04:48   Looking for: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\data\ames_combine.xlsx
+15:04:48   [ames] n=13714 pos=0.3051
+15:04:48   Looking for: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\data\invitro_pre.csv
+15:04:48   [invitro] n=1466 pos=0.1119
+15:04:48   Looking for: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\data\invivo_pre.csv
+15:04:48   [invivo] n=1935 pos=0.0367
+15:04:51   ⚠ Domain predictor acc: 0.7438
+15:04:57   [ames] 13714 → 12573 (conflicts=187)
+15:04:57   [invitro] 1466 → 1465 (conflicts=0)
+15:04:58   [invivo] 1935 → 1932 (conflicts=0)
+15:04:58 STEP 2: Preprocessing Flags
+15:04:59     Classified 2000/12573 compounds...
+15:05:01     Classified 4000/12573 compounds...
+15:05:02     Classified 6000/12573 compounds...
+15:05:04     Classified 8000/12573 compounds...
+15:05:05     Classified 10000/12573 compounds...
+15:05:07     Classified 12000/12573 compounds...
+15:05:10 STEP 3: Fixed Split
+15:05:15   [ames] train=10058 test=2515 pos_diff=0.0027
+15:05:15   [invitro] train=1172 test=293 pos_diff=0.006
+15:05:16   [invivo] train=1545 test=387 pos_diff=0.0169
+15:05:16 STEP 4: Scenario Selection (Train CV)
+15:05:28   [ames] FG features: 618 columns
+15:05:31   [ames] Physchem features: 13 columns
+15:05:35   [ames/raw_all] CV_MCC=0.6325±0.0537 unique_folds=5
+15:05:47   [ames] FG features: 618 columns
+15:05:50   [ames] Physchem features: 13 columns
+15:05:54   [ames/no_metal] CV_MCC=0.6325±0.0487 unique_folds=5
+15:06:05   [ames] FG features: 618 columns
+15:06:09   [ames] Physchem features: 13 columns
+15:06:12   [ames/salt_stripped] CV_MCC=0.6329±0.0497 unique_folds=5
+15:06:12   [ames] ★ Best: salt_stripped (CV=0.6329)
+15:06:14   [invitro] FG features: 618 columns
+15:06:14   [invitro] Physchem features: 13 columns
+15:06:16   [invitro/raw_all] CV_MCC=0.1730±0.0900 unique_folds=5
+15:06:18   [invitro] FG features: 618 columns
+15:06:18   [invitro] Physchem features: 13 columns
+15:06:20   [invitro/no_metal] CV_MCC=0.1881±0.1098 unique_folds=5
+15:06:22   [invitro] FG features: 618 columns
+15:06:22   [invitro] Physchem features: 13 columns
+15:06:24   [invitro/salt_stripped] CV_MCC=0.1509±0.0825 unique_folds=5
+15:06:24   [invitro] ★ Best: no_metal (CV=0.1881)
+15:06:26   [invivo] FG features: 618 columns
+15:06:26   [invivo] Physchem features: 13 columns
+15:06:29   [invivo/raw_all] CV_MCC=0.1054±0.1385 unique_folds=5
+15:06:30   [invivo] FG features: 618 columns
+15:06:31   [invivo] Physchem features: 13 columns
+15:06:33   [invivo/no_metal] CV_MCC=0.0755±0.1267 unique_folds=5
+15:06:35   [invivo] FG features: 618 columns
+15:06:35   [invivo] Physchem features: 13 columns
+15:06:37   [invivo/salt_stripped] CV_MCC=0.1420±0.1382 unique_folds=5
+15:06:37   [invivo] ★ Best: salt_stripped (CV=0.1420)
+15:06:37 STEP 5: Locked Test (42 tabular + 0 GNN per ep)
+15:06:37   ⚠ LightGBM not installed — skipping lgbm. pip install lightgbm
+15:06:37   ⚠ PyTorch not installed — skipping gnn/ann/dnn. pip install torch
+15:06:37   [ames] Pre-computing features...
+15:06:53   [ames] FG features: 618 columns
+15:06:58   [ames] Physchem features: 13 columns
+15:07:00   [ames] Fingerprint: 256 bits
+15:07:16   ames_raw_all_compact_xgb: MCC=0.3874 [0.3483,0.4251] t=0.54 AD=0.60 HP=0.4196
+15:07:16     ⚠ WARNING: test-CV gap=0.245 — possible split luck or CV instability
+15:07:35   ames_raw_all_compact_rf: MCC=0.4679 [0.4329,0.4985] t=0.56 AD=0.60 HP=0.5152
+15:24:10   ames_raw_all_compact_svm: MCC=0.4374 [0.4008,0.4756] t=0.32 AD=0.60 HP=0.4366
+15:24:52   ames_raw_all_compact_logistic: MCC=0.3719 [0.3402,0.4036] t=0.52 AD=0.60 HP=0.3664
+15:24:52     ⚠ WARNING: test-CV gap=0.261 — possible split luck or CV instability
+15:25:10   ames_raw_all_broad_fp_xgb: MCC=0.4652 [0.4301,0.5016] t=0.42 AD=0.60 HP=0.5219
+15:25:54   ames_raw_all_broad_fp_rf: MCC=0.5043 [0.4685,0.5395] t=0.5 AD=0.60 HP=0.5474
+19:02:45   ames_raw_all_broad_fp_svm: MCC=0.5342 [0.4956,0.5722] t=0.26 AD=0.60 HP=0.5339
+19:04:53   ames_raw_all_broad_fp_logistic: MCC=0.4202 [0.3837,0.4539] t=0.62 AD=0.60 HP=0.4439
+19:04:53     ⚠ WARNING: test-CV gap=0.212 — possible split luck or CV instability
+19:05:07   ames_no_metal_compact_xgb: MCC=0.3996 [0.3722,0.4342] t=0.56 AD=0.59 HP=0.39
+19:05:07     ⚠ WARNING: test-CV gap=0.233 — possible split luck or CV instability
+19:05:25   ames_no_metal_compact_rf: MCC=0.4785 [0.4435,0.5135] t=0.48 AD=0.59 HP=0.5104
+19:31:10   ames_no_metal_compact_svm: MCC=0.4328 [0.4007,0.4679] t=0.34 AD=0.59 HP=0.4349
+19:32:09   ames_no_metal_compact_logistic: MCC=0.3740 [0.3357,0.4074] t=0.52 AD=0.59 HP=0.3725
+19:32:09     ⚠ WARNING: test-CV gap=0.258 — possible split luck or CV instability
+19:32:27   ames_no_metal_broad_fp_xgb: MCC=0.4680 [0.4316,0.5040] t=0.46 AD=0.59 HP=0.4812
+19:33:13   ames_no_metal_broad_fp_rf: MCC=0.5183 [0.4786,0.5614] t=0.44 AD=0.59 HP=0.5371
+00:58:51   ames_no_metal_broad_fp_svm: MCC=0.5360 [0.4969,0.5732] t=0.28 AD=0.59 HP=0.5362
+01:01:55   ames_no_metal_broad_fp_logistic: MCC=0.4138 [0.3765,0.4534] t=0.5 AD=0.59 HP=0.4144
+01:01:55     ⚠ WARNING: test-CV gap=0.219 — possible split luck or CV instability
+01:02:08   ames_salt_stripped_compact_xgb: MCC=0.3874 [0.3483,0.4251] t=0.54 AD=0.60 HP=0.4196 ★
+01:02:08     ⚠ WARNING: test-CV gap=0.245 — possible split luck or CV instability
+01:02:27   ames_salt_stripped_compact_rf: MCC=0.4679 [0.4329,0.4985] t=0.56 AD=0.60 HP=0.5152
+01:28:57   ames_salt_stripped_compact_svm: MCC=0.4374 [0.4008,0.4756] t=0.32 AD=0.60 HP=0.4366
+01:29:46   ames_salt_stripped_compact_logistic: MCC=0.3719 [0.3402,0.4036] t=0.52 AD=0.60 HP=0.3664
+01:29:46     ⚠ WARNING: test-CV gap=0.261 — possible split luck or CV instability
+01:30:05   ames_salt_stripped_broad_fp_xgb: MCC=0.4652 [0.4301,0.5016] t=0.42 AD=0.60 HP=0.5219
+01:30:49   ames_salt_stripped_broad_fp_rf: MCC=0.5043 [0.4685,0.5395] t=0.5 AD=0.60 HP=0.5474
+07:25:54   ames_salt_stripped_broad_fp_svm: MCC=0.5342 [0.4956,0.5722] t=0.26 AD=0.60 HP=0.5339
+07:28:06   ames_salt_stripped_broad_fp_logistic: MCC=0.4202 [0.3837,0.4539] t=0.62 AD=0.60 HP=0.4439
+07:28:06     ⚠ WARNING: test-CV gap=0.213 — possible split luck or CV instability
+07:28:06   [invitro] Pre-computing features...
+07:28:08   [invitro] FG features: 618 columns
+07:28:08   [invitro] Physchem features: 13 columns
+07:28:09   [invitro] Fingerprint: 256 bits
+07:28:12   invitro_raw_all_compact_xgb: MCC=0.2134 [0.0583,0.3534] t=0.14 AD=0.57 HP=0.1812
+07:28:18   invitro_raw_all_compact_rf: MCC=-0.0203 [-0.0832,0.0790] t=0.3 AD=0.57 HP=0.2033
+07:28:43   invitro_raw_all_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.57 HP=0.0
+07:28:50   invitro_raw_all_compact_logistic: MCC=0.1529 [0.0381,0.2614] t=0.52 AD=0.57 HP=0.1483
+07:28:54   invitro_raw_all_broad_fp_xgb: MCC=0.0747 [-0.0766,0.2189] t=0.38 AD=0.57 HP=-0.0022
+07:29:00   invitro_raw_all_broad_fp_rf: MCC=0.0164 [-0.0677,0.1545] t=0.36 AD=0.57 HP=0.0187
+07:29:04   invitro_raw_all_broad_fp_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.57 HP=0.0
+07:29:22   invitro_raw_all_broad_fp_logistic: MCC=-0.0374 [-0.1340,0.0596] t=0.14 AD=0.57 HP=-0.1017
+07:29:22     ⚠ WARNING: test-CV gap=0.210 — possible split luck or CV instability
+07:29:25   invitro_no_metal_compact_xgb: MCC=0.2239 [0.0534,0.3836] t=0.1 AD=0.56 HP=0.1812 ★
+07:29:31   invitro_no_metal_compact_rf: MCC=0.0143 [-0.0857,0.1445] t=0.26 AD=0.56 HP=0.1092
+07:30:05   invitro_no_metal_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.56 HP=0.0
+07:30:11   invitro_no_metal_compact_logistic: MCC=0.1521 [0.0398,0.2536] t=0.7 AD=0.56 HP=0.1724
+07:30:15   invitro_no_metal_broad_fp_xgb: MCC=0.0273 [-0.0749,0.1859] t=0.26 AD=0.56 HP=0.0916
+07:30:22   invitro_no_metal_broad_fp_rf: MCC=-0.0075 [-0.0797,0.1141] t=0.24 AD=0.56 HP=0.0647
+07:30:25   invitro_no_metal_broad_fp_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.56 HP=-0.0477
+07:30:43   invitro_no_metal_broad_fp_logistic: MCC=-0.0158 [-0.1270,0.0894] t=0.52 AD=0.56 HP=0.0347
+07:30:43     ⚠ WARNING: test-CV gap=0.204 — possible split luck or CV instability
+07:30:46   invitro_salt_stripped_compact_xgb: MCC=0.2134 [0.0583,0.3534] t=0.14 AD=0.57 HP=0.1812
+07:30:51   invitro_salt_stripped_compact_rf: MCC=-0.0203 [-0.0832,0.0790] t=0.3 AD=0.57 HP=0.2033
+07:31:16   invitro_salt_stripped_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.57 HP=0.0
+07:31:23   invitro_salt_stripped_compact_logistic: MCC=0.1529 [0.0381,0.2614] t=0.52 AD=0.57 HP=0.1483
+07:31:27   invitro_salt_stripped_broad_fp_xgb: MCC=0.0747 [-0.0766,0.2189] t=0.38 AD=0.57 HP=-0.0022
+07:31:33   invitro_salt_stripped_broad_fp_rf: MCC=0.0164 [-0.0677,0.1545] t=0.36 AD=0.57 HP=0.0187
+07:31:37   invitro_salt_stripped_broad_fp_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.57 HP=0.0
+07:31:55   invitro_salt_stripped_broad_fp_logistic: MCC=-0.0374 [-0.1340,0.0596] t=0.14 AD=0.57 HP=-0.1017
+07:31:55   [invivo] Pre-computing features...
+07:31:58   [invivo] FG features: 618 columns
+07:31:58   [invivo] Physchem features: 13 columns
+07:31:59   [invivo] Fingerprint: 256 bits
+07:32:02   invivo_raw_all_compact_xgb: MCC=0.1517 [-0.0215,0.4776] t=0.88 AD=0.52 HP=0.2186
+07:32:02     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:32:07   invivo_raw_all_compact_rf: MCC=0.0000 [0.0000,0.0000] t=0.38 AD=0.52 HP=0.1818
+07:32:07     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:32:26   invivo_raw_all_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.52 HP=0.0
+07:32:26     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:32:37   invivo_raw_all_compact_logistic: MCC=0.1293 [0.0055,0.2603] t=0.88 AD=0.52 HP=0.2506
+07:32:37     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:32:41   invivo_raw_all_broad_fp_xgb: MCC=0.1658 [-0.0187,0.4945] t=0.76 AD=0.52 HP=0.1537
+07:32:41     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:32:48   invivo_raw_all_broad_fp_rf: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.52 HP=-0.0111
+07:32:48     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:32:53   invivo_raw_all_broad_fp_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.52 HP=0.0
+07:32:53     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:33:28   invivo_raw_all_broad_fp_logistic: MCC=0.0415 [-0.0450,0.2406] t=0.84 AD=0.52 HP=0.0159
+07:33:28     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:33:31   invivo_no_metal_compact_xgb: MCC=0.1636 [-0.0169,0.5416] t=0.16 AD=0.59 HP=0.1646
+07:33:31     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:33:37   invivo_no_metal_compact_rf: MCC=0.0000 [0.0000,0.0000] t=0.66 AD=0.59 HP=0.0
+07:33:37     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:33:46   invivo_no_metal_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.59 HP=0.0
+07:33:46     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:33:56   invivo_no_metal_compact_logistic: MCC=0.1036 [-0.0456,0.2608] t=0.52 AD=0.59 HP=0.1601
+07:33:56     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:34:00   invivo_no_metal_broad_fp_xgb: MCC=0.2243 [-0.0118,0.6525] t=0.1 AD=0.59 HP=0.1941
+07:34:00     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:34:07   invivo_no_metal_broad_fp_rf: MCC=0.2570 [0.0000,0.6089] t=0.1 AD=0.59 HP=0.144
+07:34:07     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:34:10   invivo_no_metal_broad_fp_svm: MCC=0.0000 [0.0000,0.0000] t=0.2 AD=0.59 HP=0.0
+07:34:10     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:34:44   invivo_no_metal_broad_fp_logistic: MCC=0.0646 [-0.0352,0.2705] t=0.88 AD=0.59 HP=0.0506
+07:34:44     ⚠ CAUTION: only ~8 positives in test set — interpret as exploratory
+07:34:48   invivo_salt_stripped_compact_xgb: MCC=0.1517 [-0.0215,0.4776] t=0.88 AD=0.52 HP=0.2186 ★
+07:34:48     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:34:53   invivo_salt_stripped_compact_rf: MCC=0.0000 [0.0000,0.0000] t=0.38 AD=0.52 HP=0.1818
+07:34:53     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:35:11   invivo_salt_stripped_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.52 HP=0.0
+07:35:11     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:35:22   invivo_salt_stripped_compact_logistic: MCC=0.1293 [0.0055,0.2603] t=0.88 AD=0.52 HP=0.2506
+07:35:22     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:35:27   invivo_salt_stripped_broad_fp_xgb: MCC=0.1658 [-0.0187,0.4945] t=0.76 AD=0.52 HP=0.1537
+07:35:27     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:35:34   invivo_salt_stripped_broad_fp_rf: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.52 HP=-0.0111
+07:35:34     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:35:38   invivo_salt_stripped_broad_fp_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.52 HP=0.0
+07:35:38     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:36:14   invivo_salt_stripped_broad_fp_logistic: MCC=0.0415 [-0.0450,0.2406] t=0.84 AD=0.52 HP=0.0159
+07:36:14     ⚠ CAUTION: only ~9 positives in test set — interpret as exploratory
+07:36:14   HP tuning comparison: 72 rows
+07:36:14     [ames] HP tuning: mean Δ=+0.0187, improved 16/24 combos
+07:36:14     [invitro] HP tuning: mean Δ=+0.0128, improved 9/24 combos
+07:36:14     [invivo] HP tuning: mean Δ=+0.0226, improved 8/24 combos
+07:36:14   Saved all_locked_test.csv: 72 rows, 44 columns
+07:36:14 STEP 6: LDO + Checklist
+07:36:22   [ames] FG features: 618 columns
+07:36:24   [ames] Physchem features: 13 columns
+07:36:31   [ames] FG features: 618 columns
+07:36:34   [ames] Physchem features: 13 columns
+07:36:44   [ames] FG features: 618 columns
+07:36:46   [ames] Physchem features: 13 columns
+07:36:54   [ames] FG features: 618 columns
+07:36:56   [ames] Physchem features: 13 columns
+07:36:58   LDO drug→industrial: MCC=0.2524
+07:36:58   LDO industrial→drug: MCC=0.1186
+07:36:58 
+Checklist (20/20):
+07:36:58   [✓] fixed_split
+07:36:58   [✓] conflicts
+07:36:58   [✓] domain_diagnosed
+07:36:58   [✓] domain_ldo
+07:36:58   [✓] cross_ep
+07:36:58   [✓] cv_selection
+07:36:58   [✓] cv_unique_folds
+07:36:58   [✓] full_grid
+07:36:58   [✓] no_empty_mcc
+07:36:58   [✓] broad_fp_included
+07:36:58   [✓] logistic_included
+07:36:58   [✓] cv_selected_1_per_ep
+07:36:58   [✓] bootstrap_ci
+07:36:58   [✓] ad_computed
+07:36:58   [✓] calibration
+07:36:58   [✓] threshold_oof
+07:36:58   [✓] paper_primary_1_per_ep
+07:36:58   [✓] warnings_present
+07:36:58   [✓] all_columns_complete
+07:36:58   [✓] hp_tuning_complete
+07:36:58 
+DONE in 59531s: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline\runs\20260320_150448_v11_hp

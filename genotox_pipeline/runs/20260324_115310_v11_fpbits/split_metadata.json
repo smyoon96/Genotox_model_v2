@@ -1,0 +1,47 @@
+{
+  "ames": {
+    "train_n": 10848,
+    "test_n": 2712,
+    "train_pos": 0.2887,
+    "test_pos": 0.3024,
+    "diff": 0.0136,
+    "scaffold_overlap": 0,
+    "n_groups": 1691
+  },
+  "invitro": {
+    "train_n": 1295,
+    "test_n": 324,
+    "train_pos": 0.0988,
+    "test_pos": 0.1235,
+    "diff": 0.0246,
+    "scaffold_overlap": 0,
+    "n_groups": 353
+  },
+  "invivo": {
+    "train_n": 1722,
+    "test_n": 431,
+    "train_pos": 0.0366,
+    "test_pos": 0.0278,
+    "diff": 0.0087,
+    "scaffold_overlap": 0,
+    "n_groups": 410
+  },
+  "invitro_sampling": {
+    "train_n": 260,
+    "test_n": 66,
+    "train_pos": 0.55,
+    "test_pos": 0.303,
+    "diff": 0.247,
+    "scaffold_overlap": 0,
+    "n_groups": 166
+  },
+  "invivo_sampling": {
+    "train_n": 113,
+    "test_n": 29,
+    "train_pos": 0.5221,
+    "test_pos": 0.4138,
+    "diff": 0.1083,
+    "scaffold_overlap": 0,
+    "n_groups": 79
+  }
+}

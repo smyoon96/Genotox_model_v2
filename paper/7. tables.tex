@@ -1,0 +1,117 @@
+% ════════════════════════════════════════════
+%  Tables
+% ════════════════════════════════════════════
+
+\begin{table}[ht]
+\caption{Dataset summary. Positive rate refers to the training partition. The 375 total configurations comprise 5 datasets $\times$ 3 preprocessing scenarios $\times$ (6 tabular models $\times$ 4 feature modes + 1 GNN).}
+\label{tab:datasets}
+\centering
+\small
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Dataset & Assay & $n$ & Train & Test & Pos.\ rate (\%) & Scaffolds \\
+\midrule
+Ames & Bacterial reverse mutation & 13,560 & 10,848 & 2,712 & 29.1 & 1,691 \\
+In vitro CA & Chromosome aberration & 1,619 & 1,295 & 324 & 10.4 & 353 \\
+In vivo MN & Micronucleus & 2,153 & 1,722 & 431 & 3.7 / 2.8\textsuperscript{a} & 410 \\
+\midrule
+In vitro CA (sampled)\textsuperscript{b} & Neg.\ sampled CA & 345 & 276 & 69 & 49.6 & 169 \\
+In vivo MN (sampled)\textsuperscript{b} & Neg.\ sampled MN & 231 & 184 & 47 & 33.3 & 129 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+\textsuperscript{a}Training / test positive rate.
+\textsuperscript{b}Supplementary exploratory datasets.
+\end{table}
+
+
+\begin{table}[ht]
+\caption{Best observed performance per primary endpoint (scaffold-split test set, full grid). These represent best performance among all 375 evaluated configurations and should be interpreted as a descriptive benchmark, not unbiased generalization estimates. Bootstrap CIs reflect test-set sampling variability but do not account for model-selection variance. Confirmatory estimates from the locked configuration appear in Table~\ref{tab:cascade}.}
+\label{tab:best_models}
+\centering
+\small
+\begin{tabular}{@{}llllccccc@{}}
+\toprule
+Endpoint & Algo. & Preproc. & Features ($n$) & MCC [95\% CI] & AUC & PR-AUC & Sens. & Spec. \\
+\midrule
+Ames & XGB & raw & FP-2048 (522) & 0.555 [.522,.588] & 0.850 & 0.765 & 0.756 & 0.822 \\
+In vitro & LGBM & salt\_str. & FP-1024 (394) & 0.297 [.131,.450] & 0.665 & 0.278 & 0.349 & 0.929 \\
+In vivo & XGB & salt\_str. & FP-512 (266) & 0.311 [$-$.014,.571] & 0.860 & 0.237 & 0.319 & 0.983 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+PR-AUC baselines (prevalence): Ames 0.302, in vitro 0.124, in vivo 0.028.
+\end{table}
+
+
+\begin{table}[ht]
+\caption{Evaluation rigor cascade---locked configuration (XGBoost, compact features, raw SMILES). Levels are ordered by decreasing stringency of the in-domain assumption: Level~2 uses cross-validation on the full dataset (repeated 5$\times$5), Level~1 uses a single held-out test set, and Level~3 trains and tests across source domains. All values are from the same locked configuration.}
+\label{tab:cascade}
+\centering
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Level & Evaluation method & Ames MCC & In vitro MCC & In vivo MCC \\
+\midrule
+2a & Random-split $5\!\times\!5$ CV & $0.670 \pm 0.010$ & $0.180 \pm 0.053$ & $0.181 \pm 0.094$ \\
+2b & Scaffold-split $5\!\times\!5$ CV & $0.624 \pm 0.049$ & $0.189 \pm 0.084$ & $0.104 \pm 0.111$ \\
+1 & Scaffold-split test & 0.470 [.434,.502] & 0.114 [$-$.023,.270] & 0.071 [$-$.029,.285] \\
+3a & LDO: drug $\to$ industrial & 0.234 & --- & --- \\
+3b & LDO: industrial $\to$ drug & 0.122 & --- & --- \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+Level~2: mean $\pm$ SD (25 folds). Level~1: MCC [95\% bootstrap CI]. Level~3: Ames only (other endpoints lack source-domain labels). Levels ordered 2$\to$1$\to$3 to show progression from within-distribution CV through single-split held-out to cross-domain transfer.
+\end{table}
+
+
+\begin{table}[ht]
+\caption{Leave-domain-out results by algorithm (Ames).}
+\label{tab:ldo}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Algorithm & Drug $\to$ Ind.\ MCC & Ind.\ $\to$ Drug MCC & Ind.\ $\to$ Drug Sens. \\
+\midrule
+XGBoost & 0.234 & 0.122 & 0.062 \\
+LightGBM & 0.232 & 0.134 & 0.081 \\
+Random Forest & 0.235 & 0.325 & 0.466 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+Drug: $n = 6{,}416$, pos.\ rate = 58.3\%. Industrial: $n = 7{,}144$, pos.\ rate = 3.0\%. Prevalence ratio = 19.5-fold. Naive source classifier: MCC = 0.608, balanced accuracy = 0.834.
+\end{table}
+
+
+\begin{table}[ht]
+\caption{All-algorithm comparison under locked features (compact, raw SMILES, Ames scaffold-split test set).}
+\label{tab:all_algorithms}
+\centering
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Algorithm & MCC & ROC-AUC \\
+\midrule
+Random Forest & 0.492 & 0.838 \\
+ANN (MLP) & 0.489 & 0.834 \\
+LightGBM & 0.479 & 0.833 \\
+SVM (RBF) & 0.470 & 0.832 \\
+XGBoost & 0.470 & 0.825 \\
+GCN & 0.445 & 0.815 \\
+Logistic Regression & 0.430 & 0.800 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+Range across all 7 algorithms: 0.063. Range excluding LR and GCN: 0.023.
+\end{table}

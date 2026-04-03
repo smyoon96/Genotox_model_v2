@@ -8,7 +8,7 @@
 \providecommand*\mcitethebibliography{\thebibliography}
 \csname @ifundefined\endcsname{endmcitethebibliography}
   {\let\endmcitethebibliography\endthebibliography}{}
-\begin{mcitethebibliography}{4}
+\begin{mcitethebibliography}{1}
 \providecommand*\natexlab[1]{#1}
 \providecommand*\mciteSetBstSublistMode[1]{}
 \providecommand*\mciteSetBstMaxWidthForm[2]{}
@@ -26,28 +26,4 @@
   {\relax}
   {\relax}
 
-\bibitem[Karamertzanis \latin{et~al.}(2025)Karamertzanis, Rasenberg, Shah, and
-  Patlewicz]{Karamertzanis2025}
-Karamertzanis,~P.~G.; Rasenberg,~M.; Shah,~I.; Patlewicz,~G. Modelling In vitro
-  Mutagenicity Using Multi-Task Deep Learning and REACH Data. \emph{Chemical
-  Research in Toxicology} \textbf{2025}, \emph{38}, 1382--1407, PMID:
-  40680271\relax
-\mciteBstWouldAddEndPuncttrue
-\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
-{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
-\EndOfBibitem
-\bibitem[Hayashi(2022)]{Hayashi2022}
-Hayashi,~M. Opinion: Regulatory genotoxicity: past, present and future.
-  \emph{Mutagenesis} \textbf{2022}, \emph{37}, 1--10\relax
-\mciteBstWouldAddEndPuncttrue
-\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
-{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
-\EndOfBibitem
-\bibitem[{EFSA Scientific Committee}(2018)]{EFSA2018}
-{EFSA Scientific Committee} Genotoxicity assessment of chemical mixtures.
-  \emph{EFSA J.} \textbf{2018}, \emph{16}, e05519\relax
-\mciteBstWouldAddEndPuncttrue
-\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
-{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
-\EndOfBibitem
 \end{mcitethebibliography}

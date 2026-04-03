@@ -1,39 +1,38 @@
 \documentclass[journal=jacsat,manuscript=article]{achemso}
 
 \usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{textcomp}
+
 
 
 \newcommand*\mycommand[1]{\texttt{\emph{#1}}}
 
-\author{Andrew N. Other}
-\altaffiliation{A shared footnote}
-\author{Fred T. Secondauthor}
-\altaffiliation{Current address: Some other place, Othert\"own,
-Germany}
-\author{I. Ken Groupleader}
-\altaffiliation{A shared footnote}
-\email{i.k.groupleader@unknown.uu}
-\phone{+123 (0)123 4445556}
-\fax{+123 (0)123 4445557}
-\affiliation[Unknown University]
-{Department of Chemistry, Unknown University, Unknown Town}
-\alsoaffiliation[Second University]
-{Department of Chemistry, Second University, Nearby Town}
-\author{Susanne K. Laborator}
-\email{s.k.laborator@bigpharma.co}
-\affiliation[BigPharma]
-{Lead Discovery, BigPharma, Big Town, USA}
-\author{Kay T. Finally}
-\affiliation[Unknown University]
-{Department of Chemistry, Unknown University, Unknown Town}
-\alsoaffiliation[Second University]
-{Department of Chemistry, Second University, Nearby Town}
+\author{Seungmin Yoon}
+\affiliation[kyungsung University]
+{Department of Biosafety, Kyungsung University, Busan, Republic of Korea}
+
+\author{Sanghun Kim}
+\affiliation[kyungsung University]
+{Department of Biosafety, Kyungsung University, Busan, Republic of Korea}
+
+\author{Hyunpyo Jeon}
+\email{hpjeon@ks.ac.kr}
+\affiliation[kyungsung University]
+{Department of Biosafety, Kyungsung University, Busan, Republic of Korea}
 
 \title[An \textsf{achemso} demo]
-  {A demonstration of the \textsf{achemso} \LaTeX\
-   class\footnote{A footnote for the title}}
+  {Source-Domain Confounding as the Primary Driver of Overestimated Ames Mutagenicity QSAR Performance: 
+  A Multi-Level Evaluation Across Three Genotoxicity Endpoints}
 
-\abbreviations{IR,NMR,UV}
 \keywords{American Chemical Society, \LaTeX}
 
 
@@ -60,29 +59,28 @@ separate page at the end of the document.
 
 \end{tocentry}
 
-\input{1. Abstract.tex}
+\input{0. abstract.tex}
 
 
 \begin{acknowledgement}
 
-Please use ``The authors thank \ldots'' rather than ``The
-authors would like to thank \ldots''.
-
-The author thanks Mats Dahlgren for version one of \textsf{achemso},
-and Donald Arseneau for the code taken from \textsf{cite} to move
-citations after punctuation. Many users have provided feedback on the
-class, which is reflected in all of the different demonstrations
-shown in this document.
+dd
 
 \end{acknowledgement}
 
-\input{2. Introduction.tex}
-\input{3. Materials and Methods.tex}
-\input{4. Results.tex}
-\input{5. Discussion.tex}
-\input{6. Conclusion.tex}
-\input{7. Supplementary.tex}
+\input{1. introduction.tex}
+\input{2. methods.tex}
+\input{3. results.tex}
+\input{4. discussion.tex}
+\input{5. conclusion.tex}
+\input{6. data_availability.tex}
 
-\bibliography{acs-achemso}
+
+\bibliography{references}
+
+\input{7. tables.tex}
+\input{8. figures.tex}
+\input{9. supplementary.tex}
+
 
 \end{document}

@@ -46,7 +46,7 @@ warnings.filterwarnings("default")
 warnings.filterwarnings("ignore", message=".*X has feature names.*")
 
 SCENARIOS = ["raw_all", "no_metal", "salt_stripped"]
-FEAT_MODES = ["compact", "broad_fp"]
+FEAT_MODES = ["compact", "broad_fp512", "broad_fp1024", "broad_fp2048"]
 TABULAR_MODELS = ["xgb", "lgbm", "rf", "svm", "logistic", "ann", "dnn"]
 MODEL_NAMES = TABULAR_MODELS + ["gnn"]  # GNN uses molecular graphs, not tabular features
 
@@ -452,7 +452,7 @@ def run_pipeline(data_dir=None, tag="v11"):
     # ═══ STEP 1: Load + Clean ═══
     lg.info("STEP 1: Load + Clean")
     raw = {}
-    for ep, fn in [("ames","ames_combine.xlsx"),("invitro","invitro_pre.csv"),("invivo","invivo_pre.csv")]:
+    for ep, fn in [("ames","ames.csv"),("invitro","invitro.csv"),("invivo","invivo.csv"),("invitro_sampling","invitro_sampling.csv"),("invivo_sampling","invivo_sampling.csv")]:
         fp = dp / fn
         lg.info(f"  Looking for: {fp.resolve()}")
         if not fp.exists():
@@ -469,7 +469,7 @@ def run_pipeline(data_dir=None, tag="v11"):
     # Cross-endpoint overlap
     if not raw:
         lg.error(f"  ✗ No data files found in {dp.resolve()}")
-        lg.error(f"    Expected: ames_combine.xlsx, invitro_pre.csv, invivo_pre.csv")
+        lg.error(f"    Expected: ames.csv, invitro.csv, invivo.csv","invitro_sampling.csv","invivo_sampling.csv")
         lg.error(f"    Directory contents: {list(dp.iterdir()) if dp.exists() else 'DIR NOT FOUND'}")
         raise FileNotFoundError(f"No data files in {dp.resolve()}")
 
@@ -600,17 +600,32 @@ def run_pipeline(data_dir=None, tag="v11"):
         lg.info(f"  [{ep}] Pre-computing features...")
         fg_all = extract_fg_features(ds, ep)
         ph_all = extract_physchem_features(ds, ep)
-        fp_all = extract_fingerprint_features(ds, ep)
         fgp_all = fg_all[[c for c in fg_all.columns if c.endswith("_present") or c.startswith("bb_")]]
 
         compact_feat = pd.concat([fgp_all, ph_all], axis=1)
-        broad_feat = pd.concat([fgp_all, ph_all, fp_all], axis=1)
-        for f_df in [compact_feat, broad_feat]:
-            for c in f_df.columns: f_df[c] = pd.to_numeric(f_df[c], errors="coerce")
-            f_df.fillna(0, inplace=True)
-
+        for c in compact_feat.columns:
+            compact_feat[c] = pd.to_numeric(compact_feat[c], errors="coerce")
+        compact_feat = compact_feat.fillna(0)
         compact_cols = list(compact_feat.columns)
-        broad_cols = list(broad_feat.columns)
+
+        # Fingerprints at multiple bit sizes
+        FP_BITS = [256, 512, 1024, 2048]
+        fp_dict = {}      # {nbits: DataFrame}
+        broad_dict = {}   # {nbits: DataFrame}
+        broad_cols_dict = {}
+        for nbits in FP_BITS:
+            fp_df = extract_fingerprint_features(ds, ep, n_bits=nbits)
+            fp_dict[nbits] = fp_df
+            bf = pd.concat([fgp_all, ph_all, fp_df], axis=1)
+            for c in bf.columns: bf[c] = pd.to_numeric(bf[c], errors="coerce")
+            bf = bf.fillna(0)
+            broad_dict[nbits] = bf
+            broad_cols_dict[nbits] = list(bf.columns)
+            lg.info(f"    fp{nbits}: {len(bf.columns)} features (compact={len(compact_cols)} + fp={fp_df.shape[1]})")
+
+        # AD용 기본 fingerprint (1024-bit)
+        fp_ad = fp_dict.get(1024, fp_dict[256])
+
         y_all = ds["label"].values.astype(int)
         ds_index = ds.index
 
@@ -633,8 +648,8 @@ def run_pipeline(data_dir=None, tag="v11"):
 
             spw = (y_tr == 0).sum() / max((y_tr == 1).sum(), 1)
 
-            # AD (fingerprint 기반, scenario당 1회)
-            fp_sc = fp_all.iloc[np.where(sc_mask)[0]].values.astype(np.float32)
+            # AD (1024-bit fingerprint 기반, scenario당 1회)
+            fp_sc = fp_ad.iloc[np.where(sc_mask)[0]].values.astype(np.float32)
             ad_result = compute_ad(fp_sc[is_train], fp_sc[~is_train])
 
             # CV reference
@@ -650,10 +665,19 @@ def run_pipeline(data_dir=None, tag="v11"):
 
             # ── A. Tabular models (all feature modes) ──
             for fm in FEAT_MODES:
-                feat_df = compact_feat if fm == "compact" else broad_feat
+                # Select feature set based on mode
+                if fm == "compact":
+                    feat_df = compact_feat
+                    fcols = compact_cols
+                elif fm.startswith("broad_fp"):
+                    nbits = int(fm.replace("broad_fp", ""))
+                    feat_df = broad_dict[nbits]
+                    fcols = broad_cols_dict[nbits]
+                else:
+                    continue
+
                 X_tr = feat_df.iloc[np.where(sc_mask)[0][is_train]].values.astype(np.float32)
                 X_te = feat_df.iloc[np.where(sc_mask)[0][~is_train]].values.astype(np.float32)
-                fcols = compact_cols if fm == "compact" else broad_cols
 
                 for mn in available_tabular:
                     experiment = f"{ep}_{sc}_{fm}_{mn}"

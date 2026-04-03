@@ -1,0 +1,17 @@
+{
+  "has_domain": true,
+  "domains": {
+    "drug": {
+      "n": 7278,
+      "pos": 3974,
+      "pos_rate": 0.546
+    },
+    "industrial": {
+      "n": 6436,
+      "pos": 210,
+      "pos_rate": 0.0326
+    }
+  },
+  "domain_acc": 0.7438,
+  "enrichment": 16.7
+}
