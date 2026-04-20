@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: achemso.bst
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: acs-main.bib
+Database file #2: references.bib
+achemso 2025-09-22 v3.14
+You've used 50 entries,
+            2538 wiz_defined-function locations,
+            1109 strings with 16947 characters,
+and the built_in function-call counts, 17718 in all, are:
+= -- 1451
+> -- 1097
+< -- 31
++ -- 431
+- -- 381
+* -- 1853
+:= -- 2434
+add.period$ -- 101
+call.type$ -- 50
+change.case$ -- 4
+chr.to.int$ -- 2
+cite$ -- 50
+duplicate$ -- 986
+empty$ -- 1129
+format.name$ -- 446
+if$ -- 3429
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 322
+num.names$ -- 147
+pop$ -- 91
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 44
+stack$ -- 0
+substring$ -- 913
+swap$ -- 1061
+text.length$ -- 101
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 344
+warning$ -- 0
+while$ -- 178
+width$ -- 0
+write$ -- 639

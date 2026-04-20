@@ -2,60 +2,66 @@
 
 \subsection{Datasets}
 
-Five genotoxicity datasets were evaluated (Table~\ref{tab:datasets}). The three primary datasets comprise Ames bacterial reverse mutation ($n = 13{,}560$ after conflict resolution), in~vitro chromosome aberration ($n = 1{,}619$), and in~vivo micronucleus ($n = 2{,}153$). Two additional negative-sampled variants (in~vitro sampling, $n = 345$; in~vivo sampling, $n = 231$) were evaluated as exploratory supplementary analyses with reduced negative compounds.
+We evaluated five genotoxicity datasets (Table~\ref{tab:datasets}): three primary endpoints---Ames bacterial reverse mutation ($n = 13{,}560$), in~vitro chromosome aberration ($n = 1{,}619$), and in~vivo micronucleus ($n = 2{,}153$)---and two negative-sampled variants treated as exploratory.
 
-The Ames dataset was compiled from pharmaceutical (drug-like) and industrial chemical sources. Compounds were annotated with source-domain labels based on their originating data source. We use the term ``source domain'' throughout to emphasize that this annotation reflects data provenance rather than a computed chemical classification, though the two sources differ substantially in mutagenicity prevalence---a pattern consistent with distinct source-domain composition. Drug-sourced compounds ($n = 6{,}416$) had a positive rate of 58.3\%, while industrial-sourced compounds ($n = 7{,}144$) had a positive rate of 3.0\%, a 19.5-fold difference. In~vitro and in~vivo datasets lacked source-domain annotations.
+The Ames dataset combines pharmaceutical (drug-like) and industrial chemical sources. Compounds carry a source label based on their originating dataset; we use ``source'' to emphasize that this label reflects data provenance---encompassing potential differences in chemical space, data quality, and labeling conventions---rather than a computed chemical classification. Drug-sourced compounds ($n = 6{,}416$) had a positive rate of 58.3\%, while industrial-sourced ($n = 7{,}144$) had 3.0\%, a 19.5-fold difference. The in~vitro and in~vivo datasets lacked source annotations.
 
-Label conflicts (compounds with contradictory labels across sources) were resolved conservatively by exclusion: 169 for Ames, 3 for in~vitro, and 2 for in~vivo.
+Raw study records for all three endpoints were first mapped to endpoint categories (Ames, in~vitro CA, in~vivo MN) using a unified classification table spanning OECD, EPA, and EU Test Guidelines; the full guideline-to-endpoint mapping is provided in the supplementary materials. For industrial chemicals sourced from ECHA dossiers, we restricted inclusion to studies with Klimisch reliability scores of 1 (reliable without restriction) or 2 (reliable with restrictions) where available,\cite{Klimisch_1997} excluding records with score 3 or 4. When a single compound had both positive and negative study records of equal Klimisch score, we adopted a conservative hazard-assessment convention consistent with EU REACH and K-REACH guidance\cite{EU_REACH_2006,K_REACH_2018} and labeled the compound as positive. Compounds with only irreconcilable label conflicts across distinct sources were resolved by exclusion (169 Ames, 3 in~vitro, 2 in~vivo).
 
-Cross-endpoint overlap analysis revealed substantial compound sharing: 97.5\% of in~vitro compounds and 92.1\% of in~vivo compounds appeared in the Ames dataset, with moderate label concordance (Cohen's $\kappa = 0.14$--$0.20$). This overlap indicates that the three endpoints largely probe the same compound universe with different biological readouts, a point we return to in the Discussion.
+Cross-endpoint overlap analysis revealed substantial sharing: 97.5\% of in~vitro and 92.1\% of in~vivo compounds also appear in Ames, with moderate label concordance (Cohen's $\kappa = 0.14$--$0.20$).
 
-All datasets were split into training (80\%) and test (20\%) partitions using scaffold-based splitting\cite{Sheridan_2013} with zero scaffold group overlap. Murcko scaffolds\cite{Bemis_Murcko_1996} were generated using RDKit,\cite{RDKit} with acyclic compounds clustered by agglomerative clustering on Morgan fingerprint\cite{Rogers_Hahn_2010} similarity.
+All datasets were split 80/20 using scaffold-based splitting\cite{Sheridan_2013} with zero scaffold-group overlap. Murcko scaffolds\cite{Bemis_Murcko_1996} were generated with RDKit;\cite{RDKit} acyclic compounds were clustered by agglomerative clustering on Morgan fingerprint\cite{Rogers_Hahn_2010} similarity.
 
-\subsection{Preprocessing Scenarios}
+\begin{table}[ht]
+\caption{Dataset summary. Positive rate refers to the training partition. The 375 total configurations comprise 5 datasets $\times$ 3 preprocessing scenarios $\times$ (6 tabular models $\times$ 4 feature modes + 1 GNN).}
+\label{tab:datasets}
+\centering
+\small
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Dataset & Assay & $n$ & Train & Test & Pos.\ rate (\%) & Scaffolds \\
+\midrule
+Ames & Bacterial reverse mutation & 13,560 & 10,848 & 2,712 & 29.1 & 1,691 \\
+In vitro CA & Chromosome aberration & 1,619 & 1,295 & 324 & 10.4 & 353 \\
+In vivo MN & Micronucleus & 2,153 & 1,722 & 431 & 3.7 / 2.8\textsuperscript{a} & 410 \\
+\midrule
+In vitro CA (sampled)\textsuperscript{b} & Neg.\ sampled CA & 345 & 276 & 69 & 49.6 & 169 \\
+In vivo MN (sampled)\textsuperscript{b} & Neg.\ sampled MN & 231 & 184 & 47 & 33.3 & 129 \\
+\bottomrule
+\end{tabular}
 
-Three preprocessing scenarios were applied independently to each dataset:
+\medskip
+\footnotesize
+\textsuperscript{a}Training / test positive rate. \textsuperscript{b}Supplementary exploratory datasets.
+\end{table}
 
-\textbf{Raw (raw\_all):} Original SMILES used without modification.
+\subsection{Preprocessing, Features, and Algorithms}
 
-\textbf{Salt-stripped (salt\_stripped):} The largest molecular fragment was retained using RDKit's \texttt{LargestFragmentChooser},\cite{RDKit} followed by charge normalization. This modified 45\% of Ames, 81\% of in~vitro, and 83\% of in~vivo SMILES.
+Each dataset was processed under three scenarios: \textbf{raw} (original SMILES), \textbf{salt-stripped} (largest fragment retained via RDKit's \texttt{LargestFragmentChooser}\cite{RDKit} followed by charge normalization---modifying 45\% of Ames, 81\% of in~vitro, and 83\% of in~vivo SMILES), and \textbf{no-metal} (compounds with metal atoms excluded).
 
-\textbf{Metal-removed (no\_metal):} Compounds containing metal atoms were excluded.
+We evaluated five feature representations. \textbf{Compact} (138 features) combined 13 physicochemical descriptors (MW, LogP, TPSA, HBD, HBA, rotatable bonds, fraction $\mathrm{C_{sp3}}$, ring counts, heteroatoms, heavy atoms, formal charge, valence electrons) with 125 structural alerts based on Benigni--Bossa SA1--SA31,\cite{Benigni_Bossa_2008,Benigni_2013} Kazius toxicophores,\cite{Kazius_2005} and ISS Ames alerts. \textbf{Broad FP-512/1024/2048} (266/394/522 features) extended compact with 128/256/384 Morgan fingerprint bits\cite{Rogers_Hahn_2010} selected by mutual information\cite{Kraskov_2004} on the training set only (bits with prevalence below 1\% or above 99\% excluded). \textbf{Graph} representations used molecular graphs with 9-dimensional atom features and normalized adjacency matrices, paired exclusively with the GCN.
 
-\subsection{Feature Representations}
-
-Five feature representations were evaluated:
-
-\textbf{Compact (138 features):} 13 physicochemical descriptors (MW, LogP, TPSA, HBD, HBA, rotatable bonds, fraction $\mathrm{C_{sp3}}$, aromatic ring count, ring count, heteroatom count, heavy atom count, formal charge, valence electrons) and 125 structural alert features based on Benigni--Bossa SA1--SA31,\cite{Benigni_Bossa_2008,Benigni_2013} Kazius toxicophores,\cite{Kazius_2005} and ISS Ames alerts.
-
-\textbf{Broad FP-512/1024/2048} (266/394/522 features): Compact features plus 128/256/384 Morgan fingerprint bits\cite{Rogers_Hahn_2010} selected by mutual information\cite{Kraskov_2004} on the training set only. Bits with prevalence below 1\% or above 99\% were excluded before MI ranking.
-
-\textbf{Graph:} Molecular graphs with 9-dimensional atom features and normalized adjacency matrices, used exclusively with the GCN model.
-
-\subsection{Algorithms}
-
-Seven classification algorithms were evaluated: XGBoost\cite{Chen_XGBoost_2016} and LightGBM\cite{Ke_LightGBM_2017} (gradient boosting), Random Forest\cite{Breiman_2001} (bagging ensemble), SVM with RBF kernel\cite{Cortes_Vapnik_1995} and Logistic Regression\cite{Cox_1958} (both with standard scaling), MLP\cite{Rumelhart_1986} (128--64 hidden units, early stopping), and a three-layer Graph Convolutional Network\cite{Kipf_Welling_2017} with learnable weights, LayerNorm, and global mean pooling. Class imbalance was addressed using \texttt{scale\_pos\_weight} or \texttt{class\_weight='balanced'}. Hyperparameter tuning was performed using \texttt{RandomizedSearchCV} with \texttt{GroupKFold} (scaffold groups).\cite{Pedregosa_sklearn_2011}
+Seven classifiers were evaluated: XGBoost,\cite{Chen_XGBoost_2016} LightGBM,\cite{Ke_LightGBM_2017} Random Forest,\cite{Breiman_2001} SVM with RBF kernel,\cite{Cortes_Vapnik_1995} Logistic Regression,\cite{Cox_1958} a 128--64 MLP,\cite{Rumelhart_1986} and a three-layer GCN\cite{Kipf_Welling_2017} with LayerNorm and global mean pooling. SVM and Logistic Regression used standard scaling. Class imbalance was handled via \texttt{scale\_pos\_weight} or \texttt{class\_weight='balanced'}. Hyperparameters were tuned via \texttt{RandomizedSearchCV} with \texttt{GroupKFold}.\cite{Pedregosa_sklearn_2011}
 
 \subsection{Three-Level Evaluation Framework}
 
-To ensure fair comparison across evaluation levels, we defined a locked reference configuration: XGBoost with compact features and raw SMILES. All three levels were evaluated using this single configuration:
+For fair comparison across evaluation methods, we defined a single locked configuration---XGBoost, compact features, raw SMILES---and applied it at three levels (Figure~\ref{fig:framework}):
 
-\textbf{Level 1---In-domain scaffold split:} Trained on the scaffold-disjoint training partition, evaluated on the held-out test partition. MCC\cite{Matthews_1975} with 500-iteration bootstrap 95\% CIs, plus ROC-AUC, PR-AUC, balanced accuracy, sensitivity, specificity, and Brier score.\cite{Brier_1950}
+\textbf{Level 1 (in-domain test):} the scaffold-split held-out test set, with bootstrap 95\% CIs (500 iterations) on MCC,\cite{Matthews_1975} ROC-AUC, PR-AUC, balanced accuracy, sensitivity, specificity, and Brier score.\cite{Brier_1950}
 
-\textbf{Level 2---Random versus scaffold split comparison:} Both 5-fold stratified random CV (5 repeats) and 5-fold scaffold-grouped CV (5 repeats) on the full dataset.
+\textbf{Level 2 (split-method comparison):} 5-fold stratified random CV and 5-fold scaffold-grouped CV, each with 5 repeats, on the full dataset.
 
-\textbf{Level 3---Cross-source-domain leave-domain-out (LDO):} For Ames, trained on one source domain and tested on the other, using the locked configuration plus two additional algorithms (LightGBM, Random Forest) to assess algorithm-specific robustness under domain shift.
+\textbf{Level 3 (cross-source LDO):} for Ames, trained on one source and tested on the other, using the locked configuration plus LightGBM and Random Forest to assess algorithm-specific robustness.
 
 \subsection{Additional Analyses}
 
-\textbf{Full grid evaluation:} Beyond the locked configuration, all 375 combinations were evaluated on the scaffold-split test set. The 375 total comprises 5 datasets $\times$ 3 preprocessing scenarios $\times$ (6 tabular algorithms $\times$ 4 feature modes + 1 GNN) $= 5 \times 3 \times 25 = 375$.
+Beyond the locked configuration, all 375 combinations were evaluated on the scaffold-split test set ($5 \times 3 \times [6 \times 4 + 1] = 375$). Applicability domain (AD) used Tanimoto similarity on 1024-bit Morgan fingerprints\cite{Rogers_Hahn_2010} with threshold $\geq 0.3$. SHAP values\cite{Lundberg_SHAP_2017} (\texttt{TreeExplainer}) were computed for tree-based models on the three primary endpoints. Learning curves spanned 10\%--100\% training fractions with 5-fold scaffold CV under the locked configuration. McNemar's test\cite{McNemar_1947} with continuity correction compared the top two models per endpoint.
 
-\textbf{Applicability domain (AD):} Tanimoto similarity on binary 1024-bit Morgan fingerprints.\cite{Rogers_Hahn_2010} Threshold $\geq 0.3$ defined AD membership.
+\textbf{LDO threshold decomposition.} To disentangle prior shift from genuine source shift, we computed LDO MCC at three thresholds: \textit{default} ($t = 0.5$), \textit{prior-corrected} ($t$ = training positive rate, optimal under pure prior shift), and \textit{oracle} ($t$ maximizing MCC on the test set, an upper bound on threshold-based recalibration). The implementation is provided as \texttt{ldo\_threshold\_analysis.py} in the supplementary materials.
 
-\textbf{Feature importance:} SHAP values\cite{Lundberg_SHAP_2017} (\texttt{TreeExplainer}) for tree-based models on the three primary endpoints.
-
-\textbf{Learning curves:} Training set fractions 10\%--100\% with 5-fold scaffold CV, using the locked configuration. Learning curves for alternative configurations (e.g., salt-stripped broad FP) were not computed and represent a limitation.
-
-\textbf{Statistical comparison:} McNemar's test\cite{McNemar_1947} with continuity correction for pairwise comparison of the top two models per endpoint.
-
-\textbf{Threshold tuning:} Out-of-fold probability-based threshold optimization using 5-fold \texttt{GroupKFold}.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/figure1_framework.pdf}
+\caption{Three-level evaluation framework. All levels use the same locked configuration (XGBoost, compact features, raw SMILES), enabling fair MCC comparison across evaluation methods.}
+\label{fig:framework}
+\end{figure}

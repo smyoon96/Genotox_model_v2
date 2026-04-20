@@ -1,7 +1,7 @@
 PWD c:\Users\Administrator\Documents\GitHub\Genotox_model\paper
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\main.tex
-OUTPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.log
+OUTPUT main.log
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\achemso\achemso.cls
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\achemso\achemso.cls
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
@@ -158,11 +158,11 @@ INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\generic\uniquecou
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\base\textcomp.sty
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\base\textcomp.sty
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\graphics\color.sty
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.aux
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.aux
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.aux
-OUTPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.aux
-OUTPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\acs-main.bib
+INPUT .\main.aux
+INPUT .\main.aux
+INPUT main.aux
+OUTPUT main.aux
+OUTPUT acs-main.bib
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -174,14 +174,14 @@ INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\ep
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\translations\dicts\translations-basic-dictionary-english.trsl
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\translations\dicts\translations-basic-dictionary-english.trsl
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\tex\latex\translations\dicts\translations-basic-dictionary-english.trsl
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-OUTPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-OUTPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.pdf
+INPUT .\main.out
+INPUT .\main.out
+INPUT main.out
+INPUT main.out
+INPUT .\main.out
+INPUT .\main.out
+OUTPUT main.out
+OUTPUT main.pdf
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1200.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecsx1200.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecsx2074.tfm
@@ -303,9 +303,9 @@ INPUT 4. discussion.tex
 INPUT .\5. conclusion.tex
 INPUT .\5. conclusion.tex
 INPUT 5. conclusion.tex
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.bbl
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.bbl
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.bbl
+INPUT .\main.bbl
+INPUT .\main.bbl
+INPUT main.bbl
 INPUT .\7. tables.tex
 INPUT .\7. tables.tex
 INPUT 7. tables.tex
@@ -318,9 +318,9 @@ INPUT 9. supplementary.tex
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0600.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecss0800.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecsi1200.tfm
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.aux
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
+INPUT main.aux
+INPUT .\main.out
+INPUT .\main.out
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecsi1200.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecsi1200.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
