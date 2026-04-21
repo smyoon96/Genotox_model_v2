@@ -303,6 +303,9 @@ INPUT 4. discussion.tex
 INPUT .\5. conclusion.tex
 INPUT .\5. conclusion.tex
 INPUT 5. conclusion.tex
+INPUT .\6. data_availability.tex
+INPUT .\6. data_availability.tex
+INPUT 6. data_availability.tex
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.bbl
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.bbl
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.bbl

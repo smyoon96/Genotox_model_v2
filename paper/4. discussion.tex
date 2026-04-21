@@ -5,14 +5,14 @@
 The locked-configuration analysis yielded the hierarchy
 
 \begin{center}
-Source heterogeneity $\gg$ Splitting method $\approx$ In-domain algorithm choice
+Data source heterogeneity $\gg$ Splitting method $\approx$ In-domain algorithm choice
 \end{center}
 
-with the source-heterogeneity gap ($\Delta = 0.390$) an order of magnitude larger than the split-method gap ($\Delta = 0.046$), itself comparable to the in-domain algorithm spread (MCC range = 0.063). The hierarchy was established on a single Ames benchmark; the LDO $\Delta$ also reflects asymmetric test sizes and class distributions and should be read as an upper bound; and algorithm robustness was uneven under source shift, so algorithm choice may matter much more in cross-source deployment than the in-domain comparison suggests.
+with the data source heterogeneity gap ($\Delta = 0.390$) an order of magnitude larger than the split-method gap ($\Delta = 0.046$), itself comparable to the in-domain algorithm spread (MCC range = 0.063). The hierarchy was established on a single Ames benchmark; the LDO $\Delta$ also reflects asymmetric test sizes and class distributions and should be read as an upper bound; and algorithm robustness was uneven under source shift, so algorithm choice may matter much more in cross-source deployment than the in-domain comparison suggests.
 
 We emphasize that the LDO experiment is not a deployment scenario. In practice, models are trained on all available data regardless of provenance, and the genotoxic potential of a chemical is fundamentally a property of its molecular structure, not of which database it was registered in. The point of cross-source evaluation is rather diagnostic: a large LDO drop reveals that apparent in-domain performance depends on the joint composition of training and test sets rather than on universally learned structure-activity relationships. This matters because new chemicals registered under EU REACH or K-REACH may occupy regions of chemical space that are sparsely represented in pharmaceutical benchmarks, and a benchmark MCC of 0.67 on a mixed-source test set provides little guarantee about the model's reliability on such compounds. Cross-source LDO acts as a stress test that exposes this dependency and gives a more honest lower bound on out-of-distribution performance.
 
-\subsection{What Drives the Source-Heterogeneity Gap?}
+\subsection{What Drives the Data Source Heterogeneity Gap?}
 
 We identify four non-exclusive hypotheses, in roughly decreasing parsimony. \textbf{Prior shift} from the 19.5-fold prevalence gap can mechanically lower MCC by miscalibrating the default decision threshold, consistent with XGBoost reaching sensitivity 0.062 in the industrial$\to$drug direction. \textbf{Data quality and labeling heterogeneity} could shift prevalence independently of any chemical difference, since drug-sourced compounds come from curated benchmarks while industrial compounds come from regulatory submissions (ECHA, K-REACH) with varying protocols. \textbf{Selection bias} arises because drug candidates are designed for biological activity while industrial chemicals are selected for stability. \textbf{Chemical space difference}\cite{Lipinski_2004,Veber_2002} would mean even a perfectly calibrated cross-source model generalizes poorly.
 
@@ -30,6 +30,6 @@ The high compound overlap between endpoints ($>$90\% shared with Ames) implies t
 
 \subsection{Practical Recommendations}
 
-We propose the following reporting standards for genotoxicity QSAR: (i)~scaffold-based splitting; (ii)~when source labels exist, cross-source LDO performance with disclosed source composition; (iii)~per-endpoint preprocessing optimization; (iv)~bootstrap CIs and AD coverage; (v)~for class-imbalanced endpoints, both threshold-free (ROC-AUC, PR-AUC) and threshold-dependent (MCC, balanced accuracy) metrics; (vi)~testing algorithm superiority claims under domain shift, not just in-domain.
+We propose the following reporting standards for genotoxicity QSAR: (i)~scaffold-based splitting; (ii)~when source labels exist, cross-source LDO performance with disclosed source composition; (iii)~per-endpoint preprocessing optimization; (iv)~bootstrap CIs and AD coverage; (v)~for class-imbalanced endpoints, both threshold-free (ROC-AUC, PR-AUC) and threshold-dependent (MCC, balanced accuracy) metrics; (vi)~testing algorithm superiority claims under source shift, not just in-domain.
 
 Several constraints bound our findings. We used a single scaffold split rather than repeated holdout, the GCN did not include edge features or pre-training,\cite{Hu_2020_pretrain} and we did not evaluate 3D or QM descriptors, metabolite predictions, within-AD vs.\ outside-AD stratification for LDO, or multiple-comparison correction for the McNemar tests.\cite{Demsar_2006}

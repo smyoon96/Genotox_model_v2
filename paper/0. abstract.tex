@@ -1,13 +1,12 @@
 \begin{abstract}
-QSAR models for Ames mutagenicity are increasingly used in regulatory assessments under EU REACH, K-REACH, and ICH M7,\cite{EU_REACH_2006,K_REACH_2018,ICH_M7_2017} yet reported performance varies widely 
-with evaluation methodology. We systematically evaluated 375 model configurations---seven algorithms, five feature representations, and three preprocessing scenarios---across five genotoxicity datasets: 
-Ames ($n = 13{,}560$), in~vitro chromosome aberration ($n = 1{,}619$), in~vivo micronucleus ($n = 2{,}153$), and two negative-sampled variants. Using a single locked configuration (XGBoost, compact descriptors, raw SMILES) 
-at three levels of evaluation rigor, Ames MCC fell from 0.670 (random-split CV) to 0.624 (scaffold-split CV) to 0.234 (drug$\to$industrial leave-domain-out). 
-The split-method effect ($\Delta = 0.046$) was substantially smaller than the source-hetarogeneity effect ($\Delta = 0.390$): a naive source classifier reached MCC = 0.608 without any structural information, 
-reflecting a 19.5-fold prevalence gap between drug-sourced (58.3\%) and industrial-sourced (3.0\%) compounds. 
-
-Threshold optimization explained only part of this gap, indicating that prior shift accounts for only a subset of the LDO collapse.
+QSAR models for Ames mutagenicity are increasingly used in regulatory assessments under EU REACH, K-REACH, and ICH M7,\cite{EU_REACH_2006,K_REACH_2018,ICH_M7_2017} 
+yet reported performance varies widely with evaluation methodology.\cite{Honma_2019,Furuhama_2023,Wu_MoleculeNet_2018} This study systematically evaluated 375 model configurations---seven algorithms, 
+five feature representations, and three preprocessing scenarios---across five genotoxicity datasets: Ames ($n = 13{,}560$), in-vitro chromosome aberration ($n = 1{,}619$), in-vivo micronucleus ($n = 2{,}153$), 
+and two negative-sampled variants. Using a single locked configuration (XGBoost, compact descriptors, raw SMILES) in an evaluation cascade of inceasing rigor,
+Ames MCC fell from 0.670 (random-split CV) to 0.624 (scaffold-split CV) to 0.234 (drug$\to$industrial leave-domain-out, LDO). The split-method effect ($\Delta = 0.046$) was dwarfed 
+by data source heterogeneity ($\Delta = 0.390$): a naive source classifier reached MCC = 0.608 without any structural information, reflecting a 19.5-fold prevalence gap 
+between drug-sourced (58.3\%) and industrial-sourced (3.0\%) compounds. Threshold-tuning attributed only part of this gap to prior shift, with oracle MCC plateauing at 0.27--0.36. 
 Algorithm robustness under source shift was uneven: Random Forest maintained MCC = 0.325 in the hardest direction where XGBoost collapsed to 0.122. 
-In~vivo micronucleus models showed ranking ability (ROC-AUC = 0.860, PR-AUC = 0.237) but unreliable classification (MCC 95\% CI crossing zero). 
-We recommend multi-level evaluation with source-awareness as a reporting standard for Ames mutagenicity QSAR.
+In-vivo micronucleus models showed ranking ability (ROC-AUC = 0.860, PR-AUC = 0.237) but unreliable classification (MCC 95\% CI crossing zero). 
+These findings support evaluation cascade evaluation with source-awareness as a reporting standard for Ames mutagenicity QSAR.
 \end{abstract}

@@ -8,7 +8,7 @@
 \providecommand*\mcitethebibliography{\thebibliography}
 \csname @ifundefined\endcsname{endmcitethebibliography}
   {\let\endmcitethebibliography\endthebibliography}{}
-\begin{mcitethebibliography}{50}
+\begin{mcitethebibliography}{51}
 \providecommand*\natexlab[1]{#1}
 \providecommand*\mciteSetBstSublistMode[1]{}
 \providecommand*\mciteSetBstMaxWidthForm[2]{}
@@ -47,6 +47,39 @@
   Potential Carcinogenic Risk. 2017;
   \url{https://www.ich.org/page/multidisciplinary-guidelines}, Step 4
   version\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Honma \latin{et~al.}(2019)Honma, Kitazawa, Cayley, Williams, Barber,
+  Hanser, Saiakhov, Chakravarti, Myatt, Cross, \latin{et~al.}
+  others]{Honma_2019}
+Honma,~M.; Kitazawa,~A.; Cayley,~A.; Williams,~R.~V.; Barber,~C.; Hanser,~T.;
+  Saiakhov,~R.; Chakravarti,~S.; Myatt,~G.~J.; Cross,~K.~P.; others Improvement
+  of Quantitative Structure--Activity Relationship ({QSAR}) Tools for
+  Predicting {Ames} Mutagenicity: Outcomes of the {Ames/QSAR} International
+  Challenge Project. \emph{Mutagenesis} \textbf{2019}, \emph{34}, 3--16\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Furuhama \latin{et~al.}(2023)Furuhama, Kitazawa, Yao, {Matos dos
+  Santos}, Rathman, Yang, Ribeiro, Cross, Myatt, Raitano, Benfenati,
+  Jeliazkova, Saiakhov, Chakravarti, Bossa, Benigni, Battistelli, and
+  Honma]{Furuhama_2023}
+Furuhama,~A. \latin{et~al.}  Evaluation of {QSAR} Models for Predicting
+  Mutagenicity: Outcome of the Second {Ames/QSAR} International Challenge
+  Project. \emph{SAR and QSAR in Environmental Research} \textbf{2023},
+  \emph{34}, 983--1001\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Wu \latin{et~al.}(2018)Wu, Ramsundar, Feinberg, Gomes, Geniesse,
+  Pappu, Leswing, and Pande]{Wu_MoleculeNet_2018}
+Wu,~Z.; Ramsundar,~B.; Feinberg,~E.~N.; Gomes,~J.; Geniesse,~C.; Pappu,~A.~S.;
+  Leswing,~K.; Pande,~V. {MoleculeNet}: A Benchmark for Molecular Machine
+  Learning. \emph{Chem. Sci.} \textbf{2018}, \emph{9}, 513--530\relax
 \mciteBstWouldAddEndPuncttrue
 \mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
 {\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
@@ -115,18 +148,6 @@ Xu,~C.; Cheng,~F.; Chen,~L.; Du,~Z.; Li,~W.; Liu,~G.; Lee,~P.~W.; Tang,~Y. In
 \mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
 {\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
 \EndOfBibitem
-\bibitem[Honma \latin{et~al.}(2019)Honma, Kitazawa, Cayley, Williams, Barber,
-  Hanser, Saiakhov, Chakravarti, Myatt, Cross, \latin{et~al.}
-  others]{Honma_2019}
-Honma,~M.; Kitazawa,~A.; Cayley,~A.; Williams,~R.~V.; Barber,~C.; Hanser,~T.;
-  Saiakhov,~R.; Chakravarti,~S.; Myatt,~G.~J.; Cross,~K.~P.; others Improvement
-  of Quantitative Structure--Activity Relationship ({QSAR}) Tools for
-  Predicting {Ames} Mutagenicity: Outcomes of the {Ames/QSAR} International
-  Challenge Project. \emph{Mutagenesis} \textbf{2019}, \emph{34}, 3--16\relax
-\mciteBstWouldAddEndPuncttrue
-\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
-{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
-\EndOfBibitem
 \bibitem[Li \latin{et~al.}(2021)Li, Wan, Shu, Jiang, Zhao, and Zeng]{Li_2021}
 Li,~S.; Wan,~F.; Shu,~H.; Jiang,~T.; Zhao,~D.; Zeng,~J. Machine
   Learning--Predicting {Ames} Mutagenicity of Small Molecules. \emph{Toxicol.
@@ -146,15 +167,6 @@ Bemis,~G.~W.; Murcko,~M.~A. The Properties of Known Drugs. 1. {Molecular}
 Sheridan,~R.~P. Time-Split Cross-Validation as a Method for Estimating the
   Goodness of Prospective Prediction. \emph{J. Chem. Inf. Model.}
   \textbf{2013}, \emph{53}, 783--790\relax
-\mciteBstWouldAddEndPuncttrue
-\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
-{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
-\EndOfBibitem
-\bibitem[Wu \latin{et~al.}(2018)Wu, Ramsundar, Feinberg, Gomes, Geniesse,
-  Pappu, Leswing, and Pande]{Wu_MoleculeNet_2018}
-Wu,~Z.; Ramsundar,~B.; Feinberg,~E.~N.; Gomes,~J.; Geniesse,~C.; Pappu,~A.~S.;
-  Leswing,~K.; Pande,~V. {MoleculeNet}: A Benchmark for Molecular Machine
-  Learning. \emph{Chem. Sci.} \textbf{2018}, \emph{9}, 513--530\relax
 \mciteBstWouldAddEndPuncttrue
 \mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
 {\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
