@@ -94,8 +94,8 @@
 \citation{McNemar_1947}
 \citation{McNemar_1947}
 \citation{McNemar_1947}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Three-level evaluation framework. All levels use the same locked configuration (XGBoost, compact features, raw SMILES), enabling fair MCC comparison across evaluation methods.}}{7}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:framework}{{1}{7}{Three-level evaluation framework. All levels use the same locked configuration (XGBoost, compact features, raw SMILES), enabling fair MCC comparison across evaluation methods}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Evaluation cascade framework. All levels use the same locked configuration (XGB, compact features, raw SMILES), enabling fair MCC comparison across evaluation methods.}}{7}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:framework}{{1}{7}{Evaluation cascade framework. All levels use the same locked configuration (XGB, compact features, raw SMILES), enabling fair MCC comparison across evaluation methods}{figure.caption.8}{}}
 \citation{Hansen_2009,Li_2021}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Best observed performance per primary endpoint (scaffold-split test set, full grid). Best among 375 configurations; descriptive benchmark, not unbiased estimates.}}{8}{table.2}\protected@file@percent }
 \newlabel{tab:best_models}{{2}{8}{Best observed performance per primary endpoint (scaffold-split test set, full grid). Best among 375 configurations; descriptive benchmark, not unbiased estimates}{table.2}{}}
@@ -103,20 +103,20 @@
 \newlabel{tab:all_algorithms}{{3}{8}{All-algorithm comparison (compact features, raw SMILES, Ames scaffold-split test). Range across all 7 algorithms: 0.063; range excluding LR and GCN: 0.023}{table.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Mean MCC ($\pm $SD) by algorithm across all feature modes and preprocessing scenarios, grouped by endpoint.}}{9}{figure.caption.11}\protected@file@percent }
 \newlabel{fig:model_comparison}{{2}{9}{Mean MCC ($\pm $SD) by algorithm across all feature modes and preprocessing scenarios, grouped by endpoint}{figure.caption.11}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Evaluation rigor cascade (locked configuration: XGBoost, compact features, raw SMILES). Level 2: mean $\pm $ SD (25 folds). Level 1: MCC [95\% bootstrap CI]. Level 3: Ames only.}}{9}{table.4}\protected@file@percent }
-\newlabel{tab:cascade}{{4}{9}{Evaluation rigor cascade (locked configuration: XGBoost, compact features, raw SMILES). Level 2: mean $\pm $ SD (25 folds). Level 1: MCC [95\% bootstrap CI]. Level 3: Ames only}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Evaluation cascade (locked configuration: XGBoost, compact features, raw SMILES). Level 2: mean $\pm $ SD (25 folds). Level 1: MCC [95\% bootstrap CI]. Level 3: Ames only.}}{9}{table.4}\protected@file@percent }
+\newlabel{tab:cascade}{{4}{9}{Evaluation cascade (locked configuration: XGBoost, compact features, raw SMILES). Level 2: mean $\pm $ SD (25 folds). Level 1: MCC [95\% bootstrap CI]. Level 3: Ames only}{table.4}{}}
 \newlabel{sec:domain}{{}{9}{Data Source Heterogeneity and Algorithm-Specific Robustness}{section*.14}{}}
 \citation{Breiman_2001}
 \citation{Fourches_2010}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Evaluation rigor cascade for Ames mutagenicity (locked configuration). The data source heterogeneity effect ($\Delta = 0.390$) substantially exceeds the split-method effect ($\Delta = 0.046$).}}{10}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:cascade}{{3}{10}{Evaluation rigor cascade for Ames mutagenicity (locked configuration). The data source heterogeneity effect ($\Delta = 0.390$) substantially exceeds the split-method effect ($\Delta = 0.046$)}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Evaluation cascade for Ames mutagenicity (locked configuration). The data source heterogeneity effect ($\Delta = 0.390$) substantially exceeds the split-method effect ($\Delta = 0.046$).}}{10}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:cascade}{{3}{10}{Evaluation cascade for Ames mutagenicity (locked configuration). The data source heterogeneity effect ($\Delta = 0.390$) substantially exceeds the split-method effect ($\Delta = 0.046$)}{figure.caption.13}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Leave-domain-out results by algorithm (Ames). Drug: $n = 6{,}416$, pos.\ rate 58.3\%. Industrial: $n = 7{,}144$, pos.\ rate 3.0\%. Naive source classifier: MCC = 0.608.}}{10}{table.5}\protected@file@percent }
 \newlabel{tab:ldo}{{5}{10}{Leave-domain-out results by algorithm (Ames). Drug: $n = 6{,}416$, pos.\ rate 58.3\%. Industrial: $n = 7{,}144$, pos.\ rate 3.0\%. Naive source classifier: MCC = 0.608}{table.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Data source heterogeneity in Ames. (A)~Positive rate by source: drug 58.3\% vs.\ industrial 3.0\% (19.5-fold). (B)~LDO MCC by algorithm; Random Forest is substantially more robust in the industrial$\to $drug direction.}}{11}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:domain}{{4}{11}{Data source heterogeneity in Ames. (A)~Positive rate by source: drug 58.3\% vs.\ industrial 3.0\% (19.5-fold). (B)~LDO MCC by algorithm; Random Forest is substantially more robust in the industrial$\to $drug direction}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Data source heterogeneity in Ames. (A)~Positive rate by source: drug 58.3\% vs.\ industrial 3.0\% (19.5-fold). (B)~LDO MCC by algorithm; RF is substantially more robust in the industrial$\to $drug direction.}}{11}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:domain}{{4}{11}{Data source heterogeneity in Ames. (A)~Positive rate by source: drug 58.3\% vs.\ industrial 3.0\% (19.5-fold). (B)~LDO MCC by algorithm; RF is substantially more robust in the industrial$\to $drug direction}{figure.caption.15}{}}
 \citation{Lundberg_SHAP_2017}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Effect of salt stripping on mean MCC (averaged across all models and feature modes). In~vivo improved by $+0.063$ on average and $+0.225$ for the best model; Ames mixed; in~vitro decreased.}}{12}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:salt}{{5}{12}{Effect of salt stripping on mean MCC (averaged across all models and feature modes). In~vivo improved by $+0.063$ on average and $+0.225$ for the best model; Ames mixed; in~vitro decreased}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Effect of salt stripping on mean MCC (averaged across all models and feature modes). In-vivo improved by $+0.063$ on average and $+0.225$ for the best model; Ames mixed; in-vitro decreased.}}{12}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:salt}{{5}{12}{Effect of salt stripping on mean MCC (averaged across all models and feature modes). In-vivo improved by $+0.063$ on average and $+0.225$ for the best model; Ames mixed; in-vitro decreased}{figure.caption.17}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces SHAP top-5 features per primary endpoint. Physicochemical descriptors dominate; structural alert count ranks first for Ames. No fingerprint bits appear in any top-5.}}{13}{figure.caption.18}\protected@file@percent }
 \newlabel{fig:shap}{{6}{13}{SHAP top-5 features per primary endpoint. Physicochemical descriptors dominate; structural alert count ranks first for Ames. No fingerprint bits appear in any top-5}{figure.caption.18}{}}
 \citation{Lipinski_2004}
@@ -194,7 +194,7 @@
 \mciteSetMaxCount{main}{subitem}{1}
 \mciteSetMaxWidth{main}{bibitem}{769860}
 \mciteSetMaxWidth{main}{subitem}{0}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Best model per sampling endpoint (exploratory). Small test sets; interpret with caution.}}{24}{table.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Random vs.\ scaffold split (XGBoost, compact features, raw SMILES, 5$\times $5 CV).}}{24}{table.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces LDO threshold-tuning analysis (Morgan FP-1024 + 13 physchem features). Default = MCC at $t=0.5$. Prior-corrected = MCC at $t$ equal to the training positive rate. Oracle = upper bound MCC across all thresholds. The gap between oracle LDO MCC and the in-domain scaffold-CV MCC ($\approx $0.624) isolates the irreducible source shift that cannot be corrected by threshold tuning.}}{26}{table.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Best model per sampling endpoint (exploratory). Small test sets; interpret with caution.}}{23}{table.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Random vs.\ scaffold split (XGBoost, compact features, raw SMILES, 5$\times $5 CV).}}{23}{table.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces LDO threshold-tuning analysis (Morgan FP-1024 + 13 physchem features). Default = MCC at $t=0.5$. Prior-corrected = MCC at $t$ equal to the training positive rate. Oracle = upper bound MCC across all thresholds. The gap between oracle LDO MCC and the in-domain scaffold-CV MCC ($\approx $0.624) isolates the irreducible source shift that cannot be corrected by threshold tuning.}}{25}{table.8}\protected@file@percent }
 \gdef \@abspage@last{26}

@@ -1,21 +1,20 @@
 # Fdb version 4
-["bibtex output/main"] 1776755194.27537 "output/main.aux" "output/main.bbl" "output/main" 1776755505.67597 0
-  "./references.bib" 1776736552 18555 38efaa4f2267fb1bdc4b25ce720a5667 ""
+["bibtex output/main"] 1776846331.12735 "output/main.aux" "output/main.bbl" "output/main" 1776846333.05689 0
+  "./references.bib" 1776845136 18555 38efaa4f2267fb1bdc4b25ce720a5667 ""
   "C:/Users/Administrator/AppData/Local/Programs/MiKTeX/bibtex/bst/achemso/achemso.bst" 1758536565 30282 42c3e10a627732f83970b5a9c91844f3 ""
-  "c:/Users/Administrator/Documents/GitHub/Genotox_model/paper/output/acs-main.bib" 1776755504 306 2ec6e2c563f7f14bcefed0d36c308168 ""
-  "output/main.aux" 1776755504 15026 1fdc3f4908bcbe385afa3d12e8eb23d5 "pdflatex"
+  "c:/Users/Administrator/Documents/GitHub/Genotox_model/paper/output/acs-main.bib" 1776846332 306 2ec6e2c563f7f14bcefed0d36c308168 ""
+  "output/main.aux" 1776846332 14964 c81de1ee9688edd78178c8a00accfa79 "pdflatex"
   (generated)
   "output/main.bbl"
   "output/main.blg"
   (rewritten before read)
-["pdflatex"] 1776755503.96073 "c:/Users/Administrator/Documents/GitHub/Genotox_model/paper/main.tex" "output/main.pdf" "main" 1776755505.67675 0
-  "0. abstract.tex" 1776755503 1722 29f9bf0841046553a173e36e521a273b ""
-  "1. introduction.tex" 1776755192 3696 0759b21035884b7d27d1044a267ce5d5 ""
-  "2. methods.tex" 1776755503 7514 e2805cc393aaa91df0a891806c6020fa ""
-  "3. results.tex" 1776736552 9911 7f6679eb5c494089bd071984e850ea25 ""
-  "4. discussion.tex" 1776736552 6752 27f63ce33de797ea1808ef71bd5ee5a8 ""
-  "5. conclusion.tex" 1776736552 981 0c3b5ec1e43fce02c1eadf67a812e186 ""
-  "6. data_availability.tex" 1776736552 684 20934d9090d35c34a18b7ff1a735aea9 ""
+["pdflatex"] 1776846331.34414 "c:/Users/Administrator/Documents/GitHub/Genotox_model/paper/main.tex" "output/main.pdf" "main" 1776846333.05766 0
+  "0. abstract.tex" 1776844835 1743 4a61aaf882eb633af3e7598a6c600b88 ""
+  "1. introduction.tex" 1776846072 4111 c5c8a691ddd8be02ec66692a196ff1bc ""
+  "2. methods.tex" 1776846328 7504 a95d651e5015d00a7ad41fb8c76d1949 ""
+  "3. results.tex" 1776846177 9879 e4a2f22063316686414594194636045d ""
+  "4. discussion.tex" 1776844835 6840 76dc890ce85a7bca1995828acbb0551c ""
+  "5. conclusion.tex" 1776844335 986 cb3c03dc68147cd734cb5550b20e5b13 ""
   "7. tables.tex" 1776736552 116 e3f3162d4807b29855f92a4770b514ed ""
   "8. figures.tex" 1776736552 119 6fb5b2fbb777de2e4034e0b0089a395b ""
   "9. supplementary.tex" 1776736552 5317 5b4dc2f28fcb8bcd325b08f4310cf651 ""
@@ -163,7 +162,7 @@
   "C:/Users/Administrator/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Administrator/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Administrator/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/Administrator/Documents/GitHub/Genotox_model/paper/main.tex" 1776736575 2181 c548ad1bbde81eb429931bb5e2448aa2 ""
+  "c:/Users/Administrator/Documents/GitHub/Genotox_model/paper/main.tex" 1776846202 2166 c62539ff90938ae94ff00da2b1af0ea5 ""
   "figures/figure1_framework.pdf" 1775438557 42298 79723560cd743b880a7c0970e03687b1 ""
   "figures/figure2_model_comparison.pdf" 1775438458 19546 508e913f52599df21d44868b5e061f27 ""
   "figures/figure3_cascade.pdf" 1775438574 46063 37307ea2e686d9ac704a4b28c0e5ed09 ""
@@ -171,10 +170,10 @@
   "figures/figure5_salt_stripping.pdf" 1775438458 16340 b5901f1ef8b12120098c351f79616570 ""
   "figures/figure6_shap.pdf" 1775438458 17904 8045f0dd36309ebb88e0183b3ce5843d ""
   "figures/figure7_learning_curves.pdf" 1775438458 18945 4bc7e14a78ed4ebaaa99fd241553dbb7 ""
-  "main.tex" 1776736575 2181 c548ad1bbde81eb429931bb5e2448aa2 ""
-  "output/main.aux" 1776755504 15026 1fdc3f4908bcbe385afa3d12e8eb23d5 "pdflatex"
-  "output/main.bbl" 1776755194 23031 2635eb5337b6f8990f9b733cab8e2757 "bibtex output/main"
-  "output/main.out" 1776755504 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1776846202 2166 c62539ff90938ae94ff00da2b1af0ea5 ""
+  "output/main.aux" 1776846332 14964 c81de1ee9688edd78178c8a00accfa79 "pdflatex"
+  "output/main.bbl" 1776846331 23031 2635eb5337b6f8990f9b733cab8e2757 "bibtex output/main"
+  "output/main.out" 1776846331 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "output/acs-main.bib"
   "output/main.aux"
