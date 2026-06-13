@@ -30,10 +30,25 @@ logging.basicConfig(
 logger = logging.getLogger("step4")
 
 
+def _get_run_dir() -> Path:
+    """최신 run 디렉토리 탐색 (LATEST_TXT → RUNS_DIR 최신 폴더)."""
+    if cfg.LATEST_TXT.exists():
+        p = Path(cfg.LATEST_TXT.read_text().strip())
+        if p.exists():
+            return p
+    subdirs = sorted(cfg.RUNS_DIR.iterdir(), key=lambda x: x.stat().st_mtime, reverse=True)
+    for d in subdirs:
+        if d.is_dir():
+            return d
+    return cfg.RUNS_DIR
+
+
 def collect_fold_reports() -> dict:
-    """모든 실험의 fold 보고서를 수집"""
+    """모든 실험의 fold 보고서를 수집 (run_dir 아래 실험 폴더 탐색)"""
+    run_dir = _get_run_dir()
+    logger.info(f"  Scanning: {run_dir}")
     all_fold_data = {}
-    for exp_dir in cfg.ARTIFACT_DIR.iterdir():
+    for exp_dir in run_dir.iterdir():
         if not exp_dir.is_dir():
             continue
         fold_csv = exp_dir / "cv_fold_report.csv"

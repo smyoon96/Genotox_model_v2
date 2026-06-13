@@ -1,0 +1,9 @@
+{
+  "endpoints": {
+    "ames": "ok",
+    "invitro": "ok",
+    "invivo": "ok",
+    "invitro_sampling": "ok",
+    "invivo_sampling": "ok"
+  }
+}

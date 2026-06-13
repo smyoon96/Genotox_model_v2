@@ -1,0 +1,19 @@
+{
+  "endpoint": "invivo_sampling",
+  "model_type": "xgb",
+  "scenario": "raw_all",
+  "feature_mode": "broad_fp2048",
+  "n_train": 231,
+  "n_pos": 77,
+  "threshold": 0.265,
+  "overall": {
+    "mcc": 0.5474,
+    "sensitivity": 0.7922,
+    "specificity": 0.7792
+  },
+  "conformal_alpha005": {
+    "mcc": 0.7665,
+    "coverage": 0.5974
+  },
+  "cv_mcc": 0.545
+}

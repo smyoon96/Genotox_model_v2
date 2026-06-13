@@ -1,0 +1,123 @@
+12:21:06 Pipeline v12 — Bug-Fixed Single Run
+  C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v2\runs\20260504_122106_v12
+12:21:06 STEP 1: Load + Clean
+12:21:06   [ames] n=14771 pos=0.2843
+12:21:06   [invitro] n=1656 pos=0.1051
+12:21:06   [invivo] n=2199 pos=0.0350
+12:21:06   [invitro_sampling] n=348 pos=0.5000
+12:21:06   [invivo_sampling] n=231 pos=0.3333
+12:21:09   ⚠ Domain predictor acc: 0.7611
+12:21:15   [ames] 14771 → 13560 (conflicts=169)
+12:21:16   [invitro] 1656 → 1619 (conflicts=3)
+12:21:17   [invivo] 2199 → 2153 (conflicts=2)
+12:21:17   [invitro_sampling] 348 → 345 (conflicts=0)
+12:21:17   [invivo_sampling] 231 → 231 (conflicts=0)
+12:21:17 STEP 2: Preprocessing Flags
+12:21:19     Classified 2000/13560 compounds...
+12:21:20     Classified 4000/13560 compounds...
+12:21:22     Classified 6000/13560 compounds...
+12:21:23     Classified 8000/13560 compounds...
+12:21:25     Classified 10000/13560 compounds...
+12:21:27     Classified 12000/13560 compounds...
+12:21:31     Classified 2000/2153 compounds...
+12:21:31 STEP 3: Fixed Split
+12:21:38   [ames] train=10848 test=2712 pos_diff=0.0136
+12:21:38   [invitro] train=1295 test=324 pos_diff=0.0246
+12:21:39   [invivo] train=1722 test=431 pos_diff=0.0087
+12:21:39   [invitro_sampling] train=276 test=69 pos_diff=0.1304
+12:21:39   [invivo_sampling] train=184 test=47 pos_diff=0.0979
+12:21:39 STEP 4: Scenario Selection (Train CV)
+12:21:52   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+12:21:56   [ames] Physchem features: 13 columns
+12:22:00   [ames/raw_all] CV_MCC=0.6387±0.0476
+12:22:11   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:14   [ames] Physchem features: 13 columns
+12:22:18   [ames/no_metal] CV_MCC=0.6204±0.0630
+12:22:18   salt_stripped: 6062/13560 SMILES changed
+12:22:31   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:34   [ames] Physchem features: 13 columns
+12:22:38   [ames/salt_stripped] CV_MCC=0.6376±0.0534
+12:22:38   [ames] ★ Best: raw_all (CV=0.6387)
+12:22:40   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:40   [invitro] Physchem features: 13 columns
+12:22:42   [invitro/raw_all] CV_MCC=0.1389±0.0992
+12:22:44   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:44   [invitro] Physchem features: 13 columns
+12:22:46   [invitro/no_metal] CV_MCC=0.2058±0.1270
+12:22:46   salt_stripped: 1317/1619 SMILES changed
+12:22:47   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:48   [invitro] Physchem features: 13 columns
+12:22:50   [invitro/salt_stripped] CV_MCC=0.0942±0.0971
+12:22:50   [invitro] ★ Best: no_metal (CV=0.2058)
+12:22:52   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:52   [invivo] Physchem features: 13 columns
+12:22:55   [invivo/raw_all] CV_MCC=0.0677±0.1013
+12:22:56   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+12:22:57   [invivo] Physchem features: 13 columns
+12:22:59   [invivo/no_metal] CV_MCC=0.0588±0.1214
+12:22:59   salt_stripped: 1785/2153 SMILES changed
+12:23:01   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:01   [invivo] Physchem features: 13 columns
+12:23:03   [invivo/salt_stripped] CV_MCC=0.0984±0.1418
+12:23:03   [invivo] ★ Best: salt_stripped (CV=0.0984)
+12:23:04   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:04   [invitro_sampling] Physchem features: 13 columns
+12:23:05   [invitro_sampling/raw_all] CV_MCC=0.3020±0.1330
+12:23:06   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:06   [invitro_sampling] Physchem features: 13 columns
+12:23:07   [invitro_sampling/no_metal] CV_MCC=0.4203±0.1203
+12:23:07   salt_stripped: 309/345 SMILES changed
+12:23:08   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:08   [invitro_sampling] Physchem features: 13 columns
+12:23:09   [invitro_sampling/salt_stripped] CV_MCC=0.2370±0.1290
+12:23:09   [invitro_sampling] ★ Best: no_metal (CV=0.4203)
+12:23:09   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:10   [invivo_sampling] Physchem features: 13 columns
+12:23:11   [invivo_sampling/raw_all] CV_MCC=0.4019±0.1729
+12:23:11   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:11   [invivo_sampling] Physchem features: 13 columns
+12:23:12   [invivo_sampling/no_metal] CV_MCC=0.2594±0.1921
+12:23:12   salt_stripped: 208/231 SMILES changed
+12:23:12   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:12   [invivo_sampling] Physchem features: 13 columns
+12:23:14   [invivo_sampling/salt_stripped] CV_MCC=0.3415±0.1776
+12:23:14   [invivo_sampling] ★ Best: raw_all (CV=0.4019)
+12:23:14 STEP 5: Locked Test (all combos)
+12:23:14   [ames] Pre-computing features...
+12:23:32   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+12:23:38   [ames] Physchem features: 13 columns
+12:23:40   [ames] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+12:23:53   [ames] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+12:24:06   [ames] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+12:24:34     SHAP failed: could not convert string to float: '[5E-1]'
+12:24:34   ames_raw_all_compact_xgb: MCC=0.4699 [0.4342,0.5021] t=0.62 AD=0.57 ★
+12:24:48   ames_raw_all_compact_lgbm: MCC=0.4791 [0.4431,0.5111] t=0.56 AD=0.57
+12:24:57     SHAP failed: Per-column arrays must each be 1-dimensional
+12:24:57   ames_raw_all_compact_rf: MCC=0.4920 [0.4522,0.5268] t=0.54 AD=0.57
+12:27:37   ames_raw_all_compact_svm: MCC=0.4702 [0.4287,0.5058] t=0.34 AD=0.57
+12:28:01   ames_raw_all_compact_logistic: MCC=0.4295 [0.3941,0.4599] t=0.6 AD=0.57
+12:28:19   ames_raw_all_compact_ann: MCC=0.4885 [0.4485,0.5246] t=0.4 AD=0.57
+12:28:25     SHAP failed: could not convert string to float: '[5E-1]'
+12:28:25   ames_raw_all_broad_fp512_xgb: MCC=0.5409 [0.5071,0.5738] t=0.5 AD=0.57
+12:28:40   ames_raw_all_broad_fp512_lgbm: MCC=0.5272 [0.4917,0.5597] t=0.66 AD=0.57
+12:28:51     SHAP failed: Per-column arrays must each be 1-dimensional
+12:28:51   ames_raw_all_broad_fp512_rf: MCC=0.5377 [0.5032,0.5710] t=0.54 AD=0.57
+12:34:17   ames_raw_all_broad_fp512_svm: MCC=0.5326 [0.4953,0.5688] t=0.32 AD=0.57
+12:35:14   ames_raw_all_broad_fp512_logistic: MCC=0.4692 [0.4338,0.4997] t=0.52 AD=0.57
+12:35:32   ames_raw_all_broad_fp512_ann: MCC=0.4743 [0.4378,0.5072] t=0.36 AD=0.57
+12:35:40     SHAP failed: could not convert string to float: '[5E-1]'
+12:35:40   ames_raw_all_broad_fp1024_xgb: MCC=0.5238 [0.4869,0.5575] t=0.54 AD=0.57
+12:35:55   ames_raw_all_broad_fp1024_lgbm: MCC=0.5509 [0.5140,0.5825] t=0.5 AD=0.57
+12:36:10     SHAP failed: Per-column arrays must each be 1-dimensional
+12:36:10   ames_raw_all_broad_fp1024_rf: MCC=0.5360 [0.4979,0.5699] t=0.54 AD=0.57
+12:47:19   ames_raw_all_broad_fp1024_svm: MCC=0.5096 [0.4707,0.5468] t=0.3 AD=0.57
+12:48:49   ames_raw_all_broad_fp1024_logistic: MCC=0.4706 [0.4369,0.5066] t=0.6 AD=0.57
+12:49:10   ames_raw_all_broad_fp1024_ann: MCC=0.5190 [0.4820,0.5541] t=0.38 AD=0.57
+12:49:20     SHAP failed: could not convert string to float: '[5E-1]'
+12:49:20   ames_raw_all_broad_fp2048_xgb: MCC=0.5551 [0.5220,0.5882] t=0.56 AD=0.57
+12:49:36   ames_raw_all_broad_fp2048_lgbm: MCC=0.5305 [0.4953,0.5642] t=0.56 AD=0.57
+12:49:53     SHAP failed: Per-column arrays must each be 1-dimensional
+12:49:53   ames_raw_all_broad_fp2048_rf: MCC=0.5096 [0.4720,0.5422] t=0.5 AD=0.57
+13:07:14   ames_raw_all_broad_fp2048_svm: MCC=0.5485 [0.5138,0.5832] t=0.3 AD=0.57
+13:09:21   ames_raw_all_broad_fp2048_logistic: MCC=0.5080 [0.4744,0.5416] t=0.64 AD=0.57
+13:09:45   ames_raw_all_broad_fp2048_ann: MCC=0.5413 [0.5018,0.5782] t=0.36 AD=0.57

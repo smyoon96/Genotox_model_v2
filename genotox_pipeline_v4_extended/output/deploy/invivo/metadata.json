@@ -1,0 +1,105 @@
+{
+  "endpoint": "invivo",
+  "model_type": "xgb",
+  "scenario": "salt_stripped",
+  "feature_mode": "extended",
+  "n_features": 519,
+  "n_total": 2153,
+  "n_pos": 75,
+  "n_neg": 2078,
+  "cv_mcc": 0.2329,
+  "cv_mcc_std": 0.0978,
+  "mcc_default_05": 0.2365,
+  "optimal_threshold": 0.105,
+  "sensitivity": 0.3867,
+  "specificity": 0.9629,
+  "mcc_at_threshold": 0.2963,
+  "bacc_at_threshold": 0.6748,
+  "spec_floor": 0.75,
+  "domain_weights": null,
+  "has_ames_stacking": true,
+  "elapsed_seconds": 15.3,
+  "timestamp": "2026-06-01T14:07:44.415747",
+  "top_features": [
+    {
+      "feature": "ames_proba",
+      "mean_abs_shap": 1.0578288878416642
+    },
+    {
+      "feature": "gasteiger_max",
+      "mean_abs_shap": 0.7722804841955367
+    },
+    {
+      "feature": "kappa1",
+      "mean_abs_shap": 0.6432418102129887
+    },
+    {
+      "feature": "peoe_vsa_7",
+      "mean_abs_shap": 0.6106060847308253
+    },
+    {
+      "feature": "longest_chain",
+      "mean_abs_shap": 0.45469229825458024
+    },
+    {
+      "feature": "MW_raw",
+      "mean_abs_shap": 0.3736498145097867
+    },
+    {
+      "feature": "peoe_vsa_5",
+      "mean_abs_shap": 0.3409762295333785
+    },
+    {
+      "feature": "chi3v",
+      "mean_abs_shap": 0.33113205031061077
+    },
+    {
+      "feature": "peoe_vsa_9",
+      "mean_abs_shap": 0.321311746204854
+    },
+    {
+      "feature": "kappa2",
+      "mean_abs_shap": 0.3210068484621588
+    },
+    {
+      "feature": "smr_vsa_6",
+      "mean_abs_shap": 0.3186451303959475
+    },
+    {
+      "feature": "estate_min",
+      "mean_abs_shap": 0.27167227617278694
+    },
+    {
+      "feature": "kappa3",
+      "mean_abs_shap": 0.26515762774867474
+    },
+    {
+      "feature": "estate_max",
+      "mean_abs_shap": 0.26001934895961315
+    },
+    {
+      "feature": "LogP",
+      "mean_abs_shap": 0.24840635542356176
+    },
+    {
+      "feature": "slogp_vsa_3",
+      "mean_abs_shap": 0.24435082641476766
+    },
+    {
+      "feature": "chi0v",
+      "mean_abs_shap": 0.2296413786954945
+    },
+    {
+      "feature": "MW",
+      "mean_abs_shap": 0.21970956956106238
+    },
+    {
+      "feature": "gasteiger_mean",
+      "mean_abs_shap": 0.21967149942321704
+    },
+    {
+      "feature": "self_T_pre",
+      "mean_abs_shap": 0.18942719647288322
+    }
+  ]
+}

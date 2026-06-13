@@ -239,12 +239,13 @@ INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\c
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0800.tfm
+INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1095.tfm
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT .\1. introduction_revised.tex
+INPUT .\1. introduction_revised.tex
+INPUT 1. introduction_revised.tex
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm1728.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1728.tfm
-INPUT .\1. introduction.tex
-INPUT .\1. introduction.tex
-INPUT 1. introduction.tex
 INPUT .\2. methods.tex
 INPUT .\2. methods.tex
 INPUT 2. methods.tex
@@ -261,6 +262,7 @@ INPUT .\figures\figure1_framework.pdf
 INPUT .\3. results.tex
 INPUT .\3. results.tex
 INPUT 3. results.tex
+INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1000.tfm
 INPUT .\figures\figure2_model_comparison.pdf
 INPUT .\figures\figure2_model_comparison.pdf
 INPUT .\figures\figure2_model_comparison.pdf
@@ -279,12 +281,14 @@ INPUT .\figures\figure4_domain_ldo.pdf
 INPUT .\figures\figure4_domain_ldo.pdf
 INPUT .\figures\figure4_domain_ldo.pdf
 INPUT .\figures\figure4_domain_ldo.pdf
+INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbi1440.tfm
 INPUT .\figures\figure5_salt_stripping.pdf
 INPUT .\figures\figure5_salt_stripping.pdf
 INPUT .\figures\figure5_salt_stripping.pdf
 INPUT .\figures\figure5_salt_stripping.pdf
 INPUT .\figures\figure5_salt_stripping.pdf
 INPUT .\figures\figure5_salt_stripping.pdf
+INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbi1200.tfm
 INPUT .\figures\figure6_shap.pdf
 INPUT .\figures\figure6_shap.pdf
 INPUT .\figures\figure6_shap.pdf
@@ -300,6 +304,7 @@ INPUT .\figures\figure7_learning_curves.pdf
 INPUT .\4. discussion.tex
 INPUT .\4. discussion.tex
 INPUT 4. discussion.tex
+INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx0800.tfm
 INPUT .\5. conclusion.tex
 INPUT .\5. conclusion.tex
 INPUT 5. conclusion.tex
@@ -315,14 +320,25 @@ INPUT 8. figures.tex
 INPUT .\9. supplementary.tex
 INPUT .\9. supplementary.tex
 INPUT 9. supplementary.tex
-INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0600.tfm
 INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecss0800.tfm
-INPUT C:\Users\Administrator\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecsi1200.tfm
+INPUT .\figures\TOC.jpg
+INPUT .\figures\TOC.jpg
+INPUT .\figures\TOC.jpg
+INPUT .\figures\TOC.jpg
+INPUT .\figures\TOC.jpg
+INPUT .\figures\TOC.jpg
+INPUT .\figures\TOC.jpg
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.aux
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
 INPUT c:\Users\Administrator\Documents\GitHub\Genotox_model\paper\output\main.out
-INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecsi1200.pk
-INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecsi1200.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1440.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1440.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk
@@ -337,6 +353,8 @@ INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dp
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk

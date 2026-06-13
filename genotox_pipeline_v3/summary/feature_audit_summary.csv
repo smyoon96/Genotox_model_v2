@@ -1,0 +1,6 @@
+endpoint,total_features,n_fingerprint,n_structural_alert,n_functional_group,n_physchem,n_qm,n_other
+ames,1024,1024,0,0,0,0,0
+invitro,1024,1024,0,0,0,0,0
+invivo,1024,1024,0,0,0,0,0
+invitro_sampling,1024,1024,0,0,0,0,0
+invivo_sampling,1024,1024,0,0,0,0,0

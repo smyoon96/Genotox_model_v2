@@ -489,3 +489,90 @@ def save_json(obj, path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, indent=2, ensure_ascii=False, default=str)
+
+
+# ──────────────────────────────────────────────
+#  디렉토리 상수 (step 스크립트 공용)
+# ──────────────────────────────────────────────
+LOG_DIR      = PROJECT_ROOT / "logs"
+OUTPUT_DIR   = RUNS_DIR                   # alias for compatibility
+SUMMARY_DIR  = PROJECT_ROOT / "summary"
+ARTIFACT_DIR = PROJECT_ROOT / "artifacts"
+BROADFP_DIR  = PROJECT_ROOT / "broadfp"
+
+for _d in [LOG_DIR, SUMMARY_DIR, ARTIFACT_DIR, BROADFP_DIR, RUNS_DIR]:
+    _d.mkdir(parents=True, exist_ok=True)
+
+# ──────────────────────────────────────────────
+#  학습 공통 설정 (step3_train 참조)
+# ──────────────────────────────────────────────
+RANDOM_SEED     = GLOBAL_SEED
+CV_FOLDS        = 5
+FP_SELECT_K     = 128          # MI 기반 FP bit 선택 수
+N_RANDOM_SEARCH = 10           # RandomizedSearchCV iterations
+
+# threshold 선택 기준 (endpoint별)
+THRESHOLD_METRIC = {ep: "mcc" for ep in ENDPOINTS}
+
+# 컬럼 제외 패턴
+EXCLUDE_PATTERNS = [
+    "_analysis_smiles", "scaffold", "split", "endpoint",
+    "source_dataset", "No", "label", "__",
+]
+
+# 기본 실험 목록 (shortlist)
+MODELS = ["xgb", "lgbm", "rf", "svm", "logistic", "ann"]
+IMBALANCE_STRATEGIES = UNDERSAMPLING_STRATEGIES
+
+SHORTLIST = [
+    {"endpoint": "ames",    "model": "xgb",      "strategy": "none"},
+    {"endpoint": "ames",    "model": "lgbm",     "strategy": "none"},
+    {"endpoint": "ames",    "model": "rf",       "strategy": "none"},
+    {"endpoint": "invitro", "model": "xgb",      "strategy": "none"},
+    {"endpoint": "invitro", "model": "lgbm",     "strategy": "none"},
+    {"endpoint": "invivo",  "model": "xgb",      "strategy": "none"},
+    {"endpoint": "invivo",  "model": "lgbm",     "strategy": "none"},
+    {"endpoint": "invivo",  "model": "rf",       "strategy": "none"},
+]
+
+# ──────────────────────────────────────────────
+#  유틸리티 (호환성 alias)
+# ──────────────────────────────────────────────
+def save_run_config(out_dir: Path, extra: dict = None):
+    """실행 설정 JSON 저장 (run_all.py 호환)"""
+    import json
+    from datetime import datetime
+    cfg_data = {
+        "project_root": str(PROJECT_ROOT),
+        "data_dir":     str(DATA_DIR),
+        "runs_dir":     str(RUNS_DIR),
+        "global_seed":  GLOBAL_SEED,
+        "endpoints":    ENDPOINTS,
+        "timestamp":    datetime.now().isoformat(),
+    }
+    if extra:
+        cfg_data.update(extra)
+    out = Path(out_dir) / "run_config.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(cfg_data, f, indent=2, ensure_ascii=False, default=str)
+
+
+# ──────────────────────────────────────────────
+#  QM / 전자적 기술자 설정
+# ──────────────────────────────────────────────
+COMPUTE_ELECTRONIC = False          # RDKit 전자적 기술자 계산 여부
+QM_PREFIX          = "qm_"         # 계산된 QM 기술자 컬럼 prefix
+EXT_QM_PREFIX      = "extqm_"      # 외부 QM 파일 merge 시 prefix
+QM_FILE            = DATA_DIR / "qm_descriptors.csv"   # 외부 QM 파일 (없으면 skip)
+
+# ──────────────────────────────────────────────
+#  메타 컬럼 (feature에서 제외)
+# ──────────────────────────────────────────────
+META_COLS = {
+    "No", "label", "endpoint", "split", "split_source",
+    "scaffold_group", "scaffold_group_type", "murcko_scaffold",
+    "SMILES", "SMILES_raw", "canonical_smiles", "standardized_smiles",
+    "analysis_smiles", "_analysis_smiles", "smiles",
+    "source_dataset", "domain",
+}

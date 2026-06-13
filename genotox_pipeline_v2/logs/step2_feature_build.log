@@ -1,0 +1,33 @@
+2026-05-04 15:14:44,594 [INFO] step2: ============================================================
+2026-05-04 15:14:44,594 [INFO] step2: Step 2: Broad Feature Table Build
+2026-05-04 15:14:44,594 [INFO] step2: ============================================================
+2026-05-04 15:14:44,594 [INFO] step2: 
+==================================================
+2026-05-04 15:14:44,594 [INFO] step2: Building broad features: ames
+2026-05-04 15:14:44,594 [INFO] step2: ==================================================
+2026-05-04 15:14:44,630 [INFO] step2: 
+==================================================
+2026-05-04 15:14:44,630 [INFO] step2: Building broad features: invitro
+2026-05-04 15:14:44,630 [INFO] step2: ==================================================
+2026-05-04 15:14:44,656 [INFO] step2: 
+==================================================
+2026-05-04 15:14:44,656 [INFO] step2: Building broad features: invivo
+2026-05-04 15:14:44,656 [INFO] step2: ==================================================
+2026-05-04 15:14:44,681 [INFO] step2: 
+==================================================
+2026-05-04 15:14:44,681 [INFO] step2: Building broad features: invitro_sampling
+2026-05-04 15:14:44,681 [INFO] step2: ==================================================
+2026-05-04 15:14:44,708 [INFO] step2: 
+==================================================
+2026-05-04 15:14:44,708 [INFO] step2: Building broad features: invivo_sampling
+2026-05-04 15:14:44,708 [INFO] step2: ==================================================
+2026-05-04 15:14:44,790 [INFO] step2: 
+Feature audit saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v2\summary\feature_audit_summary.csv
+2026-05-04 15:14:44,791 [INFO] step2: Manifest saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v2\summary\broad_feature_manifest.json
+2026-05-04 15:14:44,791 [INFO] step2: 
+============================================================
+2026-05-04 15:14:44,791 [INFO] step2:   ames: ok
+2026-05-04 15:14:44,791 [INFO] step2:   invitro: ok
+2026-05-04 15:14:44,791 [INFO] step2:   invivo: ok
+2026-05-04 15:14:44,791 [INFO] step2:   invitro_sampling: ok
+2026-05-04 15:14:44,791 [INFO] step2:   invivo_sampling: ok

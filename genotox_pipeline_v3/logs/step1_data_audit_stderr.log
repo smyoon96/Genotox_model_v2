@@ -1,0 +1,42 @@
+2026-05-07 09:33:26,578 [INFO] step1: ============================================================
+2026-05-07 09:33:26,578 [INFO] step1: Step 1: Raw Data Audit
+2026-05-07 09:33:26,578 [INFO] step1: Data dir: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\data
+2026-05-07 09:33:26,578 [INFO] step1: ============================================================
+2026-05-07 09:33:26,578 [INFO] step1: Files in data dir: 10
+2026-05-07 09:33:26,579 [INFO] step1:   ames.csv (788 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   invitro.csv (79 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   invitro_sampling.csv (22 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   invivo.csv (100 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   invivo.xlsx (80 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   invivo_sampling.csv (16 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   Negative sampling_descriptor (4 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   Negative sampling_Functional group (4 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   negative_sampling_best_config.json (1 KB)
+2026-05-07 09:33:26,579 [INFO] step1:   negative_sampling_cv_report.csv (2 KB)
+2026-05-07 09:33:26,580 [INFO] step1: 
+--- Auditing: ames ---
+2026-05-07 09:33:26,606 [INFO] step1: [ames] train=14771 rows, test=14771 rows
+2026-05-07 09:33:26,607 [INFO] step1: 
+--- Auditing: invitro ---
+2026-05-07 09:33:26,610 [INFO] step1: [invitro] train=1656 rows, test=1656 rows
+2026-05-07 09:33:26,610 [INFO] step1: 
+--- Auditing: invivo ---
+2026-05-07 09:33:26,615 [INFO] step1: [invivo] train=2199 rows, test=2199 rows
+2026-05-07 09:33:26,615 [INFO] step1: 
+--- Auditing: invitro_sampling ---
+2026-05-07 09:33:26,617 [INFO] step1: [invitro_sampling] train=348 rows, test=348 rows
+2026-05-07 09:33:26,617 [INFO] step1: 
+--- Auditing: invivo_sampling ---
+2026-05-07 09:33:26,619 [INFO] step1: [invivo_sampling] train=231 rows, test=231 rows
+2026-05-07 09:33:26,622 [INFO] step1: 
+Audit summary saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\summary\data_audit_summary.csv
+2026-05-07 09:33:26,623 [INFO] step1: Schema manifest saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\summary\schema_manifest.json
+2026-05-07 09:33:26,623 [INFO] step1: 
+============================================================
+2026-05-07 09:33:26,623 [INFO] step1: AUDIT SUMMARY
+2026-05-07 09:33:26,623 [INFO] step1: ============================================================
+2026-05-07 09:33:26,623 [INFO] step1:   ames: train=14771, test=14771, pos_rate=0.2843
+2026-05-07 09:33:26,623 [INFO] step1:   invitro: train=1656, test=1656, pos_rate=0.1051
+2026-05-07 09:33:26,623 [INFO] step1:   invivo: train=2199, test=2199, pos_rate=0.035
+2026-05-07 09:33:26,623 [INFO] step1:   invitro_sampling: train=348, test=348, pos_rate=0.5
+2026-05-07 09:33:26,623 [INFO] step1:   invivo_sampling: train=231, test=231, pos_rate=0.3333

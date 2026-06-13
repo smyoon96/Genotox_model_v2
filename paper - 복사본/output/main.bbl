@@ -1,0 +1,441 @@
+\providecommand{\latin}[1]{#1}
+\makeatletter
+\providecommand{\doi}
+  {\begingroup\let\do\@makeother\dospecials
+  \catcode`\{=1 \catcode`\}=2 \doi@aux}
+\providecommand{\doi@aux}[1]{\endgroup\texttt{#1}}
+\makeatother
+\providecommand*\mcitethebibliography{\thebibliography}
+\csname @ifundefined\endcsname{endmcitethebibliography}
+  {\let\endmcitethebibliography\endthebibliography}{}
+\begin{mcitethebibliography}{49}
+\providecommand*\natexlab[1]{#1}
+\providecommand*\mciteSetBstSublistMode[1]{}
+\providecommand*\mciteSetBstMaxWidthForm[2]{}
+\providecommand*\mciteBstWouldAddEndPuncttrue
+  {\def\EndOfBibitem{\unskip.}}
+\providecommand*\mciteBstWouldAddEndPunctfalse
+  {\let\EndOfBibitem\relax}
+\providecommand*\mciteSetBstMidEndSepPunct[3]{}
+\providecommand*\mciteSetBstSublistLabelBeginEnd[3]{}
+\providecommand*\EndOfBibitem{}
+\mciteSetBstSublistMode{f}
+\mciteSetBstMaxWidthForm{subitem}{(\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd
+  {\mcitemaxwidthsubitemform\space}
+  {\relax}
+  {\relax}
+
+\bibitem[Honma \latin{et~al.}(2019)Honma, Kitazawa, Cayley, Williams, Barber,
+  Hanser, Saiakhov, Chakravarti, Myatt, Cross, \latin{et~al.}
+  others]{Honma_2019}
+Honma,~M.; Kitazawa,~A.; Cayley,~A.; Williams,~R.~V.; Barber,~C.; Hanser,~T.;
+  Saiakhov,~R.; Chakravarti,~S.; Myatt,~G.~J.; Cross,~K.~P.; others Improvement
+  of Quantitative Structure--Activity Relationship ({QSAR}) Tools for
+  Predicting {Ames} Mutagenicity: Outcomes of the {Ames/QSAR} International
+  Challenge Project. \emph{Mutagenesis} \textbf{2019}, \emph{34}, 3--16\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Furuhama \latin{et~al.}(2023)Furuhama, Kitazawa, Yao, {Matos dos
+  Santos}, Rathman, Yang, Ribeiro, Cross, Myatt, Raitano, Benfenati,
+  Jeliazkova, Saiakhov, Chakravarti, Bossa, Benigni, Battistelli, and
+  Honma]{Furuhama_2023}
+Furuhama,~A. \latin{et~al.}  Evaluation of {QSAR} Models for Predicting
+  Mutagenicity: Outcome of the Second {Ames/QSAR} International Challenge
+  Project. \emph{SAR and QSAR in Environmental Research} \textbf{2023},
+  \emph{34}, 983--1001\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Wu \latin{et~al.}(2018)Wu, Ramsundar, Feinberg, Gomes, Geniesse,
+  Pappu, Leswing, and Pande]{Wu_MoleculeNet_2018}
+Wu,~Z.; Ramsundar,~B.; Feinberg,~E.~N.; Gomes,~J.; Geniesse,~C.; Pappu,~A.~S.;
+  Leswing,~K.; Pande,~V. {MoleculeNet}: A Benchmark for Molecular Machine
+  Learning. \emph{Chem. Sci.} \textbf{2018}, \emph{9}, 513--530\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{European Parliament and Council}(2006)]{EU_REACH_2006}
+{European Parliament and Council} Regulation (EC) No 1907/2006 concerning the
+  Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH).
+  Official Journal of the European Union, L 396, 2006\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{Ministry of Environment, Republic of Korea}(2018)]{K_REACH_2018}
+{Ministry of Environment, Republic of Korea} Act on Registration, Evaluation,
+  Etc. of Chemicals (K-REACH), Act No. 15511. 2018\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{European Chemicals Agency}(2008)]{ECHA_QSAR_2008}
+{European Chemicals Agency} \emph{Guidance on Information Requirements and
+  Chemical Safety Assessment, Chapter R.6: QSARs and grouping of chemicals};
+  2008\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{International Council for Harmonisation}(2017)]{ICH_M7_2017}
+{International Council for Harmonisation} {ICH} {M7(R2)}: Assessment and
+  Control of {DNA} Reactive (Mutagenic) Impurities in Pharmaceuticals to Limit
+  Potential Carcinogenic Risk. 2017;
+  \url{https://www.ich.org/page/multidisciplinary-guidelines}, Step 4
+  version\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Ames \latin{et~al.}(1973)Ames, Durston, Yamasaki, and Lee]{Ames_1973}
+Ames,~B.~N.; Durston,~W.~E.; Yamasaki,~E.; Lee,~F.~D. Carcinogens Are Mutagens:
+  A Simple Test System Combining Liver Homogenates for Activation and Bacteria
+  for Detection. \emph{Proc. Natl. Acad. Sci. U.S.A.} \textbf{1973}, \emph{70},
+  2281--2285\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Mortelmans and Zeiger(2000)Mortelmans, and Zeiger]{Mortelmans_2000}
+Mortelmans,~K.; Zeiger,~E. The {Ames} {Salmonella}/Microsome Mutagenicity
+  Assay. \emph{Mutat. Res.} \textbf{2000}, \emph{455}, 29--60\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{OECD}(2016)]{OECD_473}
+{OECD} {OECD} Test Guideline 473: In Vitro Mammalian Chromosomal Aberration
+  Test. 2016\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{OECD}(2016)]{OECD_474}
+{OECD} {OECD} Test Guideline 474: Mammalian Erythrocyte Micronucleus Test.
+  2016\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Russell and Burch(1959)Russell, and Burch]{Russell_Burch_1959}
+Russell,~W. M.~S.; Burch,~R.~L. \emph{The Principles of Humane Experimental
+  Technique}; Methuen: London, 1959\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hansen \latin{et~al.}(2009)Hansen, Mika, Schroeter, Sber, Benigni,
+  Bossa, Netzeva, Helma, Kramer, and M{\"u}ller]{Hansen_2009}
+Hansen,~K.; Mika,~S.; Schroeter,~T.; Sber,~A.; Benigni,~R.; Bossa,~C.;
+  Netzeva,~T.~I.; Helma,~C.; Kramer,~S.; M{\"u}ller,~K.-R. Benchmark Data Set
+  for in Silico Prediction of {Ames} Mutagenicity. \emph{J. Chem. Inf. Model.}
+  \textbf{2009}, \emph{49}, 2077--2081\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Xu \latin{et~al.}(2012)Xu, Cheng, Chen, Du, Li, Liu, Lee, and
+  Tang]{Xu_2012}
+Xu,~C.; Cheng,~F.; Chen,~L.; Du,~Z.; Li,~W.; Liu,~G.; Lee,~P.~W.; Tang,~Y. In
+  Silico Prediction of Chemical {Ames} Mutagenicity. \emph{J. Chem. Inf.
+  Model.} \textbf{2012}, \emph{52}, 2840--2847\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Li \latin{et~al.}(2021)Li, Wan, Shu, Jiang, Zhao, and Zeng]{Li_2021}
+Li,~S.; Wan,~F.; Shu,~H.; Jiang,~T.; Zhao,~D.; Zeng,~J. Machine
+  Learning--Predicting {Ames} Mutagenicity of Small Molecules. \emph{Toxicol.
+  Rep.} \textbf{2021}, \emph{8}, 1570--1577\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Bemis and Murcko(1996)Bemis, and Murcko]{Bemis_Murcko_1996}
+Bemis,~G.~W.; Murcko,~M.~A. The Properties of Known Drugs. 1. {Molecular}
+  Frameworks. \emph{J. Med. Chem.} \textbf{1996}, \emph{39}, 2887--2893\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Sheridan(2013)]{Sheridan_2013}
+Sheridan,~R.~P. Time-Split Cross-Validation as a Method for Estimating the
+  Goodness of Prospective Prediction. \emph{J. Chem. Inf. Model.}
+  \textbf{2013}, \emph{53}, 783--790\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Tropsha(2010)]{Tropsha_2010}
+Tropsha,~A. Best Practices for {QSAR} Model Development, Validation, and
+  Exploitation. \emph{Mol. Inf.} \textbf{2010}, \emph{29}, 476--488\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hanser \latin{et~al.}(2016)Hanser, Barber, Marchaland, and
+  Werner]{Hanser_2016}
+Hanser,~T.; Barber,~C.; Marchaland,~J.~F.; Werner,~S. Applicability Domain:
+  Towards a More Formal Definition. \emph{SAR QSAR Environ. Res.}
+  \textbf{2016}, \emph{27}, 893--909\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Fourches \latin{et~al.}(2010)Fourches, Muratov, and
+  Tropsha]{Fourches_2010}
+Fourches,~D.; Muratov,~E.; Tropsha,~A. Trust, but Verify: On the Importance of
+  Chemical Structure Curation in Cheminformatics and {QSAR} Modeling Research.
+  \emph{J. Chem. Inf. Model.} \textbf{2010}, \emph{50}, 1189--1204\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Fourches \latin{et~al.}(2016)Fourches, Muratov, and
+  Tropsha]{Fourches_2016}
+Fourches,~D.; Muratov,~E.; Tropsha,~A. Trust, but Verify {II}: A Practical
+  Guide to Chemogenomics Data Curation. \emph{J. Chem. Inf. Model.}
+  \textbf{2016}, \emph{56}, 1243--1252\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Yang \latin{et~al.}(2019)Yang, Swanson, Jin, Coley, Eiden, Gao,
+  Guzman-Perez, Hopper, Kelley, Mathea, \latin{et~al.} others]{Yang_2019}
+Yang,~K.; Swanson,~K.; Jin,~W.; Coley,~C.; Eiden,~P.; Gao,~H.;
+  Guzman-Perez,~A.; Hopper,~T.; Kelley,~B.; Mathea,~M.; others Analyzing
+  Learned Molecular Representations for Property Prediction. \emph{J. Chem.
+  Inf. Model.} \textbf{2019}, \emph{59}, 3370--3388\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Mayr \latin{et~al.}(2016)Mayr, Klambauer, Unterthiner, and
+  Hochreiter]{Mayr_2016}
+Mayr,~A.; Klambauer,~G.; Unterthiner,~T.; Hochreiter,~S. {DeepTox}: Toxicity
+  Prediction Using Deep Learning. \emph{Front. Environ. Sci.} \textbf{2016},
+  \emph{3}, 80\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Dem{\v{s}}ar(2006)]{Demsar_2006}
+Dem{\v{s}}ar,~J. Statistical Comparisons of Classifiers over Multiple Data
+  Sets. \emph{J. Mach. Learn. Res.} \textbf{2006}, \emph{7}, 1--30\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Klimisch \latin{et~al.}(1997)Klimisch, Andreae, and
+  Tillmann]{Klimisch_1997}
+Klimisch,~H.-J.; Andreae,~M.; Tillmann,~U. A Systematic Approach for Evaluating
+  the Quality of Experimental Toxicological and Ecotoxicological Data.
+  \emph{Regulatory Toxicology and Pharmacology} \textbf{1997}, \emph{25},
+  1--5\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Landrum \latin{et~al.}()Landrum, \latin{et~al.} others]{RDKit}
+Landrum,~G.; others {RDKit}: Open-Source Cheminformatics Software.
+  \url{https://www.rdkit.org}, Version 2023.03\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Rogers and Hahn(2010)Rogers, and Hahn]{Rogers_Hahn_2010}
+Rogers,~D.; Hahn,~M. Extended-Connectivity Fingerprints. \emph{J. Chem. Inf.
+  Model.} \textbf{2010}, \emph{50}, 742--754\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Benigni and Bossa(2008)Benigni, and Bossa]{Benigni_Bossa_2008}
+Benigni,~R.; Bossa,~C. Structure Alerts for Carcinogenicity, and the
+  {Salmonella} Assay System: A Novel Approach Using the Concept of
+  Complementary Groups of Alerts. \emph{J. Chem. Inf. Model.} \textbf{2008},
+  \emph{48}, 71--79\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Benigni \latin{et~al.}(2013)Benigni, Bossa, and
+  Tcheremenskaia]{Benigni_2013}
+Benigni,~R.; Bossa,~C.; Tcheremenskaia,~O. Nongenotoxic Carcinogenicity of
+  Chemicals: Mechanisms of Action and Early Recognition through a New Set of
+  Structural Alerts. \emph{Chem. Rev.} \textbf{2013}, \emph{113},
+  2940--2957\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kazius \latin{et~al.}(2005)Kazius, McGuire, and Bursi]{Kazius_2005}
+Kazius,~J.; McGuire,~R.; Bursi,~R. Derivation and Validation of Toxicophores
+  for Mutagenicity Prediction. \emph{J. Med. Chem.} \textbf{2005}, \emph{48},
+  312--320\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kraskov \latin{et~al.}(2004)Kraskov, St{\"o}gbauer, and
+  Grassberger]{Kraskov_2004}
+Kraskov,~A.; St{\"o}gbauer,~H.; Grassberger,~P. Estimating Mutual Information.
+  \emph{Phys. Rev. E} \textbf{2004}, \emph{69}, 066138\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Chen and Guestrin(2016)Chen, and Guestrin]{Chen_XGBoost_2016}
+Chen,~T.; Guestrin,~C. {XGBoost}: A Scalable Tree Boosting System. Proceedings
+  of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and
+  Data Mining. 2016; pp 785--794\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Ke \latin{et~al.}(2017)Ke, Meng, Finley, Wang, Chen, Ma, Ye, and
+  Liu]{Ke_LightGBM_2017}
+Ke,~G.; Meng,~Q.; Finley,~T.; Wang,~T.; Chen,~W.; Ma,~W.; Ye,~Q.; Liu,~T.-Y.
+  {LightGBM}: A Highly Efficient Gradient Boosting Decision Tree. Advances in
+  Neural Information Processing Systems. 2017; pp 3146--3154\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Breiman(2001)]{Breiman_2001}
+Breiman,~L. Random Forests. \emph{Mach. Learn.} \textbf{2001}, \emph{45},
+  5--32\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Cortes and Vapnik(1995)Cortes, and Vapnik]{Cortes_Vapnik_1995}
+Cortes,~C.; Vapnik,~V. Support-Vector Networks. \emph{Mach. Learn.}
+  \textbf{1995}, \emph{20}, 273--297\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Cox(1958)]{Cox_1958}
+Cox,~D.~R. The Regression Analysis of Binary Sequences. \emph{J. R. Stat. Soc.,
+  Ser. B} \textbf{1958}, \emph{20}, 215--242\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Rumelhart \latin{et~al.}(1986)Rumelhart, Hinton, and
+  Williams]{Rumelhart_1986}
+Rumelhart,~D.~E.; Hinton,~G.~E.; Williams,~R.~J. Learning Representations by
+  Back-Propagating Errors. \emph{Nature} \textbf{1986}, \emph{323},
+  533--536\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kipf and Welling(2017)Kipf, and Welling]{Kipf_Welling_2017}
+Kipf,~T.~N.; Welling,~M. Semi-Supervised Classification with Graph
+  Convolutional Networks. International Conference on Learning Representations
+  (ICLR). 2017\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Pedregosa \latin{et~al.}(2011)Pedregosa, Varoquaux, Gramfort, Michel,
+  Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, \latin{et~al.}
+  others]{Pedregosa_sklearn_2011}
+Pedregosa,~F.; Varoquaux,~G.; Gramfort,~A.; Michel,~V.; Thirion,~B.;
+  Grisel,~O.; Blondel,~M.; Prettenhofer,~P.; Weiss,~R.; Dubourg,~V.; others
+  Scikit-Learn: Machine Learning in {Python}. \emph{J. Mach. Learn. Res.}
+  \textbf{2011}, \emph{12}, 2825--2830\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Matthews(1975)]{Matthews_1975}
+Matthews,~B.~W. Comparison of the Predicted and Observed Secondary Structure of
+  {T4} Phage Lysozyme. \emph{Biochim. Biophys. Acta} \textbf{1975}, \emph{405},
+  442--451\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Brier(1950)]{Brier_1950}
+Brier,~G.~W. Verification of Forecasts Expressed in Terms of Probability.
+  \emph{Mon. Weather Rev.} \textbf{1950}, \emph{78}, 1--3\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Lundberg and Lee(2017)Lundberg, and Lee]{Lundberg_SHAP_2017}
+Lundberg,~S.~M.; Lee,~S.-I. A Unified Approach to Interpreting Model
+  Predictions. Advances in Neural Information Processing Systems. 2017; pp
+  4765--4774\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[McNemar(1947)]{McNemar_1947}
+McNemar,~Q. Note on the Sampling Error of the Difference between Correlated
+  Proportions or Percentages. \emph{Psychometrika} \textbf{1947}, \emph{12},
+  153--157\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Dobo \latin{et~al.}(2012)Dobo, Greene, Fred, Glowienke, Harvey,
+  Hasselgren, Jolly, Kenyon, Munzner, Muster, \latin{et~al.} others]{Dobo_2012}
+Dobo,~K.~L.; Greene,~N.; Fred,~C.; Glowienke,~S.; Harvey,~J.~S.;
+  Hasselgren,~C.; Jolly,~R.; Kenyon,~M.~O.; Munzner,~J.~B.; Muster,~W.; others
+  In Silico Methods Combined with Expert Knowledge Rule Out Mutagenic Potential
+  of Pharmaceutical Impurities: An {ICH} {M7} Score. \emph{Regul. Toxicol.
+  Pharmacol.} \textbf{2012}, \emph{62}, 482--489\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Tweats \latin{et~al.}(2007)Tweats, Blakey, Heflich, Jacobs, Jacobsen,
+  Morita, Nishi, Pfuhler, Scott, Treumann, \latin{et~al.} others]{Tweats_2007}
+Tweats,~D.~J.; Blakey,~D.; Heflich,~R.~H.; Jacobs,~A.; Jacobsen,~S.~D.;
+  Morita,~T.; Nishi,~T.; Pfuhler,~S.; Scott,~D.; Treumann,~S.; others Report of
+  the {IWGT} Working Group on Strategies and Interpretation of Regulatory In
+  Vivo Tests {I}. Increases in Micronucleated Bone Marrow Cells in Rodents That
+  Do Not Indicate Genotoxic Hazards. \emph{Mutat. Res.} \textbf{2007},
+  \emph{627}, 78--91\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kirkland \latin{et~al.}(2011)Kirkland, Reeve, Gatehouse, and
+  Vanparys]{Kirkland_2011}
+Kirkland,~D.; Reeve,~L.; Gatehouse,~D.; Vanparys,~P. A Core In Vitro
+  Genotoxicity Battery Comprising the {Ames} Test Plus the In Vitro
+  Micronucleus Test Is Sufficient to Detect Rodent Carcinogens and In Vivo
+  Genotoxins. \emph{Mutat. Res.} \textbf{2011}, \emph{721}, 27--73\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Ramsundar \latin{et~al.}(2015)Ramsundar, Kearnes, Riley, Webster,
+  Konerding, and Pande]{Ramsundar_2015}
+Ramsundar,~B.; Kearnes,~S.; Riley,~P.; Webster,~D.; Konerding,~D.; Pande,~V.
+  Massively Multitask Networks for Drug Discovery. \emph{arXiv preprint
+  arXiv:1502.02072} \textbf{2015}, \relax
+\mciteBstWouldAddEndPunctfalse
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hu \latin{et~al.}(2020)Hu, Liu, Gomes, Zitnik, Liang, Pande, and
+  Leskovec]{Hu_2020_pretrain}
+Hu,~W.; Liu,~B.; Gomes,~J.; Zitnik,~M.; Liang,~P.; Pande,~V.; Leskovec,~J.
+  Strategies for Pre-Training Graph Neural Networks. International Conference
+  on Learning Representations (ICLR). 2020\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}

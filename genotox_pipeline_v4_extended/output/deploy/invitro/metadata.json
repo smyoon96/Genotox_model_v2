@@ -1,0 +1,105 @@
+{
+  "endpoint": "invitro",
+  "model_type": "lgbm",
+  "scenario": "no_metal",
+  "feature_mode": "broad_fp2048",
+  "n_features": 775,
+  "n_total": 1294,
+  "n_pos": 133,
+  "n_neg": 1161,
+  "cv_mcc": 0.1568,
+  "cv_mcc_std": 0.0562,
+  "mcc_default_05": 0.1539,
+  "optimal_threshold": 0.1,
+  "sensitivity": 0.3759,
+  "specificity": 0.8691,
+  "mcc_at_threshold": 0.205,
+  "bacc_at_threshold": 0.6225,
+  "spec_floor": 0.65,
+  "domain_weights": null,
+  "has_ames_stacking": true,
+  "elapsed_seconds": 11.0,
+  "timestamp": "2026-06-01T14:07:29.146446",
+  "top_features": [
+    {
+      "feature": "LogP",
+      "mean_abs_shap": 1.2580116549610774
+    },
+    {
+      "feature": "ames_proba",
+      "mean_abs_shap": 0.6127846791921597
+    },
+    {
+      "feature": "fp_0591",
+      "mean_abs_shap": 0.48774939600671763
+    },
+    {
+      "feature": "FractionCSP3",
+      "mean_abs_shap": 0.4476136115189195
+    },
+    {
+      "feature": "TPSA",
+      "mean_abs_shap": 0.4150008907983509
+    },
+    {
+      "feature": "sa_total_hits",
+      "mean_abs_shap": 0.3583625915161522
+    },
+    {
+      "feature": "MW",
+      "mean_abs_shap": 0.35172934904484704
+    },
+    {
+      "feature": "HeavyAtomCount",
+      "mean_abs_shap": 0.317191562299547
+    },
+    {
+      "feature": "fg_fg_ester_count",
+      "mean_abs_shap": 0.2823360185993864
+    },
+    {
+      "feature": "HeteroatomCount",
+      "mean_abs_shap": 0.25866661197383245
+    },
+    {
+      "feature": "fp_1143",
+      "mean_abs_shap": 0.22081353342824248
+    },
+    {
+      "feature": "NumValenceElectrons",
+      "mean_abs_shap": 0.21216249390161834
+    },
+    {
+      "feature": "RotatableBonds",
+      "mean_abs_shap": 0.2072364931939683
+    },
+    {
+      "feature": "RingCount",
+      "mean_abs_shap": 0.19614997678792737
+    },
+    {
+      "feature": "fp_1444",
+      "mean_abs_shap": 0.19091145608597337
+    },
+    {
+      "feature": "HBA",
+      "mean_abs_shap": 0.1776392347090374
+    },
+    {
+      "feature": "fp_0222",
+      "mean_abs_shap": 0.1676334151635608
+    },
+    {
+      "feature": "HBD",
+      "mean_abs_shap": 0.14723910630514292
+    },
+    {
+      "feature": "SA48_count",
+      "mean_abs_shap": 0.13683711161386292
+    },
+    {
+      "feature": "fp_0392",
+      "mean_abs_shap": 0.13134547871121288
+    }
+  ]
+}

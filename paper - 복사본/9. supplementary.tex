@@ -1,0 +1,226 @@
+\section*{Supporting Information}
+
+The Supporting Information is available free of charge. Summary tables are shown below; 
+complete per-configuration data are provided as supplementary CSV files in the code 
+repository.
+
+\subsection*{Table S0. Endpoint classification criteria}
+
+The full mapping of OECD, EPA, and EU Test Guidelines to the three endpoint categories 
+(Ames, in~vitro CA, in~vivo MN) used for curating all datasets is provided as 
+\texttt{table\_s0\_endpoint\_classification.xlsx}. This table was used to assign each raw 
+study record to one of the target endpoints prior to any modeling.
+
+\subsection*{Table S1. Random versus scaffold split comparison}
+
+\begin{table}[ht]
+\caption{Random vs.\ scaffold split (XGBoost, compact features, raw SMILES, 
+$5\!\times\!5$ CV).}
+\centering
+\small
+\begin{tabular}{@{}lrccc@{}}
+\toprule
+Endpoint    & $n$    & Random MCC        & Scaffold MCC      & $\Delta$ \\
+\midrule
+Ames        & 13,560 & $0.670 \pm 0.010$ & $0.624 \pm 0.049$ &  0.046   \\
+In vitro CA &  1,619 & $0.180 \pm 0.053$ & $0.189 \pm 0.084$ & $-$0.009 \\
+In vivo MN  &  2,153 & $0.181 \pm 0.094$ & $0.104 \pm 0.111$ &  0.077   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Table S2. Full 225-experiment results}
+
+Complete metrics (MCC, bootstrap CI, ROC-AUC, PR-AUC, balanced accuracy, sensitivity, 
+specificity, Brier score, AD coverage) for all 225 configurations are provided in 
+\texttt{table\_main\_default\_threshold.csv}. The same archive includes 
+\texttt{all\_locked\_test.csv} for the locked-configuration cascade and 
+\texttt{scenario\_cv\_selection.csv} documenting the per-scenario CV-selection state.
+
+\subsection*{Table S3. Hyperparameter tuning comparison}
+
+Default versus tuned MCC for all configurations, including optimized parameter values, are 
+provided in \texttt{table\_hp\_tuning\_comparison.csv}.
+
+\subsection*{Table S4. Applicability domain coverage}
+
+Per-configuration AD coverage (Tanimoto $\geq$ 0.3, 1024-bit Morgan FP) and mean similarity 
+values are provided in \texttt{ad\_coverage\_summary.csv}. Coverage ranged from 48.5\% 
+(in~vitro) to 58.9\% (in~vivo) across configurations.
+
+\subsection*{Table S5. Cross-endpoint compound overlap}
+
+Pairwise compound overlap and label concordance ($\kappa$) between the three endpoint 
+datasets are provided in \texttt{cross\_endpoint\_overlap.csv}. Overlap with Ames was 
+97.5\% for in~vitro and 92.1\% for in~vivo.
+
+\subsection*{Table S6. SHAP feature importance}
+
+SHAP values (mean $|$SHAP$|$, TreeExplainer) for all features across all tree-based models 
+are provided in \texttt{shap\_all\_experiments.csv}; per-endpoint top-20 summaries are in 
+\texttt{shap\_top20\_ames.csv}, \texttt{shap\_top20\_invitro.csv}, and 
+\texttt{shap\_top20\_invivo.csv}. Statistical comparison results between top algorithms 
+(McNemar, Cochran's Q where applicable) are provided in 
+\texttt{statistical\_comparison\_\{ames,invitro,invivo,invitro\_sampling,invivo\_sampling\}.csv} 
+and the cross-endpoint summary in \texttt{mcnemar\_tests.csv}. Learning-curve raw data 
+(Figure~\ref{fig:learning_curves}) are in \texttt{learning\_curves.csv}.
+
+\subsection*{Table S7. LDO threshold-tuning analysis (prior shift vs.\ source shift)}
+
+To distinguish prior shift (calibration mismatch from differing prevalence) from genuine 
+source shift, we evaluated each LDO direction at three decision thresholds: default 
+($t = 0.5$), prior-corrected ($t$ = training positive rate), and oracle ($t$ maximizing MCC 
+on the test set, providing an upper bound). Per-direction and per-algorithm results are 
+shown below.
+
+\textit{Note on features and main-pipeline comparability.} For computational tractability 
+this analysis used Morgan FP-1024 + 13 physicochemical descriptors rather than the full 
+138-feature compact set used in the main pipeline. Absolute MCC values therefore differ from 
+Table~\ref{tab:ldo} (notably RF industrial$\to$drug: 0.102 here vs.\ 0.325 in the main 
+analysis). The internal three-threshold comparison within each row is valid because 
+identical features are used across thresholds, but the algorithm ranking observed at the 
+default threshold should not be cross-referenced with Table~\ref{tab:ldo}, which uses a 
+different feature set. Re-running this decomposition with the 138-feature compact set is 
+identified in the Discussion as the highest-priority follow-up experiment.
+
+% TODO[smyoon]: When the 138-feature compact threshold decomposition is run, replace the 
+% values in this table (or add a parallel Table S7b) and update the cross-references in 
+% the Discussion accordingly.
+
+\begin{table}[ht]
+\caption{LDO threshold-tuning analysis (Morgan FP-1024 + 13 physchem features). Default = 
+MCC at $t = 0.5$. Prior-corrected = MCC at $t$ equal to the training positive rate. Oracle 
+= upper bound MCC across all thresholds. The gap between oracle LDO MCC and the in-domain 
+scaffold-CV MCC ($\approx$0.624) isolates the irreducible source shift that cannot be 
+corrected by threshold tuning.}
+\centering
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Direction & Algo. & MCC default & MCC prior-corr. & MCC oracle & Oracle threshold \\
+\midrule
+Drug $\to$ Ind.\ & XGBoost  & 0.231 & 0.263 & 0.310 & 0.788 \\
+Drug $\to$ Ind.\ & LightGBM & 0.241 & 0.264 & 0.304 & 0.781 \\
+Drug $\to$ Ind.\ & RF       & 0.250 & 0.299 & 0.359 & 0.690 \\
+Ind.\ $\to$ Drug & XGBoost  & 0.200 & 0.267 & 0.273 & 0.041 \\
+Ind.\ $\to$ Drug & LightGBM & 0.239 & 0.214 & 0.267 & 0.180 \\
+Ind.\ $\to$ Drug & RF       & 0.102 & 0.341 & 0.345 & 0.037 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+Mean improvement (default $\to$ prior-corrected): $+0.075$ (range $-0.024$ to $+0.239$).
+Mean improvement (default $\to$ oracle): $+0.108$ (range $+0.028$ to $+0.243$).
+Oracle MCC range: 0.267--0.359, all substantially below the in-domain scaffold-CV MCC of 
+0.624.
+\end{table}
+
+\subsection*{Table S8. LDO threshold-tuning analysis on the locked-configuration features (gap decomposition)}
+
+This table complements Table~S7 by applying the same three-threshold decomposition with the 
+locked-configuration features (138-feature compact: 13 physicochemical descriptors + 125 
+structural alerts on raw SMILES). Unlike Table~\ref{tab:ldo}, which uses the full 
+within-domain partitions (drug $n=6{,}416$; industrial $n=7{,}144$), this analysis was 
+performed on a reduced cross-source partition (drug train $n=5{,}027$; industrial train 
+$n=5{,}821$); see methodological note below.
+
+The shared in-domain reference is the locked-configuration scaffold-CV MCC ($0.6241$, 
+matching Table~\ref{tab:cascade}). The reported \textit{plateau} interval is the oracle MCC 
+$\pm 0.030$, intended as a rough robustness range under threshold perturbation, \textit{not} 
+a confidence interval.
+
+\begin{table}[ht]
+\caption{LDO threshold decomposition on the locked-configuration compact features. 
+$\Delta_{\mathrm{total}} = $ in-domain CV MCC $-$ default-threshold LDO MCC. 
+$\Delta_{\mathrm{prior}} = $ oracle MCC $-$ default LDO MCC (the part recoverable by 
+threshold tuning). $\Delta_{\mathrm{residual}} = $ in-domain CV MCC $-$ oracle MCC (the 
+irreducible source-shift component). Across all six rows, threshold tuning explains 
+30.9--35.3\,\% of the total LDO gap.}
+\label{tab:ldo_decomp}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrrrrrr@{}}
+\toprule
+Direction & Algo. & 
+$\mathrm{MCC}_{t=0.5}$ & Oracle $t$ & Oracle MCC & Plateau & 
+$\Delta_{\mathrm{total}}$ & $\Delta_{\mathrm{prior}}$ & $\Delta_{\mathrm{resid}}$ & \% expl. \\
+\midrule
+Drug $\to$ Ind.\ & XGBoost  & 0.118 & 0.120 & 0.285 & 0.255--0.305 & 0.506 & 0.167 & 0.339 & 33.0 \\
+Drug $\to$ Ind.\ & LightGBM & 0.103 & 0.120 & 0.270 & 0.240--0.290 & 0.521 & 0.167 & 0.354 & 32.0 \\
+Drug $\to$ Ind.\ & RF       & 0.089 & 0.120 & 0.254 & 0.224--0.274 & 0.535 & 0.165 & 0.370 & 30.9 \\
+Ind.\ $\to$ Drug & XGBoost  & 0.389 & 0.560 & 0.472 & 0.442--0.492 & 0.235 & 0.083 & 0.152 & 35.3 \\
+Ind.\ $\to$ Drug & LightGBM & 0.372 & 0.560 & 0.458 & 0.428--0.478 & 0.252 & 0.086 & 0.166 & 34.1 \\
+Ind.\ $\to$ Drug & RF       & 0.350 & 0.560 & 0.440 & 0.410--0.460 & 0.274 & 0.090 & 0.184 & 32.8 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+In-domain scaffold-CV MCC = 0.6241 (locked configuration; shared across all rows). All MCC values 
+rounded to 3 decimals from the source data. Test prior rates: drug = 0.59, industrial = 0.03.
+\end{table}
+
+\textit{Methodological note on partitioning.} The reduced-$N$ partition used in Table~S8 
+reflects [TODO: confirm exact rule from pipeline---e.g., removal of cross-source duplicate 
+compounds and/or scaffold-aware cross-domain partitioning before LDO]. As a result, the 
+default-threshold MCCs here are not directly comparable to Table~\ref{tab:ldo}: in particular, 
+the directional pattern at $t = 0.5$ is opposite (drug $\to$ industrial is harder here, 
+industrial $\to$ drug harder in Table~\ref{tab:ldo}), reflecting the different test-set 
+prevalence after partitioning. The within-row threshold comparison and the 
+$\Delta_{\mathrm{total}}/\Delta_{\mathrm{prior}}/\Delta_{\mathrm{residual}}$ decomposition 
+remain internally valid because identical data and features are used across the three 
+thresholds within each row.
+
+% TODO[smyoon]: (1) Confirm and document the exact partitioning rule used for Table S8 
+% (cross-source dedup, scaffold-aware split, or other). 
+% (2) If the partitioning rule applied here can be applied to Table~\ref{tab:ldo} as well,
+% consider regenerating Table 5 on the same partition so the two analyses are directly 
+% comparable. Alternatively, retain both with the methodological note above as the 
+% reconciling explanation.
+
+\subsection*{Table S9. Leave-domain-out raw metrics with bootstrap confidence intervals (Ames, full partition)}
+
+Table~S9 reports the complete per-row metrics underlying Table~\ref{tab:ldo} on the full 
+LDO partition (drug $n=6{,}416$ pos.\ rate 58.3\%; industrial $n=7{,}144$ pos.\ rate 3.0\%) 
+at the default decision threshold. All metrics are computed with bootstrap 95\% CIs (500 
+iterations); the underlying CSV is \texttt{ames\_leave\_domain\_out.csv}.
+
+\begin{table}[ht]
+\caption{LDO raw metrics with 95\% bootstrap confidence intervals. MCC, balanced accuracy 
+(BAcc), ROC-AUC, sensitivity (Sens), and specificity (Spec) are reported as 
+$\mathrm{point}\,[\mathrm{lo},\mathrm{hi}]$. Brier score is the mean Brier loss; lower is 
+better.}
+\label{tab:ldo_raw}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Direction & Algo. & MCC & BAcc & ROC-AUC & Sens & Spec \\
+\midrule
+Drug $\to$ Ind.\ & XGB  & 0.234 [0.201,\,0.264] & 0.750 [0.718,\,0.778] & 0.813 [0.781,\,0.842] & 0.640 [0.577,\,0.699] & 0.859 [0.850,\,0.867] \\
+Drug $\to$ Ind.\ & LGBM & 0.232 [0.199,\,0.262] & 0.753 [0.719,\,0.784] & 0.816 [0.785,\,0.846] & 0.655 [0.589,\,0.717] & 0.851 [0.843,\,0.859] \\
+Drug $\to$ Ind.\ & RF   & 0.236 [0.202,\,0.267] & 0.743 [0.711,\,0.773] & 0.816 [0.787,\,0.843] & 0.616 [0.552,\,0.677] & 0.871 [0.862,\,0.879] \\
+\midrule
+Ind.\ $\to$ Drug & XGB  & 0.122 [0.103,\,0.140] & 0.525 [0.520,\,0.529] & 0.739 [0.726,\,0.752] & 0.062 [0.054,\,0.069] & 0.988 [0.983,\,0.992] \\
+Ind.\ $\to$ Drug & LGBM & 0.134 [0.115,\,0.151] & 0.531 [0.526,\,0.536] & 0.724 [0.713,\,0.736] & 0.081 [0.072,\,0.090] & 0.981 [0.976,\,0.986] \\
+Ind.\ $\to$ Drug & RF   & 0.325 [0.304,\,0.346] & 0.656 [0.646,\,0.666] & 0.737 [0.725,\,0.749] & 0.466 [0.450,\,0.483] & 0.846 [0.831,\,0.860] \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+Brier scores (mean of bootstrap distribution): XGB drug$\to$ind 0.124, ind$\to$drug 0.456; 
+LGBM drug$\to$ind 0.127, ind$\to$drug 0.464; RF drug$\to$ind 0.117, ind$\to$drug 0.241. The 
+sharp Brier asymmetry between the two LDO directions reflects the prior-shift effect 
+discussed in the main text and quantified in Table~\ref{tab:ldo_decomp}.
+\end{table}
+
+The CI structure here is informative beyond the point estimates: the RF industrial$\to$drug 
+result (MCC 0.325 [0.304,\,0.346]) is statistically clearly separated from XGB and LGBM 
+(MCC CIs upper-bounded at 0.140 and 0.151 respectively), supporting the claim that RF's 
+cross-source advantage in this direction is not attributable to point-estimate noise. By 
+contrast, the three algorithms are statistically indistinguishable in the drug$\to$industrial 
+direction.

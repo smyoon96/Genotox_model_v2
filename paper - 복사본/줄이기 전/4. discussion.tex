@@ -1,0 +1,60 @@
+\section{Discussion}
+
+\subsection{The Performance Variation Hierarchy}
+
+Using a single locked configuration, we observed the following hierarchy of effects on apparent Ames QSAR performance:
+
+\begin{center}
+Source heterogeneity $\gg$ Splitting method $\approx$ In-domain algorithm choice
+\end{center}
+
+The source-heterogeneity gap (scaffold CV $\to$ LDO, $\Delta = 0.390$) was an order of magnitude larger than the split-method gap ($\Delta = 0.046$), which itself was comparable to the in-domain algorithm spread (MCC range = 0.063 across all seven algorithms under fixed features and preprocessing). Three caveats apply: the hierarchy was established on a single Ames benchmark with source labels available; the LDO $\Delta = 0.390$ also reflects asymmetric test sizes and class distributions and should be read as an upper bound; and algorithm robustness was not equivalent under source shift, so algorithm choice may matter substantially more in cross-source deployment than the in-domain comparison suggests.
+
+\subsection{What Drives the Source-Heterogeneity Gap?}
+
+We identify four non-exclusive hypotheses, listed in roughly decreasing parsimony:
+
+\textbf{Prior shift from prevalence imbalance.} The 19.5-fold prevalence gap (drug 58.3\% vs.\ industrial 3.0\%) alone can mechanically lower MCC: a model trained on one prevalence and evaluated at the default threshold ($t = 0.5$) on data with very different prevalence will be miscalibrated. The directional asymmetry we observe---XGBoost reaching sensitivity of only 0.062 in the industrial$\to$drug direction---is consistent with this mechanism.
+
+\textbf{Data quality and labeling heterogeneity.} Drug-sourced compounds come from curated pharmaceutical benchmarks, while industrial compounds come from regulatory submissions (ECHA, K-REACH) where testing protocols, laboratory standards, and reporting conventions vary. Differences in assay sensitivity, strain selection, or dose ranges could shift the prevalence gap independently of any chemical difference.
+
+\textbf{Selection bias.} Drug candidates are designed to interact with biological targets, raising the chance of incidental genotoxicity, while industrial chemicals are selected for manufacturability and stability. This is a sampling property, not a chemical-domain difference per se.
+
+\textbf{Chemical space difference.} Pharmaceutical and industrial libraries may simply occupy different regions of property space.\cite{Lipinski_2004,Veber_2002} If this dominates, even a perfectly calibrated cross-source model would generalize poorly.
+
+\subsection{Disentangling Prior Shift from Genuine Source Shift}
+
+To estimate how much of the LDO collapse is attributable to prevalence imbalance alone, we evaluated each LDO direction at three thresholds: \textbf{default} ($t = 0.5$), \textbf{prior-corrected} ($t$ = training positive rate, optimal under pure prior shift), and \textbf{oracle} ($t$ maximizing MCC on the test set, an upper bound on threshold-based recalibration). If oracle MCC approaches the in-domain CV value, the LDO collapse is mostly a calibration artifact; if it remains far below, a genuine structure--activity shift exists.
+
+For tractability, this analysis used Morgan FP-1024 plus the 13 physicochemical descriptors rather than the full 138-feature compact set used in the main pipeline. Absolute MCC values therefore differ from Table~\ref{tab:ldo}---most notably, Random Forest's industrial$\to$drug default MCC was 0.102 here versus 0.325 in the main analysis---but the internal three-threshold comparison remains valid because identical features are used at all three thresholds.
+
+The analysis (Table~S8) yielded three findings. First, prior-shift correction provided modest improvements (mean $+0.075$ across the six configurations, range $-0.024$ to $+0.239$). Second, the oracle MCC plateaued at 0.27--0.36, well below the in-domain scaffold-CV MCC of 0.624---a residual gap of 0.26--0.35 MCC units that cannot be eliminated by any threshold tuning. Third, algorithms differed sharply in default-threshold sensitivity: Random Forest in the industrial$\to$drug direction gained $+0.243$ MCC from default to oracle (0.102 $\to$ 0.345), while gradient boosting models gained only $+0.07$ to $+0.10$.
+
+In short, prevalence imbalance accounts for a meaningful but limited portion of the LDO collapse. A substantial residual gap remains that no recalibration can fix, and disentangling its drivers (chemical space, data quality, selection bias) would require matched-subset analysis. Regardless of cause, the practical implication is the same: published Ames QSAR performance is highly sensitive to the source composition of the evaluation set, and per-source threshold tuning alone cannot recover in-domain performance under cross-source evaluation.
+
+\subsection{In Vivo Micronucleus and Tiered Testing}
+
+The dissociation between ranking ability (ROC-AUC = 0.860, PR-AUC = 0.237, an 8.5-fold enrichment over the 0.028 baseline) and classification reliability (MCC CI crossing zero) has direct practical implications. For ICH M7-style binary hazard classification,\cite{ICH_M7_2017} in~vivo MN QSAR with 2D descriptors does not achieve sufficient reliability, but the enrichment over baseline suggests value as one input in tiered screening.\cite{Dobo_2012} The strong preprocessing sensitivity ($+0.22$ MCC from salt stripping) means that reported in~vivo performance depends critically on preprocessing choices that are often undocumented.\cite{Fourches_2016} Mechanistically, micronucleus induction depends on ADME, metabolic activation, tissue distribution, and DNA repair,\cite{Tweats_2007,Kirkland_2011} none of which 2D descriptors capture.
+
+\subsection{Cross-Endpoint Overlap and Preprocessing}
+
+The high compound overlap between endpoints ($>$90\% shared with Ames) implies that performance differences across endpoints (Ames MCC = 0.555 vs.\ in~vivo 0.311) are unlikely to come from different chemical spaces and instead reflect genuine differences in endpoint predictability from 2D structure.\cite{Tropsha_2010} Multi-task learning over all three endpoints may be a productive direction.\cite{Ramsundar_2015}
+
+Salt stripping was endpoint-specific: beneficial for in~vivo ($+0.22$ best-model improvement), mixed for Ames ($\pm 0.03$), and generally harmful for in~vitro ($-0.03$ to $-0.13$). One plausible explanation is that some counterions are themselves clastogenically relevant in the in~vitro CA assay; a stratified analysis by salt-containing vs.\ non-salt compounds would test this directly. The QSAR curation literature\cite{Fourches_2010,Fourches_2016} emphasizes standardization, but our results suggest the optimal strategy is endpoint-dependent.
+
+\subsection{Practical Recommendations}
+
+We propose the following reporting standards for genotoxicity QSAR:
+
+\begin{enumerate}
+    \item Use scaffold-based splitting for primary performance reporting.
+    \item When source labels are available, report cross-source LDO performance and disclose source composition with per-source positive rates.
+    \item Optimize preprocessing per endpoint rather than applying uniform pipelines.
+    \item Report bootstrap CIs and applicability domain coverage.
+    \item For endpoints with extreme class imbalance, separately report threshold-free (ROC-AUC, PR-AUC) and threshold-dependent (MCC, balanced accuracy) metrics.
+    \item When claiming algorithm superiority, test under domain shift as well as in-domain.
+\end{enumerate}
+
+\subsection{Limitations}
+
+(a)~Source heterogeneity analysis was limited to Ames; the other endpoints lacked source annotations. (b)~Source labels reflect data provenance rather than computed chemical classification; the relative contributions of prevalence imbalance, data quality, selection bias, and chemical space difference are partially addressed by the threshold-tuning analysis (Table~S8) but cannot be fully separated without matched-subset experiments. (c)~The in~vivo learning curve used only the locked configuration. (d)~A single scaffold split was used rather than repeated holdout. (e)~The GCN did not include edge features or pre-training.\cite{Hu_2020_pretrain} (f)~No 3D descriptors, QM descriptors, or metabolite predictions were included. (g)~Within-AD vs.\ outside-AD stratification for LDO was not conducted. (h)~McNemar tests were limited to pairwise top-two comparisons; multiple-comparison correction\cite{Demsar_2006} was not applied. (i)~Table~\ref{tab:best_models} reports best observed performance across 375 configurations on the test set, which introduces model-selection bias; the locked-configuration results (Table~\ref{tab:cascade}) provide unbiased estimates.

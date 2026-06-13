@@ -1,0 +1,4 @@
+endpoint,n,n_shared_features,n_aux_endpoints,cv_mcc_single,cv_mcc_multitask,delta_mcc
+ames,13560,575,2,0.7431,0.7,-0.0431
+invitro,1619,575,2,0.1568,0.3189,0.1621
+invivo,2153,575,2,0.2329,0.2166,-0.0163

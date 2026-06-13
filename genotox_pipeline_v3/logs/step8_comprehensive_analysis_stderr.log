@@ -1,0 +1,41 @@
+2026-05-08 04:20:52,389 [INFO] step8: ============================================================
+2026-05-08 04:20:52,389 [INFO] step8: Step 8: Comprehensive Analysis & Visualization
+2026-05-08 04:20:52,389 [INFO] step8: ============================================================
+2026-05-08 04:20:52,389 [INFO] step8: 
+--- Confusion Matrices ---
+2026-05-08 04:20:52,396 [INFO] step8: 
+--- Model Comparisons ---
+2026-05-08 04:20:52,397 [INFO] step8: 
+--- Feature Analysis ---
+2026-05-08 04:20:52,397 [INFO] step8: 
+--- Chemical Space ---
+2026-05-08 04:20:52,403 [ERROR] step8:   FAILED: cannot import name 'plot_property_distributions' from 'utils.chemical_space' (C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\utils\chemical_space.py)
+2026-05-08 04:20:52,403 [INFO] step8: 
+--- QM Analysis ---
+2026-05-08 04:20:53,050 [INFO] step8:   [ames] No QM columns -- skip
+2026-05-08 04:20:53,143 [INFO] step8:   [invitro] No QM columns -- skip
+2026-05-08 04:20:53,244 [INFO] step8:   [invivo] No QM columns -- skip
+2026-05-08 04:20:53,273 [INFO] step8:   [invitro_sampling] No QM columns -- skip
+2026-05-08 04:20:53,296 [INFO] step8:   [invivo_sampling] No QM columns -- skip
+2026-05-08 04:20:53,296 [INFO] step8: 
+--- CV Stability ---
+2026-05-08 04:20:53,297 [INFO] step8: 
+--- Hyperparam Landscape ---
+2026-05-08 04:20:53,297 [INFO] step8: 
+--- Endpoint Panel ---
+2026-05-08 04:20:53,297 [WARNING] step8: summary_metrics.csv not found
+2026-05-08 04:20:53,298 [INFO] step8: 
+============================================================
+2026-05-08 04:20:53,298 [INFO] step8: ANALYSIS COMPLETE
+2026-05-08 04:20:53,298 [INFO] step8: ============================================================
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] Confusion Matrices: ok
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] Model Comparisons: ok
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] Feature Analysis: ok
+2026-05-08 04:20:53,298 [INFO] step8:   [X] Chemical Space: failed: cannot import name 'plot_property_distributions' from 'utils.chemical_space' (C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\utils\chemical_space.py)
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] QM Analysis: ok
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] CV Stability: ok
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] Hyperparam Landscape: ok
+2026-05-08 04:20:53,298 [INFO] step8:   [OK] Endpoint Panel: ok
+2026-05-08 04:20:53,298 [INFO] step8: 
+Output: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs\analysis
+2026-05-08 04:20:53,299 [INFO] step8: Total files generated: 0

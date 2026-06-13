@@ -1,0 +1,29 @@
+2026-05-04 17:14:46,534 [INFO] step8: ============================================================
+2026-05-04 17:14:46,534 [INFO] step8: Step 8: Comprehensive Analysis & Visualization
+2026-05-04 17:14:46,534 [INFO] step8: ============================================================
+2026-05-04 17:14:46,535 [INFO] step8: 
+--- Confusion Matrices ---
+2026-05-04 17:14:46,538 [INFO] step8: 
+--- Model Comparisons ---
+2026-05-04 17:14:46,538 [INFO] step8: 
+--- Feature Analysis ---
+2026-05-04 17:14:46,538 [INFO] step8: 
+--- Chemical Space ---
+2026-05-04 17:14:46,540 [ERROR] step8:   FAILED: cannot import name 'plot_chemical_space_tsne' from 'utils.chemical_space' (C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v2\utils\chemical_space.py)
+2026-05-04 17:14:46,540 [INFO] step8: 
+--- QM Analysis ---
+2026-05-04 17:14:47,194 [ERROR] step8:   FAILED: list indices must be integers or slices, not str
+2026-05-04 17:14:47,201 [INFO] step8: 
+--- CV Stability ---
+2026-05-04 17:14:47,201 [INFO] step8: 
+--- Hyperparam Landscape ---
+2026-05-04 17:14:47,202 [INFO] step8: 
+--- Endpoint Panel ---
+2026-05-04 17:14:47,202 [WARNING] step8: summary_metrics.csv not found
+2026-05-04 17:14:47,202 [INFO] step8: 
+============================================================
+2026-05-04 17:14:47,202 [INFO] step8: ANALYSIS COMPLETE
+2026-05-04 17:14:47,202 [INFO] step8: ============================================================
+2026-05-04 17:14:47,207 [INFO] step8: 
+Output: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v2\runs\analysis
+2026-05-04 17:14:47,208 [INFO] step8: Total files generated: 0

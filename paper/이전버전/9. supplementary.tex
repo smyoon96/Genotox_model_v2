@@ -1,0 +1,92 @@
+\section*{Supporting Information}
+
+The Supporting Information is available free of charge. Summary tables are shown below; complete per-configuration data are provided as supplementary CSV files in the code repository.
+
+\subsection*{Table S0. Endpoint classification criteria}
+
+The full mapping of OECD, EPA, and EU Test Guidelines to the three endpoint categories (Ames, in~vitro CA, in~vivo MN) used for curating all datasets is provided as \texttt{table\_s0\_endpoint\_classification.xlsx}. This table was used to assign each raw study record to one of the target endpoints prior to any modeling.
+
+\subsection*{Table S1. Sampling endpoint results}
+
+\begin{table}[ht]
+\caption{Best model per sampling endpoint (exploratory). Small test sets; interpret with caution.}
+\centering
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Endpoint & Best model & MCC [95\% CI] & AUC & Sens. & $n_{\text{test}}$ \\
+\midrule
+In vitro (sampled) & RF / FP-512 & 0.663 [.459,.839] & 0.827 & 0.714 & 69 \\
+In vivo (sampled) & XGB / FP-1024 & 0.832 [.644,1.00] & 0.946 & 0.750 & 47 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Table S2. Random versus scaffold split comparison}
+
+\begin{table}[ht]
+\caption{Random vs.\ scaffold split (XGBoost, compact features, raw SMILES, 5$\times$5 CV).}
+\centering
+\small
+\begin{tabular}{@{}lrccc@{}}
+\toprule
+Endpoint & $n$ & Random MCC & Scaffold MCC & $\Delta$ \\
+\midrule
+Ames & 13,560 & $0.670 \pm 0.010$ & $0.624 \pm 0.049$ & 0.046 \\
+In vitro CA & 1,619 & $0.180 \pm 0.053$ & $0.189 \pm 0.084$ & $-$0.009 \\
+In vivo MN & 2,153 & $0.181 \pm 0.094$ & $0.104 \pm 0.111$ & 0.077 \\
+In vitro (sampled) & 345 & $0.393 \pm 0.085$ & $0.367 \pm 0.085$ & 0.026 \\
+In vivo (sampled) & 231 & $0.525 \pm 0.152$ & $0.429 \pm 0.157$ & 0.096 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Table S3. Full 375-experiment results}
+
+Complete metrics (MCC, bootstrap CI, ROC-AUC, PR-AUC, balanced accuracy, sensitivity, specificity, Brier score, AD coverage) for all 375 configurations are provided in \texttt{table\_s3\_full\_results.csv}.
+
+\subsection*{Table S4. Hyperparameter tuning comparison}
+
+Default versus tuned MCC for all configurations, including optimized parameter values, are provided in \texttt{table\_s4\_hp\_tuning.csv}.
+
+\subsection*{Table S5. Applicability domain coverage}
+
+Per-configuration AD coverage (Tanimoto $\geq$ 0.3, 1024-bit Morgan FP) and mean similarity values are provided in \texttt{table\_s5\_ad\_coverage.csv}. Coverage ranged from 48.5\% (in~vitro) to 58.9\% (in~vivo) across configurations.
+
+\subsection*{Table S6. Cross-endpoint compound overlap}
+
+Pairwise compound overlap and label concordance ($\kappa$) between all endpoint datasets are provided in \texttt{table\_s6\_cross\_endpoint.csv}. Overlap with Ames was 97.5\% for in~vitro and 92.1\% for in~vivo.
+
+\subsection*{Table S7. SHAP feature importance}
+
+SHAP values (mean $|$SHAP$|$, TreeExplainer) for all features across all tree-based models are provided in \texttt{table\_s7\_shap.csv}.
+
+\subsection*{Table S8. LDO threshold-tuning analysis (prior shift vs.\ source shift)}
+
+To distinguish prior shift (calibration mismatch from differing prevalence) from genuine source shift, we evaluated each LDO direction at three decision thresholds: default ($t=0.5$), prior-corrected ($t$ = training positive rate), and oracle ($t$ maximizing MCC on the test set, providing an upper bound). Per-direction and per-algorithm results are provided in \texttt{table\_s8\_ldo\_threshold\_analysis.csv}; the analysis script (\texttt{ldo\_threshold\_analysis.py}) is included in the supplementary materials.
+
+\textit{Note on features:} For computational tractability this analysis used Morgan FP-1024 + 13 physicochemical descriptors rather than the full 138-feature compact set used in the main pipeline. Absolute MCC values therefore differ from Table~\ref{tab:ldo} (notably RF industrial$\to$drug: 0.102 here vs.\ 0.325 in the main analysis). The internal three-threshold comparison within each row is valid because identical features are used across thresholds.
+
+\begin{table}[ht]
+\caption{LDO threshold-tuning analysis (Morgan FP-1024 + 13 physchem features). Default = MCC at $t=0.5$. Prior-corrected = MCC at $t$ equal to the training positive rate. Oracle = upper bound MCC across all thresholds. The gap between oracle LDO MCC and the in-domain scaffold-CV MCC ($\approx$0.624) isolates the irreducible source shift that cannot be corrected by threshold tuning.}
+\centering
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Direction & Algo. & MCC default & MCC prior-corr. & MCC oracle & Oracle threshold \\
+\midrule
+Drug $\to$ Ind.\ & XGBoost & 0.231 & 0.263 & 0.310 & 0.788 \\
+Drug $\to$ Ind.\ & LightGBM & 0.241 & 0.264 & 0.304 & 0.781 \\
+Drug $\to$ Ind.\ & RF & 0.250 & 0.299 & 0.359 & 0.690 \\
+Ind.\ $\to$ Drug & XGBoost & 0.200 & 0.267 & 0.273 & 0.041 \\
+Ind.\ $\to$ Drug & LightGBM & 0.239 & 0.214 & 0.267 & 0.180 \\
+Ind.\ $\to$ Drug & RF & 0.102 & 0.341 & 0.345 & 0.037 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\footnotesize
+Mean improvement (default $\to$ prior-corrected): $+0.075$ (range $-0.024$ to $+0.239$).
+Mean improvement (default $\to$ oracle): $+0.108$ (range $+0.028$ to $+0.243$).
+Oracle MCC range: 0.267--0.359, all substantially below the in-domain scaffold-CV MCC of 0.624.
+\end{table}

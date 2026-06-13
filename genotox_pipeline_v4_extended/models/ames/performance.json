@@ -1,0 +1,19 @@
+{
+  "endpoint": "ames",
+  "model_type": "xgb",
+  "scenario": "salt_stripped",
+  "feature_mode": "extended",
+  "n_train": 13560,
+  "n_pos": 3952,
+  "threshold": 0.23,
+  "overall": {
+    "mcc": 0.6876,
+    "sensitivity": 0.9297,
+    "specificity": 0.8128
+  },
+  "conformal_alpha005": {
+    "mcc": 0.8543,
+    "coverage": 0.8316
+  },
+  "cv_mcc": 0.7431
+}

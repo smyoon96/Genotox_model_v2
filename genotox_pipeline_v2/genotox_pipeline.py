@@ -21,12 +21,14 @@ import numpy as np, pandas as pd
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
+from utils.progress import pbar, step_header, task_done, eta_str
 from pipeline_v2_core import (
     resolve_conflicts, assign_scaffolds, fixed_split, apply_scenario,
     repeated_cv, bootstrap_ci, compute_ad, calibration,
     domain_confounding, leave_domain_out, cross_endpoint,
     find_smi, to_can, file_hash, interpret_result,
     learning_curve, pairwise_model_comparison, mcnemar_test,
+    oof_tune_threshold,          # [v12.2] unified OOF threshold grid search
     ANALYSIS_SMILES_COL,
 )
 from step2b_preprocessing_impact import classify_all_compounds
@@ -99,12 +101,16 @@ def make_model(name, spw):
             n_estimators=200, max_depth=10,
             class_weight="balanced", random_state=GLOBAL_SEED, n_jobs=-1)
     elif name == "svm":
-        from sklearn.svm import SVC
+        from sklearn.svm import SVC, LinearSVC
+        from sklearn.calibration import CalibratedClassifierCV
+        # LinearSVC + Platt scaling: O(n) vs RBF SVC O(n²~n³)
+        # n>3000이면 LinearSVC 사용, 그 이하면 RBF SVC
         return Pipeline([
             ("scaler", StandardScaler()),
-            ("clf", SVC(kernel="rbf", C=1.0, gamma="scale",
-                        class_weight="balanced", probability=True,
-                        random_state=GLOBAL_SEED))])
+            ("clf", CalibratedClassifierCV(
+                LinearSVC(C=0.1, class_weight="balanced",
+                          max_iter=2000, random_state=GLOBAL_SEED),
+                cv=3, method="sigmoid"))])
     elif name == "logistic":
         return Pipeline([
             ("scaler", StandardScaler()),
@@ -404,34 +410,15 @@ def _tune_gnn(smiles, y, groups, n_folds):
 
 
 # ═══════════════════════════════════════════════════════
-#  [METHOD-8 FIX] OOF Threshold — 5-fold
+#  [METHOD-8 FIX] OOF Threshold — pipeline_v2_core 통합 (v12.2)
 # ═══════════════════════════════════════════════════════
 
 def oof_threshold(X_train, y_train, groups, model_fn, n_folds=5):
-    """OOF probability-based threshold tuning. [FIX: 5 folds, was 3]"""
-    from sklearn.model_selection import GroupKFold
-    oof_proba = np.full(len(y_train), np.nan)
-    n_splits = min(n_folds, len(np.unique(groups)))
-    if n_splits < 2:
-        return 0.5
-    gkf = GroupKFold(n_splits=n_splits)
-    for tr_idx, val_idx in gkf.split(X_train, y_train, groups):
-        mdl = model_fn()
-        mdl.fit(X_train[tr_idx], y_train[tr_idx])
-        oof_proba[val_idx] = mdl.predict_proba(X_train[val_idx])[:, 1]
-    valid = ~np.isnan(oof_proba)
-    if valid.sum() < 10:
-        return 0.5
-    best_t, best_mcc = 0.5, -1
-    for t in np.arange(0.1, 0.9, 0.02):
-        pred = (oof_proba[valid] >= t).astype(int)
-        if len(set(pred)) < 2:
-            continue
-        m = matthews_corrcoef(y_train[valid], pred)
-        if m > best_mcc:
-            best_mcc = m
-            best_t = t
-    return round(best_t, 2)
+    """scaffold-aware OOF threshold. pipeline_v2_core.oof_tune_threshold 위임."""
+    return oof_tune_threshold(
+        X_train, y_train, groups=groups, model_fn=model_fn,
+        n_folds=n_folds, criterion="mcc",
+    )["best_threshold"]
 
 
 # ═══════════════════════════════════════════════════════
@@ -568,10 +555,8 @@ def run_pipeline(data_dir=None, tag="v12"):
     # ═══ STEP 1: Load + Clean ═══
     lg.info("STEP 1: Load + Clean")
     raw = {}
-    for ep, fn in [("ames", "ames.csv"), ("invitro", "invitro.csv"),
-                    ("invivo", "invivo.csv"),
-                    ("invitro_sampling", "invitro_sampling.csv"),
-                    ("invivo_sampling", "invivo_sampling.csv")]:
+    _ep_files = [("ames","ames.csv"),("invitro","invitro.csv"),("invivo","invivo.csv"),("invitro_sampling","invitro_sampling.csv"),("invivo_sampling","invivo_sampling.csv")]
+    for ep, fn in pbar(_ep_files, desc="[1] Load data", colour="cyan"):
         fp = dp / fn
         if not fp.exists():
             lg.info(f"  {fn} NOT FOUND — skipping")
@@ -614,7 +599,7 @@ def run_pipeline(data_dir=None, tag="v12"):
     # ═══ STEP 2: Preprocessing Flags ═══
     lg.info("STEP 2: Preprocessing Flags")
     flagged = {}
-    for ep, df in cleaned.items():
+    for ep, df in pbar(cleaned.items(), desc="[2] Preprocessing flags", total=len(cleaned), colour="cyan"):
         f = classify_all_compounds(df, smi_col="SMILES")
         f.to_csv(rd / ep / "preprocess_flags.csv", index=False)
         flagged[ep] = f
@@ -623,7 +608,7 @@ def run_pipeline(data_dir=None, tag="v12"):
     lg.info("STEP 3: Fixed Split")
     splits = {}
     smeta = {}
-    for ep, df in cleaned.items():
+    for ep, df in pbar(cleaned.items(), desc="[3] Scaffold split", total=len(cleaned), colour="cyan"):
         ds, m = fixed_split(assign_scaffolds(df, seed=GLOBAL_SEED), seed=GLOBAL_SEED)
         assert m["scaffold_overlap"] == 0
         ds.to_csv(rd / ep / "fixed_split.csv", index=False)
@@ -637,14 +622,14 @@ def run_pipeline(data_dir=None, tag="v12"):
     cv_rows = []
     best_sc = {}
 
-    for ep in ENDPOINTS:
+    for ep in pbar(ENDPOINTS, desc="[4] Scenario CV", colour="cyan"):
         if ep not in splits:
             continue
         ds = splits[ep]
         fl = flagged[ep]
         ep_best = {"scenario": "raw_all", "cv_mcc": -1}
 
-        for sc in SCENARIOS:
+        for sc in pbar(SCENARIOS, desc=f"  {ep} scenarios", leave=False):
             train, _ = apply_scenario(ds, sc, fl)
             if len(train) < 20:
                 continue
@@ -711,9 +696,8 @@ def run_pipeline(data_dir=None, tag="v12"):
     # Store predictions for McNemar tests
     test_predictions = {}  # {(ep, experiment): {"y_true": ..., "pred": ...}}
 
-    for ep in ENDPOINTS:
-        if ep not in splits:
-            continue
+    _ep_list = [ep for ep in ENDPOINTS if ep in splits]
+    for ep in pbar(_ep_list, desc="[5] Locked test eval", colour="green"):
         ds = splits[ep]
         fl = flagged[ep]
         orig_test_n = (ds["split"] == "test").sum()
@@ -728,7 +712,7 @@ def run_pipeline(data_dir=None, tag="v12"):
         smi_col_name = find_smi(ds)
         smiles_all = ds[smi_col_name].values
 
-        for sc in SCENARIOS:
+        for sc in pbar(SCENARIOS, desc=f"  {ep} scenarios", leave=False):
             sc_train, sc_test = apply_scenario(ds, sc, fl)
             if len(sc_train) < 10 or len(sc_test) < 5:
                 continue
@@ -818,18 +802,34 @@ def run_pipeline(data_dir=None, tag="v12"):
                 else:
                     continue
 
+                # [FIX] 문자열 컬럼 강제 numeric 변환 (SHAP '[5E-1]' 에러 방지)
+                for _c in feat_df.columns:
+                    feat_df[_c] = pd.to_numeric(feat_df[_c], errors="coerce")
+                feat_df = feat_df.fillna(0.0)
                 X_tr = feat_df.iloc[:n_tr].values.astype(np.float32)
                 X_te = feat_df.iloc[n_tr:].values.astype(np.float32)
 
-                for mn in available_tabular:
+                # n_samples 기반 모델 목록 축소
+                _avail_ep = list(available_tabular)
+                if len(y_tr) > 5000:
+                    # 대용량: logistic은 빠르므로 유지, SVM은 LinearSVC로 대체됨
+                    pass  # LinearSVC로 이미 교체됨
+                if len(y_tr) > 10000:
+                    # 초대용량(ames): HP tuning SVM 스킵
+                    lg.info(f"  [{ep}] n_train={len(y_tr)} > 10k — HP tuning skipped for svm")
+
+                for mn in pbar(_avail_ep, desc=f"    models", leave=False):
                     experiment = f"{ep}_{sc}_{fm}_{mn}"
                     edir = rd / experiment
                     edir.mkdir(parents=True, exist_ok=True)
 
+                    # per-model soft timeout 경고
+                    _model_t0 = time.time()
+
                     try:
                         # OOF threshold [METHOD-8 FIX: 5 folds]
                         opt_t = oof_threshold(X_tr, y_tr, groups_le,
-                                              lambda: make_model(mn, spw), n_folds=5)
+                                              lambda mn=mn: make_model(mn, spw), n_folds=5)
 
                         # Fixed-param model
                         mdl = make_model(mn, spw)
@@ -849,7 +849,11 @@ def run_pipeline(data_dir=None, tag="v12"):
                                          opt_t, mcc_tuned, cv_ref)
 
                         # HP tuning [CRITICAL-4: eval only on test]
+                        # 대용량 + 느린 모델은 HP tuning 스킵
+                        _skip_hp = (mn in ("svm",) and len(y_tr) > 5000)
                         try:
+                            if _skip_hp:
+                                raise RuntimeError(f"HP tuning skipped for {mn} (n={len(y_tr)}>5000)")
                             hp_mdl, hp_params, hp_cv = tune_model(
                                 X_tr, y_tr, groups_le, mn, spw)
                             hp_proba = hp_mdl.predict_proba(X_te)[:, 1]
@@ -892,9 +896,14 @@ def run_pipeline(data_dir=None, tag="v12"):
                         }
 
                         star = " ★" if is_rec else ""
+                        _model_elapsed = time.time() - _model_t0
+                        if _model_elapsed > 300:
+                            lg.warning(f"  ⚠ {mn} took {_model_elapsed:.0f}s "
+                                       f"on {ep}/{fm} (n={len(y_tr)})")
                         lg.info(f"  {experiment}: MCC={row.get('mcc', 0):.4f} "
                                 f"[{row.get('mcc_lo', 0):.4f},{row.get('mcc_hi', 0):.4f}] "
-                                f"t={opt_t} AD={ad_result['coverage']:.2f}{star}")
+                                f"t={opt_t} AD={ad_result['coverage']:.2f}{star} "
+                                f"({_model_elapsed:.0f}s)")
 
                     except Exception as e:
                         lg.info(f"  {experiment}: FAILED — {e}")

@@ -1,0 +1,143 @@
+\section{Discussion}
+
+\subsection{The Performance Variation Hierarchy}
+
+The locked-configuration analysis yielded the hierarchy
+
+\begin{center}
+Data source heterogeneity $\gg$ Splitting method $\approx$ In-domain algorithm choice
+\end{center}
+
+with the data source heterogeneity gap ($\Delta = 0.390$) an order of magnitude larger than the split-method gap ($\Delta = 0.046$), 
+itself comparable to the in-domain algorithm spread (MCC range = 0.063). The hierarchy was established on a single Ames benchmark; 
+the LDO $\Delta$ also reflects asymmetric test sizes and class distributions and should be read as an upper bound; and algorithm robustness was uneven under source shift, 
+so algorithm choice may matter much more in cross-source deployment than the in-domain comparison suggests.
+
+Importantly, the LDO experiment is not a deployment scenario.
+In practice, models are trained on all available data regardless of provenance, and the genotoxic potential of a chemical is fundamentally a property of its molecular structure,
+not of which database it was registered in. The point of cross-source evaluation is rather diagnostic:
+a large LDO drop reveals that apparent in-domain performance depends on the joint composition of training and test sets rather than on universally learned structure-activity relationships.
+This matters because new chemicals registered under EU REACH or K-REACH may occupy regions of chemical space that are sparsely represented in pharmaceutical benchmarks,
+and a benchmark MCC of 0.67 on a mixed-source test set provides little guarantee about the model's reliability on such compounds.
+Cross-source LDO acts as a stress test that exposes this dependency and gives a more honest lower bound on out-of-distribution performance.
+
+\subsection{What Drives the Data Source Heterogeneity Gap?}
+
+Four non-exclusive hypotheses can be identified, in roughly decreasing order of parsimony.
+\textbf{Prior shift} from the 19.5-fold prevalence gap can mechanically lower MCC by 
+miscalibrating the default threshold, consistent with XGB reaching sensitivity 0.062 in the 
+industrial$\to$drug direction. \textbf{Benchmark enrichment} is the most direct explanation 
+for the prevalence gap itself: published Ames benchmarks such as 
+Hansen\cite{Hansen_2009} were assembled to include a balanced set of known mutagens and 
+non-mutagens for evaluation purposes, whereas industrial REACH/K-REACH dossiers reflect the 
+prevalence of mutagenicity in the broader chemical economy, which is genuinely low. 
+\textbf{Data quality and labeling heterogeneity}---differing protocols, strain panels, S9 
+mix conditions, and curation conventions between drug and industrial sources---can shift 
+both prevalence and decision boundaries. \textbf{Chemical space difference} would mean that 
+even a perfectly calibrated cross-source model generalizes poorly because the two sources 
+occupy systematically different regions of descriptor space; published QSAR-curation work 
+documents the broad consequences of such differences for model 
+transportability.\cite{Tropsha_2010,Fourches_2010}
+
+% TODO[smyoon]: References Lipinski_2004 and Veber_2002 (originally cited here for 
+% "chemical space difference") are about drug-likeness/oral bioavailability, not QSAR 
+% generalization across chemical-space partitions. They have been removed; if you want a 
+% chemistry-space-specific citation here, candidates include Sheridan 2013 (already cited 
+% as Sheridan_2013), Tropsha 2010 (Tropsha_2010), or a recent applicability-domain review. 
+% Confirm before resubmission.
+
+To estimate the contribution of prior shift, each LDO direction was evaluated at three 
+thresholds: \textit{default} ($t = 0.5$), \textit{prior-corrected} ($t$ = training positive 
+rate, optimal under pure prior shift), and \textit{oracle} ($t$ maximizing MCC on the test 
+set, an upper bound on threshold-based recalibration). Two complementary analyses are 
+provided: Table~S7 uses Morgan FP-1024 + 13 physicochemical descriptors on the full LDO 
+partition, and Table~S8 uses the locked-configuration 138-feature compact set on a reduced 
+cross-source partition (drug train $n=5{,}027$; industrial train $n=5{,}821$).
+
+The headline quantitative result comes from Table~S8: across all six 
+algorithm-by-direction combinations on the locked-configuration features, threshold tuning 
+explains 30.9--35.3\,\% of the total LDO gap (default-threshold MCC vs.\ in-domain scaffold-CV 
+MCC of 0.6241), leaving a residual of $\Delta_{\mathrm{residual}} = 0.15$--$0.37$ MCC that 
+cannot be recovered by recalibration. The drug $\to$ industrial direction has a larger 
+residual ($\Delta_{\mathrm{residual}} = 0.34$--$0.37$) than industrial $\to$ drug 
+($\Delta_{\mathrm{residual}} = 0.15$--$0.18$), consistent with industrial-to-drug 
+generalization being supported by a larger and more diverse training set. The Table~S7 
+analysis on the full partition with FP-1024 features shows the same qualitative pattern 
+(prior-shift correction yields modest improvements, oracle MCC plateaus well below in-domain 
+performance), confirming that the gap-decomposition conclusion is robust to feature choice.
+
+In summary, prior shift accounts for roughly one-third of the LDO collapse, and the 
+remaining two-thirds reflect genuine source shift---some combination of chemical space 
+difference, data quality and labeling heterogeneity, and benchmark enrichment---that 
+threshold tuning alone cannot eliminate. Published Ames QSAR performance is therefore highly 
+sensitive to source composition, and threshold tuning is not a sufficient remedy.
+
+\textit{A note on the RF robustness finding.} The default-threshold MCC values for RF 
+differ across analyses: Table~\ref{tab:ldo} (full partition, compact features) shows RF 
+industrial $\to$ drug = 0.325, Table~S7 (full partition, FP-1024 features) shows 0.102, and 
+Table~S8 (reduced partition, compact features) shows 0.350. Tables~\ref{tab:ldo} and S8 are 
+broadly consistent (difference $\leq 0.03$), supporting the main-text claim that RF retains 
+useful cross-source classification ability in the harder direction when run with 
+domain-knowledge features. The Table~S7 result on FP-1024 features differs more 
+substantially, suggesting that the structural-alert component of the compact set carries 
+non-trivial cross-source information that fingerprints do not fully replicate. The 
+algorithm-comparison pattern at default threshold should therefore be read as 
+feature-conditional. The within-row gap decomposition in Table~S8 does not depend on 
+algorithm choice in this way: all three algorithms show the same 30.9--35.3\,\% prior-shift 
+share.
+
+% TODO[smyoon]: Table S8 (locked-config compact features, reduced partition) addresses the 
+% earlier "re-run threshold decomposition with 138-feature compact" TODO. The remaining 
+% open question is reconciling the reduced N (5027/5821 in S8) with the full N (6416/7144 
+% in Table 5). If both can be regenerated on a single shared partition, the cleanest 
+% revision is to do so and merge S7/S8 into one table; if not, the methodological note in 
+% S8 documenting the partition difference is the minimum acceptable disclosure.
+
+\subsection{In-Vivo Micronucleus and Tiered Testing}
+
+The dissociation between ranking ability (ROC-AUC = 0.860, PR-AUC = 0.237) and classification 
+reliability (MCC CI crossing zero) means that, on the present test set, in-vivo MN QSAR with 
+2D descriptors does not provide stable binary classification at any fixed threshold; a wider 
+external evaluation would be needed to determine whether this reflects an intrinsic limit of 
+2D representations or a sample-size limit (only 12 positives in the test set). The 8.5-fold 
+PR-AUC enrichment over baseline suggests value as one input in tiered screening under ICH 
+M7\cite{ICH_M7_2017} or REACH,\cite{EU_REACH_2006,Dobo_2012} provided downstream decisions 
+do not rely on threshold-based classification alone. The strong preprocessing sensitivity 
+($+0.22$ MCC from salt stripping) means reported in-vivo performance depends critically on 
+preprocessing choices that are often undocumented.\cite{Fourches_2016} Mechanistically, 
+micronucleus induction depends on ADME, metabolic activation, tissue distribution, and DNA 
+repair,\cite{Tweats_2007,Kirkland_2011} none of which 2D descriptors capture.
+
+\subsection{Cross-Endpoint Overlap and Preprocessing}
+
+The high compound overlap between endpoints ($>$90\% shared with Ames) implies that performance differences (Ames MCC = 0.555 vs.\ in-vivo 0.311) reflect endpoint predictability from 2D structure rather than 
+differing chemical spaces.\cite{Tropsha_2010} Multi-task learning may be a productive direction.\cite{Ramsundar_2015} 
+Salt stripping was beneficial for in-vivo, mixed for Ames, and harmful for in-vitro---possibly because some counterions are themselves clastogenically relevant. 
+The QSAR curation literature\cite{Fourches_2010,Fourches_2016} emphasizes standardization, but the present results suggest the optimal preprocessing strategy is endpoint-dependent.
+
+\subsection{Practical Recommendations}
+
+Based on these findings, we propose the following as useful additions to current reporting 
+practices for genotoxicity QSAR (rather than as a fixed standard from a single study): 
+(i)~scaffold-based splitting; 
+(ii)~when source labels exist, cross-source LDO performance with disclosed source composition; 
+(iii)~per-endpoint preprocessing optimization, with preprocessing flags reported alongside 
+metrics; 
+(iv)~bootstrap CIs and AD coverage; 
+(v)~for class-imbalanced endpoints, both threshold-free (ROC-AUC, PR-AUC) and 
+threshold-dependent (MCC, balanced accuracy) metrics; 
+(vi)~testing algorithm superiority claims under source shift, not just in-domain---in our 
+data, in-domain MCC range across seven algorithms was 0.063 while cross-source MCC range 
+across three tree-based algorithms reached 0.203.
+
+Several constraints bound these findings. A single scaffold split was used rather than 
+repeated holdout, the GCN did not include edge features or 
+pre-training,\cite{Hu_2020_pretrain} and 3D or QM descriptors, metabolite predictions, 
+within-AD vs.\ outside-AD stratification for LDO, and multiple-comparison correction for the 
+McNemar tests\cite{Demsar_2006} were not evaluated. The Klimisch quality filter was applied 
+only to the industrial-sourced data, since the drug-sourced benchmarks do not carry 
+equivalent annotations; this asymmetry is a residual confound for the cross-source 
+comparison. Finally, the threshold-decomposition analysis was run with a different feature 
+set than the main pipeline, so its absolute MCC values are not directly comparable to 
+Table~\ref{tab:ldo} (see Table~S7 footnote and the ``note on the RF robustness finding'' 
+above).

@@ -1,0 +1,38 @@
+2026-05-07 09:33:27,096 [INFO] step2: ============================================================
+2026-05-07 09:33:27,096 [INFO] step2: Step 2: Broad Feature Table Build
+2026-05-07 09:33:27,096 [INFO] step2: ============================================================
+2026-05-07 09:33:27,096 [INFO] step2: 
+==================================================
+2026-05-07 09:33:27,096 [INFO] step2: Building broad features: ames
+2026-05-07 09:33:27,096 [INFO] step2: ==================================================
+2026-05-07 09:33:27,114 [INFO] step2: [ames] Clean broadfp files exist -- skip
+2026-05-07 09:33:27,114 [INFO] step2: 
+==================================================
+2026-05-07 09:33:27,114 [INFO] step2: Building broad features: invitro
+2026-05-07 09:33:27,114 [INFO] step2: ==================================================
+2026-05-07 09:33:27,131 [INFO] step2: [invitro] Clean broadfp files exist -- skip
+2026-05-07 09:33:27,131 [INFO] step2: 
+==================================================
+2026-05-07 09:33:27,131 [INFO] step2: Building broad features: invivo
+2026-05-07 09:33:27,131 [INFO] step2: ==================================================
+2026-05-07 09:33:27,148 [INFO] step2: [invivo] Clean broadfp files exist -- skip
+2026-05-07 09:33:27,148 [INFO] step2: 
+==================================================
+2026-05-07 09:33:27,148 [INFO] step2: Building broad features: invitro_sampling
+2026-05-07 09:33:27,148 [INFO] step2: ==================================================
+2026-05-07 09:33:27,165 [INFO] step2: [invitro_sampling] Clean broadfp files exist -- skip
+2026-05-07 09:33:27,165 [INFO] step2: 
+==================================================
+2026-05-07 09:33:27,165 [INFO] step2: Building broad features: invivo_sampling
+2026-05-07 09:33:27,165 [INFO] step2: ==================================================
+2026-05-07 09:33:27,181 [INFO] step2: [invivo_sampling] Clean broadfp files exist -- skip
+2026-05-07 09:33:27,235 [INFO] step2: 
+Feature audit saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\summary\feature_audit_summary.csv
+2026-05-07 09:33:27,235 [INFO] step2: Manifest saved: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\summary\broad_feature_manifest.json
+2026-05-07 09:33:27,235 [INFO] step2: 
+============================================================
+2026-05-07 09:33:27,235 [INFO] step2:   ames: ok
+2026-05-07 09:33:27,235 [INFO] step2:   invitro: ok
+2026-05-07 09:33:27,235 [INFO] step2:   invivo: ok
+2026-05-07 09:33:27,235 [INFO] step2:   invitro_sampling: ok
+2026-05-07 09:33:27,235 [INFO] step2:   invivo_sampling: ok

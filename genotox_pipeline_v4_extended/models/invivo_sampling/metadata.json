@@ -1,0 +1,105 @@
+{
+  "endpoint": "invivo_sampling",
+  "model_type": "xgb",
+  "scenario": "raw_all",
+  "feature_mode": "broad_fp2048",
+  "n_features": 735,
+  "n_total": 231,
+  "n_pos": 77,
+  "n_neg": 154,
+  "cv_mcc": 0.545,
+  "cv_mcc_std": 0.09,
+  "mcc_default_05": 0.5437,
+  "optimal_threshold": 0.265,
+  "sensitivity": 0.7922,
+  "specificity": 0.7792,
+  "mcc_at_threshold": 0.5474,
+  "bacc_at_threshold": 0.7857,
+  "spec_floor": 0.75,
+  "domain_weights": null,
+  "has_ames_stacking": true,
+  "elapsed_seconds": 4.4,
+  "timestamp": "2026-06-01T14:07:55.425176",
+  "top_features": [
+    {
+      "feature": "ames_proba",
+      "mean_abs_shap": 1.4176030279040432
+    },
+    {
+      "feature": "HeavyAtomCount",
+      "mean_abs_shap": 1.4008028330482962
+    },
+    {
+      "feature": "MW",
+      "mean_abs_shap": 0.7166830673168748
+    },
+    {
+      "feature": "HeteroatomCount",
+      "mean_abs_shap": 0.7064495554226108
+    },
+    {
+      "feature": "NumValenceElectrons",
+      "mean_abs_shap": 0.6333925776875041
+    },
+    {
+      "feature": "fp_0875",
+      "mean_abs_shap": 0.4051418899199663
+    },
+    {
+      "feature": "fp_0001",
+      "mean_abs_shap": 0.37881823637204254
+    },
+    {
+      "feature": "LogP",
+      "mean_abs_shap": 0.3717975093513421
+    },
+    {
+      "feature": "fp_1057",
+      "mean_abs_shap": 0.2825246140747875
+    },
+    {
+      "feature": "HBD",
+      "mean_abs_shap": 0.27584061876757804
+    },
+    {
+      "feature": "FractionCSP3",
+      "mean_abs_shap": 0.23707325956320544
+    },
+    {
+      "feature": "TPSA",
+      "mean_abs_shap": 0.23049046632630177
+    },
+    {
+      "feature": "HBA",
+      "mean_abs_shap": 0.1670483214945988
+    },
+    {
+      "feature": "fg_fg_ester_count",
+      "mean_abs_shap": 0.16188345619102384
+    },
+    {
+      "feature": "bb_n_genotox_alerts",
+      "mean_abs_shap": 0.15188142552556574
+    },
+    {
+      "feature": "fg_fg_alcohol_count",
+      "mean_abs_shap": 0.13534616999070107
+    },
+    {
+      "feature": "fg_mn_heavy_metal_org_count",
+      "mean_abs_shap": 0.12739767953430936
+    },
+    {
+      "feature": "fp_1722",
+      "mean_abs_shap": 0.12180995129177839
+    },
+    {
+      "feature": "fp_0650",
+      "mean_abs_shap": 0.11948799116141869
+    },
+    {
+      "feature": "sa_total_hits",
+      "mean_abs_shap": 0.11550217100068347
+    }
+  ]
+}

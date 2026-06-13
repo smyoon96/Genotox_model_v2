@@ -1,0 +1,39 @@
+{
+  "alphas": {
+    "0.05": {
+      "quantile": 0.797548,
+      "coverage": 0.3359,
+      "mcc_certain": 0.7116
+    },
+    "0.1": {
+      "quantile": 0.718763,
+      "coverage": 0.529,
+      "mcc_certain": 0.6489
+    },
+    "0.15": {
+      "quantile": 0.607893,
+      "coverage": 0.7683,
+      "mcc_certain": 0.6143
+    },
+    "0.2": {
+      "quantile": 0.566467,
+      "coverage": 0.8687,
+      "mcc_certain": 0.5453
+    },
+    "0.3": {
+      "quantile": 0.454604,
+      "coverage": 0.9151,
+      "mcc_certain": 0.5324
+    }
+  },
+  "default_alpha": 0.05,
+  "nc_scores_percentiles": {
+    "p5": 0.073575,
+    "p10": 0.10025,
+    "p25": 0.196697,
+    "p50": 0.310245,
+    "p75": 0.494731,
+    "p90": 0.718763,
+    "p95": 0.797548
+  }
+}

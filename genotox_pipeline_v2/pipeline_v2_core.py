@@ -12,6 +12,7 @@ Bug fixes from v8→v12:
 import logging
 from collections import defaultdict
 import numpy as np
+from utils.progress import pbar as _pbar
 import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import AllChem, DataStructs
@@ -393,6 +394,9 @@ def compute_ad(tr_fp, te_fp, threshold=0.3, max_tr=1000, seed=42):
       - Use proper Tanimoto: |A∩B| / |A∪B| for binary vectors
       - Increased max_tr from 300 to 1000 for stability
       - Added input validation
+
+    [v12.2] Returns per_sample_max_sim (np.ndarray) for AD-stratified analysis
+            in step9 Mode B/D.
     """
     rng = np.random.RandomState(seed)
 
@@ -408,7 +412,7 @@ def compute_ad(tr_fp, te_fp, threshold=0.3, max_tr=1000, seed=42):
     te_bin = (te_fp > 0).astype(np.float32)
 
     ms = np.zeros(len(te_bin))
-    for i in range(len(te_bin)):
+    for i in _pbar(range(len(te_bin)), desc="  AD similarity", leave=False):
         # Vectorized Tanimoto: |A∩B| / |A∪B|
         intersection = np.sum(te_bin[i] * tr_bin, axis=1)  # (n_tr,)
         a_bits = np.sum(te_bin[i])
@@ -425,6 +429,9 @@ def compute_ad(tr_fp, te_fp, threshold=0.3, max_tr=1000, seed=42):
         "n_out": int((~in_ad).sum()),
         "mean_sim": round(ms.mean(), 4),
         "median_sim": round(np.median(ms), 4),
+        # [v12.2] per-sample max Tanimoto similarity to training set
+        # Shape: (n_test,) — used for AD-stratified sensitivity in step9
+        "per_sample_max_sim": ms,
     }
 
 
@@ -756,3 +763,117 @@ def tune_threshold(y_train_true, y_train_proba):
 
 # Aliases
 smi_col = find_smi
+
+
+# ═══════════════════════════════════════════════════════
+#  OOF Threshold Grid Search (unified — v12.2)
+#  genotox_pipeline.oof_threshold + step9.find_oof_threshold 통합
+# ═══════════════════════════════════════════════════════
+
+def oof_tune_threshold(X_tr: np.ndarray, y_tr: np.ndarray,
+                       groups=None, model_fn=None, model=None,
+                       n_folds: int = 5, seed: int = SEED,
+                       thr_range: tuple = (0.1, 0.9),
+                       thr_step: float = 0.02,
+                       criterion: str = "mcc") -> dict:
+    """
+    OOF(Out-Of-Fold) 기반 threshold grid search.
+
+    genotox_pipeline.py의 oof_threshold()와
+    step9_external_benchmark.py의 find_oof_threshold()를 통합.
+
+    Parameters
+    ----------
+    X_tr, y_tr  : 학습 데이터
+    groups      : scaffold group 배열. 있으면 GroupKFold, 없으면 StratifiedKFold
+    model_fn    : lambda → 새 모델 (genotox_pipeline 스타일)
+    model       : sklearn 모델 인스턴스 (step9 스타일, clone 사용)
+    n_folds     : CV fold 수
+    thr_range   : (low, high) 탐색 구간
+    thr_step    : 탐색 간격 (default 0.02 → 40개 후보)
+    criterion   : "mcc" | "f1" | "youden"
+
+    Returns
+    -------
+    dict:
+        best_threshold  : 최적 threshold
+        best_score      : criterion 최고값
+        criterion       : 사용 기준
+        threshold_grid  : List[{threshold, score, sensitivity, specificity}]
+    """
+    from sklearn.metrics import matthews_corrcoef, f1_score, confusion_matrix
+
+    # ── OOF probability 수집 ──────────────────────────────────────────
+    oof_proba = np.full(len(y_tr), np.nan)
+
+    if groups is not None:
+        # scaffold-aware: GroupKFold
+        from sklearn.model_selection import GroupKFold
+        unique_g = np.unique(groups)
+        n_splits = min(n_folds, len(unique_g))
+        if n_splits < 2:
+            return {"best_threshold": 0.5, "best_score": None,
+                    "criterion": criterion, "threshold_grid": []}
+        gkf = GroupKFold(n_splits=n_splits)
+        fold_iter = gkf.split(X_tr, y_tr, groups)
+    else:
+        # 외부 검증용: StratifiedKFold
+        from sklearn.model_selection import StratifiedKFold
+        skf = StratifiedKFold(n_splits=n_folds, shuffle=True, random_state=seed)
+        fold_iter = skf.split(X_tr, y_tr)
+
+    for tr_idx, val_idx in fold_iter:
+        if model_fn is not None:
+            mdl = model_fn()
+        else:
+            from sklearn.base import clone
+            mdl = clone(model)
+        mdl.fit(X_tr[tr_idx], y_tr[tr_idx])
+        oof_proba[val_idx] = mdl.predict_proba(X_tr[val_idx])[:, 1]
+
+    valid = ~np.isnan(oof_proba)
+    if valid.sum() < 10:
+        return {"best_threshold": 0.5, "best_score": None,
+                "criterion": criterion, "threshold_grid": []}
+
+    y_v = y_tr[valid]
+    p_v = oof_proba[valid]
+
+    # ── Grid search ──────────────────────────────────────────────────
+    candidates = np.arange(thr_range[0], thr_range[1] + 1e-9, thr_step)
+    grid_results = []
+    best_thr, best_score = 0.5, -np.inf
+
+    for thr in _pbar(candidates, desc="  OOF thr grid", leave=False):
+        pred = (p_v >= thr).astype(int)
+        if len(set(pred)) < 2:
+            continue
+        tn, fp_n, fn_n, tp_n = confusion_matrix(y_v, pred, labels=[0, 1]).ravel()
+        sens = tp_n / (tp_n + fn_n) if (tp_n + fn_n) > 0 else 0.0
+        spec = tn  / (tn  + fp_n)  if (tn  + fp_n) > 0 else 0.0
+
+        if criterion == "mcc":
+            score = matthews_corrcoef(y_v, pred)
+        elif criterion == "f1":
+            score = f1_score(y_v, pred, zero_division=0)
+        elif criterion == "youden":
+            score = sens + spec - 1.0
+        else:
+            raise ValueError(f"criterion must be 'mcc', 'f1', or 'youden'. Got: {criterion}")
+
+        grid_results.append({
+            "threshold":   round(float(thr),   4),
+            "score":       round(float(score),  4),
+            "sensitivity": round(float(sens),   4),
+            "specificity": round(float(spec),   4),
+        })
+        if score > best_score:
+            best_score = score
+            best_thr   = float(thr)
+
+    return {
+        "best_threshold": round(best_thr,         4),
+        "best_score":     round(float(best_score), 4),
+        "criterion":      criterion,
+        "threshold_grid": grid_results,
+    }

@@ -1,0 +1,17 @@
+{
+  "data": "C:\\Users\\Administrator\\Documents\\GitHub\\Genotox_model\\genotox_pipeline_v3\\data",
+  "version": "v12",
+  "ts": "2026-05-06T13:56:00.449133",
+  "seed": 42,
+  "fixes": [
+    "CRITICAL-1: salt_stripped actually strips salts",
+    "CRITICAL-2: GNN uses proper GCN layers",
+    "CRITICAL-3: AD uses proper Tanimoto",
+    "CRITICAL-4: HP tuning inner/outer separation",
+    "METHOD-5: statistical tests added",
+    "METHOD-8: OOF threshold 5-fold",
+    "METHOD-10: learning curves",
+    "METHOD-11: SHAP analysis",
+    "METHOD-14: FP bit selection"
+  ]
+}

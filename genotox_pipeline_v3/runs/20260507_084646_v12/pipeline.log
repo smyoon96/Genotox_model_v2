@@ -1,0 +1,79 @@
+08:46:46 Pipeline v12 -- Bug-Fixed Single Run
+  C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs\20260507_084646_v12
+08:46:46 STEP 1: Load + Clean
+08:46:46   [ames] n=14771 pos=0.2843
+08:46:46   [invitro] n=1656 pos=0.1051
+08:46:46   [invivo] n=2199 pos=0.0350
+08:46:46   [invitro_sampling] n=348 pos=0.5000
+08:46:46   [invivo_sampling] n=231 pos=0.3333
+08:46:49   ⚠ Domain predictor acc: 0.7611
+08:46:56   [ames] 14771 → 13560 (conflicts=169)
+08:46:56   [invitro] 1656 → 1619 (conflicts=3)
+08:46:57   [invivo] 2199 → 2153 (conflicts=2)
+08:46:58   [invitro_sampling] 348 → 345 (conflicts=0)
+08:46:58   [invivo_sampling] 231 → 231 (conflicts=0)
+08:46:58 STEP 2: Preprocessing Flags
+08:46:59     Classified 2000/13560 compounds...
+08:47:01     Classified 4000/13560 compounds...
+08:47:03     Classified 6000/13560 compounds...
+08:47:04     Classified 8000/13560 compounds...
+08:47:06     Classified 10000/13560 compounds...
+08:47:07     Classified 12000/13560 compounds...
+08:47:12     Classified 2000/2153 compounds...
+08:47:12 STEP 3: Fixed Split
+08:47:19   [ames] train=10848 test=2712 pos_diff=0.0136
+08:47:19   [invitro] train=1295 test=324 pos_diff=0.0246
+08:47:20   [invivo] train=1722 test=431 pos_diff=0.0087
+08:47:20   [invitro_sampling] train=276 test=69 pos_diff=0.1304
+08:47:20   [invivo_sampling] train=184 test=47 pos_diff=0.0979
+08:47:20 STEP 4: Scenario Selection (Train CV)
+08:47:33   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+08:47:37   [ames] Physchem features: 13 columns
+08:47:46   [ames/raw_all] CV_MCC=0.6410±0.0512
+08:47:58   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+08:48:01   [ames] Physchem features: 13 columns
+08:48:09   [ames/no_metal] CV_MCC=0.6288±0.0616
+08:48:09   salt_stripped: 6062/13560 SMILES changed
+08:48:22   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+08:48:26   [ames] Physchem features: 13 columns
+08:48:34   [ames/salt_stripped] CV_MCC=0.6410±0.0526
+08:48:34   [ames] * Best: raw_all (CV=0.6410)
+08:48:36   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+08:48:36   [invitro] Physchem features: 13 columns
+08:48:41   [invitro/raw_all] CV_MCC=0.1667±0.1034
+08:48:42   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+08:48:42   [invitro] Physchem features: 13 columns
+08:48:47   [invitro/no_metal] CV_MCC=0.2032±0.1252
+08:48:47   salt_stripped: 1317/1619 SMILES changed
+08:48:48   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+08:48:49   [invitro] Physchem features: 13 columns
+08:48:53   [invitro/salt_stripped] CV_MCC=0.0913±0.0894
+08:48:53   [invitro] * Best: no_metal (CV=0.2032)
+08:48:55   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+08:48:55   [invivo] Physchem features: 13 columns
+08:49:00   [invivo/raw_all] CV_MCC=0.0794±0.1164
+08:49:02   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:02   [invivo] Physchem features: 13 columns
+08:49:07   [invivo/no_metal] CV_MCC=0.0921±0.1570
+08:49:07   salt_stripped: 1785/2153 SMILES changed
+08:49:09   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:09   [invivo] Physchem features: 13 columns
+08:49:14   [invivo/salt_stripped] CV_MCC=0.0884±0.1147
+08:49:14   [invivo] * Best: no_metal (CV=0.0921)
+08:49:14   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:15   [invitro_sampling] Physchem features: 13 columns
+08:49:17   [invitro_sampling/raw_all] CV_MCC=0.2991±0.1333
+08:49:17   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:17   [invitro_sampling] Physchem features: 13 columns
+08:49:19   [invitro_sampling/no_metal] CV_MCC=0.4223±0.1155
+08:49:19   salt_stripped: 309/345 SMILES changed
+08:49:20   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:20   [invitro_sampling] Physchem features: 13 columns
+08:49:22   [invitro_sampling/salt_stripped] CV_MCC=0.2351±0.1524
+08:49:22   [invitro_sampling] * Best: no_metal (CV=0.4223)
+08:49:23   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:23   [invivo_sampling] Physchem features: 13 columns
+08:49:25   [invivo_sampling/raw_all] CV_MCC=0.4017±0.1884
+08:49:25   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+08:49:25   [invivo_sampling] Physchem features: 13 columns
+08:49:26   [invivo_sampling/no_metal] CV_MCC=0.2577±0.1887

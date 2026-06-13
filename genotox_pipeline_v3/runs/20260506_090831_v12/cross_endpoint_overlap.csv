@@ -1,0 +1,11 @@
+ep1,ep2,overlap,overlap_pct,concordant,discordant,kappa
+ames,invitro,1581,97.5,1421,160,0.1995
+ames,invivo,1984,92.1,1782,202,0.1416
+ames,invitro_sampling,328,95.1,189,139,0.1437
+ames,invivo_sampling,208,90.0,150,58,0.2914
+invitro,invivo,508,23.6,394,114,0.0407
+invitro,invitro_sampling,345,100.0,343,2,0.9884
+invitro,invivo_sampling,46,19.9,39,7,0.4429
+invivo,invitro_sampling,158,45.8,46,112,0.0186
+invivo,invivo_sampling,231,100.0,230,1,0.9902
+invitro_sampling,invivo_sampling,20,8.7,15,5,0.4681

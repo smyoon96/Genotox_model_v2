@@ -1,42 +1,69 @@
 \section{Introduction}
 
-Under EU REACH\cite{EU_REACH_2006} and the Korean Act on the Registration and Evaluation of Chemicals (K-REACH),\cite{K_REACH_2018} 
-industrial chemical manufacturers and importers are required to assess genotoxic potential as part of their registration dossiers, 
-and in silico QSAR predictions are explicitly accepted as supporting evidence when generated under validated models with sufficient applicability domain coverage.\cite{ECHA_QSAR_2008} For pharmaceuticals, 
-the ICH M7(R2) guideline plays an analogous role by endorsing statistical QSAR alongside rule-based expert systems for assessing the mutagenic potential of impurities.\cite{ICH_M7_2017} 
-Across both regulatory frameworks, the Ames bacterial reverse mutation assay\cite{Ames_1973,Mortelmans_2000} 
-is the central predictive target, with in-vitro chromosome aberration (CA) and in-vivo micronucleus (MN)\cite{OECD_473,OECD_474} serving as higher-tier endpoints. 
-Reliable models could reduce animal testing in line with the 3Rs principle.\cite{Russell_Burch_1959}
+Under EU REACH\cite{EU_REACH_2006} and K-REACH,\cite{K_REACH_2018} industrial chemical 
+manufacturers and importers must assess the genotoxic potential of their compounds as part 
+of registration. In silico QSAR predictions are accepted as supporting evidence when models 
+are validated and cover the relevant applicability domain.\cite{ECHA_QSAR_2008} For 
+pharmaceuticals, ICH M7(R2) similarly endorses QSAR alongside rule-based expert systems 
+for evaluating mutagenic impurities.\cite{ICH_M7_2017} In both contexts, the Ames bacterial 
+reverse mutation assay\cite{Ames_1973,Mortelmans_2000} is the primary prediction target, 
+with in-vitro chromosome aberration (CA) and in-vivo micronucleus 
+(MN)\cite{OECD_473,OECD_474} as higher-tier endpoints. Improved predictive models could 
+reduce animal testing under the 3Rs framework.\cite{Russell_Burch_1959}
 
-Published Ames QSAR models report a wide spread of metrics---accuracies of 0.80--0.90 and MCC of 0.60--0.80\cite{Hansen_2009,Xu_2012,Honma_2019,Li_2021}---
-but these come from different splits, datasets, preprocessing pipelines, and protocols, making direct comparison difficult. At least three factors can inflate apparent performance.
+Reported performance across published Ames QSAR models spans a wide range---accuracies of 
+0.80--0.90 and MCC of 0.60--0.80\cite{Hansen_2009,Xu_2012,Honma_2019,Li_2021}---but these 
+values come from different datasets, splits, preprocessing pipelines, and evaluation 
+protocols, making direct comparison difficult. At least three factors can inflate apparent 
+performance.
 
-\textbf{Splitting strategy.} Random splits allow structurally similar compounds (sharing the same Murcko scaffold\cite{Bemis_Murcko_1996}) to appear in both training and test set, 
-producing optimistic estimates. Scaffold-based splitting\cite{Sheridan_2013,Wu_MoleculeNet_2018} is more realistic, but the magnitude of the random-vs-scaffold gap has not been systematically 
-quantified across genotoxicity endpoints.
+\textbf{Splitting strategy.} Random splits allow structurally similar compounds (those 
+sharing a Murcko scaffold\cite{Bemis_Murcko_1996}) to appear in both training and test 
+sets, producing optimistic estimates. Scaffold-based 
+splitting\cite{Sheridan_2013,Wu_MoleculeNet_2018} provides a more realistic assessment, 
+but the magnitude of the random-vs-scaffold gap has not been measured systematically across 
+genotoxicity endpoints.
 
-\textbf{Source mixing.} Most large Ames datasets aggregate compounds from pharmaceutical libraries and industrial chemical registries,\cite{Hansen_2009,Honma_2019} 
-which differ in composition, prevalence, and likely in data quality and labeling conventions. When mixed, models may learn source membership rather than 
-toxicity mechanisms---a form of data source heterogeneity noted\cite{Tropsha_2010,Hanser_2016} but never systematically measured. 
-One component of this heterogeneity is prior shift: the large prevalence gap between sources can miscalibrate the default decision threshold independently of any structural difference. 
-However, threshold decomposition analysis presented here shows that prior shift accounts for only part of the observed performance gap, with a residual that no recalibration can eliminate.
+\textbf{Source mixing.} Large Ames datasets typically combine compounds from pharmaceutical 
+libraries and industrial chemical registries,\cite{Hansen_2009,Honma_2019} which differ in 
+chemical composition, positive rates, data quality, and labeling conventions. When such 
+datasets are pooled, models may learn to distinguish compounds by source rather than 
+learning toxicity-related structure--activity relationships---a form of data source 
+heterogeneity that has been noted\cite{Tropsha_2010,Hanser_2016} but never systematically 
+quantified. One component of 
+this heterogeneity is prior shift: the large difference in positive rates between sources 
+can miscalibrate the default decision threshold independently of any structural difference. 
+However, threshold decomposition analysis presented here shows that prior shift explains 
+only part of the performance gap; a substantial residual remains even after recalibration.
 
+\textbf{Preprocessing.} Steps such as salt stripping, metal removal, and charge 
+normalization can substantially alter molecular 
+representations,\cite{Fourches_2010,Fourches_2016} but are often undocumented or applied 
+uniformly across endpoints.
 
-\textbf{Preprocessing.} Salt stripping, metal removal, and charge normalization can substantially alter molecular representations,\cite{Fourches_2010,Fourches_2016} 
-yet these steps are often undocumented or applied uniformly across endpoints.
+Most published studies evaluate a single endpoint with a single split, focus on algorithm 
+comparison,\cite{Yang_2019,Mayr_2016} rarely test cross-source generalization, and seldom 
+report statistical significance.\cite{Demsar_2006} The relative contributions of split 
+method, source composition, and preprocessing have not been disentangled in a single 
+controlled study.
 
-Most studies evaluate a single endpoint with a single split, focus on algorithm comparison,\cite{Yang_2019,Mayr_2016} rarely test cross-source generalization, 
-and seldom report statistical significance.\cite{Demsar_2006} The relative contributions of split method, source composition, and preprocessing have not been disentangled in a single consistent framework.
-
-This study addressed by
+This study addresses these gaps by:
 \begin{enumerate}
-    \item Introducing a evaluation cascade framework---scaffold-split test, random vs.\ scaffold CV, and cross-source leave-domain-out---applied to a single locked configuration.
-    
-    \item Showing that data source heterogeneity---partly but not wholly attributable to prior shift---drives a scaffold-to-LDO MCC drop of 0.390, an order of magnitude larger than the split-method effect ($\Delta = 0.046$).
-    
-    \item Finding that in-domain algorithm differences are small (MCC range = 0.063), but cross-source robustness varies sharply (RF 0.325 vs.\ XGB 0.122).
-    
-    \item Reporting endpoint-specific preprocessing effects, with salt stripping improving the best in-vivo model by $+0.22$ MCC while harming in-vitro.
-    
+    \item Introducing an evaluation cascade---scaffold-split test, random vs.\ scaffold CV, 
+    and cross-source leave-domain-out---applied consistently under a single fixed 
+    configuration.
+
+    \item Quantifying the contribution of data source heterogeneity---only partly 
+    attributable to prior shift---which produces a scaffold-to-LDO MCC drop of 0.390, 
+    considerably larger than the effect of split method 
+    ($\Delta = 0.046$).
+
+    \item Comparing in-domain and cross-source algorithm robustness: in-domain differences 
+    are small (MCC range = 0.063), whereas cross-source performance varies markedly 
+    (RF 0.325 vs.\ XGB 0.122).
+
+    \item Characterizing endpoint-specific preprocessing effects: salt stripping improved 
+    the best in-vivo model by $+0.22$ MCC while reducing in-vitro performance.
+
     \item Releasing an open-source pipeline for full reproducibility.
 \end{enumerate}

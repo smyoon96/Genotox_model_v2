@@ -1,0 +1,809 @@
+2026-05-07 09:33:26,132 [INFO] Pipeline started: 2026-05-07T09:33:26.132103
+2026-05-07 09:33:26,133 [INFO] Project root: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3
+2026-05-07 09:33:26,133 [INFO] Data dir:     C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\data
+2026-05-07 09:33:26,133 [INFO] Runs dir:     C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs
+2026-05-07 09:33:26,133 [INFO] [Step 1/9] [1/9] Raw Data Audit & Schema Unification
+2026-05-07 09:33:26,133 [INFO] CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\step1_data_audit.py ...
+2026-05-07 09:33:26,659 [INFO]   [OK] [1/9] Raw Data Audit & Schema Unification [0.5s]
+2026-05-07 09:33:26,660 [INFO] [Step 2/9] [2/9] Broad Feature Table Build
+2026-05-07 09:33:26,660 [INFO] CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\step2_feature_build.py ...
+2026-05-07 09:33:27,273 [INFO]   [OK] [2/9] Broad Feature Table Build [0.6s]
+2026-05-07 09:33:27,274 [INFO] [Step 3/9] [3/9] Leakage-free Training & Evaluation
+2026-05-07 09:33:27,274 [INFO] CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\step3_train.py ...
+2026-05-07 09:33:31,190 [INFO]   | 09:33:31 Pipeline v12 -- Bug-Fixed Single Run
+2026-05-07 09:33:31,191 [INFO]   |   C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs\20260507_093331_v12
+2026-05-07 09:33:31,191 [INFO]   | 09:33:31 STEP 1: Load + Clean
+2026-05-07 09:33:31,207 [INFO]   | 09:33:31   [ames] n=14771 pos=0.2843
+2026-05-07 09:33:31,210 [INFO]   | 09:33:31   [invitro] n=1656 pos=0.1051
+2026-05-07 09:33:31,213 [INFO]   | 09:33:31   [invivo] n=2199 pos=0.0350
+2026-05-07 09:33:31,214 [INFO]   | 09:33:31   [invitro_sampling] n=348 pos=0.5000
+2026-05-07 09:33:31,217 [INFO]   | 09:33:31   [invivo_sampling] n=231 pos=0.3333
+2026-05-07 09:33:34,327 [INFO]   | 09:33:34   ⚠ Domain predictor acc: 0.7611
+2026-05-07 09:33:40,514 [INFO]   | 09:33:40   [ames] 14771 → 13560 (conflicts=169)
+2026-05-07 09:33:41,226 [INFO]   | 09:33:41   [invitro] 1656 → 1619 (conflicts=3)
+2026-05-07 09:33:42,134 [INFO]   | 09:33:42   [invivo] 2199 → 2153 (conflicts=2)
+2026-05-07 09:33:42,355 [INFO]   | 09:33:42   [invitro_sampling] 348 → 345 (conflicts=0)
+2026-05-07 09:33:42,522 [INFO]   | 09:33:42   [invivo_sampling] 231 → 231 (conflicts=0)
+2026-05-07 09:33:42,522 [INFO]   | 09:33:42 STEP 2: Preprocessing Flags
+2026-05-07 09:33:43,988 [INFO]   | 09:33:43     Classified 2000/13560 compounds...
+2026-05-07 09:33:45,576 [INFO]   | 09:33:45     Classified 4000/13560 compounds...
+2026-05-07 09:33:47,252 [INFO]   | 09:33:47     Classified 6000/13560 compounds...
+2026-05-07 09:33:48,872 [INFO]   | 09:33:48     Classified 8000/13560 compounds...
+2026-05-07 09:33:50,386 [INFO]   | 09:33:50     Classified 10000/13560 compounds...
+2026-05-07 09:33:51,905 [INFO]   | 09:33:51     Classified 12000/13560 compounds...
+2026-05-07 09:33:56,103 [INFO]   | 09:33:56     Classified 2000/2153 compounds...
+2026-05-07 09:33:56,816 [INFO]   | 09:33:56 STEP 3: Fixed Split
+2026-05-07 09:34:02,825 [INFO]   | 09:34:02   [ames] train=10848 test=2712 pos_diff=0.0136
+2026-05-07 09:34:03,400 [INFO]   | 09:34:03   [invitro] train=1295 test=324 pos_diff=0.0246
+2026-05-07 09:34:04,149 [INFO]   | 09:34:04   [invivo] train=1722 test=431 pos_diff=0.0087
+2026-05-07 09:34:04,320 [INFO]   | 09:34:04   [invitro_sampling] train=276 test=69 pos_diff=0.1304
+2026-05-07 09:34:04,465 [INFO]   | 09:34:04   [invivo_sampling] train=184 test=47 pos_diff=0.0979
+2026-05-07 09:34:04,466 [INFO]   | 09:34:04 STEP 4: Scenario Selection (Train CV)
+2026-05-07 09:34:09,520 [INFO]   | 09:34:09   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:34:13,196 [INFO]   | 09:34:13   [ames] Physchem features: 13 columns
+2026-05-07 09:34:22,214 [INFO]   | 09:34:22   [ames/raw_all] CV_MCC=0.6410±0.0512
+2026-05-07 09:34:26,715 [INFO]   | 09:34:26   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:34:29,978 [INFO]   | 09:34:29   [ames] Physchem features: 13 columns
+2026-05-07 09:34:38,372 [INFO]   | 09:34:38   [ames/no_metal] CV_MCC=0.6288±0.0616
+2026-05-07 09:34:38,377 [INFO]   | 09:34:38   salt_stripped: 6062/13560 SMILES changed
+2026-05-07 09:34:43,314 [INFO]   | 09:34:43   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:34:46,821 [INFO]   | 09:34:46   [ames] Physchem features: 13 columns
+2026-05-07 09:34:55,634 [INFO]   | 09:34:55   [ames/salt_stripped] CV_MCC=0.6410±0.0526
+2026-05-07 09:34:55,635 [INFO]   | 09:34:55   [ames] * Best: raw_all (CV=0.6410)
+2026-05-07 09:34:56,243 [INFO]   | 09:34:56   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:34:56,695 [INFO]   | 09:34:56   [invitro] Physchem features: 13 columns
+2026-05-07 09:35:00,959 [INFO]   | 09:35:00   [invitro/raw_all] CV_MCC=0.1667±0.1034
+2026-05-07 09:35:01,389 [INFO]   | 09:35:01   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:01,742 [INFO]   | 09:35:01   [invitro] Physchem features: 13 columns
+2026-05-07 09:35:05,913 [INFO]   | 09:35:05   [invitro/no_metal] CV_MCC=0.2032±0.1252
+2026-05-07 09:35:05,914 [INFO]   | 09:35:05   salt_stripped: 1317/1619 SMILES changed
+2026-05-07 09:35:06,399 [INFO]   | 09:35:06   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:06,817 [INFO]   | 09:35:06   [invitro] Physchem features: 13 columns
+2026-05-07 09:35:11,099 [INFO]   | 09:35:11   [invitro/salt_stripped] CV_MCC=0.0913±0.0894
+2026-05-07 09:35:11,100 [INFO]   | 09:35:11   [invitro] * Best: no_metal (CV=0.2032)
+2026-05-07 09:35:11,829 [INFO]   | 09:35:11   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:12,368 [INFO]   | 09:35:12   [invivo] Physchem features: 13 columns
+2026-05-07 09:35:17,293 [INFO]   | 09:35:17   [invivo/raw_all] CV_MCC=0.0794±0.1164
+2026-05-07 09:35:17,800 [INFO]   | 09:35:17   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:18,230 [INFO]   | 09:35:18   [invivo] Physchem features: 13 columns
+2026-05-07 09:35:22,660 [INFO]   | 09:35:22   [invivo/no_metal] CV_MCC=0.0921±0.1570
+2026-05-07 09:35:22,662 [INFO]   | 09:35:22   salt_stripped: 1785/2153 SMILES changed
+2026-05-07 09:35:23,368 [INFO]   | 09:35:23   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:23,895 [INFO]   | 09:35:23   [invivo] Physchem features: 13 columns
+2026-05-07 09:35:28,771 [INFO]   | 09:35:28   [invivo/salt_stripped] CV_MCC=0.0884±0.1147
+2026-05-07 09:35:28,771 [INFO]   | 09:35:28   [invivo] * Best: no_metal (CV=0.0921)
+2026-05-07 09:35:28,944 [INFO]   | 09:35:28   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:29,062 [INFO]   | 09:35:29   [invitro_sampling] Physchem features: 13 columns
+2026-05-07 09:35:31,616 [INFO]   | 09:35:31   [invitro_sampling/raw_all] CV_MCC=0.2991±0.1333
+2026-05-07 09:35:31,756 [INFO]   | 09:35:31   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:31,841 [INFO]   | 09:35:31   [invitro_sampling] Physchem features: 13 columns
+2026-05-07 09:35:33,832 [INFO]   | 09:35:33   [invitro_sampling/no_metal] CV_MCC=0.4223±0.1155
+2026-05-07 09:35:33,833 [INFO]   | 09:35:33   salt_stripped: 309/345 SMILES changed
+2026-05-07 09:35:34,005 [INFO]   | 09:35:34   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:34,116 [INFO]   | 09:35:34   [invitro_sampling] Physchem features: 13 columns
+2026-05-07 09:35:36,475 [INFO]   | 09:35:36   [invitro_sampling/salt_stripped] CV_MCC=0.2351±0.1524
+2026-05-07 09:35:36,475 [INFO]   | 09:35:36   [invitro_sampling] * Best: no_metal (CV=0.4223)
+2026-05-07 09:35:36,613 [INFO]   | 09:35:36   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:36,699 [INFO]   | 09:35:36   [invivo_sampling] Physchem features: 13 columns
+2026-05-07 09:35:38,574 [INFO]   | 09:35:38   [invivo_sampling/raw_all] CV_MCC=0.4017±0.1884
+2026-05-07 09:35:38,686 [INFO]   | 09:35:38   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:38,743 [INFO]   | 09:35:38   [invivo_sampling] Physchem features: 13 columns
+2026-05-07 09:35:40,217 [INFO]   | 09:35:40   [invivo_sampling/no_metal] CV_MCC=0.2577±0.1887
+2026-05-07 09:35:40,218 [INFO]   | 09:35:40   salt_stripped: 208/231 SMILES changed
+2026-05-07 09:35:40,349 [INFO]   | 09:35:40   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:40,423 [INFO]   | 09:35:40   [invivo_sampling] Physchem features: 13 columns
+2026-05-07 09:35:42,304 [INFO]   | 09:35:42   [invivo_sampling/salt_stripped] CV_MCC=0.3232±0.1811
+2026-05-07 09:35:42,304 [INFO]   | 09:35:42   [invivo_sampling] * Best: raw_all (CV=0.4017)
+2026-05-07 09:35:42,307 [INFO]   | 09:35:42 STEP 5: Locked Test (all combos)
+2026-05-07 09:35:42,308 [INFO]   | 09:35:42   [ames] Pre-computing features...
+2026-05-07 09:35:49,414 [INFO]   | 09:35:49   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 09:35:54,613 [INFO]   | 09:35:54   [ames] Physchem features: 13 columns
+2026-05-07 09:35:56,466 [INFO]   | 09:35:56   [ames] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-07 09:36:08,282 [INFO]   | 09:36:08   [ames] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-07 09:36:21,382 [INFO]   | 09:36:21   [ames] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-07 09:36:33,707 [INFO]   | 09:36:33   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 09:36:33,708 [INFO]   | 09:36:33   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 09:37:38,470 [INFO]   | 09:37:38     Domain weight grid: best w_ind=1.00 w_drug=0.30 mcc=0.7099 (searched 36 combos)
+2026-05-07 09:37:38,473 [INFO]   | 09:37:38   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.0, w_drug=0.3.
+2026-05-07 09:37:38,475 [INFO]   | 09:37:38   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 09:38:02,622 [INFO]   | 09:38:02     SHAP failed: could not convert string to float: '[3.040162E-1]'
+2026-05-07 09:38:02,623 [INFO]   | 09:38:02   ames_raw_all_compact_xgb: MCC=0.5267 [0.4877,0.5621] t=0.54 AD=0.57 * (24s)
+2026-05-07 09:38:18,744 [INFO]   | 09:38:18   ames_raw_all_compact_lgbm: MCC=0.5226 [0.4860,0.5562] t=0.6 AD=0.57 (16s)
+2026-05-07 09:38:33,842 [INFO]   | 09:38:33     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 09:38:33,842 [INFO]   | 09:38:33   ames_raw_all_compact_rf: MCC=0.5168 [0.4796,0.5533] t=0.52 AD=0.57 (15s)
+2026-05-07 09:40:31,687 [INFO]   | 09:40:31   ames_raw_all_compact_svm: MCC=0.4324 [0.3939,0.4680] t=0.38 AD=0.57 (118s)
+2026-05-07 09:45:12,904 [INFO]   | 09:45:12   ames_raw_all_compact_logistic: MCC=0.4260 [0.3921,0.4589] t=0.62 AD=0.57 (281s)
+2026-05-07 09:45:52,557 [INFO]   | 09:45:52   ames_raw_all_compact_ann: MCC=0.5105 [0.4743,0.5454] t=0.34 AD=0.57 (40s)
+2026-05-07 09:45:52,605 [INFO]   | 09:45:52   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 09:45:52,605 [INFO]   | 09:45:52   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 09:47:06,363 [INFO]   | 09:47:06     Domain weight grid: best w_ind=1.84 w_drug=0.54 mcc=0.7200 (searched 36 combos)
+2026-05-07 09:47:06,375 [INFO]   | 09:47:06   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.84, w_drug=0.54.
+2026-05-07 09:47:06,379 [INFO]   | 09:47:06   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 09:47:20,752 [INFO]   | 09:47:20     SHAP failed: could not convert string to float: '[3.0116454E-1]'
+2026-05-07 09:47:20,752 [INFO]   | 09:47:20   ames_raw_all_broad_fp512_xgb: MCC=0.5695 [0.5303,0.6027] t=0.46 AD=0.57 (14s)
+2026-05-07 09:47:36,799 [INFO]   | 09:47:36   ames_raw_all_broad_fp512_lgbm: MCC=0.5612 [0.5240,0.5995] t=0.62 AD=0.57 (16s)
+2026-05-07 09:47:57,420 [INFO]   | 09:47:57     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 09:47:57,421 [INFO]   | 09:47:57   ames_raw_all_broad_fp512_rf: MCC=0.5369 [0.5005,0.5766] t=0.5 AD=0.57 (21s)
+2026-05-07 09:49:37,646 [INFO]   | 09:49:37   ames_raw_all_broad_fp512_svm: MCC=0.4986 [0.4628,0.5351] t=0.4 AD=0.57 (100s)
+2026-05-07 09:55:37,374 [INFO]   | 09:55:37   ⚠ logistic took 360s on ames/broad_fp512 (n=10848)
+2026-05-07 09:55:37,374 [INFO]   | 09:55:37   ames_raw_all_broad_fp512_logistic: MCC=0.4714 [0.4386,0.5029] t=0.68 AD=0.57 (360s)
+2026-05-07 09:56:16,134 [INFO]   | 09:56:16   ames_raw_all_broad_fp512_ann: MCC=0.5410 [0.5054,0.5762] t=0.36 AD=0.57 (39s)
+2026-05-07 09:56:16,188 [INFO]   | 09:56:16   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 09:56:16,188 [INFO]   | 09:56:16   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 09:57:36,650 [INFO]   | 09:57:36     Domain weight grid: best w_ind=1.00 w_drug=0.40 mcc=0.7272 (searched 36 combos)
+2026-05-07 09:57:36,653 [INFO]   | 09:57:36   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.0, w_drug=0.4.
+2026-05-07 09:57:36,657 [INFO]   | 09:57:36   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 09:57:52,255 [INFO]   | 09:57:52     SHAP failed: could not convert string to float: '[3.4476703E-1]'
+2026-05-07 09:57:52,255 [INFO]   | 09:57:52   ames_raw_all_broad_fp1024_xgb: MCC=0.5549 [0.5178,0.5893] t=0.58 AD=0.57 (16s)
+2026-05-07 09:58:09,471 [INFO]   | 09:58:09   ames_raw_all_broad_fp1024_lgbm: MCC=0.5687 [0.5307,0.6015] t=0.52 AD=0.57 (17s)
+2026-05-07 09:58:34,508 [INFO]   | 09:58:34     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 09:58:34,508 [INFO]   | 09:58:34   ames_raw_all_broad_fp1024_rf: MCC=0.5294 [0.4927,0.5647] t=0.54 AD=0.57 (25s)
+2026-05-07 10:00:09,109 [INFO]   | 10:00:09   ames_raw_all_broad_fp1024_svm: MCC=0.5199 [0.4854,0.5558] t=0.42 AD=0.57 (95s)
+2026-05-07 10:05:28,790 [INFO]   | 10:05:28   ⚠ logistic took 320s on ames/broad_fp1024 (n=10848)
+2026-05-07 10:05:28,791 [INFO]   | 10:05:28   ames_raw_all_broad_fp1024_logistic: MCC=0.4999 [0.4668,0.5324] t=0.58 AD=0.57 (320s)
+2026-05-07 10:06:19,107 [INFO]   | 10:06:19   ames_raw_all_broad_fp1024_ann: MCC=0.5641 [0.5283,0.6012] t=0.32 AD=0.57 (50s)
+2026-05-07 10:06:19,180 [INFO]   | 10:06:19   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 10:06:19,180 [INFO]   | 10:06:19   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 10:07:44,714 [INFO]   | 10:07:44     Domain weight grid: best w_ind=1.35 w_drug=0.40 mcc=0.7242 (searched 36 combos)
+2026-05-07 10:07:44,717 [INFO]   | 10:07:44   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.35, w_drug=0.4.
+2026-05-07 10:07:44,721 [INFO]   | 10:07:44   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 10:08:01,897 [INFO]   | 10:08:01     SHAP failed: could not convert string to float: '[3.0239972E-1]'
+2026-05-07 10:08:01,897 [INFO]   | 10:08:01   ames_raw_all_broad_fp2048_xgb: MCC=0.5752 [0.5393,0.6100] t=0.58 AD=0.57 (17s)
+2026-05-07 10:08:19,891 [INFO]   | 10:08:19   ames_raw_all_broad_fp2048_lgbm: MCC=0.5790 [0.5431,0.6137] t=0.58 AD=0.57 (18s)
+2026-05-07 10:08:49,782 [INFO]   | 10:08:49     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 10:08:49,783 [INFO]   | 10:08:49   ames_raw_all_broad_fp2048_rf: MCC=0.5231 [0.4819,0.5590] t=0.5 AD=0.57 (30s)
+2026-05-07 10:10:40,778 [INFO]   | 10:10:40   ames_raw_all_broad_fp2048_svm: MCC=0.5339 [0.4989,0.5704] t=0.4 AD=0.57 (111s)
+2026-05-07 10:16:44,039 [INFO]   | 10:16:44   ⚠ logistic took 363s on ames/broad_fp2048 (n=10848)
+2026-05-07 10:16:44,040 [INFO]   | 10:16:44   ames_raw_all_broad_fp2048_logistic: MCC=0.5072 [0.4721,0.5401] t=0.66 AD=0.57 (363s)
+2026-05-07 10:17:53,430 [INFO]   | 10:17:53   ames_raw_all_broad_fp2048_ann: MCC=0.5406 [0.5042,0.5757] t=0.38 AD=0.57 (69s)
+2026-05-07 14:58:44,878 [INFO]   | 14:58:44   ames_raw_all_graph_gnn: MCC=0.4450
+2026-05-07 14:58:50,126 [INFO]   | 14:58:50   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 14:58:55,328 [INFO]   | 14:58:55   [ames] Physchem features: 13 columns
+2026-05-07 14:58:57,342 [INFO]   | 14:58:57   [ames] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-07 14:59:09,771 [INFO]   | 14:59:09   [ames] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-07 14:59:23,468 [INFO]   | 14:59:23   [ames] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-07 14:59:36,711 [INFO]   | 14:59:36   Domain stats: industrial n=4707 pos=0.0321 | drug n=5027 pos=0.5902
+2026-05-07 14:59:36,712 [INFO]   | 14:59:36   Prior shift ratio: 18.40x → w_ind range: 1.0~4.29 | w_drug range: 0.23~1.0
+2026-05-07 15:00:38,638 [INFO]   | 15:00:38     Domain weight grid: best w_ind=1.34 w_drug=0.75 mcc=0.7012 (searched 36 combos)
+2026-05-07 15:00:38,641 [INFO]   | 15:00:38   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.34, w_drug=0.75.
+2026-05-07 15:01:10,792 [INFO]   | 15:01:10     SHAP failed: could not convert string to float: '[4.0361226E-1]'
+2026-05-07 15:01:10,792 [INFO]   | 15:01:10   ames_no_metal_compact_xgb: MCC=0.4160 [0.3791,0.4503] t=0.5 AD=0.56 (32s)
+2026-05-07 15:01:26,244 [INFO]   | 15:01:26   ames_no_metal_compact_lgbm: MCC=0.4113 [0.3745,0.4443] t=0.46 AD=0.56 (15s)
+2026-05-07 15:01:41,670 [INFO]   | 15:01:41     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 15:01:41,671 [INFO]   | 15:01:41   ames_no_metal_compact_rf: MCC=0.4462 [0.4085,0.4841] t=0.52 AD=0.56 (15s)
+2026-05-07 15:02:32,945 [INFO]   | 15:02:32   ames_no_metal_compact_svm: MCC=0.4104 [0.3705,0.4468] t=0.42 AD=0.56 (51s)
+2026-05-07 15:06:04,629 [INFO]   | 15:06:04   ames_no_metal_compact_logistic: MCC=0.4064 [0.3717,0.4401] t=0.6 AD=0.56 (212s)
+2026-05-07 15:06:43,077 [INFO]   | 15:06:43   ames_no_metal_compact_ann: MCC=0.4356 [0.3984,0.4708] t=0.38 AD=0.56 (38s)
+2026-05-07 15:06:43,122 [INFO]   | 15:06:43   Domain stats: industrial n=4707 pos=0.0321 | drug n=5027 pos=0.5902
+2026-05-07 15:06:43,122 [INFO]   | 15:06:43   Prior shift ratio: 18.40x → w_ind range: 1.0~4.29 | w_drug range: 0.23~1.0
+2026-05-07 15:07:53,388 [INFO]   | 15:07:53     Domain weight grid: best w_ind=1.34 w_drug=0.75 mcc=0.7142 (searched 36 combos)
+2026-05-07 15:07:53,391 [INFO]   | 15:07:53   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.34, w_drug=0.75.
+2026-05-07 15:08:06,738 [INFO]   | 15:08:06     SHAP failed: could not convert string to float: '[4.0361226E-1]'
+2026-05-07 15:08:06,738 [INFO]   | 15:08:06   ames_no_metal_broad_fp512_xgb: MCC=0.5270 [0.4904,0.5649] t=0.52 AD=0.56 (13s)
+2026-05-07 15:08:22,502 [INFO]   | 15:08:22   ames_no_metal_broad_fp512_lgbm: MCC=0.4963 [0.4602,0.5326] t=0.54 AD=0.56 (16s)
+2026-05-07 15:08:40,512 [INFO]   | 15:08:40     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 15:08:40,512 [INFO]   | 15:08:40   ames_no_metal_broad_fp512_rf: MCC=0.4998 [0.4623,0.5380] t=0.54 AD=0.56 (18s)
+2026-05-07 15:09:38,879 [INFO]   | 15:09:38   ames_no_metal_broad_fp512_svm: MCC=0.4531 [0.4148,0.4913] t=0.4 AD=0.56 (58s)
+2026-05-07 15:13:43,894 [INFO]   | 15:13:43   ames_no_metal_broad_fp512_logistic: MCC=0.4355 [0.4007,0.4705] t=0.62 AD=0.56 (245s)
+2026-05-07 15:14:22,031 [INFO]   | 15:14:22   ames_no_metal_broad_fp512_ann: MCC=0.5144 [0.4780,0.5504] t=0.36 AD=0.56 (38s)
+2026-05-07 15:14:22,079 [INFO]   | 15:14:22   Domain stats: industrial n=4707 pos=0.0321 | drug n=5027 pos=0.5902
+2026-05-07 15:14:22,079 [INFO]   | 15:14:22   Prior shift ratio: 18.40x → w_ind range: 1.0~4.29 | w_drug range: 0.23~1.0
+2026-05-07 15:15:39,963 [INFO]   | 15:15:39     Domain weight grid: best w_ind=2.40 w_drug=0.75 mcc=0.7190 (searched 36 combos)
+2026-05-07 15:15:39,966 [INFO]   | 15:15:39   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=2.4, w_drug=0.75.
+2026-05-07 15:15:54,178 [INFO]   | 15:15:54     SHAP failed: could not convert string to float: '[3.1478995E-1]'
+2026-05-07 15:15:54,179 [INFO]   | 15:15:54   ames_no_metal_broad_fp1024_xgb: MCC=0.5369 [0.5015,0.5693] t=0.52 AD=0.56 (14s)
+2026-05-07 15:16:10,901 [INFO]   | 15:16:10   ames_no_metal_broad_fp1024_lgbm: MCC=0.5547 [0.5221,0.5871] t=0.52 AD=0.56 (17s)
+2026-05-07 15:16:31,416 [INFO]   | 15:16:31     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 15:16:31,417 [INFO]   | 15:16:31   ames_no_metal_broad_fp1024_rf: MCC=0.5111 [0.4720,0.5461] t=0.52 AD=0.56 (21s)
+2026-05-07 15:17:43,133 [INFO]   | 15:17:43   ames_no_metal_broad_fp1024_svm: MCC=0.4860 [0.4491,0.5231] t=0.34 AD=0.56 (72s)
+2026-05-07 15:22:26,165 [INFO]   | 15:22:26   ames_no_metal_broad_fp1024_logistic: MCC=0.4772 [0.4383,0.5112] t=0.46 AD=0.56 (283s)
+2026-05-07 15:23:11,654 [INFO]   | 15:23:11   ames_no_metal_broad_fp1024_ann: MCC=0.5324 [0.4987,0.5671] t=0.34 AD=0.56 (45s)
+2026-05-07 15:23:11,719 [INFO]   | 15:23:11   Domain stats: industrial n=4707 pos=0.0321 | drug n=5027 pos=0.5902
+2026-05-07 15:23:11,719 [INFO]   | 15:23:11   Prior shift ratio: 18.40x → w_ind range: 1.0~4.29 | w_drug range: 0.23~1.0
+2026-05-07 15:24:37,180 [INFO]   | 15:24:37     Domain weight grid: best w_ind=1.79 w_drug=0.75 mcc=0.7176 (searched 36 combos)
+2026-05-07 15:24:37,191 [INFO]   | 15:24:37   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.79, w_drug=0.75.
+2026-05-07 15:24:53,038 [INFO]   | 15:24:53     SHAP failed: could not convert string to float: '[3.5720545E-1]'
+2026-05-07 15:24:53,039 [INFO]   | 15:24:53   ames_no_metal_broad_fp2048_xgb: MCC=0.5467 [0.5128,0.5850] t=0.52 AD=0.56 (16s)
+2026-05-07 15:25:10,749 [INFO]   | 15:25:10   ames_no_metal_broad_fp2048_lgbm: MCC=0.5458 [0.5097,0.5833] t=0.5 AD=0.56 (18s)
+2026-05-07 15:25:34,891 [INFO]   | 15:25:34     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 15:25:34,891 [INFO]   | 15:25:34   ames_no_metal_broad_fp2048_rf: MCC=0.5054 [0.4689,0.5432] t=0.48 AD=0.56 (24s)
+2026-05-07 15:26:53,740 [INFO]   | 15:26:53   ames_no_metal_broad_fp2048_svm: MCC=0.5253 [0.4858,0.5593] t=0.42 AD=0.56 (79s)
+2026-05-07 15:32:25,403 [INFO]   | 15:32:25   ⚠ logistic took 332s on ames/broad_fp2048 (n=9734)
+2026-05-07 15:32:25,404 [INFO]   | 15:32:25   ames_no_metal_broad_fp2048_logistic: MCC=0.4911 [0.4522,0.5250] t=0.52 AD=0.56 (332s)
+2026-05-07 15:33:30,499 [INFO]   | 15:33:30   ames_no_metal_broad_fp2048_ann: MCC=0.5450 [0.5091,0.5790] t=0.38 AD=0.56 (65s)
+2026-05-07 19:16:58,242 [INFO]   | 19:16:58   ames_no_metal_graph_gnn: MCC=0.3828
+2026-05-07 19:16:58,251 [INFO]   | 19:16:58   salt_stripped: 6062/13560 SMILES changed
+2026-05-07 19:17:04,579 [INFO]   | 19:17:04   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 19:17:09,410 [INFO]   | 19:17:09   [ames] Physchem features: 13 columns
+2026-05-07 19:17:10,922 [INFO]   | 19:17:10   [ames] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-07 19:17:22,131 [INFO]   | 19:17:22   [ames] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-07 19:17:34,600 [INFO]   | 19:17:34   [ames] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-07 19:17:47,314 [INFO]   | 19:17:47   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 19:17:47,314 [INFO]   | 19:17:47   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 19:18:51,955 [INFO]   | 19:18:51     Domain weight grid: best w_ind=1.00 w_drug=0.40 mcc=0.7076 (searched 36 combos)
+2026-05-07 19:18:51,957 [INFO]   | 19:18:51   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.0, w_drug=0.4.
+2026-05-07 19:18:51,962 [INFO]   | 19:18:51   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 19:19:20,569 [INFO]   | 19:19:20     SHAP failed: could not convert string to float: '[3.4476703E-1]'
+2026-05-07 19:19:20,571 [INFO]   | 19:19:20   ames_salt_stripped_compact_xgb: MCC=0.4925 [0.4562,0.5284] t=0.58 AD=0.57 (29s)
+2026-05-07 19:19:36,154 [INFO]   | 19:19:36   ames_salt_stripped_compact_lgbm: MCC=0.4922 [0.4579,0.5236] t=0.56 AD=0.57 (16s)
+2026-05-07 19:19:51,365 [INFO]   | 19:19:51     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 19:19:51,366 [INFO]   | 19:19:51   ames_salt_stripped_compact_rf: MCC=0.5077 [0.4716,0.5438] t=0.52 AD=0.57 (15s)
+2026-05-07 19:20:59,390 [INFO]   | 19:20:59   ames_salt_stripped_compact_svm: MCC=0.4181 [0.3826,0.4523] t=0.42 AD=0.57 (68s)
+2026-05-07 19:24:11,265 [INFO]   | 19:24:11   ames_salt_stripped_compact_logistic: MCC=0.4050 [0.3690,0.4398] t=0.62 AD=0.57 (192s)
+2026-05-07 19:24:55,473 [INFO]   | 19:24:55   ames_salt_stripped_compact_ann: MCC=0.4892 [0.4514,0.5258] t=0.4 AD=0.57 (44s)
+2026-05-07 19:24:55,518 [INFO]   | 19:24:55   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 19:24:55,518 [INFO]   | 19:24:55   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 19:26:06,859 [INFO]   | 19:26:06     Domain weight grid: best w_ind=1.00 w_drug=0.40 mcc=0.7206 (searched 36 combos)
+2026-05-07 19:26:06,861 [INFO]   | 19:26:06   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.0, w_drug=0.4.
+2026-05-07 19:26:06,866 [INFO]   | 19:26:06   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 19:26:19,170 [INFO]   | 19:26:19     SHAP failed: could not convert string to float: '[3.4476703E-1]'
+2026-05-07 19:26:19,171 [INFO]   | 19:26:19   ames_salt_stripped_broad_fp512_xgb: MCC=0.5430 [0.5050,0.5763] t=0.52 AD=0.57 (12s)
+2026-05-07 19:26:34,954 [INFO]   | 19:26:34   ames_salt_stripped_broad_fp512_lgbm: MCC=0.5452 [0.5078,0.5776] t=0.58 AD=0.57 (16s)
+2026-05-07 19:26:50,442 [INFO]   | 19:26:50     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 19:26:50,443 [INFO]   | 19:26:50   ames_salt_stripped_broad_fp512_rf: MCC=0.5259 [0.4895,0.5629] t=0.54 AD=0.57 (15s)
+2026-05-07 19:28:24,548 [INFO]   | 19:28:24   ames_salt_stripped_broad_fp512_svm: MCC=0.5034 [0.4645,0.5382] t=0.32 AD=0.57 (94s)
+2026-05-07 19:32:15,333 [INFO]   | 19:32:15   ames_salt_stripped_broad_fp512_logistic: MCC=0.4653 [0.4332,0.5002] t=0.54 AD=0.57 (231s)
+2026-05-07 19:32:57,600 [INFO]   | 19:32:57   ames_salt_stripped_broad_fp512_ann: MCC=0.5161 [0.4801,0.5517] t=0.3 AD=0.57 (42s)
+2026-05-07 19:32:57,651 [INFO]   | 19:32:57   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 19:32:57,651 [INFO]   | 19:32:57   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 19:34:16,192 [INFO]   | 19:34:16     Domain weight grid: best w_ind=2.49 w_drug=1.00 mcc=0.7214 (searched 36 combos)
+2026-05-07 19:34:16,195 [INFO]   | 19:34:16   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=2.49, w_drug=1.0.
+2026-05-07 19:34:16,200 [INFO]   | 19:34:16   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 19:34:29,926 [INFO]   | 19:34:29     SHAP failed: could not convert string to float: '[3.4537727E-1]'
+2026-05-07 19:34:29,927 [INFO]   | 19:34:29   ames_salt_stripped_broad_fp1024_xgb: MCC=0.5589 [0.5227,0.5907] t=0.46 AD=0.57 (14s)
+2026-05-07 19:34:46,494 [INFO]   | 19:34:46   ames_salt_stripped_broad_fp1024_lgbm: MCC=0.5808 [0.5482,0.6137] t=0.52 AD=0.57 (17s)
+2026-05-07 19:35:04,235 [INFO]   | 19:35:04     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 19:35:04,236 [INFO]   | 19:35:04   ames_salt_stripped_broad_fp1024_rf: MCC=0.5339 [0.4998,0.5692] t=0.54 AD=0.57 (18s)
+2026-05-07 19:36:59,811 [INFO]   | 19:36:59   ames_salt_stripped_broad_fp1024_svm: MCC=0.5213 [0.4862,0.5573] t=0.36 AD=0.57 (116s)
+2026-05-07 19:41:30,075 [INFO]   | 19:41:30   ames_salt_stripped_broad_fp1024_logistic: MCC=0.4758 [0.4425,0.5109] t=0.5 AD=0.57 (270s)
+2026-05-07 19:42:24,794 [INFO]   | 19:42:24   ames_salt_stripped_broad_fp1024_ann: MCC=0.5606 [0.5230,0.5966] t=0.28 AD=0.57 (55s)
+2026-05-07 19:42:24,856 [INFO]   | 19:42:24   Domain stats: industrial n=5821 pos=0.0283 | drug n=5027 pos=0.5902
+2026-05-07 19:42:24,856 [INFO]   | 19:42:24   Prior shift ratio: 20.82x → w_ind range: 1.0~4.56 | w_drug range: 0.22~1.0
+2026-05-07 19:43:49,204 [INFO]   | 19:43:49     Domain weight grid: best w_ind=1.00 w_drug=0.22 mcc=0.7209 (searched 36 combos)
+2026-05-07 19:43:49,207 [INFO]   | 19:43:49   Domain sample weights were selected via 5-fold OOF CV grid search (36 combinations). The candidate range for w_industrial was log-uniformly derived from the empirical prior shift ratio (p_drug / p_industrial), capped at the square-root of the ratio to avoid over-correction. The criterion was OOF mcc. Optimal: w_industrial=1.0, w_drug=0.22.
+2026-05-07 19:43:49,211 [INFO]   | 19:43:49   [ames] n_train=10848 > 10k -- HP tuning skipped for svm
+2026-05-07 19:44:04,312 [INFO]   | 19:44:04     SHAP failed: could not convert string to float: '[2.673605E-1]'
+2026-05-07 19:44:04,313 [INFO]   | 19:44:04   ames_salt_stripped_broad_fp2048_xgb: MCC=0.5774 [0.5402,0.6113] t=0.56 AD=0.57 (15s)
+2026-05-07 19:44:21,270 [INFO]   | 19:44:21   ames_salt_stripped_broad_fp2048_lgbm: MCC=0.5744 [0.5350,0.6089] t=0.52 AD=0.57 (17s)
+2026-05-07 19:44:41,607 [INFO]   | 19:44:41     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 19:44:41,608 [INFO]   | 19:44:41   ames_salt_stripped_broad_fp2048_rf: MCC=0.5234 [0.4866,0.5561] t=0.5 AD=0.57 (20s)
+2026-05-07 19:46:54,362 [INFO]   | 19:46:54   ames_salt_stripped_broad_fp2048_svm: MCC=0.5127 [0.4780,0.5493] t=0.4 AD=0.57 (133s)
+2026-05-07 19:52:19,922 [INFO]   | 19:52:19   ⚠ logistic took 326s on ames/broad_fp2048 (n=10848)
+2026-05-07 19:52:19,922 [INFO]   | 19:52:19   ames_salt_stripped_broad_fp2048_logistic: MCC=0.4827 [0.4434,0.5174] t=0.56 AD=0.57 (326s)
+2026-05-07 19:53:17,363 [INFO]   | 19:53:17   ames_salt_stripped_broad_fp2048_ann: MCC=0.5659 [0.5322,0.6021] t=0.38 AD=0.57 (57s)
+2026-05-07 23:22:40,844 [INFO]   | 23:22:40   ames_salt_stripped_graph_gnn: MCC=0.3769
+2026-05-07 23:22:40,845 [INFO]   | 23:22:40   [invitro] Pre-computing features...
+2026-05-07 23:22:41,477 [INFO]   | 23:22:41   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-07 23:22:42,080 [INFO]   | 23:22:42   [invitro] Physchem features: 13 columns
+2026-05-07 23:22:42,292 [INFO]   | 23:22:42   [invitro] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-07 23:22:43,524 [INFO]   | 23:22:43   [invitro] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-07 23:22:44,852 [INFO]   | 23:22:44   [invitro] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-07 23:23:02,052 [INFO]   | 23:23:02     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-07 23:23:02,052 [INFO]   | 23:23:02   invitro_raw_all_compact_xgb: MCC=0.1137 [-0.0223,0.2540] t=0.32 AD=0.48 (16s)
+2026-05-07 23:23:09,515 [INFO]   | 23:23:09   invitro_raw_all_compact_lgbm: MCC=0.1634 [0.0133,0.3248] t=0.4 AD=0.48 (7s)
+2026-05-07 23:23:14,109 [INFO]   | 23:23:14     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 23:23:14,110 [INFO]   | 23:23:14   invitro_raw_all_compact_rf: MCC=-0.0166 [-0.0821,0.0903] t=0.58 AD=0.48 (5s)
+2026-05-07 23:23:19,800 [INFO]   | 23:23:19   invitro_raw_all_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.48 (6s)
+2026-05-07 23:23:51,844 [INFO]   | 23:23:51   invitro_raw_all_compact_logistic: MCC=0.0091 [-0.1015,0.1157] t=0.86 AD=0.48 (32s)
+2026-05-07 23:23:55,581 [INFO]   | 23:23:55   invitro_raw_all_compact_ann: MCC=-0.0263 [-0.0481,0.0000] t=0.14 AD=0.48 (4s)
+2026-05-07 23:23:59,172 [INFO]   | 23:23:59     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-07 23:23:59,172 [INFO]   | 23:23:59   invitro_raw_all_broad_fp512_xgb: MCC=0.0688 [-0.0600,0.2011] t=0.32 AD=0.48 (4s)
+2026-05-07 23:24:06,372 [INFO]   | 23:24:06   invitro_raw_all_broad_fp512_lgbm: MCC=0.1362 [0.0001,0.2916] t=0.28 AD=0.48 (7s)
+2026-05-07 23:24:11,043 [INFO]   | 23:24:11     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 23:24:11,044 [INFO]   | 23:24:11   invitro_raw_all_broad_fp512_rf: MCC=-0.0000 [-0.0927,0.1358] t=0.32 AD=0.48 (5s)
+2026-05-07 23:24:16,903 [INFO]   | 23:24:16   invitro_raw_all_broad_fp512_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.48 (6s)
+2026-05-07 23:24:54,156 [INFO]   | 23:24:54   invitro_raw_all_broad_fp512_logistic: MCC=0.1216 [-0.0111,0.2646] t=0.12 AD=0.48 (37s)
+2026-05-07 23:24:58,170 [INFO]   | 23:24:58   invitro_raw_all_broad_fp512_ann: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.48 (4s)
+2026-05-07 23:25:02,499 [INFO]   | 23:25:02     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-07 23:25:02,499 [INFO]   | 23:25:02   invitro_raw_all_broad_fp1024_xgb: MCC=0.1530 [0.0224,0.3059] t=0.26 AD=0.48 (4s)
+2026-05-07 23:25:09,790 [INFO]   | 23:25:09   invitro_raw_all_broad_fp1024_lgbm: MCC=0.1833 [0.0288,0.3500] t=0.26 AD=0.48 (7s)
+2026-05-07 23:25:14,465 [INFO]   | 23:25:14     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 23:25:14,466 [INFO]   | 23:25:14   invitro_raw_all_broad_fp1024_rf: MCC=0.0290 [-0.0819,0.1652] t=0.34 AD=0.48 (5s)
+2026-05-07 23:25:19,944 [INFO]   | 23:25:19   invitro_raw_all_broad_fp1024_svm: MCC=0.0000 [0.0000,0.0000] t=0.14 AD=0.48 (5s)
+2026-05-07 23:26:01,229 [INFO]   | 23:26:01   invitro_raw_all_broad_fp1024_logistic: MCC=0.0716 [-0.0546,0.1933] t=0.72 AD=0.48 (41s)
+2026-05-07 23:26:06,246 [INFO]   | 23:26:06   invitro_raw_all_broad_fp1024_ann: MCC=0.1025 [-0.0427,0.2596] t=0.1 AD=0.48 (5s)
+2026-05-07 23:26:10,671 [INFO]   | 23:26:10     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-07 23:26:10,672 [INFO]   | 23:26:10   invitro_raw_all_broad_fp2048_xgb: MCC=0.1436 [0.0021,0.3027] t=0.22 AD=0.48 (4s)
+2026-05-07 23:26:18,458 [INFO]   | 23:26:18   invitro_raw_all_broad_fp2048_lgbm: MCC=0.1227 [-0.0072,0.2682] t=0.16 AD=0.48 (8s)
+2026-05-07 23:26:23,131 [INFO]   | 23:26:23     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-07 23:26:23,132 [INFO]   | 23:26:23   invitro_raw_all_broad_fp2048_rf: MCC=0.0010 [-0.1003,0.1301] t=0.36 AD=0.48 (5s)
+2026-05-07 23:26:28,538 [INFO]   | 23:26:28   invitro_raw_all_broad_fp2048_svm: MCC=0.0000 [0.0000,0.0000] t=0.14 AD=0.48 (5s)
+2026-05-07 23:27:14,203 [INFO]   | 23:27:14   invitro_raw_all_broad_fp2048_logistic: MCC=0.1143 [-0.0105,0.2296] t=0.24 AD=0.48 (46s)
+2026-05-07 23:27:20,035 [INFO]   | 23:27:20   invitro_raw_all_broad_fp2048_ann: MCC=0.0013 [-0.0721,0.1554] t=0.24 AD=0.48 (6s)
+2026-05-08 00:02:22,261 [INFO]   | 00:02:22   invitro_raw_all_graph_gnn: MCC=0.0000
+2026-05-08 00:02:22,778 [INFO]   | 00:02:22   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 00:02:23,265 [INFO]   | 00:02:23   [invitro] Physchem features: 13 columns
+2026-05-08 00:02:23,435 [INFO]   | 00:02:23   [invitro] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 00:02:24,463 [INFO]   | 00:02:24   [invitro] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 00:02:25,554 [INFO]   | 00:02:25   [invitro] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 00:02:42,405 [INFO]   | 00:02:42     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:02:42,405 [INFO]   | 00:02:42   invitro_no_metal_compact_xgb: MCC=0.1688 [-0.0040,0.3627] t=0.1 AD=0.51 * (16s)
+2026-05-08 00:02:48,993 [INFO]   | 00:02:48   invitro_no_metal_compact_lgbm: MCC=0.1572 [-0.0056,0.3228] t=0.12 AD=0.51 (7s)
+2026-05-08 00:02:53,490 [INFO]   | 00:02:53     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:02:53,490 [INFO]   | 00:02:53   invitro_no_metal_compact_rf: MCC=-0.0045 [-0.0777,0.1327] t=0.36 AD=0.51 (4s)
+2026-05-08 00:02:58,255 [INFO]   | 00:02:58   invitro_no_metal_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.51 (5s)
+2026-05-08 00:03:28,084 [INFO]   | 00:03:28   invitro_no_metal_compact_logistic: MCC=0.1207 [0.0117,0.2398] t=0.44 AD=0.51 (30s)
+2026-05-08 00:03:31,477 [INFO]   | 00:03:31   invitro_no_metal_compact_ann: MCC=-0.0016 [-0.0778,0.1520] t=0.54 AD=0.51 (3s)
+2026-05-08 00:03:34,797 [INFO]   | 00:03:34     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:03:34,797 [INFO]   | 00:03:34   invitro_no_metal_broad_fp512_xgb: MCC=0.1241 [-0.0352,0.2977] t=0.12 AD=0.51 (3s)
+2026-05-08 00:03:41,421 [INFO]   | 00:03:41   invitro_no_metal_broad_fp512_lgbm: MCC=0.1139 [-0.0538,0.2786] t=0.18 AD=0.51 (7s)
+2026-05-08 00:03:45,883 [INFO]   | 00:03:45     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:03:45,883 [INFO]   | 00:03:45   invitro_no_metal_broad_fp512_rf: MCC=0.1150 [-0.0329,0.2827] t=0.34 AD=0.51 (4s)
+2026-05-08 00:03:49,624 [INFO]   | 00:03:49   invitro_no_metal_broad_fp512_svm: MCC=0.0000 [0.0000,0.0000] t=0.22 AD=0.51 (4s)
+2026-05-08 00:04:20,939 [INFO]   | 00:04:20   invitro_no_metal_broad_fp512_logistic: MCC=-0.0227 [-0.1229,0.0860] t=0.38 AD=0.51 (31s)
+2026-05-08 00:04:24,583 [INFO]   | 00:04:24   invitro_no_metal_broad_fp512_ann: MCC=0.0000 [0.0000,0.0000] t=0.24 AD=0.51 (4s)
+2026-05-08 00:04:28,122 [INFO]   | 00:04:28     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:04:28,123 [INFO]   | 00:04:28   invitro_no_metal_broad_fp1024_xgb: MCC=0.0569 [-0.0803,0.2209] t=0.14 AD=0.51 (4s)
+2026-05-08 00:04:34,722 [INFO]   | 00:04:34   invitro_no_metal_broad_fp1024_lgbm: MCC=0.2210 [0.0613,0.3898] t=0.14 AD=0.51 (7s)
+2026-05-08 00:04:39,266 [INFO]   | 00:04:39     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:04:39,267 [INFO]   | 00:04:39   invitro_no_metal_broad_fp1024_rf: MCC=0.1433 [-0.0268,0.3177] t=0.34 AD=0.51 (5s)
+2026-05-08 00:04:43,136 [INFO]   | 00:04:43   invitro_no_metal_broad_fp1024_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.51 (4s)
+2026-05-08 00:05:18,289 [INFO]   | 00:05:18   invitro_no_metal_broad_fp1024_logistic: MCC=0.0184 [-0.1032,0.1461] t=0.7 AD=0.51 (35s)
+2026-05-08 00:05:22,554 [INFO]   | 00:05:22   invitro_no_metal_broad_fp1024_ann: MCC=-0.0343 [-0.0582,0.0000] t=0.12 AD=0.51 (4s)
+2026-05-08 00:05:26,272 [INFO]   | 00:05:26     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:05:26,272 [INFO]   | 00:05:26   invitro_no_metal_broad_fp2048_xgb: MCC=0.1185 [-0.0358,0.2872] t=0.22 AD=0.51 (4s)
+2026-05-08 00:05:33,032 [INFO]   | 00:05:33   invitro_no_metal_broad_fp2048_lgbm: MCC=0.2495 [0.0723,0.4181] t=0.1 AD=0.51 (7s)
+2026-05-08 00:05:37,574 [INFO]   | 00:05:37     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:05:37,575 [INFO]   | 00:05:37   invitro_no_metal_broad_fp2048_rf: MCC=0.0056 [-0.0941,0.1389] t=0.34 AD=0.51 (5s)
+2026-05-08 00:05:41,880 [INFO]   | 00:05:41   invitro_no_metal_broad_fp2048_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.51 (4s)
+2026-05-08 00:06:19,329 [INFO]   | 00:06:19   invitro_no_metal_broad_fp2048_logistic: MCC=0.0618 [-0.0669,0.1921] t=0.28 AD=0.51 (37s)
+2026-05-08 00:06:24,064 [INFO]   | 00:06:24   invitro_no_metal_broad_fp2048_ann: MCC=-0.0166 [-0.0392,0.0000] t=0.16 AD=0.51 (5s)
+2026-05-08 00:34:02,832 [INFO]   | 00:34:02   invitro_no_metal_graph_gnn: MCC=0.0000
+2026-05-08 00:34:02,834 [INFO]   | 00:34:02   salt_stripped: 1317/1619 SMILES changed
+2026-05-08 00:34:03,448 [INFO]   | 00:34:03   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 00:34:04,032 [INFO]   | 00:34:04   [invitro] Physchem features: 13 columns
+2026-05-08 00:34:04,224 [INFO]   | 00:34:04   [invitro] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 00:34:05,406 [INFO]   | 00:34:05   [invitro] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 00:34:06,695 [INFO]   | 00:34:06   [invitro] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 00:34:23,748 [INFO]   | 00:34:23     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:34:23,749 [INFO]   | 00:34:23   invitro_salt_stripped_compact_xgb: MCC=0.1849 [0.0324,0.3274] t=0.12 AD=0.49 (16s)
+2026-05-08 00:34:30,998 [INFO]   | 00:34:30   invitro_salt_stripped_compact_lgbm: MCC=0.1149 [-0.0136,0.2553] t=0.78 AD=0.49 (7s)
+2026-05-08 00:34:35,653 [INFO]   | 00:34:35     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:34:35,654 [INFO]   | 00:34:35   invitro_salt_stripped_compact_rf: MCC=0.0508 [-0.0646,0.1873] t=0.34 AD=0.49 (5s)
+2026-05-08 00:34:40,941 [INFO]   | 00:34:40   invitro_salt_stripped_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.14 AD=0.49 (5s)
+2026-05-08 00:35:13,356 [INFO]   | 00:35:13   invitro_salt_stripped_compact_logistic: MCC=-0.0100 [-0.1186,0.0984] t=0.8 AD=0.49 (32s)
+2026-05-08 00:35:17,074 [INFO]   | 00:35:17   invitro_salt_stripped_compact_ann: MCC=-0.0262 [-0.0477,0.0000] t=0.46 AD=0.49 (4s)
+2026-05-08 00:35:20,771 [INFO]   | 00:35:20     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:35:20,772 [INFO]   | 00:35:20   invitro_salt_stripped_broad_fp512_xgb: MCC=0.0624 [-0.0509,0.1953] t=0.12 AD=0.49 (4s)
+2026-05-08 00:35:28,124 [INFO]   | 00:35:28   invitro_salt_stripped_broad_fp512_lgbm: MCC=0.0998 [-0.0301,0.2361] t=0.12 AD=0.49 (7s)
+2026-05-08 00:35:32,557 [INFO]   | 00:35:32     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:35:32,559 [INFO]   | 00:35:32   invitro_salt_stripped_broad_fp512_rf: MCC=0.0579 [-0.0564,0.1952] t=0.32 AD=0.49 (4s)
+2026-05-08 00:35:38,404 [INFO]   | 00:35:38   invitro_salt_stripped_broad_fp512_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.49 (6s)
+2026-05-08 00:36:14,734 [INFO]   | 00:36:14   invitro_salt_stripped_broad_fp512_logistic: MCC=-0.0932 [-0.1707,0.0007] t=0.9 AD=0.49 (36s)
+2026-05-08 00:36:19,485 [INFO]   | 00:36:19   invitro_salt_stripped_broad_fp512_ann: MCC=0.0000 [0.0000,0.0000] t=0.14 AD=0.49 (5s)
+2026-05-08 00:36:23,581 [INFO]   | 00:36:23     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:36:23,582 [INFO]   | 00:36:23   invitro_salt_stripped_broad_fp1024_xgb: MCC=0.0990 [-0.0282,0.2503] t=0.22 AD=0.49 (4s)
+2026-05-08 00:36:31,063 [INFO]   | 00:36:31   invitro_salt_stripped_broad_fp1024_lgbm: MCC=0.2362 [0.0764,0.3831] t=0.34 AD=0.49 (7s)
+2026-05-08 00:36:35,828 [INFO]   | 00:36:35     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:36:35,829 [INFO]   | 00:36:35   invitro_salt_stripped_broad_fp1024_rf: MCC=0.1201 [-0.0125,0.2696] t=0.42 AD=0.49 (5s)
+2026-05-08 00:36:43,135 [INFO]   | 00:36:43   invitro_salt_stripped_broad_fp1024_svm: MCC=0.0000 [0.0000,0.0000] t=0.18 AD=0.49 (7s)
+2026-05-08 00:37:23,850 [INFO]   | 00:37:23   invitro_salt_stripped_broad_fp1024_logistic: MCC=0.0411 [-0.0809,0.1644] t=0.14 AD=0.49 (41s)
+2026-05-08 00:37:28,915 [INFO]   | 00:37:28   invitro_salt_stripped_broad_fp1024_ann: MCC=0.1649 [0.0221,0.3070] t=0.16 AD=0.49 (5s)
+2026-05-08 00:37:33,035 [INFO]   | 00:37:33     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 00:37:33,036 [INFO]   | 00:37:33   invitro_salt_stripped_broad_fp2048_xgb: MCC=0.0687 [-0.0509,0.2142] t=0.24 AD=0.49 (4s)
+2026-05-08 00:37:40,955 [INFO]   | 00:37:40   invitro_salt_stripped_broad_fp2048_lgbm: MCC=0.1961 [0.0510,0.3455] t=0.12 AD=0.49 (8s)
+2026-05-08 00:37:45,690 [INFO]   | 00:37:45     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 00:37:45,691 [INFO]   | 00:37:45   invitro_salt_stripped_broad_fp2048_rf: MCC=0.0696 [-0.0498,0.2028] t=0.34 AD=0.49 (5s)
+2026-05-08 00:37:54,216 [INFO]   | 00:37:54   invitro_salt_stripped_broad_fp2048_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.49 (9s)
+2026-05-08 00:38:39,097 [INFO]   | 00:38:39   invitro_salt_stripped_broad_fp2048_logistic: MCC=0.1158 [-0.0059,0.2429] t=0.1 AD=0.49 (45s)
+2026-05-08 00:38:44,667 [INFO]   | 00:38:44   invitro_salt_stripped_broad_fp2048_ann: MCC=0.0000 [0.0000,0.0000] t=0.2 AD=0.49 (6s)
+2026-05-08 01:10:55,392 [INFO]   | 01:10:55   invitro_salt_stripped_graph_gnn: MCC=0.0000
+2026-05-08 01:10:55,393 [INFO]   | 01:10:55   [invivo] Pre-computing features...
+2026-05-08 01:10:56,193 [INFO]   | 01:10:56   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 01:10:56,972 [INFO]   | 01:10:56   [invivo] Physchem features: 13 columns
+2026-05-08 01:10:57,214 [INFO]   | 01:10:57   [invivo] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 01:10:58,715 [INFO]   | 01:10:58   [invivo] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 01:11:00,224 [INFO]   | 01:11:00   [invivo] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 01:11:18,387 [INFO]   | 01:11:18     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 01:11:18,388 [INFO]   | 01:11:18   invivo_raw_all_compact_xgb: MCC=0.2213 [-0.0205,0.4800] t=0.84 AD=0.57 (16s)
+2026-05-08 01:11:25,328 [INFO]   | 01:11:25   invivo_raw_all_compact_lgbm: MCC=0.0834 [-0.0268,0.3097] t=0.9 AD=0.57 (7s)
+2026-05-08 01:11:30,020 [INFO]   | 01:11:30     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 01:11:30,020 [INFO]   | 01:11:30   invivo_raw_all_compact_rf: MCC=-0.0132 [-0.0226,0.0000] t=0.62 AD=0.57 (5s)
+2026-05-08 01:11:38,871 [INFO]   | 01:11:38   invivo_raw_all_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.16 AD=0.57 (9s)
+2026-05-08 01:12:20,038 [INFO]   | 01:12:20   invivo_raw_all_compact_logistic: MCC=0.0072 [-0.0720,0.1216] t=0.9 AD=0.57 (41s)
+2026-05-08 01:12:25,100 [INFO]   | 01:12:25   invivo_raw_all_compact_ann: MCC=0.0000 [0.0000,0.0000] t=0.28 AD=0.57 (5s)
+2026-05-08 01:12:29,121 [INFO]   | 01:12:29     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 01:12:29,121 [INFO]   | 01:12:29   invivo_raw_all_broad_fp512_xgb: MCC=0.1642 [-0.0238,0.4196] t=0.82 AD=0.57 (4s)
+2026-05-08 01:12:36,720 [INFO]   | 01:12:36   invivo_raw_all_broad_fp512_lgbm: MCC=-0.0226 [-0.0342,-0.0129] t=0.6 AD=0.57 (8s)
+2026-05-08 01:12:41,600 [INFO]   | 01:12:41     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 01:12:41,600 [INFO]   | 01:12:41   invivo_raw_all_broad_fp512_rf: MCC=-0.0132 [-0.0225,0.0000] t=0.18 AD=0.57 (5s)
+2026-05-08 01:12:53,403 [INFO]   | 01:12:53   invivo_raw_all_broad_fp512_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.57 (12s)
+2026-05-08 01:13:40,841 [INFO]   | 01:13:40   invivo_raw_all_broad_fp512_logistic: MCC=0.1295 [0.0009,0.2560] t=0.9 AD=0.57 (47s)
+2026-05-08 01:13:45,781 [INFO]   | 01:13:45   invivo_raw_all_broad_fp512_ann: MCC=0.0000 [0.0000,0.0000] t=0.26 AD=0.57 (5s)
+2026-05-08 01:13:50,192 [INFO]   | 01:13:50     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 01:13:50,193 [INFO]   | 01:13:50   invivo_raw_all_broad_fp1024_xgb: MCC=0.2993 [-0.0156,0.5901] t=0.86 AD=0.57 (4s)
+2026-05-08 01:13:57,872 [INFO]   | 01:13:57   invivo_raw_all_broad_fp1024_lgbm: MCC=0.0788 [-0.0261,0.3132] t=0.82 AD=0.57 (8s)
+2026-05-08 01:14:02,654 [INFO]   | 01:14:02     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 01:14:02,655 [INFO]   | 01:14:02   invivo_raw_all_broad_fp1024_rf: MCC=-0.0130 [-0.0220,0.0000] t=0.14 AD=0.57 (5s)
+2026-05-08 01:14:18,312 [INFO]   | 01:14:18   invivo_raw_all_broad_fp1024_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.57 (16s)
+2026-05-08 01:15:14,865 [INFO]   | 01:15:14   invivo_raw_all_broad_fp1024_logistic: MCC=0.3051 [0.1255,0.4433] t=0.1 AD=0.57 (57s)
+2026-05-08 01:15:20,197 [INFO]   | 01:15:20   invivo_raw_all_broad_fp1024_ann: MCC=-0.0065 [-0.0153,0.0000] t=0.12 AD=0.57 (5s)
+2026-05-08 01:15:25,046 [INFO]   | 01:15:25     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 01:15:25,046 [INFO]   | 01:15:25   invivo_raw_all_broad_fp2048_xgb: MCC=0.1654 [-0.0248,0.4164] t=0.84 AD=0.57 (5s)
+2026-05-08 01:15:32,383 [INFO]   | 01:15:32   invivo_raw_all_broad_fp2048_lgbm: MCC=0.0784 [-0.0246,0.2999] t=0.58 AD=0.57 (7s)
+2026-05-08 01:15:37,682 [INFO]   | 01:15:37     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 01:15:37,683 [INFO]   | 01:15:37   invivo_raw_all_broad_fp2048_rf: MCC=-0.0061 [-0.0149,0.0000] t=0.2 AD=0.57 (5s)
+2026-05-08 01:15:48,735 [INFO]   | 01:15:48   invivo_raw_all_broad_fp2048_svm: MCC=0.0000 [0.0000,0.0000] t=0.2 AD=0.57 (11s)
+2026-05-08 01:16:46,449 [INFO]   | 01:16:46   invivo_raw_all_broad_fp2048_logistic: MCC=0.2190 [0.0556,0.3541] t=0.12 AD=0.57 (58s)
+2026-05-08 01:16:52,436 [INFO]   | 01:16:52   invivo_raw_all_broad_fp2048_ann: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.57 (6s)
+2026-05-08 02:04:03,575 [INFO]   | 02:04:03   invivo_raw_all_graph_gnn: MCC=0.0000
+2026-05-08 02:04:04,224 [INFO]   | 02:04:04   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 02:04:04,806 [INFO]   | 02:04:04   [invivo] Physchem features: 13 columns
+2026-05-08 02:04:05,001 [INFO]   | 02:04:05   [invivo] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 02:04:06,238 [INFO]   | 02:04:06   [invivo] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 02:04:07,495 [INFO]   | 02:04:07   [invivo] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 02:04:24,562 [INFO]   | 02:04:24     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:04:24,562 [INFO]   | 02:04:24   invivo_no_metal_compact_xgb: MCC=0.1111 [-0.0273,0.3657] t=0.56 AD=0.54 * (16s)
+2026-05-08 02:04:30,823 [INFO]   | 02:04:30   invivo_no_metal_compact_lgbm: MCC=-0.0074 [-0.0202,0.0000] t=0.1 AD=0.54 (6s)
+2026-05-08 02:04:35,333 [INFO]   | 02:04:35     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:04:35,333 [INFO]   | 02:04:35   invivo_no_metal_compact_rf: MCC=-0.0166 [-0.0286,0.0000] t=0.46 AD=0.54 (5s)
+2026-05-08 02:04:40,755 [INFO]   | 02:04:40   invivo_no_metal_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.54 (5s)
+2026-05-08 02:05:20,176 [INFO]   | 02:05:20   invivo_no_metal_compact_logistic: MCC=0.0673 [-0.0539,0.2185] t=0.3 AD=0.54 (39s)
+2026-05-08 02:05:23,730 [INFO]   | 02:05:23   invivo_no_metal_compact_ann: MCC=0.0000 [0.0000,0.0000] t=0.32 AD=0.54 (4s)
+2026-05-08 02:05:27,990 [INFO]   | 02:05:27     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:05:27,990 [INFO]   | 02:05:27   invivo_no_metal_broad_fp512_xgb: MCC=0.1859 [-0.0164,0.4917] t=0.48 AD=0.54 (4s)
+2026-05-08 02:05:34,757 [INFO]   | 02:05:34   invivo_no_metal_broad_fp512_lgbm: MCC=0.1859 [-0.0164,0.4917] t=0.2 AD=0.54 (7s)
+2026-05-08 02:05:39,091 [INFO]   | 02:05:39     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:05:39,091 [INFO]   | 02:05:39   invivo_no_metal_broad_fp512_rf: MCC=-0.0242 [-0.0378,-0.0111] t=0.18 AD=0.54 (4s)
+2026-05-08 02:05:43,855 [INFO]   | 02:05:43   invivo_no_metal_broad_fp512_svm: MCC=0.0000 [0.0000,0.0000] t=0.5 AD=0.54 (5s)
+2026-05-08 02:06:31,403 [INFO]   | 02:06:31   invivo_no_metal_broad_fp512_logistic: MCC=0.1600 [0.0048,0.3325] t=0.22 AD=0.54 (48s)
+2026-05-08 02:06:35,994 [INFO]   | 02:06:35   invivo_no_metal_broad_fp512_ann: MCC=0.0000 [0.0000,0.0000] t=0.4 AD=0.54 (5s)
+2026-05-08 02:06:40,332 [INFO]   | 02:06:40     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:06:40,333 [INFO]   | 02:06:40   invivo_no_metal_broad_fp1024_xgb: MCC=0.1859 [-0.0164,0.4917] t=0.14 AD=0.54 (4s)
+2026-05-08 02:06:47,064 [INFO]   | 02:06:47   invivo_no_metal_broad_fp1024_lgbm: MCC=-0.0074 [-0.0202,0.0000] t=0.18 AD=0.54 (7s)
+2026-05-08 02:06:51,450 [INFO]   | 02:06:51     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:06:51,450 [INFO]   | 02:06:51   invivo_no_metal_broad_fp1024_rf: MCC=0.2295 [-0.0211,0.5171] t=0.14 AD=0.54 (4s)
+2026-05-08 02:06:57,297 [INFO]   | 02:06:57   invivo_no_metal_broad_fp1024_svm: MCC=0.0000 [0.0000,0.0000] t=0.1 AD=0.54 (6s)
+2026-05-08 02:07:43,465 [INFO]   | 02:07:43   invivo_no_metal_broad_fp1024_logistic: MCC=0.2918 [0.0984,0.4889] t=0.86 AD=0.54 (46s)
+2026-05-08 02:07:48,036 [INFO]   | 02:07:48   invivo_no_metal_broad_fp1024_ann: MCC=-0.0073 [-0.0187,0.0000] t=0.22 AD=0.54 (5s)
+2026-05-08 02:07:52,593 [INFO]   | 02:07:52     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:07:52,594 [INFO]   | 02:07:52   invivo_no_metal_broad_fp2048_xgb: MCC=0.1294 [-0.0248,0.4206] t=0.1 AD=0.54 (5s)
+2026-05-08 02:07:59,376 [INFO]   | 02:07:59   invivo_no_metal_broad_fp2048_lgbm: MCC=0.1859 [-0.0164,0.4917] t=0.12 AD=0.54 (7s)
+2026-05-08 02:08:04,005 [INFO]   | 02:08:04     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:08:04,005 [INFO]   | 02:08:04   invivo_no_metal_broad_fp2048_rf: MCC=-0.0128 [-0.0248,0.0000] t=0.12 AD=0.54 (5s)
+2026-05-08 02:08:09,109 [INFO]   | 02:08:09   invivo_no_metal_broad_fp2048_svm: MCC=0.0000 [0.0000,0.0000] t=0.14 AD=0.54 (5s)
+2026-05-08 02:09:07,820 [INFO]   | 02:09:07   invivo_no_metal_broad_fp2048_logistic: MCC=0.2129 [0.0152,0.4222] t=0.56 AD=0.54 (59s)
+2026-05-08 02:09:13,473 [INFO]   | 02:09:13   invivo_no_metal_broad_fp2048_ann: MCC=-0.0083 [-0.0202,0.0000] t=0.24 AD=0.54 (6s)
+2026-05-08 02:44:03,699 [INFO]   | 02:44:03   invivo_no_metal_graph_gnn: MCC=0.0000
+2026-05-08 02:44:03,701 [INFO]   | 02:44:03   salt_stripped: 1785/2153 SMILES changed
+2026-05-08 02:44:04,460 [INFO]   | 02:44:04   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 02:44:05,188 [INFO]   | 02:44:05   [invivo] Physchem features: 13 columns
+2026-05-08 02:44:05,425 [INFO]   | 02:44:05   [invivo] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 02:44:06,902 [INFO]   | 02:44:06   [invivo] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 02:44:08,353 [INFO]   | 02:44:08   [invivo] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 02:44:26,473 [INFO]   | 02:44:26     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:44:26,473 [INFO]   | 02:44:26   invivo_salt_stripped_compact_xgb: MCC=0.1408 [-0.0284,0.3766] t=0.9 AD=0.59 (16s)
+2026-05-08 02:44:33,742 [INFO]   | 02:44:33   invivo_salt_stripped_compact_lgbm: MCC=0.1252 [-0.0197,0.4035] t=0.9 AD=0.59 (7s)
+2026-05-08 02:44:38,537 [INFO]   | 02:44:38     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:44:38,537 [INFO]   | 02:44:38   invivo_salt_stripped_compact_rf: MCC=0.2320 [-0.0153,0.5258] t=0.58 AD=0.59 (5s)
+2026-05-08 02:44:47,809 [INFO]   | 02:44:47   invivo_salt_stripped_compact_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.59 (9s)
+2026-05-08 02:45:28,672 [INFO]   | 02:45:28   invivo_salt_stripped_compact_logistic: MCC=0.0241 [-0.0651,0.1393] t=0.9 AD=0.59 (41s)
+2026-05-08 02:45:32,951 [INFO]   | 02:45:32   invivo_salt_stripped_compact_ann: MCC=0.0000 [0.0000,0.0000] t=0.3 AD=0.59 (4s)
+2026-05-08 02:45:37,264 [INFO]   | 02:45:37     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:45:37,264 [INFO]   | 02:45:37   invivo_salt_stripped_broad_fp512_xgb: MCC=0.1347 [-0.0278,0.3721] t=0.88 AD=0.59 (4s)
+2026-05-08 02:45:44,514 [INFO]   | 02:45:44   invivo_salt_stripped_broad_fp512_lgbm: MCC=0.1773 [-0.0220,0.4488] t=0.9 AD=0.59 (7s)
+2026-05-08 02:45:49,241 [INFO]   | 02:45:49     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:45:49,241 [INFO]   | 02:45:49   invivo_salt_stripped_broad_fp512_rf: MCC=0.1110 [-0.0210,0.3670] t=0.62 AD=0.59 (5s)
+2026-05-08 02:46:00,726 [INFO]   | 02:46:00   invivo_salt_stripped_broad_fp512_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.59 (11s)
+2026-05-08 02:46:48,094 [INFO]   | 02:46:48   invivo_salt_stripped_broad_fp512_logistic: MCC=0.2141 [0.0572,0.3545] t=0.7 AD=0.59 (47s)
+2026-05-08 02:46:53,210 [INFO]   | 02:46:53   invivo_salt_stripped_broad_fp512_ann: MCC=0.0000 [0.0000,0.0000] t=0.4 AD=0.59 (5s)
+2026-05-08 02:46:57,880 [INFO]   | 02:46:57     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:46:57,881 [INFO]   | 02:46:57   invivo_salt_stripped_broad_fp1024_xgb: MCC=0.2287 [-0.0207,0.5055] t=0.9 AD=0.59 (5s)
+2026-05-08 02:47:05,274 [INFO]   | 02:47:05   invivo_salt_stripped_broad_fp1024_lgbm: MCC=0.0982 [-0.0230,0.3410] t=0.9 AD=0.59 (7s)
+2026-05-08 02:47:10,275 [INFO]   | 02:47:10     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:47:10,275 [INFO]   | 02:47:10   invivo_salt_stripped_broad_fp1024_rf: MCC=0.1247 [-0.0191,0.3780] t=0.62 AD=0.59 (5s)
+2026-05-08 02:47:25,931 [INFO]   | 02:47:25   invivo_salt_stripped_broad_fp1024_svm: MCC=0.0000 [0.0000,0.0000] t=0.12 AD=0.59 (16s)
+2026-05-08 02:48:35,869 [INFO]   | 02:48:35   invivo_salt_stripped_broad_fp1024_logistic: MCC=0.1332 [-0.0288,0.2862] t=0.14 AD=0.59 (70s)
+2026-05-08 02:48:42,048 [INFO]   | 02:48:42   invivo_salt_stripped_broad_fp1024_ann: MCC=0.0000 [0.0000,0.0000] t=0.14 AD=0.59 (6s)
+2026-05-08 02:48:47,419 [INFO]   | 02:48:47     SHAP failed: could not convert string to float: '[5E-1]'
+2026-05-08 02:48:47,420 [INFO]   | 02:48:47   invivo_salt_stripped_broad_fp2048_xgb: MCC=0.1619 [-0.0236,0.4220] t=0.48 AD=0.59 (5s)
+2026-05-08 02:48:55,002 [INFO]   | 02:48:55   invivo_salt_stripped_broad_fp2048_lgbm: MCC=0.0669 [-0.0303,0.2671] t=0.88 AD=0.59 (8s)
+2026-05-08 02:48:59,707 [INFO]   | 02:48:59     SHAP failed: Per-column arrays must each be 1-dimensional
+2026-05-08 02:48:59,707 [INFO]   | 02:48:59   invivo_salt_stripped_broad_fp2048_rf: MCC=0.1110 [-0.0210,0.3670] t=0.62 AD=0.59 (5s)
+2026-05-08 02:49:12,906 [INFO]   | 02:49:12   invivo_salt_stripped_broad_fp2048_svm: MCC=-0.0063 [-0.0153,0.0000] t=0.16 AD=0.59 (13s)
+2026-05-08 02:50:18,571 [INFO]   | 02:50:18   invivo_salt_stripped_broad_fp2048_logistic: MCC=0.1834 [0.0085,0.3552] t=0.76 AD=0.59 (66s)
+2026-05-08 02:50:24,997 [INFO]   | 02:50:24   invivo_salt_stripped_broad_fp2048_ann: MCC=0.0000 [0.0000,0.0000] t=0.28 AD=0.59 (6s)
+2026-05-08 03:40:02,867 [INFO]   | 03:40:02   invivo_salt_stripped_graph_gnn: MCC=0.0000
+2026-05-08 03:40:02,867 [INFO]   | 03:40:02   [invitro_sampling] Pre-computing features...
+2026-05-08 03:40:03,054 [INFO]   | 03:40:03   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 03:40:03,210 [INFO]   | 03:40:03   [invitro_sampling] Physchem features: 13 columns
+2026-05-08 03:40:03,291 [INFO]   | 03:40:03   [invitro_sampling] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 03:40:03,763 [INFO]   | 03:40:03   [invitro_sampling] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 03:40:04,369 [INFO]   | 03:40:04   [invitro_sampling] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 03:40:19,254 [INFO]   | 03:40:19   invitro_sampling_raw_all_compact_xgb: MCC=0.4455 [0.1975,0.6518] t=0.32 AD=0.54 (14s)
+2026-05-08 03:40:23,414 [INFO]   | 03:40:23   invitro_sampling_raw_all_compact_lgbm: MCC=0.4733 [0.2639,0.6805] t=0.56 AD=0.54 (4s)
+2026-05-08 03:40:26,949 [INFO]   | 03:40:26   invitro_sampling_raw_all_compact_rf: MCC=0.5938 [0.3918,0.7638] t=0.46 AD=0.54 (4s)
+2026-05-08 03:40:29,223 [INFO]   | 03:40:29   invitro_sampling_raw_all_compact_svm: MCC=0.3117 [0.0754,0.5251] t=0.56 AD=0.54 (2s)
+2026-05-08 03:40:46,231 [INFO]   | 03:40:46   invitro_sampling_raw_all_compact_logistic: MCC=0.3111 [0.0642,0.5409] t=0.66 AD=0.54 (17s)
+2026-05-08 03:40:48,164 [INFO]   | 03:40:48   invitro_sampling_raw_all_compact_ann: MCC=0.4100 [0.1937,0.6228] t=0.42 AD=0.54 (2s)
+2026-05-08 03:40:50,425 [INFO]   | 03:40:50   invitro_sampling_raw_all_broad_fp512_xgb: MCC=0.5403 [0.3034,0.7403] t=0.3 AD=0.54 (2s)
+2026-05-08 03:40:54,483 [INFO]   | 03:40:54   invitro_sampling_raw_all_broad_fp512_lgbm: MCC=0.5017 [0.2838,0.7019] t=0.38 AD=0.54 (4s)
+2026-05-08 03:40:57,878 [INFO]   | 03:40:57   invitro_sampling_raw_all_broad_fp512_rf: MCC=0.6311 [0.4183,0.8030] t=0.36 AD=0.54 (3s)
+2026-05-08 03:41:00,345 [INFO]   | 03:41:00   invitro_sampling_raw_all_broad_fp512_svm: MCC=0.3133 [0.0903,0.5254] t=0.52 AD=0.54 (2s)
+2026-05-08 03:41:17,975 [INFO]   | 03:41:17   invitro_sampling_raw_all_broad_fp512_logistic: MCC=0.1473 [-0.1011,0.3833] t=0.14 AD=0.54 (18s)
+2026-05-08 03:41:20,008 [INFO]   | 03:41:20   invitro_sampling_raw_all_broad_fp512_ann: MCC=0.3379 [0.0965,0.5360] t=0.38 AD=0.54 (2s)
+2026-05-08 03:41:22,422 [INFO]   | 03:41:22   invitro_sampling_raw_all_broad_fp1024_xgb: MCC=0.6333 [0.4365,0.8151] t=0.16 AD=0.54 (2s)
+2026-05-08 03:41:26,703 [INFO]   | 03:41:26   invitro_sampling_raw_all_broad_fp1024_lgbm: MCC=0.5421 [0.3377,0.7351] t=0.16 AD=0.54 (4s)
+2026-05-08 03:41:30,063 [INFO]   | 03:41:30   invitro_sampling_raw_all_broad_fp1024_rf: MCC=0.6277 [0.4111,0.8178] t=0.5 AD=0.54 (3s)
+2026-05-08 03:41:32,571 [INFO]   | 03:41:32   invitro_sampling_raw_all_broad_fp1024_svm: MCC=0.4448 [0.2142,0.6423] t=0.5 AD=0.54 (3s)
+2026-05-08 03:41:51,270 [INFO]   | 03:41:51   invitro_sampling_raw_all_broad_fp1024_logistic: MCC=0.4715 [0.2685,0.6640] t=0.12 AD=0.54 (19s)
+2026-05-08 03:41:53,376 [INFO]   | 03:41:53   invitro_sampling_raw_all_broad_fp1024_ann: MCC=0.1791 [-0.0648,0.4142] t=0.32 AD=0.54 (2s)
+2026-05-08 03:41:55,974 [INFO]   | 03:41:55   invitro_sampling_raw_all_broad_fp2048_xgb: MCC=0.5725 [0.3738,0.7551] t=0.32 AD=0.54 (3s)
+2026-05-08 03:42:00,244 [INFO]   | 03:42:00   invitro_sampling_raw_all_broad_fp2048_lgbm: MCC=0.5385 [0.3447,0.7393] t=0.28 AD=0.54 (4s)
+2026-05-08 03:42:03,782 [INFO]   | 03:42:03   invitro_sampling_raw_all_broad_fp2048_rf: MCC=0.6596 [0.4562,0.8212] t=0.56 AD=0.54 (4s)
+2026-05-08 03:42:06,121 [INFO]   | 03:42:06   invitro_sampling_raw_all_broad_fp2048_svm: MCC=0.4439 [0.2372,0.6505] t=0.5 AD=0.54 (2s)
+2026-05-08 03:42:26,522 [INFO]   | 03:42:26   invitro_sampling_raw_all_broad_fp2048_logistic: MCC=0.3287 [0.1204,0.5542] t=0.18 AD=0.54 (20s)
+2026-05-08 03:42:28,981 [INFO]   | 03:42:28   invitro_sampling_raw_all_broad_fp2048_ann: MCC=0.2408 [0.0220,0.4514] t=0.42 AD=0.54 (2s)
+2026-05-08 03:47:25,018 [INFO]   | 03:47:25   invitro_sampling_raw_all_graph_gnn: MCC=0.2078
+2026-05-08 03:47:25,319 [INFO]   | 03:47:25   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 03:47:25,431 [INFO]   | 03:47:25   [invitro_sampling] Physchem features: 13 columns
+2026-05-08 03:47:25,494 [INFO]   | 03:47:25   [invitro_sampling] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 03:47:25,889 [INFO]   | 03:47:25   [invitro_sampling] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 03:47:26,347 [INFO]   | 03:47:26   [invitro_sampling] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 03:47:42,082 [INFO]   | 03:47:42   invitro_sampling_no_metal_compact_xgb: MCC=0.5049 [0.2395,0.7411] t=0.24 AD=0.47 * (15s)
+2026-05-08 03:48:01,926 [INFO]   | 03:48:01   invitro_sampling_no_metal_compact_lgbm: MCC=0.4251 [0.1657,0.6747] t=0.24 AD=0.47 (20s)
+2026-05-08 03:48:05,445 [INFO]   | 03:48:05   invitro_sampling_no_metal_compact_rf: MCC=0.6604 [0.4645,0.8484] t=0.42 AD=0.47 (4s)
+2026-05-08 03:48:07,604 [INFO]   | 03:48:07   invitro_sampling_no_metal_compact_svm: MCC=0.3384 [0.0805,0.5849] t=0.52 AD=0.47 (2s)
+2026-05-08 03:48:23,375 [INFO]   | 03:48:23   invitro_sampling_no_metal_compact_logistic: MCC=0.3556 [0.0889,0.6036] t=0.24 AD=0.47 (16s)
+2026-05-08 03:48:25,028 [INFO]   | 03:48:25   invitro_sampling_no_metal_compact_ann: MCC=0.2991 [0.0193,0.5622] t=0.5 AD=0.47 (2s)
+2026-05-08 03:48:27,027 [INFO]   | 03:48:27   invitro_sampling_no_metal_broad_fp512_xgb: MCC=0.6578 [0.4345,0.8504] t=0.32 AD=0.47 (2s)
+2026-05-08 03:48:30,747 [INFO]   | 03:48:30   invitro_sampling_no_metal_broad_fp512_lgbm: MCC=0.5874 [0.3660,0.7733] t=0.2 AD=0.47 (4s)
+2026-05-08 03:48:34,053 [INFO]   | 03:48:34   invitro_sampling_no_metal_broad_fp512_rf: MCC=0.6990 [0.5063,0.8851] t=0.38 AD=0.47 (3s)
+2026-05-08 03:48:36,152 [INFO]   | 03:48:36   invitro_sampling_no_metal_broad_fp512_svm: MCC=0.4407 [0.2131,0.6667] t=0.46 AD=0.47 (2s)
+2026-05-08 03:48:52,101 [INFO]   | 03:48:52   invitro_sampling_no_metal_broad_fp512_logistic: MCC=0.3997 [0.1670,0.6423] t=0.76 AD=0.47 (16s)
+2026-05-08 03:48:53,947 [INFO]   | 03:48:53   invitro_sampling_no_metal_broad_fp512_ann: MCC=0.2803 [0.0174,0.5514] t=0.6 AD=0.47 (2s)
+2026-05-08 03:48:56,072 [INFO]   | 03:48:56   invitro_sampling_no_metal_broad_fp1024_xgb: MCC=0.6578 [0.4345,0.8504] t=0.24 AD=0.47 (2s)
+2026-05-08 03:48:59,692 [INFO]   | 03:48:59   invitro_sampling_no_metal_broad_fp1024_lgbm: MCC=0.6230 [0.4021,0.8076] t=0.36 AD=0.47 (4s)
+2026-05-08 03:49:03,141 [INFO]   | 03:49:03   invitro_sampling_no_metal_broad_fp1024_rf: MCC=0.6990 [0.5063,0.8851] t=0.36 AD=0.47 (3s)
+2026-05-08 03:49:05,267 [INFO]   | 03:49:05   invitro_sampling_no_metal_broad_fp1024_svm: MCC=0.3439 [0.0791,0.5787] t=0.38 AD=0.47 (2s)
+2026-05-08 03:49:21,751 [INFO]   | 03:49:21   invitro_sampling_no_metal_broad_fp1024_logistic: MCC=0.2820 [0.0089,0.5365] t=0.1 AD=0.47 (16s)
+2026-05-08 03:49:23,635 [INFO]   | 03:49:23   invitro_sampling_no_metal_broad_fp1024_ann: MCC=0.3848 [0.1457,0.6094] t=0.22 AD=0.47 (2s)
+2026-05-08 03:49:25,861 [INFO]   | 03:49:25   invitro_sampling_no_metal_broad_fp2048_xgb: MCC=0.6195 [0.4033,0.8113] t=0.3 AD=0.47 (2s)
+2026-05-08 03:49:29,637 [INFO]   | 03:49:29   invitro_sampling_no_metal_broad_fp2048_lgbm: MCC=0.5058 [0.2594,0.7209] t=0.26 AD=0.47 (4s)
+2026-05-08 03:49:33,087 [INFO]   | 03:49:33   invitro_sampling_no_metal_broad_fp2048_rf: MCC=0.6612 [0.4663,0.8490] t=0.46 AD=0.47 (3s)
+2026-05-08 03:49:35,250 [INFO]   | 03:49:35   invitro_sampling_no_metal_broad_fp2048_svm: MCC=0.3989 [0.1650,0.6167] t=0.58 AD=0.47 (2s)
+2026-05-08 03:49:52,370 [INFO]   | 03:49:52   invitro_sampling_no_metal_broad_fp2048_logistic: MCC=0.3580 [0.1014,0.5877] t=0.1 AD=0.47 (17s)
+2026-05-08 03:49:54,448 [INFO]   | 03:49:54   invitro_sampling_no_metal_broad_fp2048_ann: MCC=0.5605 [0.3370,0.7690] t=0.54 AD=0.47 (2s)
+2026-05-08 03:53:29,197 [INFO]   | 03:53:29   invitro_sampling_no_metal_graph_gnn: MCC=0.2258
+2026-05-08 03:53:29,199 [INFO]   | 03:53:29   salt_stripped: 309/345 SMILES changed
+2026-05-08 03:53:29,386 [INFO]   | 03:53:29   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 03:53:29,534 [INFO]   | 03:53:29   [invitro_sampling] Physchem features: 13 columns
+2026-05-08 03:53:29,611 [INFO]   | 03:53:29   [invitro_sampling] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 03:53:30,081 [INFO]   | 03:53:30   [invitro_sampling] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 03:53:30,671 [INFO]   | 03:53:30   [invitro_sampling] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 03:53:33,476 [INFO]   | 03:53:33   invitro_sampling_salt_stripped_compact_xgb: MCC=0.2410 [0.0096,0.4643] t=0.42 AD=0.55 (2s)
+2026-05-08 03:53:37,549 [INFO]   | 03:53:37   invitro_sampling_salt_stripped_compact_lgbm: MCC=0.2701 [0.0348,0.4844] t=0.28 AD=0.55 (4s)
+2026-05-08 03:53:41,075 [INFO]   | 03:53:41   invitro_sampling_salt_stripped_compact_rf: MCC=0.3646 [0.1255,0.5883] t=0.46 AD=0.55 (4s)
+2026-05-08 03:53:43,360 [INFO]   | 03:53:43   invitro_sampling_salt_stripped_compact_svm: MCC=0.2981 [0.0746,0.5242] t=0.58 AD=0.55 (2s)
+2026-05-08 03:54:01,597 [INFO]   | 03:54:01   invitro_sampling_salt_stripped_compact_logistic: MCC=0.2502 [0.0321,0.4775] t=0.44 AD=0.55 (18s)
+2026-05-08 03:54:03,341 [INFO]   | 03:54:03   invitro_sampling_salt_stripped_compact_ann: MCC=0.1852 [-0.0423,0.4216] t=0.5 AD=0.55 (2s)
+2026-05-08 03:54:05,692 [INFO]   | 03:54:05   invitro_sampling_salt_stripped_broad_fp512_xgb: MCC=0.3096 [0.0660,0.5410] t=0.24 AD=0.55 (2s)
+2026-05-08 03:54:09,958 [INFO]   | 03:54:09   invitro_sampling_salt_stripped_broad_fp512_lgbm: MCC=0.3878 [0.1531,0.6067] t=0.58 AD=0.55 (4s)
+2026-05-08 03:54:13,441 [INFO]   | 03:54:13   invitro_sampling_salt_stripped_broad_fp512_rf: MCC=0.4190 [0.1976,0.6230] t=0.34 AD=0.55 (3s)
+2026-05-08 03:54:15,950 [INFO]   | 03:54:15   invitro_sampling_salt_stripped_broad_fp512_svm: MCC=0.3553 [0.1470,0.5807] t=0.42 AD=0.55 (3s)
+2026-05-08 03:54:33,060 [INFO]   | 03:54:33   invitro_sampling_salt_stripped_broad_fp512_logistic: MCC=0.2931 [0.0699,0.5083] t=0.64 AD=0.55 (17s)
+2026-05-08 03:54:34,988 [INFO]   | 03:54:34   invitro_sampling_salt_stripped_broad_fp512_ann: MCC=0.3629 [0.1620,0.5812] t=0.44 AD=0.55 (2s)
+2026-05-08 03:54:37,354 [INFO]   | 03:54:37   invitro_sampling_salt_stripped_broad_fp1024_xgb: MCC=0.3833 [0.1628,0.6078] t=0.18 AD=0.55 (2s)
+2026-05-08 03:54:41,458 [INFO]   | 03:54:41   invitro_sampling_salt_stripped_broad_fp1024_lgbm: MCC=0.3185 [0.0937,0.5359] t=0.12 AD=0.55 (4s)
+2026-05-08 03:54:44,793 [INFO]   | 03:54:44   invitro_sampling_salt_stripped_broad_fp1024_rf: MCC=0.4847 [0.2624,0.6943] t=0.38 AD=0.55 (3s)
+2026-05-08 03:54:47,110 [INFO]   | 03:54:47   invitro_sampling_salt_stripped_broad_fp1024_svm: MCC=0.1807 [-0.0703,0.3904] t=0.48 AD=0.55 (2s)
+2026-05-08 03:55:05,223 [INFO]   | 03:55:05   invitro_sampling_salt_stripped_broad_fp1024_logistic: MCC=0.1036 [-0.1276,0.3476] t=0.46 AD=0.55 (18s)
+2026-05-08 03:55:07,304 [INFO]   | 03:55:07   invitro_sampling_salt_stripped_broad_fp1024_ann: MCC=0.1083 [-0.1426,0.3208] t=0.22 AD=0.55 (2s)
+2026-05-08 03:55:09,863 [INFO]   | 03:55:09   invitro_sampling_salt_stripped_broad_fp2048_xgb: MCC=0.3128 [0.0679,0.5576] t=0.14 AD=0.55 (3s)
+2026-05-08 03:55:14,236 [INFO]   | 03:55:14   invitro_sampling_salt_stripped_broad_fp2048_lgbm: MCC=0.2501 [0.0123,0.4919] t=0.1 AD=0.55 (4s)
+2026-05-08 03:55:17,853 [INFO]   | 03:55:17   invitro_sampling_salt_stripped_broad_fp2048_rf: MCC=0.4878 [0.2608,0.6897] t=0.28 AD=0.55 (4s)
+2026-05-08 03:55:20,706 [INFO]   | 03:55:20   invitro_sampling_salt_stripped_broad_fp2048_svm: MCC=0.0982 [-0.1302,0.3139] t=0.38 AD=0.55 (3s)
+2026-05-08 03:55:41,159 [INFO]   | 03:55:41   invitro_sampling_salt_stripped_broad_fp2048_logistic: MCC=0.2097 [-0.0120,0.4251] t=0.1 AD=0.55 (20s)
+2026-05-08 03:55:43,567 [INFO]   | 03:55:43   invitro_sampling_salt_stripped_broad_fp2048_ann: MCC=0.3995 [0.1716,0.5963] t=0.22 AD=0.55 (2s)
+2026-05-08 04:00:58,259 [INFO]   | 04:00:58   invitro_sampling_salt_stripped_graph_gnn: MCC=0.2351
+2026-05-08 04:00:58,260 [INFO]   | 04:00:58   [invivo_sampling] Pre-computing features...
+2026-05-08 04:00:58,399 [INFO]   | 04:00:58   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:00:58,521 [INFO]   | 04:00:58   [invivo_sampling] Physchem features: 13 columns
+2026-05-08 04:00:58,596 [INFO]   | 04:00:58   [invivo_sampling] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 04:00:59,013 [INFO]   | 04:00:59   [invivo_sampling] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 04:00:59,530 [INFO]   | 04:00:59   [invivo_sampling] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 04:01:14,094 [INFO]   | 04:01:14   invivo_sampling_raw_all_compact_xgb: MCC=0.8278 [0.6400,1.0000] t=0.2 AD=0.38 * (14s)
+2026-05-08 04:01:17,727 [INFO]   | 04:01:17   invivo_sampling_raw_all_compact_lgbm: MCC=0.6856 [0.4498,0.8881] t=0.24 AD=0.38 (4s)
+2026-05-08 04:01:21,106 [INFO]   | 04:01:21   invivo_sampling_raw_all_compact_rf: MCC=0.6399 [0.3284,0.8809] t=0.38 AD=0.38 (3s)
+2026-05-08 04:01:23,433 [INFO]   | 04:01:23   invivo_sampling_raw_all_compact_svm: MCC=0.3461 [-0.0241,0.6478] t=0.28 AD=0.38 (2s)
+2026-05-08 04:01:40,112 [INFO]   | 04:01:40   invivo_sampling_raw_all_compact_logistic: MCC=0.3441 [0.0093,0.6402] t=0.58 AD=0.38 (17s)
+2026-05-08 04:01:41,699 [INFO]   | 04:01:41   invivo_sampling_raw_all_compact_ann: MCC=0.4701 [0.1295,0.7579] t=0.5 AD=0.38 (2s)
+2026-05-08 04:01:43,693 [INFO]   | 04:01:43   invivo_sampling_raw_all_broad_fp512_xgb: MCC=0.8882 [0.7230,1.0000] t=0.12 AD=0.38 (2s)
+2026-05-08 04:01:47,254 [INFO]   | 04:01:47   invivo_sampling_raw_all_broad_fp512_lgbm: MCC=0.8303 [0.6189,1.0000] t=0.2 AD=0.38 (4s)
+2026-05-08 04:01:50,705 [INFO]   | 04:01:50   invivo_sampling_raw_all_broad_fp512_rf: MCC=0.5764 [0.2391,0.8446] t=0.34 AD=0.38 (3s)
+2026-05-08 04:01:53,079 [INFO]   | 04:01:53   invivo_sampling_raw_all_broad_fp512_svm: MCC=0.3150 [-0.0721,0.6343] t=0.3 AD=0.38 (2s)
+2026-05-08 04:02:10,473 [INFO]   | 04:02:10   invivo_sampling_raw_all_broad_fp512_logistic: MCC=0.3387 [0.0194,0.6494] t=0.3 AD=0.38 (17s)
+2026-05-08 04:02:12,160 [INFO]   | 04:02:12   invivo_sampling_raw_all_broad_fp512_ann: MCC=0.3887 [0.0341,0.7144] t=0.26 AD=0.38 (2s)
+2026-05-08 04:02:14,265 [INFO]   | 04:02:14   invivo_sampling_raw_all_broad_fp1024_xgb: MCC=0.8882 [0.7230,1.0000] t=0.22 AD=0.38 (2s)
+2026-05-08 04:02:17,962 [INFO]   | 04:02:17   invivo_sampling_raw_all_broad_fp1024_lgbm: MCC=0.7711 [0.5088,0.9777] t=0.1 AD=0.38 (4s)
+2026-05-08 04:02:21,297 [INFO]   | 04:02:21   invivo_sampling_raw_all_broad_fp1024_rf: MCC=0.6399 [0.3284,0.8809] t=0.44 AD=0.38 (3s)
+2026-05-08 04:02:23,727 [INFO]   | 04:02:23   invivo_sampling_raw_all_broad_fp1024_svm: MCC=0.3439 [-0.0539,0.6307] t=0.3 AD=0.38 (2s)
+2026-05-08 04:02:40,160 [INFO]   | 04:02:40   invivo_sampling_raw_all_broad_fp1024_logistic: MCC=0.2254 [-0.1085,0.5106] t=0.1 AD=0.38 (16s)
+2026-05-08 04:02:42,013 [INFO]   | 04:02:42   invivo_sampling_raw_all_broad_fp1024_ann: MCC=0.2789 [0.0126,0.5060] t=0.46 AD=0.38 (2s)
+2026-05-08 04:02:44,206 [INFO]   | 04:02:44   invivo_sampling_raw_all_broad_fp2048_xgb: MCC=0.8321 [0.6443,1.0000] t=0.1 AD=0.38 (2s)
+2026-05-08 04:02:47,833 [INFO]   | 04:02:47   invivo_sampling_raw_all_broad_fp2048_lgbm: MCC=0.7163 [0.4466,0.9273] t=0.28 AD=0.38 (4s)
+2026-05-08 04:02:51,177 [INFO]   | 04:02:51   invivo_sampling_raw_all_broad_fp2048_rf: MCC=0.6399 [0.3284,0.8809] t=0.34 AD=0.38 (3s)
+2026-05-08 04:02:53,384 [INFO]   | 04:02:53   invivo_sampling_raw_all_broad_fp2048_svm: MCC=0.1743 [-0.1443,0.5181] t=0.3 AD=0.38 (2s)
+2026-05-08 04:03:10,985 [INFO]   | 04:03:10   invivo_sampling_raw_all_broad_fp2048_logistic: MCC=0.1934 [-0.1166,0.5108] t=0.1 AD=0.38 (18s)
+2026-05-08 04:03:12,881 [INFO]   | 04:03:12   invivo_sampling_raw_all_broad_fp2048_ann: MCC=0.5397 [0.2911,0.7780] t=0.28 AD=0.38 (2s)
+2026-05-08 04:07:55,382 [INFO]   | 04:07:55   invivo_sampling_raw_all_graph_gnn: MCC=0.4230
+2026-05-08 04:07:55,493 [INFO]   | 04:07:55   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:07:55,576 [INFO]   | 04:07:55   [invivo_sampling] Physchem features: 13 columns
+2026-05-08 04:07:55,636 [INFO]   | 04:07:55   [invivo_sampling] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 04:07:55,980 [INFO]   | 04:07:55   [invivo_sampling] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 04:07:56,363 [INFO]   | 04:07:56   [invivo_sampling] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 04:07:58,423 [INFO]   | 04:07:58   invivo_sampling_no_metal_compact_xgb: MCC=0.5295 [0.1969,0.8345] t=0.2 AD=0.26 (2s)
+2026-05-08 04:08:01,782 [INFO]   | 04:08:01   invivo_sampling_no_metal_compact_lgbm: MCC=0.7064 [0.4122,0.9387] t=0.3 AD=0.26 (3s)
+2026-05-08 04:08:05,248 [INFO]   | 04:08:05   invivo_sampling_no_metal_compact_rf: MCC=0.6335 [0.2998,0.9245] t=0.36 AD=0.26 (3s)
+2026-05-08 04:08:07,628 [INFO]   | 04:08:07   invivo_sampling_no_metal_compact_svm: MCC=0.3109 [-0.1071,0.6539] t=0.34 AD=0.26 (2s)
+2026-05-08 04:08:22,893 [INFO]   | 04:08:22   invivo_sampling_no_metal_compact_logistic: MCC=0.2540 [-0.1268,0.6101] t=0.34 AD=0.26 (15s)
+2026-05-08 04:08:24,275 [INFO]   | 04:08:24   invivo_sampling_no_metal_compact_ann: MCC=0.3507 [-0.1044,0.7124] t=0.54 AD=0.26 (1s)
+2026-05-08 04:08:26,104 [INFO]   | 04:08:26   invivo_sampling_no_metal_broad_fp512_xgb: MCC=0.4535 [0.1032,0.7832] t=0.16 AD=0.26 (2s)
+2026-05-08 04:08:29,430 [INFO]   | 04:08:29   invivo_sampling_no_metal_broad_fp512_lgbm: MCC=0.6343 [0.3173,0.9034] t=0.12 AD=0.26 (3s)
+2026-05-08 04:08:32,820 [INFO]   | 04:08:32   invivo_sampling_no_metal_broad_fp512_rf: MCC=0.5336 [0.1612,0.8345] t=0.4 AD=0.26 (3s)
+2026-05-08 04:08:35,132 [INFO]   | 04:08:35   invivo_sampling_no_metal_broad_fp512_svm: MCC=0.0968 [-0.2357,0.4682] t=0.4 AD=0.26 (2s)
+2026-05-08 04:08:49,840 [INFO]   | 04:08:49   invivo_sampling_no_metal_broad_fp512_logistic: MCC=0.0917 [-0.2664,0.4401] t=0.6 AD=0.26 (15s)
+2026-05-08 04:08:51,403 [INFO]   | 04:08:51   invivo_sampling_no_metal_broad_fp512_ann: MCC=0.1439 [-0.2072,0.5237] t=0.48 AD=0.26 (2s)
+2026-05-08 04:08:53,241 [INFO]   | 04:08:53   invivo_sampling_no_metal_broad_fp1024_xgb: MCC=0.6935 [0.4701,0.9295] t=0.2 AD=0.26 (2s)
+2026-05-08 04:08:56,498 [INFO]   | 04:08:56   invivo_sampling_no_metal_broad_fp1024_lgbm: MCC=0.7076 [0.4726,0.9295] t=0.1 AD=0.26 (3s)
+2026-05-08 04:08:59,863 [INFO]   | 04:08:59   invivo_sampling_no_metal_broad_fp1024_rf: MCC=0.5418 [0.1413,0.8486] t=0.46 AD=0.26 (3s)
+2026-05-08 04:09:02,249 [INFO]   | 04:09:02   invivo_sampling_no_metal_broad_fp1024_svm: MCC=0.2473 [-0.1419,0.5776] t=0.42 AD=0.26 (2s)
+2026-05-08 04:09:18,707 [INFO]   | 04:09:18   invivo_sampling_no_metal_broad_fp1024_logistic: MCC=0.2400 [-0.1424,0.5731] t=0.64 AD=0.26 (16s)
+2026-05-08 04:09:20,345 [INFO]   | 04:09:20   invivo_sampling_no_metal_broad_fp1024_ann: MCC=0.4777 [0.0613,0.7832] t=0.12 AD=0.26 (2s)
+2026-05-08 04:09:22,326 [INFO]   | 04:09:22   invivo_sampling_no_metal_broad_fp2048_xgb: MCC=0.7083 [0.4819,0.9295] t=0.24 AD=0.26 (2s)
+2026-05-08 04:09:25,634 [INFO]   | 04:09:25   invivo_sampling_no_metal_broad_fp2048_lgbm: MCC=0.7076 [0.4726,0.9295] t=0.1 AD=0.26 (3s)
+2026-05-08 04:09:28,984 [INFO]   | 04:09:28   invivo_sampling_no_metal_broad_fp2048_rf: MCC=0.6246 [0.2499,0.9138] t=0.42 AD=0.26 (3s)
+2026-05-08 04:09:31,231 [INFO]   | 04:09:31   invivo_sampling_no_metal_broad_fp2048_svm: MCC=0.2096 [0.0000,0.5185] t=0.24 AD=0.26 (2s)
+2026-05-08 04:09:46,862 [INFO]   | 04:09:46   invivo_sampling_no_metal_broad_fp2048_logistic: MCC=0.3445 [-0.0060,0.6865] t=0.12 AD=0.26 (16s)
+2026-05-08 04:09:48,639 [INFO]   | 04:09:48   invivo_sampling_no_metal_broad_fp2048_ann: MCC=0.4321 [0.1002,0.7494] t=0.2 AD=0.26 (2s)
+2026-05-08 04:12:45,843 [INFO]   | 04:12:45   invivo_sampling_no_metal_graph_gnn: MCC=0.2354
+2026-05-08 04:12:45,844 [INFO]   | 04:12:45   salt_stripped: 208/231 SMILES changed
+2026-05-08 04:12:45,988 [INFO]   | 04:12:45   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:12:46,101 [INFO]   | 04:12:46   [invivo_sampling] Physchem features: 13 columns
+2026-05-08 04:12:46,169 [INFO]   | 04:12:46   [invivo_sampling] Fingerprint: 512 bits (smi_col=_analysis_smiles)
+2026-05-08 04:12:46,574 [INFO]   | 04:12:46   [invivo_sampling] Fingerprint: 1024 bits (smi_col=_analysis_smiles)
+2026-05-08 04:12:47,072 [INFO]   | 04:12:47   [invivo_sampling] Fingerprint: 2048 bits (smi_col=_analysis_smiles)
+2026-05-08 04:12:49,388 [INFO]   | 04:12:49   invivo_sampling_salt_stripped_compact_xgb: MCC=0.5784 [0.2672,0.8300] t=0.18 AD=0.40 (2s)
+2026-05-08 04:12:53,025 [INFO]   | 04:12:53   invivo_sampling_salt_stripped_compact_lgbm: MCC=0.6496 [0.3672,0.8582] t=0.2 AD=0.40 (4s)
+2026-05-08 04:12:56,409 [INFO]   | 04:12:56   invivo_sampling_salt_stripped_compact_rf: MCC=0.5795 [0.2659,0.8311] t=0.32 AD=0.40 (3s)
+2026-05-08 04:12:58,558 [INFO]   | 04:12:58   invivo_sampling_salt_stripped_compact_svm: MCC=0.2814 [-0.1096,0.5867] t=0.24 AD=0.40 (2s)
+2026-05-08 04:13:15,152 [INFO]   | 04:13:15   invivo_sampling_salt_stripped_compact_logistic: MCC=0.2287 [-0.0925,0.5318] t=0.38 AD=0.40 (17s)
+2026-05-08 04:13:16,659 [INFO]   | 04:13:16   invivo_sampling_salt_stripped_compact_ann: MCC=0.5095 [0.1449,0.7861] t=0.18 AD=0.40 (2s)
+2026-05-08 04:13:18,647 [INFO]   | 04:13:18   invivo_sampling_salt_stripped_broad_fp512_xgb: MCC=0.6377 [0.3554,0.8765] t=0.16 AD=0.40 (2s)
+2026-05-08 04:13:22,242 [INFO]   | 04:13:22   invivo_sampling_salt_stripped_broad_fp512_lgbm: MCC=0.6496 [0.3672,0.8582] t=0.16 AD=0.40 (4s)
+2026-05-08 04:13:25,531 [INFO]   | 04:13:25   invivo_sampling_salt_stripped_broad_fp512_rf: MCC=0.4270 [0.0476,0.7144] t=0.46 AD=0.40 (3s)
+2026-05-08 04:13:27,731 [INFO]   | 04:13:27   invivo_sampling_salt_stripped_broad_fp512_svm: MCC=0.3338 [0.0000,0.5893] t=0.24 AD=0.40 (2s)
+2026-05-08 04:13:43,818 [INFO]   | 04:13:43   invivo_sampling_salt_stripped_broad_fp512_logistic: MCC=0.2213 [-0.1166,0.5467] t=0.34 AD=0.40 (16s)
+2026-05-08 04:13:45,510 [INFO]   | 04:13:45   invivo_sampling_salt_stripped_broad_fp512_ann: MCC=0.2414 [-0.1103,0.5365] t=0.4 AD=0.40 (2s)
+2026-05-08 04:13:47,638 [INFO]   | 04:13:47   invivo_sampling_salt_stripped_broad_fp1024_xgb: MCC=0.8321 [0.6443,1.0000] t=0.28 AD=0.40 (2s)
+2026-05-08 04:13:51,280 [INFO]   | 04:13:51   invivo_sampling_salt_stripped_broad_fp1024_lgbm: MCC=0.6496 [0.3672,0.8582] t=0.32 AD=0.40 (4s)
+2026-05-08 04:13:54,528 [INFO]   | 04:13:54   invivo_sampling_salt_stripped_broad_fp1024_rf: MCC=0.4270 [0.0476,0.7144] t=0.42 AD=0.40 (3s)
+2026-05-08 04:13:56,979 [INFO]   | 04:13:56   invivo_sampling_salt_stripped_broad_fp1024_svm: MCC=0.0405 [-0.2248,0.3874] t=0.3 AD=0.40 (2s)
+2026-05-08 04:14:13,226 [INFO]   | 04:14:13   invivo_sampling_salt_stripped_broad_fp1024_logistic: MCC=0.0351 [-0.2362,0.3414] t=0.5 AD=0.40 (16s)
+2026-05-08 04:14:15,088 [INFO]   | 04:14:15   invivo_sampling_salt_stripped_broad_fp1024_ann: MCC=0.2546 [-0.1048,0.5488] t=0.42 AD=0.40 (2s)
+2026-05-08 04:14:17,283 [INFO]   | 04:14:17   invivo_sampling_salt_stripped_broad_fp2048_xgb: MCC=0.7093 [0.4932,0.9085] t=0.16 AD=0.40 (2s)
+2026-05-08 04:14:20,912 [INFO]   | 04:14:20   invivo_sampling_salt_stripped_broad_fp2048_lgbm: MCC=0.5808 [0.2748,0.8418] t=0.64 AD=0.40 (4s)
+2026-05-08 04:14:24,353 [INFO]   | 04:14:24   invivo_sampling_salt_stripped_broad_fp2048_rf: MCC=0.5003 [0.1385,0.7814] t=0.4 AD=0.40 (3s)
+2026-05-08 04:14:26,656 [INFO]   | 04:14:26   invivo_sampling_salt_stripped_broad_fp2048_svm: MCC=0.2428 [-0.1018,0.5580] t=0.26 AD=0.40 (2s)
+2026-05-08 04:14:43,948 [INFO]   | 04:14:43   invivo_sampling_salt_stripped_broad_fp2048_logistic: MCC=0.2610 [-0.0671,0.5561] t=0.24 AD=0.40 (17s)
+2026-05-08 04:14:45,763 [INFO]   | 04:14:45   invivo_sampling_salt_stripped_broad_fp2048_ann: MCC=0.3450 [0.0409,0.6148] t=0.24 AD=0.40 (2s)
+2026-05-08 04:19:01,591 [INFO]   | 04:19:01   invivo_sampling_salt_stripped_graph_gnn: MCC=0.2711
+2026-05-08 04:19:01,621 [INFO]   | 04:19:01 STEP 5b: Statistical Comparisons
+2026-05-08 04:19:01,622 [INFO]   | 04:19:01   [ames] 21 pairwise comparisons saved
+2026-05-08 04:19:01,623 [INFO]   | 04:19:01   [invitro] 21 pairwise comparisons saved
+2026-05-08 04:19:01,625 [INFO]   | 04:19:01   [invivo] 21 pairwise comparisons saved
+2026-05-08 04:19:01,626 [INFO]   | 04:19:01   [invitro_sampling] 21 pairwise comparisons saved
+2026-05-08 04:19:01,627 [INFO]   | 04:19:01   [invivo_sampling] 21 pairwise comparisons saved
+2026-05-08 04:19:01,629 [INFO]   | 04:19:01   [ames] McNemar ames_salt_stripped_broad_fp1024_lgbm vs ames_raw_all_broad_fp2048_lgbm: p=0.3764
+2026-05-08 04:19:01,631 [INFO]   | 04:19:01   [invivo] McNemar invivo_raw_all_broad_fp1024_logistic vs invivo_raw_all_broad_fp1024_xgb: p=0.0000
+2026-05-08 04:19:01,632 [INFO]   | 04:19:01   [invitro_sampling] McNemar invitro_sampling_no_metal_broad_fp512_rf vs invitro_sampling_no_metal_broad_fp1024_rf: p=1.0000
+2026-05-08 04:19:01,633 [INFO]   | 04:19:01   [invivo_sampling] McNemar invivo_sampling_raw_all_broad_fp512_xgb vs invivo_sampling_raw_all_broad_fp1024_xgb: p=1.0000
+2026-05-08 04:19:01,635 [INFO]   | 04:19:01 STEP 5c: Learning Curves
+2026-05-08 04:19:05,939 [INFO]   | 04:19:05   [ames] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:19:09,604 [INFO]   | 04:19:09   [ames] Physchem features: 13 columns
+2026-05-08 04:19:17,702 [INFO]   | 04:19:17   [ames] Learning curve: 6 points
+2026-05-08 04:19:18,101 [INFO]   | 04:19:18   [invitro] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:19:18,440 [INFO]   | 04:19:18   [invitro] Physchem features: 13 columns
+2026-05-08 04:19:21,677 [INFO]   | 04:19:21   [invitro] Learning curve: 6 points
+2026-05-08 04:19:22,157 [INFO]   | 04:19:22   [invivo] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:19:22,576 [INFO]   | 04:19:22   [invivo] Physchem features: 13 columns
+2026-05-08 04:19:26,153 [INFO]   | 04:19:26   [invivo] Learning curve: 6 points
+2026-05-08 04:19:26,305 [INFO]   | 04:19:26   [invitro_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:19:26,387 [INFO]   | 04:19:26   [invitro_sampling] Physchem features: 13 columns
+2026-05-08 04:19:27,871 [INFO]   | 04:19:27   [invitro_sampling] Learning curve: 6 points
+2026-05-08 04:19:28,013 [INFO]   | 04:19:28   [invivo_sampling] FG features: 618 columns (smi_col=_analysis_smiles)
+2026-05-08 04:19:28,096 [INFO]   | 04:19:28   [invivo_sampling] Physchem features: 13 columns
+2026-05-08 04:19:29,533 [INFO]   | 04:19:29   [invivo_sampling] Learning curve: 6 points
+2026-05-08 04:19:29,535 [INFO]   | 04:19:29 STEP 6: LDO + Domain Analysis
+2026-05-08 04:19:32,262 [INFO]   | 04:19:32   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:19:34,535 [INFO]   | 04:19:34   [ames] Physchem features: 13 columns
+2026-05-08 04:19:37,669 [INFO]   | 04:19:37   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:19:40,337 [INFO]   | 04:19:40   [ames] Physchem features: 13 columns
+2026-05-08 04:19:45,952 [INFO]   | 04:19:45   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:19:48,670 [INFO]   | 04:19:48   [ames] Physchem features: 13 columns
+2026-05-08 04:19:52,174 [INFO]   | 04:19:52   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:19:54,447 [INFO]   | 04:19:54   [ames] Physchem features: 13 columns
+2026-05-08 04:19:56,947 [INFO]   | 04:19:56   LDO [xgb] drug→industrial: MCC=0.2334
+2026-05-08 04:19:56,948 [INFO]   | 04:19:56   LDO [xgb] industrial→drug: MCC=0.1181
+2026-05-08 04:20:00,126 [INFO]   | 04:20:00   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:02,370 [INFO]   | 04:20:02   [ames] Physchem features: 13 columns
+2026-05-08 04:20:05,444 [INFO]   | 04:20:05   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:08,146 [INFO]   | 04:20:08   [ames] Physchem features: 13 columns
+2026-05-08 04:20:13,473 [INFO]   | 04:20:13   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:16,158 [INFO]   | 04:20:16   [ames] Physchem features: 13 columns
+2026-05-08 04:20:19,098 [INFO]   | 04:20:19   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:21,332 [INFO]   | 04:20:21   [ames] Physchem features: 13 columns
+2026-05-08 04:20:23,605 [INFO]   | 04:20:23   LDO [lgbm] drug→industrial: MCC=0.2210
+2026-05-08 04:20:23,605 [INFO]   | 04:20:23   LDO [lgbm] industrial→drug: MCC=0.1571
+2026-05-08 04:20:26,194 [INFO]   | 04:20:26   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:28,427 [INFO]   | 04:20:28   [ames] Physchem features: 13 columns
+2026-05-08 04:20:31,507 [INFO]   | 04:20:31   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:34,185 [INFO]   | 04:20:34   [ames] Physchem features: 13 columns
+2026-05-08 04:20:39,539 [INFO]   | 04:20:39   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:42,207 [INFO]   | 04:20:42   [ames] Physchem features: 13 columns
+2026-05-08 04:20:44,902 [INFO]   | 04:20:44   [ames] FG features: 618 columns (smi_col=SMILES)
+2026-05-08 04:20:47,120 [INFO]   | 04:20:47   [ames] Physchem features: 13 columns
+2026-05-08 04:20:49,539 [INFO]   | 04:20:49   LDO [rf] drug→industrial: MCC=0.2451
+2026-05-08 04:20:49,539 [INFO]   | 04:20:49   LDO [rf] industrial→drug: MCC=0.3880
+2026-05-08 04:20:49,554 [INFO]   | 04:20:49 STEP 7: SHAP Summary Aggregation
+2026-05-08 04:20:49,814 [INFO]   | 04:20:49   [ames] SHAP top-3: bb_n_genotox_alerts, FormalCharge, LogP
+2026-05-08 04:20:49,817 [INFO]   | 04:20:49   [invitro] SHAP top-3: LogP, FractionCSP3, MW
+2026-05-08 04:20:49,820 [INFO]   | 04:20:49   [invivo] SHAP top-3: MW, fp_0875, fg_fg_alcohol_count
+2026-05-08 04:20:49,820 [INFO]   | 04:20:49   Total SHAP files aggregated: 36
+2026-05-08 04:20:49,823 [INFO]   | 04:20:49
+2026-05-08 04:20:49,823 [INFO]   | Checklist (13/13):
+2026-05-08 04:20:49,823 [INFO]   | 04:20:49   [[OK]] fixed_split
+2026-05-08 04:20:49,823 [INFO]   | 04:20:49   [[OK]] conflicts
+2026-05-08 04:20:49,823 [INFO]   | 04:20:49   [[OK]] domain_diagnosed
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] domain_ldo
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] cross_ep
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] cv_selection
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] salt_stripped_verified
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] statistical_tests
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] learning_curves
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] bootstrap_ci
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] ad_computed
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] calibration
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49   [[OK]] shap_computed
+2026-05-08 04:20:49,824 [INFO]   | 04:20:49
+2026-05-08 04:20:49,824 [INFO]   | DONE in 67639s: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs\20260507_093331_v12
+2026-05-08 04:20:49,844 [INFO]   | 04:20:49
+2026-05-08 04:20:49,845 [INFO]   | Run complete: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs\20260507_093331_v12
+2026-05-08 04:20:49,845 [INFO]   | 04:20:49 Checklist  : 13/13 passed
+2026-05-08 04:20:50,577 [INFO]   [OK] [3/9] Leakage-free Training & Evaluation [67643.3s]
+2026-05-08 04:20:50,579 [INFO] [Step 4/9] [4/9] Leakage Control Report
+2026-05-08 04:20:50,579 [INFO] CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\step4_leakage_report.py ...
+2026-05-08 04:20:51,091 [INFO]   [OK] [4/9] Leakage Control Report [0.5s]
+2026-05-08 04:20:51,093 [INFO] Skipping Step 5 (ablation) -- use --full-study to enable
+2026-05-08 04:20:51,093 [INFO] Skipping Step 6 (imbalance) -- use --full-study to enable
+2026-05-08 04:20:51,093 [INFO] [Step 7/9] [7/9] Summary Dashboard Generation
+2026-05-08 04:20:51,093 [INFO] CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\step7_dashboard.py ...
+2026-05-08 04:20:51,937 [INFO]   [OK] [7/9] Summary Dashboard Generation [0.8s]
+2026-05-08 04:20:51,937 [INFO] [Step 8/9] [8/9] Comprehensive Analysis
+2026-05-08 04:20:51,937 [INFO] CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\step8_comprehensive_analysis.py ...
+2026-05-08 04:20:52,404 [ERROR]   | STDERR: 2026-05-08 04:20:52,403 [ERROR] step8:   FAILED: cannot import name 'plot_property_distributions' from 'utils.chemical_space' (C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\utils\chemical_space.py)
+2026-05-08 04:20:53,333 [INFO]   [OK] [8/9] Comprehensive Analysis [1.4s]
+2026-05-08 04:20:53,335 [INFO] Skipping Step 10 -- 화학공간 커버리지 확장 미실행
+  실행 예시:
+    python run_all.py --coverage
+    python run_all.py --coverage --strategy A B D --fn-penalty 5.0
+2026-05-08 04:20:53,335 [INFO] Skipping Step 9 -- 외부 검증셋 미지정
+  실행 예시:
+    python run_all.py --external-ames data\eu_ntp_ames.csv
+    python run_all.py --external-ames data\eu_ntp_ames.csv --fn-augmentation --fn-rounds 3 --criterion f1
+2026-05-08 04:20:53,335 [INFO] 
+############################################################
+2026-05-08 04:20:53,335 [INFO] PIPELINE COMPLETE  (67647s / 1127.5min)
+2026-05-08 04:20:53,335 [INFO]   [V] step1_audit: ok
+2026-05-08 04:20:53,335 [INFO]   [V] step2_build: ok
+2026-05-08 04:20:53,335 [INFO]   [V] step3_train: ok
+2026-05-08 04:20:53,335 [INFO]   [V] step4_leakage: ok
+2026-05-08 04:20:53,335 [INFO]   [O] step5_ablation: skipped
+2026-05-08 04:20:53,335 [INFO]   [O] step6_imbalance: skipped
+2026-05-08 04:20:53,335 [INFO]   [V] step7_dashboard: ok
+2026-05-08 04:20:53,335 [INFO]   [V] step8_analysis: ok
+2026-05-08 04:20:53,335 [INFO]   [O] step10_coverage: skipped
+2026-05-08 04:20:53,335 [INFO]   [O] step9_external: skipped
+2026-05-08 04:20:53,335 [INFO] ############################################################
+2026-05-08 04:20:53,335 [INFO] Runs dir: C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\runs
+2026-05-08 04:20:53,336 [INFO] Log:      C:\Users\Administrator\Documents\GitHub\Genotox_model\genotox_pipeline_v3\logs\run_all.log
