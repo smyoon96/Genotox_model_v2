@@ -1,5 +1,0 @@
-{
-  "clf__solver": "saga",
-  "clf__penalty": "l1",
-  "clf__C": 0.1
-}

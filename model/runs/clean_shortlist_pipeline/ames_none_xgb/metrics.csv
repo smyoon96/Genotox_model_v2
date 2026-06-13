@@ -1,2 +1,0 @@
-endpoint,experiment_name,strategy,model,n_features,threshold,threshold_metric,search_metric,specificity_floor,train_n,test_n,train_pos_rate,test_pos_rate,tn,fp,fn,tp,sensitivity,specificity,balanced_accuracy,mcc,roc_auc,pr_auc
-ames,ames_none_xgb,none,xgb,410,0.575,mcc,average_precision,0.0,10964,2741,0.3052717986136447,0.30536300620211604,1579,325,201,636,0.7598566308243727,0.8293067226890757,0.7945816767567242,0.5686698870571876,0.8681672489784444,0.7342232849865054

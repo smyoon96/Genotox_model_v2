@@ -1,6 +1,0 @@
-column,n_unique,top_value,top_freq
-No,13714,10002,1
-No_norm,13714,10002,1
-SMILES,12769,BrC(Br)Br,2
-raw_smiles_input,12769,BrC(Br)Br,2
-domain,2,drug,7278

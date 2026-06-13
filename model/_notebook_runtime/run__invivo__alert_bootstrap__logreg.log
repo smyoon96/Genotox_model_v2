@@ -1,6 +1,0 @@
-CMD: C:\Users\Administrator\.conda\envs\genotox\python.exe C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\genotox_subprocess_pipeline.py --config-json C:\Users\Administrator\Documents\GitHub\Genotox_model\model\_notebook_runtime\cfg__invivo__alert_bootstrap__logreg.json --mode run
-
-[PIPELINE_VERSION] 2026-03-17-v4
-[RUN] endpoint=invivo strategy=alert_bootstrap model=logreg
-[OK] {"endpoint": "invivo", "strategy": "alert_bootstrap", "model_name": "logreg", "mcc": 0.16417581795011976, "balanced_accuracy": 0.6511136712749616, "pr_auc": 0.16577599433577117}
-[DONE] run_root=C:\Users\Administrator\Documents\GitHub\Genotox_model\model\runs\subproc_allinone_20260317_194543

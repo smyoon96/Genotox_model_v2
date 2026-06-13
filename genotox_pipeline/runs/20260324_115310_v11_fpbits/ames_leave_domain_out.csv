@@ -1,3 +1,0 @@
-train_dom,test_dom,train_n,test_n,test_pos,mcc,bacc,roc_auc,sens,spec,brier,mcc_lo,bacc_lo,roc_auc_lo,sens_lo,spec_lo,brier_lo,mcc_hi,bacc_hi,roc_auc_hi,sens_hi,spec_hi,brier_hi
-drug,industrial,6416,7144,0.0298,0.2341,0.7498,0.8126,0.6404,0.8592,0.1237,0.2009,0.7184,0.7812,0.577,0.8502,0.1197,0.2643,0.7784,0.8418,0.6986,0.8667,0.1279
-industrial,drug,7144,6416,0.5828,0.1222,0.5246,0.7387,0.0616,0.9876,0.4563,0.1031,0.52,0.7264,0.0542,0.9833,0.4457,0.1398,0.5288,0.7515,0.069,0.9921,0.4666

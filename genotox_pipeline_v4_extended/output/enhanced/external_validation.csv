@@ -1,6 +1,0 @@
-endpoint,status,expected_path
-ames,no_data,data/external/ames_external.csv
-invitro,no_data,data/external/invitro_external.csv
-invitro_sampling,no_data,data/external/invitro_sampling_external.csv
-invivo,no_data,data/external/invivo_external.csv
-invivo_sampling,no_data,data/external/invivo_sampling_external.csv

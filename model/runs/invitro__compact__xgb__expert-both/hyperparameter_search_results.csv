@@ -1,3 +1,0 @@
-candidate_rank,cv_score,metric,n_estimators,max_depth,learning_rate,subsample,colsample_bytree,min_child_weight,reg_lambda,reg_alpha,gamma
-1,0.24945834605275943,average_precision,350,3,0.05,0.9,0.8,4,3.0,0.5,0.1
-2,0.21862317785448232,average_precision,300,2,0.027782415797062296,0.9339073000818308,0.8387400631785948,3,1.2205449518454792,0.03920021771415984,0.3464704583099741

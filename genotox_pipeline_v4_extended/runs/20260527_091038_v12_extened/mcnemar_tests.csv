@@ -1,4 +1,0 @@
-chi2,p_value,n_discordant,a_better,b_better,endpoint,model_a,model_b
-1.1006,0.294132,328,154,174,ames,ames_salt_stripped_extended_xgb,ames_conditional_broad_fp2048_lgbm
-0.0,1.0,5,3,2,invitro_sampling,invitro_sampling_no_metal_broad_fp1024_rf,invitro_sampling_no_metal_broad_fp2048_xgb
-0.0,1.0,1,1,0,invivo_sampling,invivo_sampling_raw_all_broad_fp2048_xgb,invivo_sampling_conditional_broad_fp512_xgb

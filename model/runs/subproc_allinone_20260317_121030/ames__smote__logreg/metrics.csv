@@ -1,2 +1,0 @@
-endpoint,strategy,model_name,n_features,threshold,tuning_metric,best_cv_score,train_n,test_n,train_pos_rate,test_pos_rate,tn,fp,fn,tp,sensitivity,specificity,balanced_accuracy,mcc,roc_auc,pr_auc,exp_dir
-ames,smote,logreg,420,0.5099999999999999,mcc,0.6592790998298056,10964,2741,0.3052717986136447,0.30536300620211604,1582,322,146,691,0.8255675029868578,0.8308823529411765,0.8282249279640171,0.6263558913083189,0.8988302310171381,0.790544818670527,C:\Users\Administrator\Documents\GitHub\Genotox_model\model\runs\subproc_allinone_20260317_121030\ames__smote__logreg

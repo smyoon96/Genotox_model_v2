@@ -1,5 +1,0 @@
-endpoint,n_original,n_augmented,n_pos_original,n_pos_augmented,cv_mcc_before,cv_mcc_after,delta_mcc,sens_before,sens_after,spec_after
-invitro,1294,2360,133,1199,0.1568,0.1674,0.0106,0.3759,0.3403,0.8949
-invitro_sampling,259,1345,135,1221,0.5022,0.3943,-0.1079,0.8519,0.8124,0.7016
-invivo,2153,2617,75,539,0.2329,0.4831,0.2502,0.3867,0.4397,0.9745
-invivo_sampling,231,767,77,613,0.545,0.4071,-0.1379,0.7922,0.8042,0.7013

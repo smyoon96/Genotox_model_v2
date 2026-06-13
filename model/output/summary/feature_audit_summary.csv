@@ -1,4 +1,0 @@
-endpoint,total_features,n_physchem,n_fg_present,n_fg_count,n_rule,n_fingerprint,n_qm,n_other
-ames,578,14,142,127,17,256,3,19
-invitro,566,13,135,127,16,256,2,17
-invivo,563,13,132,127,12,256,2,21

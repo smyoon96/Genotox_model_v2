@@ -1,2 +1,0 @@
-strategy,n_pos,n_neg_before,n_neg_after,target_ratio,coverage_frac,n_coverage_selected,n_hard_selected
-coverage_hardneg,57,1491,114,2.0,0.5,38,57

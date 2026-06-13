@@ -1,6 +1,0 @@
-endpoint,status,train_file,test_file,train_rows,train_cols,train_n_positive,train_n_negative,train_positive_rate,train_No_missing,train_No_missing_pct,train_label_missing,train_label_missing_pct,test_rows,test_cols,test_n_positive,test_n_negative,test_positive_rate,test_No_missing,test_No_missing_pct,test_label_missing,test_label_missing_pct,smiles_columns,n_meta_cols,n_feature_candidates,n_excluded_cols,meta_cols,excluded_cols,scaffold_group
-ames,ok,ames.csv,ames.csv,14771,4,4199,10572,0.2843,0,0.0,0,0.0,14771,4,4199,10572,0.2843,0,0.0,0,0.0,['SMILES'],4,0,0,"['No', 'SMILES', 'label', 'domain']",[],MISSING
-invitro,ok,invitro.csv,invitro.csv,1656,3,174,1482,0.1051,0,0.0,0,0.0,1656,3,174,1482,0.1051,0,0.0,0,0.0,['SMILES'],3,0,0,"['No', 'SMILES', 'label']",[],MISSING
-invivo,ok,invivo.csv,invivo.csv,2199,3,77,2122,0.035,0,0.0,0,0.0,2199,3,77,2122,0.035,0,0.0,0,0.0,['SMILES'],3,0,0,"['No', 'SMILES', 'label']",[],MISSING
-invitro_sampling,ok,invitro_sampling.csv,invitro_sampling.csv,348,3,174,174,0.5,0,0.0,0,0.0,348,3,174,174,0.5,0,0.0,0,0.0,['SMILES'],3,0,0,"['No', 'SMILES', 'label']",[],MISSING
-invivo_sampling,ok,invivo_sampling.csv,invivo_sampling.csv,231,3,77,154,0.3333,0,0.0,0,0.0,231,3,77,154,0.3333,0,0.0,0,0.0,['SMILES'],3,0,0,"['No', 'SMILES', 'label']",[],MISSING
