@@ -48,13 +48,19 @@ Genotox_model_v2/
 
 Three genotoxicity endpoints are evaluated:
 
-| Dataset | n | Positive rate | Source type |
+Two dataset versions are provided for each endpoint:
+
+| Dataset | Raw curated (*n*) | Post-filter modelling set (*n*) | Note |
 |---|---|---|---|
-| Ames mutagenicity | 14,771 | Mixed (drug/industrial) | Multi-source compiled |
-| *In vitro* chromosomal aberration | 1,656 | Imbalanced | Industrial-focused |
-| *In vivo* micronucleus | 2,199 | Imbalanced | Industrial-focused |
+| Ames mutagenicity | 14,771 | 13,560 | After Klimisch score filtering and cross-source conflict exclusion (169 records) |
+| *In vitro* chromosomal aberration | 1,656 | 1,619 | After Klimisch score filtering and conflict exclusion (3 records) |
+| *In vivo* micronucleus | 2,199 | 2,153 | After Klimisch score filtering and conflict exclusion (2 records) |
+
+**Raw curated sets** include all records that passed guideline mapping and initial deduplication, before quality filtering.  
+**Post-filter modelling sets** are the subsets used in all analyses reported in the manuscript.
 
 Each dataset includes a `source` column distinguishing drug-domain and industrial-domain compounds, which is the primary variable of interest in this study.
+
 
 ---
 
