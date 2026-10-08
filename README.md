@@ -1,7 +1,7 @@
 # Genotox_model_v2
 
 **"Data Source Heterogeneity, Not Algorithm Choice, Drives Performance Gaps in QSAR for Mutagenicity"**  
-Submitted to *Journal of Chemical Information and Modeling* (Manuscript ID: ci-2026-01929c)
+Submitted to *Journal of Cheminformatics* (Manuscript ID: ci-2026-01929c)
 
 ---
 
